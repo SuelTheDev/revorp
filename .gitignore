@@ -1,0 +1,9 @@
+cache/
+*/\[roupas\]/*
+*/\[veiculos\]/*
+*/\[mapas\]/*
+*/node_modules/*
+*.installed
+*.zip
+*.rar
+*.7z
