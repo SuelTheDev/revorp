@@ -13,3 +13,4 @@ fivem-server/
 /resources/[celular]/smartphone/node_modules
 /dev.bat
 /resources.cfg
+/server.cfg
