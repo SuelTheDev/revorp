@@ -1,1 +1,1 @@
-..\..\build\FxServer.exe +exec server.cfg
+fivem-server\FxServer.exe +exec server.cfg
