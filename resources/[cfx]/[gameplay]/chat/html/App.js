@@ -25,7 +25,9 @@ window.APP = {
   mounted() {
     post('http://chat/loaded', JSON.stringify({}));
     this.listener = window.addEventListener('message', (event) => {
+     
       const item = event.data || event.detail; //'detail' is for debuging via browsers
+      console.log(item)
       if (this[item.type]) {
         this[item.type](item);
       }
@@ -33,13 +35,18 @@ window.APP = {
   },
   watch: {
     messages() {
+      
+      console.log(this.messages)
+      
       if (this.showWindowTimer) {
         clearTimeout(this.showWindowTimer);
       }
+
       this.showWindow = true;
       this.resetShowWindowTimer();
 
       const messagesObj = this.$refs.messages;
+
       this.$nextTick(() => {
         messagesObj.scrollTop = messagesObj.scrollHeight;
       });

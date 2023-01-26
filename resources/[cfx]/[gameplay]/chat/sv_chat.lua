@@ -15,6 +15,8 @@ AddEventHandler('_chat:messageEntered',function(author,color,message)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	local identity = vRP.getUserIdentity(user_id)
+
+    print(source, user_id, identity)
     if not message or not author or not identity then
         return
     end

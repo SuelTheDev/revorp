@@ -10,10 +10,11 @@ window.CONFIG = {
     'example:important': '<h1>^2{0}</h1>'
   },
   fadeTimeout: 1800,
-  suggestionLimit: 9,
+  suggestionLimit: 15,
   style: {
     background: 'rgba(0, 0, 0, 0.6)',
-    width: '600px',
+    width: '25vw',
+    'max-width': '30vw',
     height: '230px',
   }
 };

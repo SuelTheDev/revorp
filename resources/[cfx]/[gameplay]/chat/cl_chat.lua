@@ -9,7 +9,6 @@ RegisterNetEvent('chat:clear')
 
 
 RegisterNetEvent('__cfx_internal:serverPrint')
-
 RegisterNetEvent('_chat:messageEntered')
 
 AddEventHandler('chatMessage', function(author, color, text)
@@ -28,16 +27,16 @@ AddEventHandler('chatMessage', function(author, color, text)
 end)
 
 AddEventHandler('__cfx_internal:serverPrint', function(msg)
-  print(msg)
-
-  SendNUIMessage({
-    type = 'ON_MESSAGE',
-    message = {
-      templateId = 'print',
-      multiline = true,
-      args = { msg }
-    }
-  })
+  if msg and msg ~= "" then
+    SendNUIMessage({
+      type = 'ON_MESSAGE',
+      message = {
+        templateId = 'print',
+        multiline = true,
+        args = { msg }
+      }
+    })
+  end
 end)
 
 AddEventHandler('chat:addMessage', function(message)
@@ -74,9 +73,8 @@ RegisterNUICallback('chatResult', function(data, cb)
     local r, g, b = 0, 0x99, 255
 
     if data.message:sub(1, 1) == '/' then
-      ExecuteCommand(data.message:sub(2))
-    else
-      TriggerServerEvent('_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
+      ExecuteCommand(data.message:sub(2))    
+      -- TriggerServerEvent('_chat:messageEntered', GetPlayerName(id), { r, g, b }, data.message)
     end
   end
 
