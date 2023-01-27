@@ -10,7 +10,7 @@ vCLIENT = Tunnel.getInterface("vrp_garages")
 -- TUTORIAL
 -----------------------------------------------------------------------------------------------------------------------------------------
 function LocalPed()
-	return GetPlayerPed(-1)
+	return PlayerPedId()
 end
 
 Citizen.CreateThread(function()

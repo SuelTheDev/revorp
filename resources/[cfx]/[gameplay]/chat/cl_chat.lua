@@ -26,18 +26,18 @@ AddEventHandler('chatMessage', function(author, color, text)
   })
 end)
 
-AddEventHandler('__cfx_internal:serverPrint', function(msg)
-  if msg and msg ~= "" then
-    SendNUIMessage({
-      type = 'ON_MESSAGE',
-      message = {
-        templateId = 'print',
-        multiline = true,
-        args = { msg }
-      }
-    })
-  end
-end)
+-- AddEventHandler('__cfx_internal:serverPrint', function(msg)
+--   if msg and msg ~= "" then
+--     SendNUIMessage({
+--       type = 'ON_MESSAGE',
+--       message = {
+--         templateId = 'print',
+--         multiline = true,
+--         args = { msg }
+--       }
+--     })
+--   end
+-- end)
 
 AddEventHandler('chat:addMessage', function(message)
   SendNUIMessage({
@@ -118,7 +118,7 @@ end)
 AddEventHandler('onClientResourceStop', function(resName)
   Wait(500)
 
-  refreshCommands()
+  -- refreshCommands()
   refreshThemes()
 end)
 
