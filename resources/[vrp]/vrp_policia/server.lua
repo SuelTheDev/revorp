@@ -434,7 +434,7 @@ local staffjob = {
 }
 
 
-local function toogleStaff(user_id)
+local function toogleStaff(source, user_id)
 	local currentStaffGroup
 	local data = vRP.getUserDataTable(user_id)
 	local groups = data.groups
@@ -450,9 +450,9 @@ local function toogleStaff(user_id)
 		local groupName = currentStaffGroup
 		if isOff then
 			groupName = currentStaffGroup:sub(4)
-			TriggerClientEvent("Notify", source, "aviso", "Você ativou o modo de Staff como ".. groupName, 10000)
+			TriggerClientEvent("Notify", source, "aviso", "Você ativou o modo de Staff como " .. groupName, 10000)
 		else
-			TriggerClientEvent("Notify", source, "aviso", "Você desativou o modo de Staff como ".. groupName, 10000)
+			TriggerClientEvent("Notify", source, "aviso", "Você desativou o modo de Staff como " .. groupName, 10000)
 		end
 		vRP.removeUserGroup(user_id, currentStaffGroup)
 		vRP.addUserGroup(user_id, staffjob[currentStaffGroup])
@@ -460,11 +460,14 @@ local function toogleStaff(user_id)
 end
 
 RegisterCommand('toogle', function(source, args, rawCommand)
+
+	print(source, json.encode(args))
+
 	local user_id = vRP.getUserId(source)
 	if user_id then
 
-		if args[1] and args[1] == "staff" then
-			toogleStaff(user_id)
+		if args[1] == "staff" then
+			toogleStaff(source, user_id)
 			return
 		end
 
