@@ -2914,15 +2914,14 @@ RegisterCommand("ilegal", function(source, args)
 	local user_id = vRP.getUserId(source)
 	if user_id then
 		if vRP.hasPermission(user_id, "policia.permissao") then return end
-		if vRP.tryPayment(user_id, 0) then
+		if vRP.tryPayment(user_id, 5000) then
 			local message = vRP.prompt(source, 'Coloque sua mensagem. (Será cobrado R$ 5.000,00', '')
 			if message and string.len(message) > 0 then
 				local players = vRP.getUsersByPermission("!.not.policia.permissao")
 				if players and #players > 0 then
 					for _, v in pairs(players) do
 						async(function()
-							local nsource = vRP.getUserSource(v)
-							print('ok')
+							local nsource = vRP.getUserSource(v)							
 							TriggerClientEvent("chatMessage", nsource, "Mercado Ilegal: ", { 0, 255, 0 }, message)
 						end)
 					end

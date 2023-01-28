@@ -271,7 +271,6 @@ end
 --- SPAWNA O VEÍCULO VIA SERVER-SIDE PARA NÃO OCORRER BUGS (VEÍCULO NÃO SER DELETADO) ---
 function func.spawnVeh(mhash, coords, h, plate, vehicleInfo)
 
-    print(json.encode(vehicleInfo))
 
     local source = source
     local user_id = vRP.getUserId(source)
