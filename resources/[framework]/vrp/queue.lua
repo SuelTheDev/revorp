@@ -1,6 +1,6 @@
 local Config = {}
 
-Config.RequireSteam = true
+Config.RequireSteam = false
 
 Config.IsBanned = function(src,callback)
 	callback(false)

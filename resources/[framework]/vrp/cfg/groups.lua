@@ -1,7 +1,7 @@
 local cfg = {}
 
 cfg.groups = {
-	["Dono"] = {
+	["Dono"] = {		
 		"dono.permissao",
 		"admin.permissao",
 		"mod.permissao",
@@ -14,14 +14,14 @@ cfg.groups = {
 		"prop.permissao",
 		"imune.permissao",
 		"player.noclip"
-			
-    },
-	    ["OffDono"] = {
-    	"offdono.permissao",
-    	"sem.permissao"
+
+	},
+	["OffDono"] = {
+		"offdono.permissao",
+		"sem.permissao"
 
 
-    },
+	},
 	["Admin"] = {
 		"admin.permissao",
 		"mod.permissao",
@@ -34,13 +34,13 @@ cfg.groups = {
 		"imune.permissao",
 		"ticket.permissao",
 		"player.noclip"
-		
+
 	},
-		["OffAdmin"] = {
+	["OffAdmin"] = {
 		"offadmin.permissao",
 		"sem.permissao"
 
-		
+
 	},
 	["Mod"] = {
 		"mod.permissao",
@@ -52,9 +52,9 @@ cfg.groups = {
 		"ticket.permissao",
 		"imune.permissao",
 		"player.noclip"
-		
+
 	},
-		["OffMod"] = {
+	["OffMod"] = {
 		"offmod.permissao",
 		"sem.permissao"
 	},
@@ -65,9 +65,9 @@ cfg.groups = {
 		"ticket.permissao",
 		"imune.permissao",
 		"player.noclip"
-		
+
 	},
-		["OffSuporte"] = {
+	["OffSuporte"] = {
 		"offsuporte.permissao",
 		"sem.permissao"
 	},
@@ -90,7 +90,7 @@ cfg.groups = {
 			gtype = "job"
 		},
 		"news.permissao",
-		"sem.permissao"	
+		"sem.permissao"
 	},
 	["paintball"] = {
 		_config = {
@@ -100,7 +100,7 @@ cfg.groups = {
 		"paintball.permissao",
 		"policia.permissao",
 		"garmas.permissao",
-		"sem.permissao"	
+		"sem.permissao"
 	},
 	["Vendedor"] = {
 		_config = {
@@ -108,7 +108,7 @@ cfg.groups = {
 			gtype = "altl"
 		},
 		"vendedor.permissao",
-		"sem.permissao"	
+		"sem.permissao"
 	},
 	["Advogado"] = {
 		_config = {
@@ -120,7 +120,7 @@ cfg.groups = {
 	},
 	----------- Departamentod e Policia -----------------
 	-----------------------------------------------------
-	
+
 	-- Recruta
 	["Recruta"] = {
 		_config = {
@@ -146,7 +146,7 @@ cfg.groups = {
 		"recruta.folga",
 		"sem.permissao"
 	},
-		["Soldado"] = {
+	["Soldado"] = {
 		_config = {
 			title = "Soldado",
 			gtype = "job"
@@ -392,7 +392,7 @@ cfg.groups = {
 		},
 		"policia.permissao",
 		"investigador.permissao",
- 	    "player.noclip",
+		"player.noclip",
 		"garmas.permissao",
 		"polpar.permissao",
 		"sem.permissao"
@@ -415,7 +415,7 @@ cfg.groups = {
 		"garmas.permissao",
 		"escrivao.permissao",
 		"polpar.permissao",
- 	    "player.noclip",
+		"player.noclip",
 		"sem.permissao"
 	},
 	["PaisanaEscrivao"] = {
@@ -436,7 +436,7 @@ cfg.groups = {
 		"garmas.permissao",
 		"delegadopc.permissao",
 		"polpar.permissao",
- 	    "player.noclip",
+		"player.noclip",
 		"sem.permissao"
 	},
 	["PaisanaDelegadoPC"] = {
@@ -451,7 +451,7 @@ cfg.groups = {
 	-----------------------------------------------------
 	---------------- BAEP -------------------------------
 	-----------------------------------------------------
-		
+
 	["SargentoBAEP"] = {
 		_config = {
 			title = "Sargento BAEP",
@@ -559,7 +559,7 @@ cfg.groups = {
 	-----------------------------------------------------
 	---------------- ROTA -------------------------------
 	-----------------------------------------------------
-	
+
 	["SargentoRT"] = {
 		_config = {
 			title = "Sargento RT",
@@ -681,7 +681,7 @@ cfg.groups = {
 		"policia.permissao",
 		"garmas.permissao",
 		"prfterceiraclasse.permissao",
- 	    "player.noclip",
+		"player.noclip",
 		"polpar.permissao",
 		"sem.permissao"
 	},
@@ -703,7 +703,7 @@ cfg.groups = {
 		"garmas.permissao",
 		"prfsegundaclasse.permissao",
 		"polpar.permissao",
- 	    "player.noclip",
+		"player.noclip",
 		"sem.permissao"
 	},
 	["PaisanaPRFSegundaClasse"] = {
@@ -724,7 +724,7 @@ cfg.groups = {
 		"garmas.permissao",
 		"prfprimeiraclasse.permissao",
 		"polpar.permissao",
- 	    "player.noclip",
+		"player.noclip",
 		"sem.permissao"
 	},
 	["PaisanaPRFPrimeiraClasse"] = {
@@ -745,7 +745,7 @@ cfg.groups = {
 		"garmas.permissao",
 		"prfespecial.permissao",
 		"polpar.permissao",
- 	    "player.noclip",
+		"player.noclip",
 		"sem.permissao"
 	},
 	["PaisanaPRFEspecial"] = {
@@ -759,12 +759,12 @@ cfg.groups = {
 	},
 
 
-	
+
 	-----------------------------------------------------
 	-- Hospital ------------------------------------
 	-----------------------------------------------------
 
-		["EnfermeiroHP"] = {
+	["EnfermeiroHP"] = {
 		_config = {
 			title = "Enfermeiro HP",
 			gtype = "job"
@@ -774,14 +774,14 @@ cfg.groups = {
 		"paramedico.permissao",
 		"player.noclip",
 		"player.blips"
-	}, 
+	},
 	["PaisanaEnfermeiroHP"] = {
 		_config = {
 			title = "Folga Enfermeiro HP",
 			gtype = "job"
 		},
 		"paisanaenfermeirohp.permissao",
-		"sem.permissao"	,	
+		"sem.permissao",
 		"player.blips"
 	},
 	["MedicoHP"] = {
@@ -803,7 +803,7 @@ cfg.groups = {
 		"paisanamedicohp.permissao",
 		"sem.permissao",
 		"player.blips"
-	}, 
+	},
 	["MedicoChefeHP"] = {
 		_config = {
 			title = "Medico Chefe HP",
@@ -823,7 +823,7 @@ cfg.groups = {
 		"paisanamedicochefehp.permissao",
 		"sem.permissao",
 		"player.blips"
-	}, 
+	},
 	["DiretorHP"] = {
 		_config = {
 			title = "Diretor HP",
@@ -843,7 +843,7 @@ cfg.groups = {
 		"paisanadiretorhp.permissao",
 		"sem.permissao",
 		"player.blips"
-	}, 
+	},
 	["ViceDiretorHP"] = {
 		_config = {
 			title = "Vice Diretor HP",
@@ -854,7 +854,7 @@ cfg.groups = {
 		"player.noclip",
 		"paramedico.permissao",
 		"player.blips"
-	}, 
+	},
 	["PaisanaViceDiretorHP"] = {
 		_config = {
 			title = "Folga Vice Diretor HP",
@@ -863,7 +863,7 @@ cfg.groups = {
 		"paisanavicediretorhp.permissao",
 		"sem.permissao",
 		"player.blips"
-	}, 
+	},
 
 	------------------------------------------------------------------------------------------
 	----------------- Mecânica Sense Customs --------------------------------------------------------
@@ -1009,9 +1009,9 @@ cfg.groups = {
 		"bennys.permissao",
 		"player.blips"
 	},
-	    ---------------------------------- mafia
+	---------------------------------- mafia
 
-    ["LiderMafia"] = {
+	["LiderMafia"] = {
 		_config = {
 			title = "Lider Mafia",
 			gtype = "job"
@@ -1053,7 +1053,7 @@ cfg.groups = {
 		"ilegal.permissao",
 		"player.blips"
 	},
-	
+
 	--------------------------------------- Bratva MUNIÇAO
 
 	["LiderFS"] = {
@@ -1098,468 +1098,468 @@ cfg.groups = {
 		"ilegal.permissao",
 		"player.blips"
 	},
-	 		--------------------------------------- Cartel ARMAS
+	--------------------------------------- Cartel ARMAS
 
-		 ["LiderCartel"] = {
-			_config = {
-				title = "Lider Cartel",
-				gtype = "job"
-			},
-			"lidercartel.permissao",
-			"cartel.permissao",
-			"gcartel.permissao",
-			"ilegal.permissao",
-			"player.blips"
+	["LiderCartel"] = {
+		_config = {
+			title = "Lider Cartel",
+			gtype = "job"
 		},
-		["ViceLiderCartel"] = {
-			_config = {
-				title = "Vice Lider Cartel",
-				gtype = "job"
-			},
-			"vicelidercartel.permissao",
-			"cartel.permissao",
-			"gcartel.permissao",
-			"ilegal.permissao",
-			"player.blips"
+		"lidercartel.permissao",
+		"cartel.permissao",
+		"gcartel.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderCartel"] = {
+		_config = {
+			title = "Vice Lider Cartel",
+			gtype = "job"
 		},
-		["GerenteCartel"] = {
-			_config = {
-				title = "Gerente Cartel",
-				gtype = "job"
-			},
-			"gerentecartel.permissao",
-			"cartel.permissao",
-			"gcartel.permissao",
-			"ilegal.permissao",
-			"player.blips"
+		"vicelidercartel.permissao",
+		"cartel.permissao",
+		"gcartel.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteCartel"] = {
+		_config = {
+			title = "Gerente Cartel",
+			gtype = "job"
 		},
-		["Cartel"] = {
-			_config = {
-				title = "Membro Cartel",
-				gtype = "job"
-			},
-			"cartel.permissao",
-			"ilegal.permissao",
-			"player.blips"
+		"gerentecartel.permissao",
+		"cartel.permissao",
+		"gcartel.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["Cartel"] = {
+		_config = {
+			title = "Membro Cartel",
+			gtype = "job"
 		},
-    
-	 		--------------------------------------- DK DESMANCHE
+		"cartel.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
 
-			 ["LiderDK"] = {
-				_config = {
-					title = "Lider DK",
-					gtype = "job"
-				},
-				"liderdk.permissao",
-				"dk.permissao",
-				"desmanche.permissao",
-				"gdk.permissao",
-				"ilegal.permissao",
-				"player.blips"
-			},
-			["ViceLiderDK"] = {
-				_config = {
-					title = "Vice Lider DK",
-					gtype = "job"
-				},
-				"viceliderdk.permissao",
-				"dk.permissao",
-				"desmanche.permissao",
-				"gdk.permissao",
-				"ilegal.permissao",
-				"player.blips"
-			},
-			["GerenteDK"] = {
-				_config = {
-					title = "Gerente DK",
-					gtype = "job"
-				},
-				"gerentedk.permissao",
-				"dk.permissao",
-				"desmanche.permissao",
-				"gdk.permissao",
-				"ilegal.permissao",
-				"player.blips"
-			},
-			["DK"] = {
-				_config = {
-					title = "Membro DK",
-					gtype = "job"
-				},
-				"dk.permissao",
-				"ilegal.permissao",
-				"player.blips"
-			},
-		 		--------------------------------------- TDTURQUIA LAVAGEM
-				 ["LiderTDT"] = {
-					_config = {
-						title = "Lider TDT",
-						gtype = "job"
-					},
-					"liderTDT.permissao",
-					"TDT.permissao",
-					"lavar.dinheiro",
-					"gTDT.permissao",
-					"ilegal.permissao",
-					"player.blips"
-				},
-				["ViceLiderTDT"] = {
-					_config = {
-						title = "Vice Lider TDT",
-						gtype = "job"
-					},
-					"viceliderTDT.permissao",
-					"TDT.permissao",
-					"lavar.dinheiro",
-					"gTDT.permissao",
-					"ilegal.permissao",
-					"player.blips"
-				},
-				["GerenteTDT"] = {
-					_config = {
-						title = "Gerente TDT",
-						gtype = "job"
-					},
-					"gerenteTDT.permissao",
-					"TDT.permissao",
-					"lavar.dinheiro",
-					"gTDT.permissao",
-					"ilegal.permissao",
-					"player.blips"
-				},
-				["TDT"] = {
-					_config = {
-						title = "Membro TDT",
-						gtype = "job"
-					},
-					"TDT.permissao",
-					"lavar.dinheiro",
-					"ilegal.permissao",
-					"player.blips"
-				},
-			 		--------------------------------------- TDFRANCA COCA
+	--------------------------------------- DK DESMANCHE
 
-					 ["LiderTDF"] = {
-						_config = {
-							title = "Lider TDF",
-							gtype = "job"
-						},
-						"liderTDF.permissao",
-						"TDF.permissao",
-						"coca.permissao",
-						"gTDF.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["ViceLiderTDF"] = {
-						_config = {
-							title = "Vice Lider TDF",
-							gtype = "job"
-						},
-						"viceliderTDF.permissao",
-						"TDF.permissao",
-						"coca.permissao",
-						"gTDF.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["GerenteTDF"] = {
-						_config = {
-							title = "Gerente TDF",
-							gtype = "job"
-						},
-						"gerenteTDF.permissao",
-						"TDF.permissao",
-						"coca.permissao",
-						"gTDF.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["TDF"] = {
-						_config = {
-							title = "Membro TDF",
-							gtype = "job"
-						},
-						"TDF.permissao",
-						"coca.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					
-					    			 		--------------------------------------- TDC META
+	["LiderDK"] = {
+		_config = {
+			title = "Lider DK",
+			gtype = "job"
+		},
+		"liderdk.permissao",
+		"dk.permissao",
+		"desmanche.permissao",
+		"gdk.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderDK"] = {
+		_config = {
+			title = "Vice Lider DK",
+			gtype = "job"
+		},
+		"viceliderdk.permissao",
+		"dk.permissao",
+		"desmanche.permissao",
+		"gdk.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteDK"] = {
+		_config = {
+			title = "Gerente DK",
+			gtype = "job"
+		},
+		"gerentedk.permissao",
+		"dk.permissao",
+		"desmanche.permissao",
+		"gdk.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["DK"] = {
+		_config = {
+			title = "Membro DK",
+			gtype = "job"
+		},
+		"dk.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	--------------------------------------- TDTURQUIA LAVAGEM
+	["LiderTDT"] = {
+		_config = {
+			title = "Lider TDT",
+			gtype = "job"
+		},
+		"liderTDT.permissao",
+		"TDT.permissao",
+		"lavar.dinheiro",
+		"gTDT.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderTDT"] = {
+		_config = {
+			title = "Vice Lider TDT",
+			gtype = "job"
+		},
+		"viceliderTDT.permissao",
+		"TDT.permissao",
+		"lavar.dinheiro",
+		"gTDT.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteTDT"] = {
+		_config = {
+			title = "Gerente TDT",
+			gtype = "job"
+		},
+		"gerenteTDT.permissao",
+		"TDT.permissao",
+		"lavar.dinheiro",
+		"gTDT.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["TDT"] = {
+		_config = {
+			title = "Membro TDT",
+			gtype = "job"
+		},
+		"TDT.permissao",
+		"lavar.dinheiro",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	--------------------------------------- TDFRANCA COCA
 
-					 ["LiderTDC"] = {
-						_config = {
-							title = "Lider TDC",
-							gtype = "job"
-						},
-						"liderTDC.permissao",
-						"TDC.permissao",
-						"meta.permissao",
-						"gTDC.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["ViceLiderTDC"] = {
-						_config = {
-							title = "Vice Lider TDC",
-							gtype = "job"
-						},
-						"viceliderTDC.permissao",
-						"TDC.permissao",
-						"meta.permissao",
-						"gTDC.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["GerenteTDC"] = {
-						_config = {
-							title = "Gerente TDc",
-							gtype = "job"
-						},
-						"gerenteTDC.permissao",
-						"TDC.permissao",
-						"meta.permissao",
-						"gTDC.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["TDC"] = {
-						_config = {
-							title = "Membro TDC",
-							gtype = "job"
-						},
-						"TDC.permissao",
-						"meta.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
+	["LiderTDF"] = {
+		_config = {
+			title = "Lider TDF",
+			gtype = "job"
+		},
+		"liderTDF.permissao",
+		"TDF.permissao",
+		"coca.permissao",
+		"gTDF.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderTDF"] = {
+		_config = {
+			title = "Vice Lider TDF",
+			gtype = "job"
+		},
+		"viceliderTDF.permissao",
+		"TDF.permissao",
+		"coca.permissao",
+		"gTDF.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteTDF"] = {
+		_config = {
+			title = "Gerente TDF",
+			gtype = "job"
+		},
+		"gerenteTDF.permissao",
+		"TDF.permissao",
+		"coca.permissao",
+		"gTDF.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["TDF"] = {
+		_config = {
+			title = "Membro TDF",
+			gtype = "job"
+		},
+		"TDF.permissao",
+		"coca.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
 
-					    			 		--------------------------------------- TDE MACONHA
+	--------------------------------------- TDC META
 
-					 ["LiderTDE"] = {
-						_config = {
-							title = "Lider TDE",
-							gtype = "job"
-						},
-						"liderTDJ.permissao",
-						"TDE.permissao",
-						"maconha.permissao",
-						"gTDE.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["ViceLiderTDE"] = {
-						_config = {
-							title = "Vice Lider TDE",
-							gtype = "job"
-						},
-						"viceliderTDE.permissao",
-						"TDE.permissao",
-						"maconha.permissao",
-						"gTDE.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["GerenteTDE"] = {
-						_config = {
-							title = "Gerente TDE",
-							gtype = "job"
-						},
-						"gerenteTDJ.permissao",
-						"TDE.permissao",
-						"maconha.permissao",
-						"gTDE.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["TDE"] = {
-						_config = {
-							title = "Membro TDE",
-							gtype = "job"
-						},
-						"TDE.permissao",
-						"maconha.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
+	["LiderTDC"] = {
+		_config = {
+			title = "Lider TDC",
+			gtype = "job"
+		},
+		"liderTDC.permissao",
+		"TDC.permissao",
+		"meta.permissao",
+		"gTDC.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderTDC"] = {
+		_config = {
+			title = "Vice Lider TDC",
+			gtype = "job"
+		},
+		"viceliderTDC.permissao",
+		"TDC.permissao",
+		"meta.permissao",
+		"gTDC.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteTDC"] = {
+		_config = {
+			title = "Gerente TDc",
+			gtype = "job"
+		},
+		"gerenteTDC.permissao",
+		"TDC.permissao",
+		"meta.permissao",
+		"gTDC.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["TDC"] = {
+		_config = {
+			title = "Membro TDC",
+			gtype = "job"
+		},
+		"TDC.permissao",
+		"meta.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+
+	--------------------------------------- TDE MACONHA
+
+	["LiderTDE"] = {
+		_config = {
+			title = "Lider TDE",
+			gtype = "job"
+		},
+		"liderTDJ.permissao",
+		"TDE.permissao",
+		"maconha.permissao",
+		"gTDE.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderTDE"] = {
+		_config = {
+			title = "Vice Lider TDE",
+			gtype = "job"
+		},
+		"viceliderTDE.permissao",
+		"TDE.permissao",
+		"maconha.permissao",
+		"gTDE.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteTDE"] = {
+		_config = {
+			title = "Gerente TDE",
+			gtype = "job"
+		},
+		"gerenteTDJ.permissao",
+		"TDE.permissao",
+		"maconha.permissao",
+		"gTDE.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["TDE"] = {
+		_config = {
+			title = "Membro TDE",
+			gtype = "job"
+		},
+		"TDE.permissao",
+		"maconha.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
 
 
-					--------------------------------------- Vanilla
+	--------------------------------------- Vanilla
 
-					["LiderVanilla"] = {
-						_config = {
-							title = "Lider Vanilla",
-							gtype = "job"
-						},
-						"lidervanilla.permissao",
-						"vanilla.permissao",
-						"gvanilla.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["ViceLiderVanilla"] = {
-						_config = {
-							title = "Vice Lider Vanilla",
-							gtype = "job"
-						},
-						"vicelidervanilla.permissao",
-						"vanilla.permissao",
-						"gvanilla.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["GerenteVanilla"] = {
-						_config = {
-							title = "Gerente Vanilla",
-							gtype = "job"
-						},
-						"gerentevanilla.permissao",
-						"vanilla.permissao",
-						"gvanilla.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["Vanilla"] = {
-						_config = {
-							title = "Membro Vanilla",
-							gtype = "job"
-						},
-						"vanilla.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
+	["LiderVanilla"] = {
+		_config = {
+			title = "Lider Vanilla",
+			gtype = "job"
+		},
+		"lidervanilla.permissao",
+		"vanilla.permissao",
+		"gvanilla.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderVanilla"] = {
+		_config = {
+			title = "Vice Lider Vanilla",
+			gtype = "job"
+		},
+		"vicelidervanilla.permissao",
+		"vanilla.permissao",
+		"gvanilla.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteVanilla"] = {
+		_config = {
+			title = "Gerente Vanilla",
+			gtype = "job"
+		},
+		"gerentevanilla.permissao",
+		"vanilla.permissao",
+		"gvanilla.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["Vanilla"] = {
+		_config = {
+			title = "Membro Vanilla",
+			gtype = "job"
+		},
+		"vanilla.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
 
-					--------------------------------------- Bahamas
+	--------------------------------------- Bahamas
 
-					["LiderBahamas"] = {
-						_config = {
-							title = "Lider Bahamas",
-							gtype = "job"
-						},
-						"liderbahamas.permissao",
-						"bahamas.permissao",
-						"gbahamas.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["ViceLiderBahamas"] = {
-						_config = {
-							title = "Vice Lider Bahamas",
-							gtype = "job"
-						},
-						"viceliderbahamas.permissao",
-						"bahamas.permissao",
-						"gbahamas.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["GerenteBahamas"] = {
-						_config = {
-						title = "Gerente Bahamas",
-						gtype = "job"
-					},
-						"gerentebahamas.permissao",
-						"bahamas.permissao",
-						"gbahamas.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["Bahamas"] = {
-						_config = {
-						title = "Membro Vanilla",
-						gtype = "job"
-					},
-						"bahamas.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
+	["LiderBahamas"] = {
+		_config = {
+			title = "Lider Bahamas",
+			gtype = "job"
+		},
+		"liderbahamas.permissao",
+		"bahamas.permissao",
+		"gbahamas.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderBahamas"] = {
+		_config = {
+			title = "Vice Lider Bahamas",
+			gtype = "job"
+		},
+		"viceliderbahamas.permissao",
+		"bahamas.permissao",
+		"gbahamas.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteBahamas"] = {
+		_config = {
+			title = "Gerente Bahamas",
+			gtype = "job"
+		},
+		"gerentebahamas.permissao",
+		"bahamas.permissao",
+		"gbahamas.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["Bahamas"] = {
+		_config = {
+			title = "Membro Vanilla",
+			gtype = "job"
+		},
+		"bahamas.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
 
 	-------------------------------------------YAKUZA -----------------------------------------------------------
-					["LiderYakuza"] = {
-						_config = {
-							title = "Lider Yakuza",
-							gtype = "job"
-						},
-						"lideryakuza.permissao",
-						"yakuza.permissao",
-						"gyakuza.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["ViceLiderYakuza"] = {
-						_config = {
-							title = "Vice Lider Yakuza",
-							gtype = "job"
-						},
-						"vicelideryakuza.permissao",
-						"yakuza.permissao",
-						"gyakuza.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["GerenteYakuza"] = {
-						_config = {
-							title = "Gerente Yakuza",
-							gtype = "job"
-						},
-						"gerenteyakuza.permissao",
-						"yakuza.permissao",
-						"gyakuza.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-					["Yakuza"] = {
-						_config = {
-							title = "Membro Yakuza",
-							gtype = "job"
-						},
-						"yakuza.permissao",
-						"ilegal.permissao",
-						"player.blips"
-					},
-	 
-		 		--------------------------------------- Bennys
+	["LiderYakuza"] = {
+		_config = {
+			title = "Lider Yakuza",
+			gtype = "job"
+		},
+		"lideryakuza.permissao",
+		"yakuza.permissao",
+		"gyakuza.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["ViceLiderYakuza"] = {
+		_config = {
+			title = "Vice Lider Yakuza",
+			gtype = "job"
+		},
+		"vicelideryakuza.permissao",
+		"yakuza.permissao",
+		"gyakuza.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["GerenteYakuza"] = {
+		_config = {
+			title = "Gerente Yakuza",
+			gtype = "job"
+		},
+		"gerenteyakuza.permissao",
+		"yakuza.permissao",
+		"gyakuza.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
+	["Yakuza"] = {
+		_config = {
+			title = "Membro Yakuza",
+			gtype = "job"
+		},
+		"yakuza.permissao",
+		"ilegal.permissao",
+		"player.blips"
+	},
 
-				 ["LiderBennys"] = {
-					_config = {
-						title = "Lider Bennys",
-						gtype = "job"
-					},
-					"liderBennys.permissao",
-					"Bennys.permissao",
-					"gBennys.permissao",
-					"player.blips"
-				},
-				["ViceLiderBennys"] = {
-					_config = {
-						title = "Vice Lider Bennys",
-						gtype = "job"
-					},
-					"viceliderBennys.permissao",
-					"Bennys.permissao",
-					"gBennys.permissao",
-					"player.blips"
-				},
-				["GerenteBennys"] = {
-					_config = {
-						title = "Gerente Bennys",
-						gtype = "job"
-					},
-					"gerenteBennys.permissao",
-					"Bennys.permissao",
-					"gBennys.permissao",
-					"player.blips"
-				},
-				["Bennys"] = {
-					_config = {
-						title = "Membro Bennys",
-						gtype = "job"
-					},
-					"Bennys.permissao",
-					"player.blips"
-				},
-    
+	--------------------------------------- Bennys
+
+	["LiderBennys"] = {
+		_config = {
+			title = "Lider Bennys",
+			gtype = "job"
+		},
+		"liderBennys.permissao",
+		"Bennys.permissao",
+		"gBennys.permissao",
+		"player.blips"
+	},
+	["ViceLiderBennys"] = {
+		_config = {
+			title = "Vice Lider Bennys",
+			gtype = "job"
+		},
+		"viceliderBennys.permissao",
+		"Bennys.permissao",
+		"gBennys.permissao",
+		"player.blips"
+	},
+	["GerenteBennys"] = {
+		_config = {
+			title = "Gerente Bennys",
+			gtype = "job"
+		},
+		"gerenteBennys.permissao",
+		"Bennys.permissao",
+		"gBennys.permissao",
+		"player.blips"
+	},
+	["Bennys"] = {
+		_config = {
+			title = "Membro Bennys",
+			gtype = "job"
+		},
+		"Bennys.permissao",
+		"player.blips"
+	},
+
 
 
 
@@ -1567,98 +1567,98 @@ cfg.groups = {
 
 	----------------------------------------------
 
-				["Iniciante"] = {
-					_config = {
-						title = "VIP Iniciante",
-						gtype = "vip"
-					},
-					"vipiniciante.permissao",
-					"salario1.servico"
-				},
-				["Bronze"] = {
-					_config = {
-						title = "Bronze",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"bronze.permissao",
-					"salario2.servico"
-				},
-				["Prata"] = {
-					_config = {
-						title = "Prata",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"prata.permissao",
-					"salario3.servico"
-				},
-				["Ouro"] = {
-					_config = {
-						title = "Ouro",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"ouro.permissao",
-					"salario4.servico"
-				},
-				["Platina"] = {
-					_config = {
-						title = "Platina",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"platina.permissao",
-					"salario5.servico"
-				},
-				["Diamante"] = {
-					_config = {
-						title = "Diamante",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"diamante.permissao",
-					"helivip.permissao",
-					"salario6.servico"
-				},
-				["Topazio"] = {
-					_config = {
-						title = "Topázio",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"topazio.permissao",
-					"helivip.permissao",
-					"salario7.servico"
-				},
-				["Esmeralda"] = {
-					_config = {
-						title = "Esmeralda",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"esmeralda.permissao",
-					"helivip.permissao",
-					"salario8.servico"
-				},
-				["Rubi"] = {
-					_config = {
-						title = "Rubi",
-						gtype = "vip"
-					},
-					"vip.permissao",
-					"rubi.permissao",
-					"helivip.permissao",
-					"jatovip.permissao",
-					"salario9.servico"
-				},
+	["Iniciante"] = {
+		_config = {
+			title = "VIP Iniciante",
+			gtype = "vip"
+		},
+		"vipiniciante.permissao",
+		"salario1.servico"
+	},
+	["Bronze"] = {
+		_config = {
+			title = "Bronze",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"bronze.permissao",
+		"salario2.servico"
+	},
+	["Prata"] = {
+		_config = {
+			title = "Prata",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"prata.permissao",
+		"salario3.servico"
+	},
+	["Ouro"] = {
+		_config = {
+			title = "Ouro",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"ouro.permissao",
+		"salario4.servico"
+	},
+	["Platina"] = {
+		_config = {
+			title = "Platina",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"platina.permissao",
+		"salario5.servico"
+	},
+	["Diamante"] = {
+		_config = {
+			title = "Diamante",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"diamante.permissao",
+		"helivip.permissao",
+		"salario6.servico"
+	},
+	["Topazio"] = {
+		_config = {
+			title = "Topázio",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"topazio.permissao",
+		"helivip.permissao",
+		"salario7.servico"
+	},
+	["Esmeralda"] = {
+		_config = {
+			title = "Esmeralda",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"esmeralda.permissao",
+		"helivip.permissao",
+		"salario8.servico"
+	},
+	["Rubi"] = {
+		_config = {
+			title = "Rubi",
+			gtype = "vip"
+		},
+		"vip.permissao",
+		"rubi.permissao",
+		"helivip.permissao",
+		"jatovip.permissao",
+		"salario9.servico"
+	},
 
 
 }
 
 cfg.users = {
 	[1] = { "Dono" },
-	
+
 }
 
 cfg.selectors = {

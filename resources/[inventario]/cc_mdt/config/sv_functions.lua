@@ -25,10 +25,8 @@ Config.getIdentity = function (nuser_id)
     }
 end
 
-Config.setMultas = function (source, nuser_id, multa)
-    -- local uMultas = vRP.getUData(parseInt(nuser_id), 'vRP:multas')
-    -- local multas = json.decode(uMultas) or 0
-    vRP.addFines(nuser_id,multa)
+Config.setMultas = function (source, nuser_id, multa)   
+   vRP.setUData(nuser_id, 'vRP:multa', (parseInt( vRP.getUData(nuser_id, 'vRP:multas') ) or 0) + multa)       
 end
 
 Config.getMultas = function (nuser_id)
@@ -64,12 +62,12 @@ end
 
 Config.recompensaMulta = function (source, multaTotal)
     local random = math.random( 0.8 * multaTotal, multaTotal)
-    vRP.paymentFull(vRP.getUserId(source) , parseInt(random))
+    vRP.giveMoney(vRP.getUserId(source) , parseInt(random))
     TriggerClientEvent("Notify", source, "importante", "Você recebeu <b>$"..random.." dólares</b> de bonificação.")
 end
 
 Config.recompensaFianca = function (source, fiancaTotal)
-    vRP.paymentFull(vRP.getUserId(source) , parseInt(fiancaTotal))
+    vRP.giveMoney(vRP.getUserId(source) , parseInt(fiancaTotal))
 end
 
 --[[ WISE ]-----------------------------------------------------------------------------------------------------------------------

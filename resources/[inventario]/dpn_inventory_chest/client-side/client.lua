@@ -1089,11 +1089,13 @@ function dPN.CarregarObjeto(dict, anim, prop, flag, mao, altura, pos1, pos2, pos
     if altura then
         local coords = GetOffsetFromEntityInWorldCoords(ped, 0.0, 0.0, -5.0)
         object = CreateObject(mHash, coords.x, coords.y, coords.z, true, true, true)
+        Entity(object).state:set('checked', 1, true)
         AttachEntityToEntity(object, ped, GetPedBoneIndex(ped, mao), altura, pos1, pos2, pos3, pos4, pos5, true, true,
             false, true, 1, true)
     else
         local coords = GetOffsetFromEntityInWorldCoords(ped, 0.0, 0.0, -5.0)
         object = CreateObject(mHash, coords.x, coords.y, coords.z, true, true, true)
+        Entity(object).state:set('checked', 1, true)
         AttachEntityToEntity(object, ped, GetPedBoneIndex(ped, mao), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, false, false, false,
             false, 2, true)
     end

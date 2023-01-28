@@ -12,7 +12,31 @@ Citizen.CreateThread(function()
 	end	 
 end)
 
+RegisterCommand("fps", function(source, args)
+	if args[1] == "on" then
+		SetTimecycleModifier("cinema")
+		TriggerEvent("Notify", "sucesso", "Boost de fps ligado!")
+	elseif args[1] == "off" then
+		SetTimecycleModifier("default")
+		TriggerEvent("Notify", "sucesso", "Boost de fps desligado!")
+	end
+end)
 
+RegisterCommand('graficos', function(source, args)
+	if not active then
+		active = true
+		--    SetTimecycleModifier('yell_tunnel_nodirect')
+		SetTimecycleModifier('MP_Powerplay_blend')
+		SetExtraTimecycleModifier('reflection_correct_ambient')
+		print('^4Gráficos: Ativos^0')
+	else
+		active = false
+		ClearTimecycleModifier()
+		ClearExtraTimecycleModifier()
+		--    ResetExtraTimecycleModifierStrength()
+		print('^4Gráficos: Desativados^0')
+	end
+end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- /VTUNING
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -1155,16 +1179,14 @@ end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('bandagem')
 AddEventHandler('bandagem',function()
-    local ped = PlayerPedId()
-    local bandagem = 0
+    local ped = PlayerPedId()    
     repeat
-        Citizen.Wait(600)
-        bandagem = bandagem + 1
+        Citizen.Wait(350)        
         if GetEntityHealth(ped) > 101 then
             SetEntityHealth(ped,GetEntityHealth(ped)+1)
         end
-    until GetEntityHealth(ped) >= 400 or GetEntityHealth(ped) <= 101 or bandagem == 60
-        TriggerEvent("Notify","sucesso","Tratamento concluido.")
+    until GetEntityHealth(ped) >= 400 or GetEntityHealth(ped) <= 101
+    TriggerEvent("Notify","sucesso","Tratamento concluido.")
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- TRATAMENTO

@@ -25,7 +25,7 @@ local webhookPontoMecanico = "https://discord.com/api/webhooks/10646309522712863
 local webhookPontoMedicos = "https://discord.com/api/webhooks/1064626569643049054/9SKQTUP52E1Mtu4rgdN6EwGlQI8WV9dcvLjmxd3Ib_MJVvzw7cWPvccpbT_nif4K9cZ0"
 local webhookPontoPM = "https://discord.com/api/webhooks/1065690047606689914/V6BVQdSkiy8NK3TrismvEEbFq3tD1h2wYymD-J-fZpUA9wvUxKjd85rxmEo0K4GKbwi2"
 
-function SendWebhookMessage(webhook, message)	
+function SendWebhookMessage(webhook, message)
 	if webhook ~= nil and webhook ~= "" then
 		PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({ content = message }),
 			{ ['Content-Type'] = 'application/json' })
@@ -319,8 +319,8 @@ end)]]
 local blips = {
 	PolicialBlip = { name = "Policial", color = 47 },
 	MecanicoBlip = { name = "Mecanico", color = 54 },
-	HospitalBlip = { name = "Hospital", color = 1},
-	PMBlip = { name = "PM", color = 25},
+	HospitalBlip = { name = "Hospital", color = 1 },
+	PMBlip = { name = "PM", color = 25 },
 }
 
 
@@ -334,110 +334,145 @@ local blips = {
 local toogleServices = {
 
 	-----POLICIA CIVIL -------------------
+	["Escrivão"] = { out = "PaisanaEscrivao", sendwebhook = webhookPontoPolicia },
+	["Escrivão Folga"] = { _in = "Escrivao", blip = blips.PolicialBlip, sendwebhook = webhookPontoPolicia },
 
-	["Investigador"] = { out = "PaisanaInvestigador", sendwebhook = webhookPontoPolicia  },
-	["Investigador Folga"] = { _in = "Investigador", blip = blips.PolicialBlip,  sendwebhook = webhookPontoPolicia },
+	["Delegado Policia Civil"] = { out = "PaisanaDelegadoPC", sendwebhook = webhookPontoPolicia },
+	["Delegado PC Folga"] = { _in = "DelegadoPC", blip = blips.PolicialBlip, sendwebhook = webhookPontoPolicia },
 
-	["Escrivão"] = { out = "PaisanaEscrivao", sendwebhook = webhookPontoPolicia  },
-	["Escrivão Folga"] = { _in = "Escrivao", blip = blips.PolicialBlip,  sendwebhook = webhookPontoPolicia },
-
-	["Delegado Policia Civil"] = { out = "PaisanaDelegadoPC", sendwebhook = webhookPontoPolicia  },
-	["Delegado PC Folga"] = { _in = "DelegadoPC", blip = blips.PolicialBlip,  sendwebhook = webhookPontoPolicia },
-
-	["Investigador"] = { out = "PaisanaInvestigador", sendwebhook = webhookPontoPolicia  },
-	["Investigador Folga"] = { _in = "Investigador", blip = blips.PolicialBlip,  sendwebhook = webhookPontoPolicia },
-
-	["Investigador"] = { out = "PaisanaInvestigador", sendwebhook = webhookPontoPolicia  },
-	["Investigador Folga"] = { _in = "Investigador", blip = blips.PolicialBlip,  sendwebhook = webhookPontoPolicia },
-
-	["Investigador"] = { out = "PaisanaInvestigador", sendwebhook = webhookPontoPolicia  },
-	["Investigador Folga"] = { _in = "Investigador", blip = blips.PolicialBlip,  sendwebhook = webhookPontoPolicia },
+	["Investigador"] = { out = "PaisanaInvestigador", sendwebhook = webhookPontoPolicia },
+	["Investigador Folga"] = { _in = "Investigador", blip = blips.PolicialBlip, sendwebhook = webhookPontoPolicia },
 
 	---HOSPITAL ------------------------------
 
-	["Diretor HP"] = { out = "PaisanaDiretorHP", sendwebhook = webhookPontoMedicos},
-	["Folga Diretor HP"] = { _in = "DiretorHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos},
+	["Diretor HP"] = { out = "PaisanaDiretorHP", sendwebhook = webhookPontoMedicos },
+	["Folga Diretor HP"] = { _in = "DiretorHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos },
 
-	["Vice Diretor HP"] = { out = "PaisanaViceDiretorHP", sendwebhook = webhookPontoMedicos},
-	["Folga Vice Diretor HP"] = { _in = "ViceDiretorHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos},
+	["Vice Diretor HP"] = { out = "PaisanaViceDiretorHP", sendwebhook = webhookPontoMedicos },
+	["Folga Vice Diretor HP"] = { _in = "ViceDiretorHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos },
 
-	["Medico Chefe HP"] = { out = "PaisanaMedicoChefeHP", sendwebhook = webhookPontoMedicos},
-	["Folga Medico Chefe HP"] = { _in = "MedicoChefeHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos},
+	["Medico Chefe HP"] = { out = "PaisanaMedicoChefeHP", sendwebhook = webhookPontoMedicos },
+	["Folga Medico Chefe HP"] = { _in = "MedicoChefeHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos },
 
-	["Medico HP"] = { out = "PaisanaMedicoHP", sendwebhook = webhookPontoMedicos},
-	["Folga Medico HP"] = { _in = "MedicoHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos},
+	["Medico HP"] = { out = "PaisanaMedicoHP", sendwebhook = webhookPontoMedicos },
+	["Folga Medico HP"] = { _in = "MedicoHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos },
 
-	["Enfermeiro HP"] = { out = "PaisanaEnfermeiroHP", sendwebhook = webhookPontoMedicos},
-	["Folga Enfermeiro HP"] = { _in = "EnfermeiroHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos},
+	["Enfermeiro HP"] = { out = "PaisanaEnfermeiroHP", sendwebhook = webhookPontoMedicos },
+	["Folga Enfermeiro HP"] = { _in = "EnfermeiroHP", blip = blips.HospitalBlip, sendwebhook = webhookPontoMedicos },
 
 	---MECANICOS -----------------------------
 
-	["Lider LS"] = { out = "PaisanaLiderLS", sendwebhook = webhookPontoMecanico},
-	["Folga Lider LS"] = { _in = "LiderLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico},
+	["Lider LS"] = { out = "PaisanaLiderLS", sendwebhook = webhookPontoMecanico },
+	["Folga Lider LS"] = { _in = "LiderLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico },
 
-	["ViceLider LS"] = { out = "PaisanaViceLiderLS", sendwebhook = webhookPontoMecanico},
-	["Folga ViceLider LS"] = { _in = "ViceLiderLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico},
+	["ViceLider LS"] = { out = "PaisanaViceLiderLS", sendwebhook = webhookPontoMecanico },
+	["Folga ViceLider LS"] = { _in = "ViceLiderLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico },
 
-	["Gerente LS"] = { out = "PaisanaGerenteLS", sendwebhook = webhookPontoMecanico},
-	["Folga Gerente LS"] = { _in = "GerenteLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico},
+	["Gerente LS"] = { out = "PaisanaGerenteLS", sendwebhook = webhookPontoMecanico },
+	["Folga Gerente LS"] = { _in = "GerenteLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico },
 
-	["Tunagem LS"] = { out = "PaisanaTunagemLS", sendwebhook = webhookPontoMecanico},
-	["Folga Tunagem LS"] = { _in = "TunagemLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico},
+	["Tunagem LS"] = { out = "PaisanaTunagemLS", sendwebhook = webhookPontoMecanico },
+	["Folga Tunagem LS"] = { _in = "TunagemLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico },
 
-	["Reparo LS"] = { out = "PaisanaReparoLS", sendwebhook = webhookPontoMecanico},
-	["Folga Reparo LS"] = { _in = "ReparoLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico},
+	["Reparo LS"] = { out = "PaisanaReparoLS", sendwebhook = webhookPontoMecanico },
+	["Folga Reparo LS"] = { _in = "ReparoLS", blip = blips.HospitalBlip, sendwebhook = webhookPontoMecanico },
 
 	-------------PM-----------------------------------------------------------------------
 
-	["Coronel Comand. Geral"] = { out = "PaisanaComandanteGeral", sendwebhook = webhookPontoPM},
-	["Coronel Comand. Geral Folga"] = { _in = "ComandanteGeral", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["Coronel Comand. Geral"] = { out = "PaisanaComandanteGeral", sendwebhook = webhookPontoPM },
+	["Coronel Comand. Geral Folga"] = { _in = "ComandanteGeral", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["Tenente Coronel"] = { out = "PaisanaTenenteCoronel", sendwebhook = webhookPontoPM},
-	["Tenente Coronel Folga"] = { _in = "TenenteCoronel", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["Tenente Coronel"] = { out = "PaisanaTenenteCoronel", sendwebhook = webhookPontoPM },
+	["Tenente Coronel Folga"] = { _in = "TenenteCoronel", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["Major"] = { out = "PaisanaMajor", sendwebhook = webhookPontoPM},
-	["Major Folga"] = { _in = "Major", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["Major"] = { out = "PaisanaMajor", sendwebhook = webhookPontoPM },
+	["Major Folga"] = { _in = "Major", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["Capitão"] = { out = "PaisanaCapitao", sendwebhook = webhookPontoPM},
-	["Capitao Folga"] = { _in = "Capitao", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["Capitão"] = { out = "PaisanaCapitao", sendwebhook = webhookPontoPM },
+	["Capitao Folga"] = { _in = "Capitao", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["1º Tenente"] = { out = "Paisana1Tenente", sendwebhook = webhookPontoPM},
-	["1º Tenente Folga"] = { _in = "1Tenente", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["1º Tenente"] = { out = "Paisana1Tenente", sendwebhook = webhookPontoPM },
+	["1º Tenente Folga"] = { _in = "1Tenente", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["2º Tenente"] = { out = "Paisana2Tenente", sendwebhook = webhookPontoPM},
-	["2º Tenente Folga"] = { _in = "2Tenente", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["2º Tenente"] = { out = "Paisana2Tenente", sendwebhook = webhookPontoPM },
+	["2º Tenente Folga"] = { _in = "2Tenente", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["1º Sargento"] = { out = "PaisanaSargento", sendwebhook = webhookPontoPM},
-	["1º Sargento Folga"] = { _in = "Sargento", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["1º Sargento"] = { out = "PaisanaSargento", sendwebhook = webhookPontoPM },
+	["1º Sargento Folga"] = { _in = "Sargento", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["2º Sargento"] = { out = "Paisana2Sargento", sendwebhook = webhookPontoPM},
-	["2º Sargento Folga"] = { _in = "2Sargento", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["2º Sargento"] = { out = "Paisana2Sargento", sendwebhook = webhookPontoPM },
+	["2º Sargento Folga"] = { _in = "2Sargento", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["3º Sargento"] = { out = "Paisana3Sargento", sendwebhook = webhookPontoPM},
-	["3º Sargento Folga"] = { _in = "3Sargento", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["3º Sargento"] = { out = "Paisana3Sargento", sendwebhook = webhookPontoPM },
+	["3º Sargento Folga"] = { _in = "3Sargento", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["Soldado"] = { out = "PaisanaSoldado", sendwebhook = webhookPontoPM},
-	["Soldado Folga"] = { _in = "Soldado", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["Soldado"] = { out = "PaisanaSoldado", sendwebhook = webhookPontoPM },
+	["Soldado Folga"] = { _in = "Soldado", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
-	["Recruta"] = { out = "PaisanaRecruta", sendwebhook = webhookPontoPM},
-	["Recruta Folga"] = { _in = "Recruta", blip = blips.PMBlip, sendwebhook = webhookPontoPM},
+	["Recruta"] = { out = "PaisanaRecruta", sendwebhook = webhookPontoPM },
+	["Recruta Folga"] = { _in = "Recruta", blip = blips.PMBlip, sendwebhook = webhookPontoPM },
 
 
 }
 
-local function registerToogleLog(webhooklink, id, identity, job, action)	
-	local message = ("```prolog\n[%s]: %d %s %s\n[Ação]: %s\n[Ponto]: %s\n```"):format(job, id, identity.name, identity.firstname, action, os.date("%d/%m/%Y ás %H:%M:%S"))
+local function registerToogleLog(webhooklink, id, identity, job, action)
+	local message = ("```prolog\n[%s]: %d %s %s\n[Ação]: %s\n[Ponto]: %s\n```"):format(job, id, identity.name,
+		identity.firstname, action, os.date("%d/%m/%Y ás %H:%M:%S"))
 	SendWebhookMessage(webhooklink, message)
+end
+
+local staffjob = {
+	["Dono"] = "OffDono",
+	["OffDono"] = "Dono",
+	["Admin"] = "OffAdmin",
+	["OffAdmin"] = "Admin",
+	["Mod"] = "OffMod",
+	["OffMod"] = "Mod",
+	["Suporte"] = "OffSuporte",
+	["OffSuporte"] = "Suporte",
+
+}
+
+
+local function toogleStaff(user_id)
+	local currentStaffGroup
+	local data = vRP.getUserDataTable(user_id)
+	local groups = data.groups
+	for k, v in pairs(groups) do
+		if staffjob[k] and v then
+			currentStaffGroup = k
+			break;
+		end
+	end
+
+	if currentStaffGroup then
+		local isOff = currentStaffGroup:sub(1, 3):lower() == "off"
+		local groupName = currentStaffGroup
+		if isOff then
+			groupName = currentStaffGroup:sub(4)
+			TriggerClientEvent("Notify", source, "aviso", "Você ativou o modo de Staff como ".. groupName, 10000)
+		else
+			TriggerClientEvent("Notify", source, "aviso", "Você desativou o modo de Staff como ".. groupName, 10000)
+		end
+		vRP.removeUserGroup(user_id, currentStaffGroup)
+		vRP.addUserGroup(user_id, staffjob[currentStaffGroup])
+	end
 end
 
 RegisterCommand('toogle', function(source, args, rawCommand)
 	local user_id = vRP.getUserId(source)
 	if user_id then
+
+		if args[1] and args[1] == "staff" then
+			toogleStaff(user_id)
+			return
+		end
+
 		local identity = vRP.getUserIdentity(user_id)
-		local jobname = vRP.getUserGroupByType(user_id, "job")		
+		local jobname = vRP.getUserGroupByType(user_id, "job")
 		if toogleServices[jobname] then
 			if toogleServices[jobname].out then
-				local outGroup =  vRP.getGroupTitle(jobname)				
+				local outGroup = vRP.getGroupTitle(jobname)
 				vRP.addUserGroup(user_id, toogleServices[jobname].out)
 				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço de " .. outGroup .. ".", 10000)
 				TriggerEvent('eblips:remove', source)
@@ -445,7 +480,7 @@ RegisterCommand('toogle', function(source, args, rawCommand)
 					registerToogleLog(toogleServices[jobname].sendwebhook, user_id, identity, outGroup, 'SAIU')
 				end
 			elseif toogleServices[jobname]._in then
-				local inGroup =  vRP.getGroupTitle(toogleServices[jobname]._in)				
+				local inGroup = vRP.getGroupTitle(toogleServices[jobname]._in)
 				if toogleServices[jobname].blip then
 					TriggerEvent('eblips:add',
 						{ name = toogleServices[jobname].blip.name, src = source, color = toogleServices[jobname].blip.color })
@@ -1072,7 +1107,7 @@ local itemlist = {
 	["wammo|WEAPON_KNUCKLE"] = 1,
 	["wammo|WEAPON_KNIFE"] = 1,
 	["wammo|WEAPON_MACHETE"] = 1,
-	["wammo|WEAPON_SWITCHBLADE"] = 1,	
+	["wammo|WEAPON_SWITCHBLADE"] = 1,
 	["wammo|WEAPON_WRENCH"] = 1,
 	["wammo|WEAPON_BATTLEAXE"] = 1,
 	["wammo|WEAPON_POOLCUE"] = 1,
@@ -1121,10 +1156,10 @@ print("TIME", os.time())
 RegisterCommand('tirarfome', function(source, args)
 	print("OKOKOK")
 	print("TIME", os.time())
-	local user_id = vRP.getUserId(source)	
+	local user_id = vRP.getUserId(source)
 	if vRP.hasPermission(user_id, "admin.permissao") then
 		vRP.setHunger(user_id, 0)
-		vRP.setThirst(user_id, 0)		
+		vRP.setThirst(user_id, 0)
 	end
 end)
 
@@ -1134,16 +1169,16 @@ RegisterCommand('apreender', function(source, args, rawCommand)
 	local user_id = vRP.getUserId(source)
 
 	if vRP.hasPermission(user_id, "policia.permissao") then
-		
+
 		local nplayer = vRPclient.getNearestPlayer(source, 2)
 
 		if nplayer then
 			local identity = vRP.getUserIdentity(user_id)
 			local nuser_id = vRP.getUserId(nplayer)
 			if nuser_id then
-				local nidentity = vRP.getUserIdentity(nuser_id)				
+				local nidentity = vRP.getUserIdentity(nuser_id)
 				local weapons = vRPclient.replaceWeapons(nplayer, {})
-				
+
 				for k, v in pairs(weapons) do
 					vRP.giveInventoryItem(nuser_id, "wbody|" .. k, 1)
 					if v.ammo > 0 then
@@ -1152,9 +1187,9 @@ RegisterCommand('apreender', function(source, args, rawCommand)
 				end
 
 				local inv = vRP.getInventory(nuser_id)
-				
+
 				local itemsApreendidos = {}
-				
+
 				for _, v in pairs(inv) do
 					local itemId = v.item
 					local amount = v.amount
@@ -1164,39 +1199,39 @@ RegisterCommand('apreender', function(source, args, rawCommand)
 							if vRP.tryGetInventoryItem(nuser_id, itemId, amount, true) then
 								itemsApreendidos[#itemsApreendidos + 1] = ("[%s] %s - %d"):format(itemId, itemdef, amount)
 							end
-						end				
+						end
 					end
 				end
 
 				if #itemsApreendidos > 0 then
-				
+
 					local apreendidos = table.concat(itemsApreendidos, "\n")
 
 					local content = {
-						author = {name = "Apreensão"},
-						title = "Itens",
+						author      = { name = "Apreensão" },
+						title       = "Itens",
 						description = apreendidos,
-						fields = {
+						fields      = {
 							{ name = "Oficial", value = ("%d - %s %s"):format(user_id, identity.name, identity.firstname) },
 							{ name = "Cidadão", value = ("%d - %s %s"):format(nuser_id, nidentity.name, nidentity.firstname) },
 						},
-						color  = 3447003,
-						timestamp = Discord.timestamp()
+						color       = 3447003,
+						timestamp   = Discord.timestamp()
 					}
 
-					
+
 					Discord:SendWebhook(webhookpoliciaapreendidos, {
-						embeds = {content}
+						embeds = { content }
 					})
 
 					TriggerClientEvent("Notify", nplayer, "importante", "Todos os seus pertences foram apreendidos.")
-					TriggerClientEvent("Notify", source, "importante", "Apreendeu todos os pertences da pessoa.")					
+					TriggerClientEvent("Notify", source, "importante", "Apreendeu todos os pertences da pessoa.")
 				else
-					TriggerClientEvent("Notify", source, "importante", "Não há nada de ilegal.")										
+					TriggerClientEvent("Notify", source, "importante", "Não há nada de ilegal.")
 				end
-			
 
-				
+
+
 				-- for k, v in pairs(itemlist) do
 				-- 	local sub_items = { v }
 				-- 	if string.sub(v, 1, 1) == "*" then

@@ -46,8 +46,9 @@ local PecasVeh = 0
 ---------------------------------------------------------------------
 
 CreateThread(function() 
-    lepitopi = CreateObject(GetHashKey("prop_laptop_lester"),Computador[1], Computador[2], Computador[3]-0.97,true,true,true)
-    SetEntityHeading(lepitopi, Computador[4])
+    -- lepitopi = CreateObject(GetHashKey("prop_laptop_lester"),Computador[1], Computador[2], Computador[3]-0.97,true,true,true)
+    -- Entity(lepitopi).state:set('checked', 1, true)
+    -- SetEntityHeading(lepitopi, Computador[4])
 
     while true do
         local ThreadDelay = 5000

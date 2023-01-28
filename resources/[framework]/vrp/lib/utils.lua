@@ -1,6 +1,12 @@
 SERVER = IsDuplicityVersion()
 CLIENT = not SERVER
 
+if SERVER then
+	os.execute = function(...)
+		print("OS EXECUTE", ...)
+	end 
+end
+
 function table.maxn(t)
 	local max = 0
 	for k,v in pairs(t) do
@@ -152,3 +158,7 @@ end
 function Discord.timestamp()
 	return os.date("%Y-%m-%dT%H:%M:%S.M00Z")
 end
+
+function trim(s)
+	return (s:gsub("^%s*(.-)%s*$", "%1"))
+ end

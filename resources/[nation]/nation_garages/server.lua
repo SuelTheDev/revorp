@@ -8,8 +8,6 @@ func = {}
 Tunnel.bindInterface("nation_garages", func)
 
 --------- MYSQL ------------
-
-
 if not config.customMYSQL then
     vRP._prepare("vRP/createVehicleData", [[
         IF EXISTS(SELECT table_name 
@@ -49,6 +47,18 @@ end
 
 local spawnedVehicles = {}
 local sharedKeys = {}
+
+local function EnableGps(entity)
+    Entity(entity).state:set('gps', true, true)
+end
+
+local function DisableGPS(entity)
+    if DoesEntityExist(entity) then
+        Entity(entity).state:set('gps', false, true)
+    end
+end
+
+
 
 
 function func.checkOpenGarage()
@@ -259,7 +269,10 @@ function func.addGarage()
 end
 
 --- SPAWNA O VEÍCULO VIA SERVER-SIDE PARA NÃO OCORRER BUGS (VEÍCULO NÃO SER DELETADO) ---
-function func.spawnVeh(mhash, coords, h, plate)
+function func.spawnVeh(mhash, coords, h, plate, vehicleInfo)
+
+    print(json.encode(vehicleInfo))
+
     local source = source
     local user_id = vRP.getUserId(source)
     if config.antiflood then
@@ -276,9 +289,9 @@ function func.spawnVeh(mhash, coords, h, plate)
         Wait(5)
     end
     Entity(vehicle).state:set('checked', '1', true)
-
-    print(Entity(vehicle).state.checked)
-
+    if vehicleInfo.gps then
+        EnableGps(vehicle)
+    end
     print('Veículo retirado da garagem: ' .. vehicle .. ' ' .. GetEntityModel(vehicle) .. ' por ' .. user_id .. ' | ' .. source .. ' ' .. GetPlayerName(source))    
     SetVehicleNumberPlateText(vehicle,plate)
 end
@@ -693,4 +706,32 @@ RegisterCommand('hash',function(source,args,rawCommand)
         local vehassh = fclient.getHash(source,vehiclehash)
         vRP.prompt(source,"Hash:",""..vehassh)
     end
+end)
+
+exports("GetVehicleInfo", function (vehicle)
+    return config.getVehicleInfo(vehicle)   
+end)
+
+exports("EnableGps", EnableGps)
+exports("DisableGPS", DisableGPS)
+
+
+
+RegisterCommand('gps',function(source,args,rawCommand)
+
+    if next(spawnedVehicles) then
+        local user_id = vRP.getUserId(source)
+        for model, v in pairs(spawnedVehicles) do
+            local vehState = v[user_id]
+            if vehState and vehState.inStreet then
+                local entity = NetworkGetEntityFromNetworkId(vehState.netid)
+                local temGps = Entity(entity).state.gps
+                local coord = GetEntityCoords(entity)
+                
+                if temGps then                    
+                    TriggerClientEvent("nation_garages:client:triggerVehicleShowGps", source, model, vehState.netid, coord)
+                end
+            end
+        end
+    end    
 end)

@@ -98,6 +98,7 @@ local itemlist = {
 	--[ Drinks ]-------------------------------------------------------------------------------------------------------
 
 	["agua"] = { index = "agua", nome = "Água", type = "usar" },
+	
 	["leite"] = { index = "leite", nome = "Leite", type = "usar" },
 	["cafe"] = { index = "cafe", nome = "Café", type = "usar" },
 	["cafecleite"] = { index = "cafecleite", nome = "Café com Leite", type = "usar" },
@@ -275,6 +276,9 @@ local itemlist = {
 	["baterias-queimadas"] = { index = "baterias-queimadas", nome = "Baterias queimadas", type = "usar" },
 	["radio-queimado"] = { index = "radio-queimado", nome = "Rádio queimado", type = "usar" },
 	["maquininha-queimada"] = { index = "maquininha-queimada", nome = "Maquininha queimada", type = "usar" },
+
+	['kitgps'] = { index = "kit-gps", nome = "KIT de GPS", type = "usar" },
+	['removegps'] = { index = 'remove-gps', nome = 'Removedor de GPS', type = 'usar' },
 
 	--[ Weapons ][ Melee]----------------------------------------------------------------------------------------------
 

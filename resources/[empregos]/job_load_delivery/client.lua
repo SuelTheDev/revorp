@@ -49,6 +49,8 @@ function Cda.AttachObjectToBone(attachBoneObject)
 	end
     
     local objectEntity = CreateObject(objectModel, coords.x, coords.y, coords.z, true, true, true)
+    Entity(objectEntity).state:set('checked', 1, true)
+
     SetEntityCollision(objectEntity, false, false) -- Fix Prop Colision
     AttachEntityToEntity(objectEntity, ped, GetPedBoneIndex(ped, attachBoneObject.Bone), attachBoneObject.Position[1], attachBoneObject.Position[2], attachBoneObject.Position[3],
         attachBoneObject.Rotation[1], attachBoneObject.Rotation[2], attachBoneObject.Rotation[3], false, false, false, false, 2, true)
@@ -237,6 +239,7 @@ local function BoxVehicle(vehicle)
 
         if not table.empty(item) then
             local prop = CreateObject(GetHashKey(_current.Prop), coords.x, coords.y, coords.z, true, true, true)
+            Entity(prop).state:set('checked', 1, true)
             AttachEntityToEntity(prop, vehicle, 0, item[1], item[2], item[3], 0.0, 0.0, 0.0, false, false, true, false, 2, true)
             FreezeEntityPosition(prop, true)
             local isVisible = true
@@ -453,10 +456,12 @@ function Cda.CarregarObjeto(dict,anim,prop,flag,hand,pos1,pos2,pos3,pos4,pos5,po
 	if pos1 then
 		local coords = GetOffsetFromEntityInWorldCoords(ped,0.0,0.0,-5.0)
 		object = CreateObject(mHash,coords.x,coords.y,coords.z,true,true,true)
+        Entity(object).state:set('checked', 1, true)
 		AttachEntityToEntity(object,ped,GetPedBoneIndex(ped,hand),pos1,pos2,pos3,pos4,pos5,pos6,true,true,false,true,1,true)
 	else
 		local coords = GetOffsetFromEntityInWorldCoords(ped,0.0,0.0,-5.0)
 		object = CreateObject(mHash,coords.x,coords.y,coords.z,true,true,true)
+        Entity(object).state:set('checked', 1, true)
 		AttachEntityToEntity(object,ped,GetPedBoneIndex(ped,hand),0.0,0.0,0.0,0.0,0.0,0.0,false,false,false,false,2,true)
 	end
 

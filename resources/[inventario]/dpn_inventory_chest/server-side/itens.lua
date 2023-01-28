@@ -70,7 +70,7 @@ function equipWeapon(source, user_id, item, amount, slot)
     end
 end
 
-function itensUse(source, user_id, item, amount, type, slot)  
+function itensUse(source, user_id, item, amount, type, slot)
 
     if amount > 0 and not actived[user_id] then
         if item == "bandagem" then
@@ -521,11 +521,11 @@ function itensUse(source, user_id, item, amount, type, slot)
                         "O efeito do energético passou e o coração voltou a bater normalmente.", 8000)
                 end)
             end
-        elseif item == "masterpick" then            
+        elseif item == "masterpick" then
 
             local vehicle, vnetid, placa, lock = vRPclient.vehList(source, 7)
             local policia = vRP.getUsersByPermission(ConfigServer['policiaPermissao'])
-            
+
             if #policia < 0 then
                 TriggerClientEvent("Notify", source, "aviso",
                     "Número insuficiente de policiais no momento para iniciar o roubo.")
@@ -551,7 +551,7 @@ function itensUse(source, user_id, item, amount, type, slot)
 
                 dPNclient.closeInventoryPlayer(source)
 
-                SetTimeout(5000, function ()
+                SetTimeout(5000, function()
                     local x, y, z = vRPclient.getPosition(source)
                     for k, v in pairs(policia) do
                         local player = vRP.getUserSource(parseInt(v))
@@ -568,17 +568,17 @@ function itensUse(source, user_id, item, amount, type, slot)
                         end
                     end
                 end)
-                              
-                SetTimeout(10000, function()             
-                    vRPclient._stopAnim(source, false)      
+
+                SetTimeout(10000, function()
+                    vRPclient._stopAnim(source, false)
                     TriggerEvent("setPlateEveryone", placa)
                     TriggerClientEvent('nation:syncLock', source, vnetid)
                     --TriggerClientEvent("vehicleClientLock",-1,vnetid,lock)
                     TriggerClientEvent("vrp_sound:source", source, 'lock', 0.5)
-                    TriggerClientEvent('cancelando', source, false)                   
+                    TriggerClientEvent('cancelando', source, false)
                     lockpickuse = false
                     actived[user_id] = nil
-                end)                
+                end)
             end
             return true
         elseif item == "lockpick" then
@@ -610,7 +610,7 @@ function itensUse(source, user_id, item, amount, type, slot)
                     TriggerClientEvent("vrp_sound:source", source, 'lock', 0.5)
                     return true
                 end
-                dPNclient.closeInventoryPlayer(source)               
+                dPNclient.closeInventoryPlayer(source)
                 TriggerClientEvent('cancelando', source, true)
                 vRPclient._playAnim(source, false, { { "missfbi_s4mop", "clean_mop_back_player" } }, true)
                 local taskResult = exports['c2n_taskbar']:getTaskBar(source, "facil", "Roubando")
@@ -621,7 +621,7 @@ function itensUse(source, user_id, item, amount, type, slot)
                     TriggerClientEvent("vehicleClientLock", -1, vnetid, lock)
                     TriggerClientEvent("vrp_sound:source", source, 'lock', 0.5)
                     vRPclient._stopAnim(source, false)
-                    lockpickuse = false                    
+                    lockpickuse = false
                 else
                     TriggerClientEvent('cancelando', source, false)
                     vRPclient._stopAnim(source, false)
@@ -644,9 +644,9 @@ function itensUse(source, user_id, item, amount, type, slot)
                             end)
                         end
                     end
-                    
-                end        
-                actived[user_id] = nil       
+
+                end
+                actived[user_id] = nil
                 return true
             end
         elseif item == "militec" then
@@ -787,6 +787,109 @@ function itensUse(source, user_id, item, amount, type, slot)
                 vRPclient.setArmour(source, 200)
                 dPNclient.updateInventory(source)
             end
+        elseif item == "kitgps" then
+
+            if vRP.hasPermission(user_id, "mecanico.permissao") then
+                local vehicle = GetVehiclePedIsIn(GetPlayerPed(source), false)
+                if vehicle and GetPedInVehicleSeat(vehicle, -1) == GetPlayerPed(source) then
+
+                    local vehicleinfo = exports.nation_garages:GetVehicleInfo(GetEntityModel(vehicle))
+                    if not vehicleinfo then
+                        TriggerClientEvent("Notify", source, "negado",
+                            "GPS não pode ser adicionado.", 8000)
+                        return
+                    end
+
+                    local modelName = vehicleinfo.name
+                    local vehicleOwnerId = vRP.getUserByRegistration(GetVehicleNumberPlateText(vehicle)) or 0
+                    local vehicledb = exports.oxmysql:single_async("SELECT * FROM vrp_user_vehicles WHERE user_id = ? AND vehicle = ?"
+                        , { vehicleOwnerId, modelName })
+                    if not vehicledb or vehicledb and vehicledb.user_id ~= vehicleOwnerId then
+                        TriggerClientEvent("Notify", source, "negado",
+                            "Veículo alugado ou de governo não podem ter GPS instalado.", 8000)
+                        return
+                    end
+
+                    if vehicledb.gps or vehicledb.gps == 1 then
+                        TriggerClientEvent("Notify", source, "negado",
+                            "Já existe um KIT de GPS instaldo", 8000)
+                        return
+                    end
+
+                    if vRP.tryGetInventoryItem(user_id, "kitgps", 1, slot) then
+                        dPNclient.updateInventory(source)
+                        TriggerClientEvent('cancelando', source, true)
+                        TriggerClientEvent("progress", source, 30000, "Instalando GPS")
+                        FreezeEntityPosition(vehicle, true)
+                        FreezeEntityPosition(GetPlayerPed(source), true)
+
+                        SetTimeout(30000, function()
+                            FreezeEntityPosition(vehicle, false)
+                            FreezeEntityPosition(GetPlayerPed(source), false)
+                            TriggerClientEvent('cancelando', source, false)
+                            TriggerClientEvent("Notify", source, "sucesso", "KIT de GPS instalado com sucesso.", 8000)
+                            exports.nation_garages:EnableGps(vehicle)
+                            exports.oxmysql:update_async("UPDATE vrp_user_vehicles SET gps = 1 WHERE user_id = ? AND vehicle = ?"
+                                , { vehicleOwnerId, modelName })
+                        end)
+                    end
+                else
+                    TriggerClientEvent("Notify", source, "negado",
+                        "Você precisa estar como motorista no veículo que deseja instalar o GPS.", 8000)
+                end
+                return
+            end
+            TriggerClientEvent("Notify", source, "negado",
+                "Procure um mecânico para instalar o KIT.", 8000)
+        elseif item == 'removegps' then
+            local vehicle = GetVehiclePedIsIn(GetPlayerPed(source), false)
+
+            if not vehicle or vehicle == 0 then
+                TriggerClientEvent("Notify", source, "negado",
+                    "Você precisa estar como motorista no veículo que deseja desativar o GPS.", 8000)
+                return
+            end
+
+            if not Entity(vehicle).state.gps then
+                TriggerClientEvent("Notify", source, "negado", "Veículo não tem GPS instalado.", 8000)
+                return
+            end
+
+
+            local plate = GetVehicleNumberPlateText(vehicle)
+            local vehicleOwnerId = vRP.getUserByRegistration(plate)
+
+            if not vehicleOwnerId then
+                TriggerClientEvent("Notify", source, "negado",
+                    "Veículo teve seu GPS danificado, não é possível removê-lo", 8000)
+                return
+            end
+
+            local vehicleinfo = exports.nation_garages:GetVehicleInfo(GetEntityModel(vehicle))
+            if not vehicleinfo then
+                TriggerClientEvent("Notify", source, "negado",
+                    "Problemas na remoção do GPS, veículo possui um outro modelo.", 8000)
+                return
+            end
+
+            if vRP.tryGetInventoryItem(user_id, "removegps", 1, slot) then
+                dPNclient.updateInventory(source)
+                local modelName = vehicleinfo.name
+                TriggerClientEvent('cancelando', source, true)
+                TriggerClientEvent("progress", source, 60000, "Desativando GPS")
+                FreezeEntityPosition(vehicle, true)
+                FreezeEntityPosition(GetPlayerPed(source), true)
+                SetTimeout(60000, function ()
+                    FreezeEntityPosition(vehicle, false)
+                    FreezeEntityPosition(GetPlayerPed(source), false)
+                    TriggerClientEvent('cancelando', source, false)
+                    TriggerClientEvent("Notify", source, "sucesso", "KIT de GPS desinstalado com sucesso.", 8000)
+                    exports.nation_garages:DisableGPS(vehicle)
+                    exports.oxmysql:update_async("UPDATE vrp_user_vehicles SET gps = 0 WHERE user_id = ? AND vehicle = ?", { vehicleOwnerId, modelName })
+                end)
+            end
+
+
         end
     end
 end

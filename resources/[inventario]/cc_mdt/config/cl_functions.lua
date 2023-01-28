@@ -7,8 +7,8 @@ vRPserver = Tunnel.getInterface("vRP")
 
 Config.isHandcuffed = vRP.isHandcuffed
 
-Config.carregarObjeto = vRP._CarregarObjeto
+Config.carregarObjeto = vRP.CarregarObjeto
 
-Config.stopAnim = vRP._stopAnim
+Config.stopAnim = vRP.stopAnim
 
-Config.deletarObjeto = vRP._DeletarObjeto
+Config.deletarObjeto = vRP.DeletarObjeto

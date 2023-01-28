@@ -2,6 +2,8 @@ local cfg = {}
 
 cfg.items = {
 	['agua'] = { "Agua", 0.5 },
+	['kitgps'] = { "Kit de GPS", 4.0 },
+	['removegps'] = { "Desativador de GPS", 4.0 },
 	["ferramenta"] = { "Ferramenta de Desmanche", 0.3 },
 	["dourado"] = { "Dourado", 0.3 },
 	["corvina"] = { "Corvina", 0.3 },

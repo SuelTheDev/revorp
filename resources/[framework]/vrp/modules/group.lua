@@ -201,6 +201,7 @@ function vRP.hasPermission(user_id,perm)
 	elseif fchar == "!" then
 		local _perm = string.sub(perm,2,string.len(perm))
 		local parts = splitString(_perm,".")
+
 		if #parts > 0 then
 			local fperm = func_perms[parts[1]]
 			if fperm then

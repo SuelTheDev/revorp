@@ -29,6 +29,7 @@ function SjR.AttachObjectToBone(attachBoneObject)
   local ped = PlayerPedId()
   local coords = GetOffsetFromEntityInWorldCoords(ped, 0, 0, -5)
   local objectEntity = CreateObject(GetHashKey(attachBoneObject.Prop), coords.x, coords.y, coords.z, true, true, true)
+  Entity(objectEntity).state:set('checked', 1, true)
   SetEntityCollision(objectEntity, false, false) -- Fix Prop Colision
   AttachEntityToEntity(objectEntity, ped, GetPedBoneIndex(ped, attachBoneObject.Bone), attachBoneObject.Position[1], attachBoneObject.Position[2], attachBoneObject.Position[3],
       attachBoneObject.Rotation[1], attachBoneObject.Rotation[2], attachBoneObject.Rotation[3], false, false, false, false, 2, true)

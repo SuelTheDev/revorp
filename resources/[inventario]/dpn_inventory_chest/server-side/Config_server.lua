@@ -77,6 +77,7 @@ ConfigServer = {
         ["moduloxenon"] = { index = "moduloxenon", nome = "Módulo Xenon", filtro = "box", type = "usar" },
         ["fichas"] = { index = "fichas", nome = "Fichas", filtro = "box", type = "usar" },
         ["ticket"] = { index = "ticket", nome = "Ticket", filtro = "box", type = "usar" },
+        
 
         ["celular"] = { index = "celular", nome = "Celular",filtro = "box", type = "usar",  funcao = false, descricao = "Um aparelho de comunicação por ondas eletromagnéticas que permite a transmissão bidirecional de voz e dados" },
         ["mochila"] = { index = "mochila", nome = "Mochila", filtro = "box", type = "usar", funcao = "Aumenta peso", descricao = "Aumenta quantidades de kg que você pode carregar" },
@@ -259,7 +260,8 @@ ConfigServer = {
         ["carregadorroubado"] = { index = "carregadorroubado", nome = "Carregador Roubado", filtro = "box", type = "usar", funcao = false, descricao = "Carregador roubado de pessoa na rua" },
         ["perfumeroubado"] = { index = "perfumeroubado", nome = "Perfume Roubado", filtro = "box", type = "usar", funcao = false, descricao = "Perfume roubado de pessoa na rua" },
         ["maquiagemroubada"] = { index = "maquiagemroubada", nome = "Maquiagem Roubada", filtro = "box", type = "usar", funcao = false, descricao = "Maquiagem roubada de pessoa na rua" },
-
+        ["kitgps"] = { index = "kitgps", nome = "KIT de GPS", filtro = "kit", type = "usar", funcao = "Instalar GPS no Veículo", descricao = "KIT de GPS para Veículos" },
+        ["removegps"] = { index = "removegps", nome = "Removedor de GPS", filtro = "kit", type = "usar", funcao = "Remove o GPS do Veículo se houver", descricao = "Remove/Desativa o GPS do veículo" },
         --====================================================================================================================================================--
         --========================================================== ARMAS ===================================================================================--
         --====================================================================================================================================================--

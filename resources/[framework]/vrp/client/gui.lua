@@ -13,13 +13,14 @@ function tvRP.getMenuState()
 end
 
 local menu_celular = false
-RegisterNetEvent("status:celular")
-AddEventHandler("status:celular",function(status)
-	menu_celular = status
-	if not IsPedInAnyVehicle(PlayerPedId()) then
-		DisplayRadar(false)
-	end
-end)
+
+-- RegisterNetEvent("status:celular")
+-- AddEventHandler("status:celular",function(status)
+-- 	menu_celular = status
+-- 	if not IsPedInAnyVehicle(PlayerPedId()) then
+-- 		DisplayRadar(false)
+-- 	end
+-- end)
 
 local agachar = false
 function tvRP.getAgachar()
@@ -137,6 +138,7 @@ function tvRP.CarregarObjeto(dict,anim,prop,flag,hand,pos1,pos2,pos3,pos4,pos5,p
 	if pos1 then
 		local coords = GetOffsetFromEntityInWorldCoords(ped,0.0,0.0,-5.0)
 		object = CreateObject(GetHashKey(prop),coords.x,coords.y,coords.z,true,true,true)
+		Entity(object).state:set('checked', 1, true)
 		SetEntityCollision(object,false,false)
 		AttachEntityToEntity(object,ped,GetPedBoneIndex(ped,hand),pos1,pos2,pos3,pos4,pos5,pos6,true,true,false,true,1,true)
 	else
@@ -144,6 +146,7 @@ function tvRP.CarregarObjeto(dict,anim,prop,flag,hand,pos1,pos2,pos3,pos4,pos5,p
 		TaskPlayAnim(ped,dict,anim,3.0,3.0,-1,flag,0,0,0,0)
 		local coords = GetOffsetFromEntityInWorldCoords(ped,0.0,0.0,-5.0)
 		object = CreateObject(GetHashKey(prop),coords.x,coords.y,coords.z,true,true,true)
+		Entity(object).state:set('checked', 1, true)
 		SetEntityCollision(object,false,false)
 		AttachEntityToEntity(object,ped,GetPedBoneIndex(ped,hand),0.0,0.0,0.0,0.0,0.0,0.0,false,false,false,false,2,true)
 	end

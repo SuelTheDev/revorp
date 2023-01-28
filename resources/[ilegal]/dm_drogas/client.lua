@@ -170,6 +170,7 @@ Citizen.CreateThread(function()
 					drawTxt("PRESSIONE  ~r~E~w~  PARA ENTREGAR AS DROGAS",4,0.5,0.93,0.50,255,255,255,180)
 					if IsControlJustPressed(0,38) and emP.checkItens() and not IsPedInAnyVehicle(ped) then
 						droga = CreateObject(GetHashKey("prop_weed_block_01"),locs[selecionado].x,locs[selecionado].y,locs[selecionado].z-1,true,true,true)
+						Entity(droga).state:set('checked', 1, true)
 						if emP.checkPayment() then
 							local random = math.random(100)
 							if random >= 60 then

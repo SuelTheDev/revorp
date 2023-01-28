@@ -47,6 +47,7 @@ Citizen.CreateThread(function() -- PEGAR PAPEL
 				acidoobj = true
 				SetTimeout(1500,function()
 					acidoobj1 = CreateObject(GetHashKey("bkr_prop_meth_hcacid"),-1106.48,4940.17,219.45-1.0,true,true,true)
+					Entity(acidoobj1).state:set('checked', 1, true)
 				end)
 			end
 		end
@@ -78,6 +79,7 @@ Citizen.CreateThread(function() -- PEGAR PAPEL
 				vRP._DeletarObjeto(source)
 				SetTimeout(1500,function()
 					panelacoca = CreateObject(GetHashKey("bkr_prop_coke_metalbowl_01"),-1106.76,4939.86,219.52-1.0,true,true,true)
+					Entity(panelacoca).state:set('checked', 1, true)
 					panelaobj = true
 				end)
 			end
@@ -93,7 +95,9 @@ Citizen.CreateThread(function() -- PEGAR PAPEL
 				TriggerEvent("progress",20300,"PESANDO A COCAÍNA")
 				vRP._playAnim(false,{{"anim@amb@business@coc@coc_packing_hi@","full_cycle_v3_pressoperator"}},true)
 				balanca = CreateObject(GetHashKey("bkr_prop_coke_scale_01"),-1107.19,4938.66,219.52-1.6,true,true,true)
-				espatula = CreateObject(GetHashKey("bkr_prop_coke_fullscoop_01a"),-1107.48,4938.29,219.69-1.1,true,true,true)
+				Entity(balanca).state:set('checked', 1, true)
+				espatula = CreateObject(GetHashKey("bkr_prop_coke_fullscoop_01a"),-1107.48,4938.29,219.69-1.1,true,true,true)				
+				Entity(espatula).state:set('checked', 1, true)
 				SetTimeout(2500,function()
 					DeleteObject(balanca)
 					vRP._CarregarObjeto("","","bkr_prop_coke_scale_01",50,28422,0.0,0.0,-0.1,0.0,0.0,0.0)
@@ -101,6 +105,7 @@ Citizen.CreateThread(function() -- PEGAR PAPEL
 				SetTimeout(5000,function()
 					vRP._DeletarObjeto(source)
 					balanca1 = CreateObject(GetHashKey("bkr_prop_coke_scale_01"),-1107.19,4938.66,219.52-1.1,true,true,true)
+					Entity(balanca1).state:set('checked', 1, true)
 				end)
 				SetTimeout(7500,function()
 					DeleteObject(espatula)
@@ -108,6 +113,7 @@ Citizen.CreateThread(function() -- PEGAR PAPEL
 				end)
 				SetTimeout(15000,function()
 					cocaina = CreateObject(GetHashKey("bkr_prop_coke_powder_02"),-1107.19,4938.66,219.52-1.0,true,true,true)
+					Entity(cocaina).state:set('checked', 1, true)
 				end)
 				SetTimeout(20000,function()
 					vRP._DeletarObjeto(source)

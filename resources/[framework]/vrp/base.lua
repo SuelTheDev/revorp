@@ -335,16 +335,18 @@ AddEventHandler("vRPcli:playerSpawned",function()
 	end
 end)
 
--- --------------MSG SERVIDOR INICIADO----------------------
+RegisterCommand("gdev", function()
+	print(json.encode(vRP.users ))
+	print(json.encode(vRP.rusers ))
+	print(json.encode(vRP.user_tables ))
+	print(json.encode(vRP.user_tmp_tables ))
+	print(json.encode(vRP.user_sources ))
+end)
 
--- Citizen.CreateThread(function()
---     PerformHttpRequest("https://discord.com/api/webhooks/1064804292608929865/CQ39tp4CqyyI0iLLTfa4a9ieA78fUC2-XE90YVjm6ymbX2uQ_goYTJbYJ0ZHWYDjNXfa", function(err, text, headers) end, 'POST', json.encode({
---         content = '||@everyone||',
---         embeds = {
---             {
---                 description = '**SERVIDOR ONLINE:**\n\nAperte F8: connect g5qpzo',
---                 color = 2723266 -- Se quiser mudar a cor é aqui
---             }
---         }
---     }), { ['Content-Type'] = 'application/json' })
--- end)
+RegisterCommand("idev", function(source)
+	vRP.users = {}
+	vRP.rusers = {}
+	vRP.user_tables = {}
+	vRP.user_tmp_tables = {}
+	vRP.user_sources = {}
+end)
