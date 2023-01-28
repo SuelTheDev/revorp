@@ -136,7 +136,6 @@ config.vehList = {
 	{ hash = -1173768715, name = 'ferrariitalia', price = 500000, banido = false, modelo = 'Ferrari Pista Spider', capacidade = 30, tipo = 'vip', slots = 10, rentalPrice = nil, class = "vip"  },
 	{ hash = 1718441594, name = 'i8', price = 500000, banido = false, modelo = 'Bmw i8', capacidade = 30, tipo = 'vip', slots = 10, rentalPrice = nil, class = "vip"  },
 	{ hash = -1752116803, name = 'gtr', price = 500000, banido = false, modelo = 'Nissan GTR', capacidade = 30, tipo = 'vip', slots = 10, rentalPrice = nil, class = "vip"  },
-	{ hash = -1752116803, name = 'Gtr', price = 500000, banido = false, modelo = 'Nissan GTR', capacidade = 30, tipo = 'vip', slots = 10, rentalPrice = nil, class = "vip"  },
 	{ hash = 104532066, name = 'g65amg', price = 500000, banido = false, modelo = 'Mercedes G65 AMG', capacidade = 300, tipo = 'vip', slots = 10, rentalPrice = nil, class = "vip"  },
 	{ hash = 162432206, name = 'mst', price = 500000, banido = false, modelo = 'Mustang GT Shelby', capacidade = 30, tipo = 'vip', slots = 10, rentalPrice = nil, class = "vip"  },
 	{ hash = -520214134, name = 'urus', price = 500000, banido = false, modelo = 'Lamborghini URUS', capacidade = 20, tipo = 'vip', slots = 10, rentalPrice = nil, class = "vip"  },
@@ -172,7 +171,7 @@ config.vehList = {
 	{ hash = -143695728, name = 'r820', price = 500000, banido = false, modelo = 'Audi R8', capacidade = 30, tipo = 'carros', slots = 10, rentalPrice = nil, class = "vip"  },
 	{ hash = 1676738519, name = 'audirs6', price = 2000000, banido = false, modelo = 'Audi RS6', capacidade = 30, tipo = 'carros', slots = 10, rentalPrice = nil, class = "vip"  },
 	{ hash = 466040693, name = '370z', price = 5000000, banido = false, modelo = 'Nissan 370z', capacidade = 30, tipo = 'carros', slots = 10, rentalPrice = nil, class = "vip"  },
-	{ hash = -4816535, name = 'nissanskyliner34', price = 50000000, banido = false, modelo = 'Nissan SKYLINE R34', capacidade = 30, tipo = 'carros', slots = 10, rentalPrice = nil, class = "VIP"  },
+	{ hash = -4816535, name = 'nissanskyliner34', price = 500000, banido = false, modelo = 'Nissan SKYLINE R34', capacidade = 30, tipo = 'carros', slots = 10, rentalPrice = nil, class = "VIP"  },
 	{ hash = 745926877, name = 'buzzard2', price = 1000, banido = true, modelo = 'Buzzard 2', capacidade = 10, tipo = 'vip', slots = 10, rentalPrice = nil  },
 
 -----------------------------------------------------------------------------------------------------------------------------------------
