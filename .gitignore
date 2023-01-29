@@ -1,0 +1,17 @@
+cache/
+*/\[roupas\]/*
+*/\[veiculos\]/*
+*/\[mapas\]/*
+*/node_modules/*
+*.installed
+*.zip
+*.rar
+*.7z
+dev.bat
+fivem-server/
+**/node_modules/**
+/resources/[celular]/smartphone/node_modules
+/dev.bat
+/resources.cfg
+/server.cfg
+*.ini
