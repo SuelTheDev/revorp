@@ -2375,10 +2375,12 @@ vehiclePositions = {
 	    
 	  },
     },
------------------------------GARAGEM VIP TDE -------------------------------------------------------------
-[170] = { type = 'service', coords = vec3(1501.41, -40.71, 147.58), perm = 'gTDE.permissao',
+-----------------------------GARAGEM VIP BAHAMAS (FILIPE) -------------------------------------------------------------
+
+
+[170] = { type = 'service', coords = vec3(-1406.56, -649.17, 28.68), perm = 'gbahamas.permissao',
 	vehiclePositions = {
-	  [1] = { vec3(1499.6, -47.53, 147.58), h = 113.42 },
+	  [1] = { vec3(-1411.58, -644.2, 28.69), h = 113.42 },
 	},
 	
 	vehicles = {
@@ -2386,16 +2388,20 @@ vehiclePositions = {
 	},
 	},
 
-[171] = { type = 'service', coords = vec3(1515.84, -45.79, 148.48), perm = 'TDE.permissao',
+[171] = { type = 'service', coords = vec3(-1402.75, -652.75, 28.68), perm = 'bahamas.permissao',
 	vehiclePositions = {
-	  [1] = { vec3(1512.51, -44.46, 148.0), h = 21.42 },
+	  [1] = { vec3(-1396.4, -653.62, 28.68), h = 34.42 },
 	},
 	
 	vehicles = {
-		{ vehicle = 'xtgang', modelo = 'XT TDE' }, 
-		{ vehicle = 'lancerevolutionx', modelo = 'Lancer Evolution TDE' }, 
+		{ vehicle = 'xtgang', modelo = 'XT BAHAMAS' },
+		{ vehicle = 'hornet', modelo = 'HORNET BAHAMAS' },  
+		{ vehicle = 'lancerevolutionx', modelo = 'Lancer Evolution BAHAMAS' },
+		{ vehicle = 'rallytruck', modelo = 'Caminhão Baú Bahamas' },
 	},
 	},
+
+
 ------------------------------------------------------------------------------------------------------------------------
 [172] = { type = 'public', coords = vec3(1504.26, -37.74, 147.48), perm = nil, --- GARAGEM PUBLICA TDE
 vehiclePositions = {

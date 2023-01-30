@@ -1,6 +1,6 @@
 $(document).ready(function(){
     window.addEventListener("message",function(event){
-        var html = `<div class="item" style="background-image: url('http://20.195.166.201/itens/${event.data.item}.png');">
+        var html = `<div class="item" style="background-image: url('http://34.95.138.47/imagens/itens/${event.data.item}.png');">
             <div class="top">
                 <div class="itemWeight">${event.data.mode}</div>
                 <div class="itemAmount">${event.data.amount}x</div>

@@ -21,7 +21,7 @@ config.weebdump = "" -- WEEBHOOK QUANDO NEGO TENTAR DUMPAR DESLIGANDO A INTERNET
 config.weebhook = {
     logo = "https://cdn.discordapp.com/attachments/1062810344587800667/1063668474905362482/2171139150173.560c974e07270.png", -- LOGO do Servidor
     color =  6356736,
-    footer = "EVOLUÇÃO ROLEPLAY",
+    footer = "REVOLUÇÃO ROLEPLAY",
 }
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -167,7 +167,7 @@ config.table = {
                  }
              },      
             
-            ["mtar"] = { -- IMAGEM DO ITEM
+            ["mtar21"] = { -- IMAGEM DO ITEM
                 spawnID = "wbody|WEAPON_ASSAULTSMG", -- SPAWN DO ITEM
                 nameItem = "MTAR", -- NOME DO ITEM
                 maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
@@ -233,11 +233,47 @@ config.table = {
         }
     },        
 
-    ["Vanilla"] = { -- NUNCA REPITIR O MESMO NOME
+    -- ["Vanilla"] = { -- NUNCA REPITIR O MESMO NOME
+    --     armazem = false, -- Caso coloque true, configure a localização do armazem. ( false os items precisam está no inventario .)
+    --     weebhook = "https://discordapp.com/api/webhooks/979215215784779806/pzf1yrqwnICrW2t4TxzIjl33aoAfzaFuECRnjDqzWYIJKQVKruU57UIhaW7bUFqHWye6", -- WEEBHOOK DAS TRANSACOES FEITAS AQUI [ CRAFT / ARMAZEM ] [ PASSAR PARA SERVER SIDE AQUI TUDO ]
+
+    --     craft = {
+    --         ["notafiscalfalsa"] = { -- IMAGEM DO ITEM
+    --             spawnID = "notafiscalfalsa", -- SPAWN DO ITEM
+    --             nameItem = "Nota Fiscal Falsa", -- NOME DO ITEM
+    --             maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+    --             customAmount = 1, -- Caso queira colocar um valor x por unidade.
+    --             tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+    --             anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+    --             requires = {
+    --                 { item = "papel" , amount = 50 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+    --                 { item = "alvejante" , amount = 50 },
+    --             }
+    --         },  
+    --         ["algemas"] = { -- IMAGEM DO ITEM
+    --         spawnID = "algemas", -- SPAWN DO ITEM
+    --         nameItem = "Algemas", -- NOME DO ITEM
+    --         maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+    --         customAmount = 1, -- Caso queira colocar um valor x por unidade.
+    --         tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+    --         anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+    --         requires = {
+    --             { item = "ferro" , amount = 100 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+    --         }
+    --     },
+
+            
+    --     }
+    -- },        
+
+    ["Bahamas"] = { -- NUNCA REPITIR O MESMO NOME
         armazem = false, -- Caso coloque true, configure a localização do armazem. ( false os items precisam está no inventario .)
-        weebhook = "https://discordapp.com/api/webhooks/979215215784779806/pzf1yrqwnICrW2t4TxzIjl33aoAfzaFuECRnjDqzWYIJKQVKruU57UIhaW7bUFqHWye6", -- WEEBHOOK DAS TRANSACOES FEITAS AQUI [ CRAFT / ARMAZEM ] [ PASSAR PARA SERVER SIDE AQUI TUDO ]
+        weebhook = "https://discordapp.com/api/webhooks/979215132074856538/3S2po4JegFb0Oi6qzbXLY_AUCZ6K60y_Kx8DG10hfTfjJzgD5yKXAcCAoePyiyj-KZzM", -- WEEBHOOK DAS TRANSACOES FEITAS AQUI [ CRAFT / ARMAZEM ] [ PASSAR PARA SERVER SIDE AQUI TUDO ]
 
         craft = {
+            
             ["notafiscalfalsa"] = { -- IMAGEM DO ITEM
                 spawnID = "notafiscalfalsa", -- SPAWN DO ITEM
                 nameItem = "Nota Fiscal Falsa", -- NOME DO ITEM
@@ -251,6 +287,7 @@ config.table = {
                     { item = "alvejante" , amount = 50 },
                 }
             },  
+
             ["algemas"] = { -- IMAGEM DO ITEM
             spawnID = "algemas", -- SPAWN DO ITEM
             nameItem = "Algemas", -- NOME DO ITEM
@@ -264,15 +301,6 @@ config.table = {
             }
         },
 
-            
-        }
-    },        
-
-    ["Bahamas"] = { -- NUNCA REPITIR O MESMO NOME
-        armazem = false, -- Caso coloque true, configure a localização do armazem. ( false os items precisam está no inventario .)
-        weebhook = "https://discordapp.com/api/webhooks/979215132074856538/3S2po4JegFb0Oi6qzbXLY_AUCZ6K60y_Kx8DG10hfTfjJzgD5yKXAcCAoePyiyj-KZzM", -- WEEBHOOK DAS TRANSACOES FEITAS AQUI [ CRAFT / ARMAZEM ] [ PASSAR PARA SERVER SIDE AQUI TUDO ]
-
-        craft = {
             ["colete"] = { -- IMAGEM DO ITEM
                 spawnID = "colete", -- SPAWN DO ITEM
                 nameItem = "Colete Balistico", -- NOME DO ITEM

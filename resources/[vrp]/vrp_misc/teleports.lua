@@ -1,7 +1,7 @@
 local Teleport = {
-	["COMEDY"] = { -- CRISTO
-		positionFrom = { ['x'] = -335.35, ['y'] = 1124.67, ['z'] = 334.82 },
-		positionTo = { ['x'] = -336.18, ['y'] = 1120.03, ['z'] = 367.77 }
+	["COMEDY"] = { -- CARTEL
+		positionFrom = { ['x'] = 380.62, ['y'] = -15.25, ['z'] = 83.0 },
+		positionTo = { ['x'] = 414.72, ['y'] = -15.14, ['z'] = 99.65 }
 	},
 	["TELEFERICO"] = {
 		positionFrom = { ['x'] = -741.06, ['y'] = 5593.12, ['z'] = 41.65 },

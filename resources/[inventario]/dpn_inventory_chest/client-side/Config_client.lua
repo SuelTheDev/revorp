@@ -4,7 +4,7 @@ ConfigClient = {
     distance = 2, -- Distancia que poderá abrir as lojas
     keyBind = true, -- Se o inventário terá key bind ou seja os 5 primeiros itens ele poderá usar com as teclas 1,2,3,4,5 respectivamente
     keyBindWeapon = false, -- Se o inventário terá a opção e pegar a arma na mão e desativar o tab ao usar a keybind
-    ip = "http://20.195.166.201/itens", -- caso use ip por xammp bote o caminho assim http://ip/caminho e tire as iamgens do fx_manifest
+    ip = "http://34.95.138.47/imagens/itens", -- caso use ip por xammp bote o caminho assim http://ip/caminho e tire as iamgens do fx_manifest
     percentual = 0.85, -- Percentual para venda de itens nesse caso padrão está para 85% do valor do item
     tecla = 'oem_3', -- tecla que abrirá o inventario padrão é o aspas
     blackItemList = {
@@ -117,7 +117,7 @@ ConfigClient = {
                ['whisky'] = {price = 300},
                ['agua'] = {price = 250},
                ['conhaque'] = {price = 300},
-               ['energetico'] = {price = 300},
+               ['energetico'] = {price = 10000},
             },
         },
 
@@ -138,6 +138,32 @@ ConfigClient = {
             perm = "medico.permissao", -- Permissao LOJA
             itens = {
                ['bandagem'] = {price = 2000},
+            },
+        },
+        lojabebidas = {
+            locs = {
+                { -1391.94, -605.92, 30.32 },
+                { -1387.3, -614.41, 30.32 }
+            }, -- Localizção das lojas de departamentos
+    
+            itens = {
+                ['rosquinha'] = {price = 250},
+                ['salgadinho'] = {price = 250},
+                ['sanduiche'] = {price = 500},
+                ['hamburger'] = {price = 500},
+                ['chocolate'] = {price = 250},
+                ['pao'] = {price = 160},
+                ['pizza'] = {price = 500},
+                ['hotdog'] = {price = 500},
+                ['cafe'] = {price = 200},
+                ['refrigerante'] = {price = 250},
+                ['cerveja'] = {price = 300},
+                ['tequila'] = {price = 300},
+                ['vodka'] = {price = 300},
+                ['whisky'] = {price = 300},
+                ['agua'] = {price = 250},
+                ['conhaque'] = {price = 300},
+                ['energetico'] = {price = 5000},
             },
         },
     
@@ -182,66 +208,80 @@ chestFac = {
         slots = 100, 
         webhook = "",
     },
-    ['TDF'] = {
-        loc = {1270.66,-126.41,87.64}, ----- DROGA --- Favela barragem
-        weight = 5000, 
-        perm = "TDF.permissao",
-        slots = 100, 
-        webhook = "",
-    },
-    ['TDT'] = {
-        loc = {875.44, 1035.95, 283.67},----- LAVAGEM ------
-        weight = 5000, 
-        perm = "TDT.permissao",
-        slots = 100, 
-        webhook = "",
-    },
-    -------------------------------TDE BAUS --------------------------------------------------
-    ['TDE'] = {
-        loc = {1519.26, -41.24, 151.42}, -----DROGA --- Favela do capinho ---
-        weight = 5000, 
-        perm = "TDE.permissao",
-        slots = 100, 
-        webhook = "",
-    },
+    -- ['TDF'] = {
+    --     loc = {1270.66,-126.41,87.64}, ----- DROGA --- Favela barragem
+    --     weight = 5000, 
+    --     perm = "TDF.permissao",
+    --     slots = 100, 
+    --     webhook = "",
+    -- },
+    -- ['TDT'] = {
+    --     loc = {875.44, 1035.95, 283.67},----- LAVAGEM ------
+    --     weight = 5000, 
+    --     perm = "TDT.permissao",
+    --     slots = 100, 
+    --     webhook = "",
+    -- },
+    -- -------------------------------TDE BAUS --------------------------------------------------
+    -- ['TDE'] = {
+    --     loc = {1519.26, -41.24, 151.42}, -----DROGA --- Favela do capinho ---
+    --     weight = 5000, 
+    --     perm = "TDE.permissao",
+    --     slots = 100, 
+    --     webhook = "",
+    -- },
 
-    ['TDEVIP'] = {
-        loc = {1595.59, 24.6, 165.96}, -----DROGA --- Favela do capinho ---
-        weight = 10000, 
-        perm = "liderTDJ.permissao",
-        slots = 200, 
-        webhook = "",
-    },
-    --------------------------------------------------------------------------------------------
+    -- ['TDEVIP'] = {
+    --     loc = {1595.59, 24.6, 165.96}, -----DROGA --- Favela do capinho ---
+    --     weight = 10000, 
+    --     perm = "liderTDJ.permissao",
+    --     slots = 200, 
+    --     webhook = "",
+    -- },
+    -- --------------------------------------------------------------------------------------------
 
-    ['TDC'] = {
-        loc = {1980.85, -954.42, 82.44},  ------DROGRA ----
-        weight = 5000, 
-        perm = "TDC.permissao",
-        slots = 100, 
-        webhook = "",
-    },
-    ['TDA'] = {
-        loc = {-310.21, 1520.07, 367.73}, ------DESMANCHE ----favela morrao
-        weight = 5000, 
-        perm = "TDA.permissao",
-        slots = 100, 
-        webhook = "",
-    },
-    ['VANILLA'] = {
-        loc = {98.79,-1305.08,29.29},----- LOCKPICK--C4-KEYKARD
-        weight = 5000,  
-        perm = "vanilla.permissao",
-        slots = 100, 
-        webhook = "https://discord.com/api/webhooks/1008718830228475916/H6x3JF3gvosuUVzJnZ-dxUqWH-t690X2TguTQu61D-GVGGnd05TNzT7p03rj-MziG-xk",
-    },
+    -- ['TDC'] = {
+    --     loc = {1980.85, -954.42, 82.44},  ------DROGRA ----
+    --     weight = 5000, 
+    --     perm = "TDC.permissao",
+    --     slots = 100, 
+    --     webhook = "",
+    -- },
+    -- ['TDA'] = {
+    --     loc = {-310.21, 1520.07, 367.73}, ------DESMANCHE ----favela morrao
+    --     weight = 5000, 
+    --     perm = "TDA.permissao",
+    --     slots = 100, 
+    --     webhook = "",
+    -- },
+    -- ['VANILLA'] = {
+    --     loc = {98.79,-1305.08,29.29},----- LOCKPICK--C4-KEYKARD
+    --     weight = 5000,  
+    --     perm = "vanilla.permissao",
+    --     slots = 100, 
+    --     webhook = "https://discord.com/api/webhooks/1008718830228475916/H6x3JF3gvosuUVzJnZ-dxUqWH-t690X2TguTQu61D-GVGGnd05TNzT7p03rj-MziG-xk",
+    -- },
+    ------------------------------------------BAHAMAS VIP x2 -----------------------------------------------------------------------------------------------
+
+
     ['BAHAMAS'] = {
-        loc = {-1369.15,-624.43,30.32},---CAPUS-COLETE
-        weight = 5000,  
+        loc = {-1367.24, -612.52, 30.32},---CAPUS-COLETE
+        weight = 15000,  
         perm = "bahamas.permissao",
-        slots = 100, 
+        slots = 300,  ------ x2 por conta do vip
         webhook = "",
     },
+    ['BAHAMAS-VIP'] = {
+        loc = {-1369.32, -624.23, 30.32},---CAPUS-COLETE
+        weight = 10000,  
+        perm = "liderbahamas.permissao",
+        slots = 200,  ------ x2 por conta do vip
+        webhook = "",
+    },
+
+
+
+    ----------------------------------------------------------------------------------------------------------------------------------------------------------------
     ['Cartel'] = {
         loc = {388.29,-10.17,86.68},---ARMAS
         weight = 5000,  
@@ -249,6 +289,11 @@ chestFac = {
         slots = 100, 
         webhook = "",
     },
+
+
+    -----------------------FAMILIA FS VIP-----------------------------------------------------------------------------------------------
+
+
     ['FamiliaFS'] = {
         loc = {-1521.2,121.43,48.65},----MUNIÇAO FS
         weight = 5000,  
@@ -263,6 +308,10 @@ chestFac = {
         slots = 200, 
         webhook = "",
     },
+
+    ----------------------------------------------------------------------------------------------------------------------------------------
+
+
     ['LSCUSTONS'] = {
         loc = {842.47, -974.48, 26.5},----MECANICA LSCUSTONS
         weight = 5000,  
@@ -277,13 +326,13 @@ chestFac = {
         slots = 100, 
         webhook = "",
     },
-    ['Yakuza'] = {
-        loc = {-1492.04, 841.24, 177.0},----YAKUZA
-        weight = 5000,  
-        perm = "yakuza.permissao",
-        slots = 100, 
-        webhook = "",
-    },
+    -- ['Yakuza'] = {
+    --     loc = {-1492.04, 841.24, 177.0},----YAKUZA
+    --     weight = 5000,  
+    --     perm = "yakuza.permissao",
+    --     slots = 100, 
+    --     webhook = "",
+    -- },
 
 
 }

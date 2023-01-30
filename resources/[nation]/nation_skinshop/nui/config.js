@@ -1,4 +1,4 @@
-const imgDir = "http://34.95.228.181/imagens/nation_skinshop/"; // DIRETÓRIO DAS IMAGENS
+const imgDir = "http://34.95.138.47/imagens/nation_skinshop/"; // DIRETÓRIO DAS IMAGENS
 
 const pt_BR = {
     tops: "jaquetas",
