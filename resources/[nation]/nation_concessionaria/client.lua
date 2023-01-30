@@ -455,13 +455,14 @@ RegisterNUICallback(
     "sell-vehicle",
     function(data, cb)
         if func.checkAuth() then
-            if data and timer == 0 then
-                startTimer(3)
-                local vehicle = data.vehicle
-                local state, message = func.sellVehicle(vehicle)
-                cb({state, message})
-                return
-            end
+            cb({false, "Funcionalidade bloqueada no momento."})
+            -- if data and timer == 0 then
+            --     startTimer(3)
+            --     local vehicle = data.vehicle
+            --     local state, message = func.sellVehicle(vehicle)
+            --     cb({state, message})
+            --     return
+            -- end
         end
     end
 )

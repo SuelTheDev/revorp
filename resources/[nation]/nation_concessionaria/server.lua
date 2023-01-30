@@ -178,19 +178,19 @@ function func.buyVehicle(vehicle,color)
 end
 
 function func.sellVehicle(vehicle)
-    local source = source
-    local user_id = vRP.getUserId(source)
-    local state, message = false, "erro inesperado"
-    local vehInfo = config.getVehicleInfo(vehicle)
-    if hasVehicle(user_id,vehicle) and vehInfo then
-        local price = vehInfo.price * (config.porcentagem_venda / 100)
-        state, message = config.trySellVehicle(source,user_id,vehicle,price)
-        if state then
-            removeUserVehicle(user_id,vehicle)
-            addEstoque(vehicle)
-        end
-    end
-    return state, message
+    -- local source = source
+    -- local user_id = vRP.getUserId(source)
+    -- local state, message = false, "erro inesperado"
+    -- local vehInfo = config.getVehicleInfo(vehicle)
+    -- if hasVehicle(user_id,vehicle) and vehInfo then
+    --     local price = vehInfo.price * (config.porcentagem_venda / 100)
+    --     state, message = config.trySellVehicle(source,user_id,vehicle,price)
+    --     if state then
+    --         removeUserVehicle(user_id,vehicle)
+    --         addEstoque(vehicle)
+    --     end
+    -- end
+    -- return state, message
 end
 
 function hasVehicle(user_id,vehicle)
