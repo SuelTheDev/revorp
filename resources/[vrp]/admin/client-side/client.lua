@@ -190,7 +190,10 @@ AddEventHandler('spawnarveiculo',function(name)
 	if HasModelLoaded(mhash) then
 		local ped = PlayerPedId()
 		local nveh = CreateVehicle(mhash,GetEntityCoords(ped),GetEntityHeading(ped),true,false)
-
+        while not DoesEntityExist(vehicle) do
+            Wait(0)
+        end
+        Entity(vehicle).state:set('checked', '1', true)
 		NetworkRegisterEntityAsNetworked(nveh)
 		while not NetworkGetEntityIsNetworked(nveh) do
 			NetworkRegisterEntityAsNetworked(nveh)

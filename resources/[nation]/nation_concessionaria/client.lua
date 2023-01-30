@@ -220,6 +220,10 @@ end
 
 function createVehicle(mhash, spawnCoords, plate)
     local vehicle = CreateVehicle(mhash, spawnCoords.x, spawnCoords.y, spawnCoords.z, 0.0, true, true)
+    while not DoesEntityExist(vehicle) do
+        Wait(0)
+    end
+    Entity(vehicle).state:set('checked', '1', true)
     if plate then
         SetVehicleNumberPlateText(vehicle, plate)
     end

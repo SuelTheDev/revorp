@@ -285,7 +285,7 @@ function func.spawnVeh(mhash, coords, h, plate, vehicleInfo)
 	end
     local vehicle = CreateVehicle(mhash,coords.x,coords.y,coords.z+0.5,h,true,true)
     while not DoesEntityExist(vehicle) do
-        Wait(5)
+        Wait(0)
     end
     Entity(vehicle).state:set('checked', '1', true)
     if vehicleInfo.gps then
