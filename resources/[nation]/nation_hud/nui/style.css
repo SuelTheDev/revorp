@@ -100,23 +100,23 @@ body {
 }
 
 .health {
-    background: #d32d4b;
+    background: #dd042c;
 }
 
 .shield {
-    background: #050505;
+    background: #03b630;
 }
 
 .hunger {
-    background: #FFC700;
+    background: #dfbf0a;
 }
 
 .thirst {
-    background: #32C1FF;
+    background: #06b1f5;
 }
 
 .stamina {
-    background: #00FFC2;
+    background: #fa656c;
     bottom: .7vh;
     max-height: 60%;
 }
@@ -151,11 +151,11 @@ body {
 }
 
 .whisper {
-    background: rgb(252, 188, 68);
+    background: rgb(245, 185, 74);
 }
 
 .shout {
-    background: rgb(255, 83, 83);
+    background: rgb(241, 3, 3);
 }
 
 

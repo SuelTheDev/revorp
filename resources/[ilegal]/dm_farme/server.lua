@@ -45,11 +45,13 @@ function emP.checkPayment()
 	local identity = vRP.getUserIdentity(user_id)
 	if user_id then
 		if vRP.hasPermission(user_id,"bahamas.permissao") then
-		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("linha")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("pano")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("fioseletricos")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("ferro")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
+		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("linha")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("pano")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("alvejante")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("papel")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("fioseletricos")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("ferro")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			    vRP.giveInventoryItem(user_id,"linha",math.random(2,2))
 			    vRP.giveInventoryItem(user_id,"pano",math.random(2,2))
 				vRP.giveInventoryItem(user_id,"ferro",math.random(2,2))
 				vRP.giveInventoryItem(user_id,"fioseletricos",math.random(2,2))
+				vRP.giveInventoryItem(user_id,"alvejante",math.random(1,3))
+				vRP.giveInventoryItem(user_id,"papel",math.random(1,3))
 				SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: LINHA E PANO "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
 				quantidade[source] = nil
 				return true
@@ -76,11 +78,10 @@ function emP.checkPayment()
 		    quantidade[source] = nil
 			return true
 		    end
-		elseif vRP.hasPermission(user_id,"vanilla.permissao") or vRP.hasPermission(user_id,"vanilla.permissao") then
-		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("alvejante")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("papel")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("ferro")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
+		elseif vRP.hasPermission(user_id,"lavagem.permissao") or vRP.hasPermission(user_id,"lavagem.permissao") then
+		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("alvejante")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("papel")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			vRP.giveInventoryItem(user_id,"alvejante",math.random(1,3))
 			vRP.giveInventoryItem(user_id,"papel",math.random(1,3))
-			vRP.giveInventoryItem(user_id,"ferro",math.random(4,6))
 			SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: POLVORA E CAPSULA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
 		    quantidade[source] = nil
 			return true

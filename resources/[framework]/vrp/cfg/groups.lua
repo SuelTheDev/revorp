@@ -1441,6 +1441,7 @@ cfg.groups = {
 		"bahamas.permissao",
 		"gbahamas.permissao",
 		"ilegal.permissao",
+		"lavagem.permissao",
 		"player.blips"
 	},
 	["ViceLiderBahamas"] = {
@@ -1452,6 +1453,7 @@ cfg.groups = {
 		"bahamas.permissao",
 		"gbahamas.permissao",
 		"ilegal.permissao",
+		"lavagem.permissao",
 		"player.blips"
 	},
 	["GerenteBahamas"] = {
@@ -1463,6 +1465,7 @@ cfg.groups = {
 		"bahamas.permissao",
 		"gbahamas.permissao",
 		"ilegal.permissao",
+		"lavagem.permissao",
 		"player.blips"
 	},
 	["Bahamas"] = {
@@ -1472,6 +1475,7 @@ cfg.groups = {
 		},
 		"bahamas.permissao",
 		"ilegal.permissao",
+		"lavagem.permissao",
 		"player.blips"
 	},
 

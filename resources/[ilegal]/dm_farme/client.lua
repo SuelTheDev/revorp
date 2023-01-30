@@ -16,7 +16,7 @@ local segundos = 0
 local locais = {
 	{ ['x'] = -1520.1, ['y'] = 835.63, ['z'] = 186.16, ['perm'] = "yakuza.permissao" },
 	{ ['x'] = -1365.9, ['y'] = -616.31, ['z'] = 30.32, ['perm'] = "bahamas.permissao" },
-	{ ['x'] = 93.82, ['y'] = -1298.08, ['z'] = 29.26, ['perm'] = "vanilla.permissao" },
+	-- { ['x'] = -1371.97, ['y'] = -619.54, ['z'] = 30.32, ['perm'] = "lavagem.permissao" },
 	{ ['x'] = 1991.0, ['y'] = 3049.6, ['z'] = 47.22, ['perm'] = "yellow.permissao" },
 	{ ['x'] = 157.89, ['y'] = 854.34, ['z'] = 209.38, ['perm'] = "dk.permissao" }, ------DK FARM
 	{ ['x'] = -1545.05, ['y'] = 139.98, ['z'] = 55.66, ['perm'] = "fs.permissao" }, -----FS FARM
