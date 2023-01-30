@@ -214,17 +214,13 @@ RegisterCommand('pon', function(source, args, rawCommand)
     local user_id = vRP.getUserId(source)
     if vRP.hasPermission(user_id, "admin.permissao") then
         local users = vRP.getUsers()
-        local players = ""
-        local quantidade = 0
-        for k, v in pairs(users) do
-            if k ~= #users then
-                players = players .. ", "
-            end
-            players = players .. k
-            quantidade = quantidade + 1
+        local players = {}
+        for k in next, users do
+            players[#players + 1] = k
         end
-        TriggerClientEvent('chatMessage', source, "TOTAL ONLINE", { 255, 160, 0 }, quantidade)
-        TriggerClientEvent('chatMessage', source, "ID's ONLINE", { 255, 160, 0 }, players)
+
+        TriggerClientEvent('chatMessage', source, "TOTAL ONLINE", { 255, 160, 0 }, #players)
+        TriggerClientEvent('chatMessage', source, "ID's ONLINE", { 255, 160, 0 }, table.concat(players, ", "))
     end
 end)
 
