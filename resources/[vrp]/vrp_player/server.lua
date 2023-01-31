@@ -2697,9 +2697,20 @@ end)
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
+
+		if segundos2 > 0 then
+			segundos2 = segundos2 - 1
+		else
+			ppsrc = nil
+		end
+
+
+		if segundos > 0 then
+			segundos = segundos - 1
+		end
+
 		if IsCounting > 0 then
-			IsCounting = IsCounting - 1
-			print(IsCounting)
+			IsCounting = IsCounting - 1			
 		else
 			TriggerEvent('suricato:source:unregister')
 		end
@@ -2761,82 +2772,8 @@ AddEventHandler('garmas:suricato', function()
 	end
 end)
 
-local segundos = 0
-local segundos2 = 0
-local ppsrc = nil
--- RegisterCommand('paypal',function(source,args,rawCommand)
--- 	local user_id = vRP.getUserId(source)
--- 	local identity = vRP.getUserIdentity(user_id)
--- 	if user_id then
--- 		if segundos == 0 then
--- 			segundos = 10
--- 			segundos2 = 13
--- 			TriggerClientEvent('suricato:warn',source)
--- 			ppsrc = source
--- 			TriggerClientEvent('progress',source,5*1000,'Transferindo')
--- 			Wait(5*1000)
--- 			if args[1] == "sacar" and parseInt(args[2]) > 0 then
--- 				local descricao = vRP.prompt(source,"Deseja enviar o dinheiro?","")
--- 			if descricao == "" then
--- 				return
--- 			end
--- 				local consulta = vRP.getUData(user_id,"vRP:paypal")
--- 				local resultado = json.decode(consulta) or 0
--- 				if resultado >= parseInt(args[2]) then
--- 						vRP.giveBankMoney(user_id,parseInt(args[2]))
--- 						vRP.setUData(user_id,"vRP:paypal",json.encode(parseInt(resultado-args[2])))
--- 						TriggerClientEvent("Notify",source,"sucesso","Efetuou o saque de <b>$"..vRP.format(parseInt(args[2])).." dólares</b> da sua conta paypal.")
--- 					else
--- 						TriggerClientEvent("Notify",source,"negado","Dinheiro insuficiente em sua conta paypal.")
--- 				end
--- 			elseif args[1] == "trans" and parseInt(args[2]) > 0 and parseInt(args[3]) > 0 then
--- 				local consulta = vRP.getUData(parseInt(args[2]),"vRP:paypal")
--- 				local resultado = json.decode(consulta) or 0
--- 				local banco = vRP.getBankMoney(user_id)
--- 				local identityu = vRP.getUserIdentity(parseInt(args[2]))
--- 				if banco >= parseInt(args[3]) then
--- 					--if vRP.request(source,"Deseja transferir <b>$"..vRP.format(parseInt(args[3])).." dólares</b> para <b>"..identityu.name.." "..identityu.firstname.."</b> ?",30) then
--- 						vRP.setBankMoney(user_id,parseInt(banco-args[3]))
--- 						vRP.setUData(parseInt(args[2]),"vRP:paypal",json.encode(parseInt(resultado+args[3])))
--- 						TriggerClientEvent("Notify",source,"sucesso","Enviou <b>$"..vRP.format(parseInt(args[3])).." dólares</b> ao passaporte <b>"..vRP.format(parseInt(args[2])).."</b>.")
--- 						SendWebhookMessage(webhookpaypal,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ENVIOU]: $"..vRP.format(parseInt(args[3])).." \n[PARA O ID]: "..parseInt(args[2]).." "..identityu.name.." "..identityu.firstname.." "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
--- 						local player = vRP.getUserSource(parseInt(args[2]))
--- 						if player == nil then
--- 							return
--- 						else
--- 							TriggerClientEvent("Notify",player,"importante","<b>"..identity.name.." "..identity.firstname.."</b> transferiu <b>$"..vRP.format(parseInt(args[3])).." dólares</b> para sua conta do paypal.")
--- 						end
--- 					else
--- 						TriggerClientEvent("Notify",source,"negado","Dinheiro insuficiente.")
--- 					--end
--- 				end
--- 			end
--- 		else
--- 			TriggerClientEvent("Notify",source,"negado","O sistema de transferência está com muito tráfego! Aguarde " .. segundos .. " segundos.")
--- 		end
--- 	end
--- end)
 
 
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(1000)
-		if segundos > 0 then
-			segundos = segundos - 1
-		end
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(1000)
-		if segundos2 > 0 then
-			segundos2 = segundos2 - 1
-		else
-			ppsrc = nil
-		end
-	end
-end)
 
 AddEventHandler("playerDropped", function()
 	local source = source
@@ -2852,14 +2789,6 @@ AddEventHandler("playerDropped", function()
 	end
 end)
 
-
--- RegisterCommand("my", function(source, args)
--- 	local user_id = vRP.getUserId(source)
--- 	local identity = vRP.getUserIdentity(user_id)
--- 	local data = vRP.getUserDataTable(user_id)
--- 	print(json.encode(identity))
--- 	print(json.encode(data.groups))
--- end)
 
 function trim1(s)
 	return (s:gsub("^%s*(.-)%s*$", "%1"))

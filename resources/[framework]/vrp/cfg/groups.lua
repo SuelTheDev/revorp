@@ -97,8 +97,7 @@ cfg.groups = {
 			title = "paintball",
 			gtype = "paintball"
 		},
-		"paintball.permissao",
-		"policia.permissao",
+		"paintball.permissao",		
 		"garmas.permissao",
 		"sem.permissao"
 	},
