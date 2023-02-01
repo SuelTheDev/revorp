@@ -154,9 +154,9 @@ function tvRP.CarregarObjeto(dict,anim,prop,flag,hand,pos1,pos2,pos3,pos4,pos5,p
 end
 
 function tvRP.DeletarObjeto()
-    ClearPedSecondaryTask(PlayerPedId())
-	ClearPedTasks(PlayerPedId())
-	ClearPedTasksImmediately(PlayerPedId())
+    -- ClearPedSecondaryTask(PlayerPedId())
+	-- ClearPedTasks(PlayerPedId())
+	-- ClearPedTasksImmediately(PlayerPedId())
     TriggerEvent("binoculos")
     if DoesEntityExist(object) then
         TriggerServerEvent("trydeleteobj",ObjToNet(object))
