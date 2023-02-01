@@ -141,24 +141,7 @@ function joinStrings(list, sep)
 end
 
 
-Discord = {}
-
-function Discord:SendWebhook(webhook, message)
-	if webhook  then
-
-		local xt = message
-		if type(message) == "string" then
-			xt = {['content'] = message}
-		end
-		PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode(xt),
-			{ ['Content-Type'] = 'application/json' })
-	end
-end
-
-function Discord.timestamp()
-	return os.date("%Y-%m-%dT%H:%M:%S.M00Z")
-end
-
 function trim(s)
 	return (s:gsub("^%s*(.-)%s*$", "%1"))
  end
+
