@@ -12,12 +12,6 @@ local salariostimes = {}
 -- WEBHOOK
 -----------------------------------------------------------------------------------------------------------------------------------------
 local webhookgarmas = "https://discord.com/api/webhooks/985243453745168434/Iu5Idaah_aWei9JZvh_P0ZjUqOI3Ltpy-QD61BUvDZQISHAsagBDabfTJ5jEBjd_rBDT"
-local webhookmoney = "https://canary.discord.com/api/webhooks/879706477537919026/mvAIxaODdR7TgwKU9oqp252VotCjJxD9BZr-motNIgDfeTUNVNAUZf-e3md-d59XMqi2"
-local webhookequipar = "https://discord.com/api/webhooks/838775900790980669/LxAE-fqNv-1jExcbnJAqOLIKYGAhf1pcK4_km5ncTNy9eNcxI_VwUksqEg6iezy"
-local webhookenviaritem = "https://discord.com/api/webhooks/838775829571567637/OVi1cfN1h8lezN3QmUzbBsFSmv3wYsimWYKDyHXOQkFq_sulYfzfMkU3LVZmLxFz"
-local webhookenviardinheiro = "https://discord.com/api/webhooks/840727553462501406/CsjFFSmatZqiyLvH_V2DextLf4OSj1iyGnaC2q7X6O_XXjDzirStvNTD7KVaYqBN"
-local webhookdropar = "https://discord.com/api/webhooks/985243852581503026/VoEpRWa8WNRnUvb1PBBx7Gd7ShnnPg-L7_ACHnpTVlfO3mCkKypWC87Va2MoVB47AyBT"
-local webhookpaypal = "https://discord.com/api/webhooks/838787240967929866/Nx3LVpAJ8l5E34wGFBLcxYDce0Wibd3PGNQ_ugwJ4kZZ9DfEU8ftLo1tfPsZuPLq"
 local webhookgive = "https://canary.discord.com/api/webhooks/879707724387070013/0u6UoD5qcr7j9RB7L-VURFqqoy7lNH4hPHTx9WjIENeFLgV0LNICpb4VfjU0SzN5v3Md"
 local webhooksaquear = "https://discord.com/api/webhooks/985243558242029608/u5Xe5vqJAq_crYf-_DkCz5lvVnYKsHyIOe71ENLcN6lMU9DEJ5D_ymhxODNGCJRkyFQ4"
 local webhookbancocentralbug = "https://discord.com/api/webhooks/839817971488391169/Uo9k0rj1xYyHb-Hm7mj3rgi4J6ev9-x5PwenETobM-uk9KYp9wfAdLFE-_QZGwgP"

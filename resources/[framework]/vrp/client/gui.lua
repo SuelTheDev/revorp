@@ -154,9 +154,9 @@ function tvRP.CarregarObjeto(dict,anim,prop,flag,hand,pos1,pos2,pos3,pos4,pos5,p
 end
 
 function tvRP.DeletarObjeto()
-    ClearPedSecondaryTask(PlayerPedId())
-	ClearPedTasks(PlayerPedId())
-	ClearPedTasksImmediately(PlayerPedId())
+    -- ClearPedSecondaryTask(PlayerPedId())
+	-- ClearPedTasks(PlayerPedId())
+	-- ClearPedTasksImmediately(PlayerPedId())
     TriggerEvent("binoculos")
     if DoesEntityExist(object) then
         TriggerServerEvent("trydeleteobj",ObjToNet(object))
@@ -330,8 +330,8 @@ Citizen.CreateThread(function()
 			if IsPedInAnyVehicle(ped) then
 				local vehicle = GetVehiclePedIsIn(ped,false)
 				if GetPedInVehicleSeat(vehicle,-1) == ped then
-					tvRP.DeletarObjeto()
-					local running = Citizen.InvokeNative(0xAE31E7DF9B5B132E,vehicle)
+					-- tvRP.DeletarObjeto()
+					local running = GetIsVehicleEngineRunning(vehicle)
 					SetVehicleEngineOn(vehicle,not running,true,true)
 					if running then
 						SetVehicleUndriveable(vehicle,true)

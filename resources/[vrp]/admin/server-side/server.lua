@@ -340,6 +340,7 @@ RegisterCommand('ban', function(source, args, rawCommand)
     local identity = vRP.getUserIdentity(user_id)
     if vRP.hasPermission(user_id, "admin.permissao") or vRP.hasPermission(user_id, "mod.permissao") then
         if args[1] then
+            print('ID: ', user_id, 'BANIU', args[1])
             vRP.setBanned(parseInt(args[1]), true)
         end
     end
@@ -353,6 +354,7 @@ RegisterCommand('unban', function(source, args, rawCommand)
     if vRP.hasPermission(user_id, "admin.permissao") or vRP.hasPermission(user_id, "mod.permissao") then
         if args[1] then
             vRP.setBanned(parseInt(args[1]), false)
+            print('ID: ', user_id, 'DESBANIU', args[1])
         end
     end
 end)
@@ -371,6 +373,7 @@ RegisterCommand('kickall', function(source, args, rawCommand)
             local id = vRP.getUserSource(parseInt(k))
             if id then
                 vRP.kick(id, "Você foi vitima do terremoto.")
+                print('ID: ', user_id, 'QUICOU', args[1])
             end
         end
     end
@@ -385,6 +388,7 @@ RegisterCommand('kick', function(source, args, rawCommand)
         if args[1] then
             local id = vRP.getUserSource(parseInt(args[1]))
             if id then
+                print('ID: ', user_id, 'QUICOU', args[1])
                 vRP.kick(id, "Você foi expulso da cidade.")
             end
         end
@@ -726,9 +730,12 @@ end)
 RegisterCommand('limparinv', function(source, args, rawCommand)
     local user_id = vRP.getUserId(source)
     if vRP.hasPermission(user_id, "admin.permissao") or vRP.hasPermission(user_id, "suporte.permissao") then
-        vRP.limparInventory(user_id)        
-        TriggerClientEvent("Notify",source,"sucesso","Você <b>limpou seu inventário</b> com sucesso!")
-        SendWebhookMessage(webhook_registro,"```prolog\n[ID]: "..user_id.."\n[INFO]: Utilizou o comando /limparinv" ..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+        vRP.limparInventory(user_id)
+        TriggerClientEvent("Notify", source, "sucesso", "Você <b>limpou seu inventário</b> com sucesso!")
+        SendWebhookMessage(webhook_registro,
+            "```prolog\n[ID]: " ..
+            user_id ..
+            "\n[INFO]: Utilizou o comando /limparinv" .. os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S") .. " \r```")
     end
 end)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1041,7 +1048,7 @@ end)
 
 -- NC
 
-RegisterCommand('nc', function(source, args, rawCommand)    
+RegisterCommand('nc', function(source, args, rawCommand)
     local user_id = vRP.getUserId(source)
     if vRP.hasPermission(user_id, "admin.permissao") or vRP.hasPermission(user_id, "mod.permissao") or
         vRP.hasPermission(user_id, "suporte.permissao") then
