@@ -78,9 +78,9 @@ Config = {
 			-- ["permission"] = MAXCOUNT,
 			-- EXEMPLO / EXAMPLE
 			-- ["vip.permission"] = 10
-			["default"] = 1,
-			["ouro.permissao"] = 2,
-			["platina.permissao"] = 3,
+			["default"] = 2,
+			["ouro.permissao"] = 3,
+			["platina.permissao"] = 4,
 		},
 		
 		functions = {

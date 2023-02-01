@@ -35,7 +35,6 @@ setr voice_enablePhones 1
 # Resources!
 exec resources.cfg
 
-
 add_ace group.sync "changeWeather" allow
 add_ace group.sync "changeTime" allow
 add_ace group.sync "freezeTime" allow
@@ -53,7 +52,8 @@ add_ace group.admin command.quit deny # but don't allow quit
 add_principal identifier.license:89f2de13f3dc0b2a5bf991021d7fa5c8370f4afe group.admin
 
 ## [txAdmin CFG validator]: onesync MUST only be set in the txAdmin settings page.
-onesync on
+## [txAdmin CFG validator]: onesync MUST only be set in the txAdmin settings page.
+# onesync on
 onesync_distanceCullVehicles true
 onesync_forceMigration true
 onesync_population false
@@ -82,6 +82,9 @@ set steam_webApiKey "8EC502E7A8D9CFD522D5CCE7A6C8A0E8"
 # License key for your server (https://keymaster.fivem.net)
 sv_licenseKey "cfxk_OwHPQVFftMNYaV55XoQC_3koQJD"
 
+## [txAdmin CFG validator]: onesync MUST only be set in the txAdmin settings page.
+# onesync on
+set onesync_enabled true
 ###################################[SNT- STORE ]###################################
 #####---------------------[ https://discord.gg/fEjmvNnYUG]--------------------#####
 ###################################[SNT- STORE ]################################### 
