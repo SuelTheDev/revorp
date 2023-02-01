@@ -201,8 +201,8 @@ chestFac = {
         slots = 100, 
         webhook = "",
     },
-    ['bope'] = {
-        loc = {-1704.29, -765.76, 10.75}, -----POLiCIA-bope -1704.29, -765.76, 10.75
+    ['ROTA'] = {
+        loc = {-2051.04, -499.99, 12.5}, -----POLiCIA-bope -1704.29, -765.76, 10.75
         weight = 5000, 
         perm = "policia.permissao",
         slots = 100, 
