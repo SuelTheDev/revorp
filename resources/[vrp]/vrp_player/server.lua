@@ -2692,16 +2692,16 @@ Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
 
-		if segundos2 > 0 then
-			segundos2 = segundos2 - 1
-		else
-			ppsrc = nil
-		end
+		-- if segundos2 > 0 then
+		-- 	segundos2 = segundos2 - 1
+		-- else
+		-- 	ppsrc = nil
+		-- end
 
 
-		if segundos > 0 then
-			segundos = segundos - 1
-		end
+		-- if segundos > 0 then
+		-- 	segundos = segundos - 1
+		-- end
 
 		if IsCounting > 0 then
 			IsCounting = IsCounting - 1			
@@ -2769,19 +2769,19 @@ end)
 
 
 
-AddEventHandler("playerDropped", function()
-	local source = source
-	print('source do jogador: ' .. source)
-	if segundos2 > 0 then
-		if ppsrc == source then
-			local idban = vRP.getUserId(numsrc)
-			vRP.setBanned(idban, true)
-			local webhookppban = 'https://discord.com/api/webhooks/800995766108815362/8Gha_b97PYViqe0IWzf1TAgLSU73Ivkxibcjk3dZKSLoi3yF2gqib-icHe5aCO9OkxEN'
-			SendWebhookMessage(webhookppban,
-				"O **ID:** " .. idban .. " mesmo depois de avisado, **TEMOU** em sair no período do **/PAYPAL** e foi banido.")
-		end
-	end
-end)
+-- AddEventHandler("playerDropped", function()
+-- 	local source = source
+-- 	print('source do jogador: ' .. source)
+-- 	if segundos2 > 0 then
+-- 		if ppsrc == source then
+-- 			local idban = vRP.getUserId(numsrc)
+-- 			vRP.setBanned(idban, true)
+-- 			local webhookppban = 'https://discord.com/api/webhooks/800995766108815362/8Gha_b97PYViqe0IWzf1TAgLSU73Ivkxibcjk3dZKSLoi3yF2gqib-icHe5aCO9OkxEN'
+-- 			SendWebhookMessage(webhookppban,
+-- 				"O **ID:** " .. idban .. " mesmo depois de avisado, **TEMOU** em sair no período do **/PAYPAL** e foi banido.")
+-- 		end
+-- 	end
+-- end)
 
 
 function trim1(s)
