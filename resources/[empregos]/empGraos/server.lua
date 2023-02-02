@@ -7,11 +7,11 @@ src = {}
 Tunnel.bindInterface("empGraos",src)
 vCLIENT = Tunnel.getInterface("empGraos")
 
-vRP._prepare("warn/InfosEmpregoGraos", "SELECT * FROM empregos_graos WHERE user_id = @user_id")
-vRP._prepare("warn/InsertEmpregoGraos", "INSERT INTO empregos_graos(user_id, rc, level, exp) VALUES(@user_id, @rc, @level, @exp)") 
-vRP._prepare("warn/UpdateEXPGraos", "UPDATE empregos_graos SET user_id = @user_id, exp = exp + @exp") 
-vRP._prepare("warn/UpdateEXP2Graos", "UPDATE empregos_graos SET user_id = @user_id,level = level + @level, exp = @exp") 
-vRP._prepare("warn/UpdateEXP3Graos", "UPDATE empregos_graos SET user_id = @user_id,rc = rc + @rc") 
+vRP.prepare("warn/InfosEmpregoGraos", "SELECT * FROM empregos_graos WHERE user_id = @user_id")
+vRP.prepare("warn/InsertEmpregoGraos", "INSERT INTO empregos_graos(user_id, rc, level, exp) VALUES(@user_id, @rc, @level, @exp)") 
+vRP.prepare("warn/UpdateEXPGraos", "UPDATE empregos_graos SET exp = exp + @exp WHERE user_id = @user_id") 
+vRP.prepare("warn/UpdateEXP2Graos", "UPDATE empregos_graos SET level = level + @level, exp = @exp WHERE user_id = @user_id") 
+vRP.prepare("warn/UpdateEXP3Graos", "UPDATE empregos_graos SET rc = rc + @rc WHERE user_id = @user_id") 
 
 
 AddEventHandler("vRP:playerSpawn", function(user_id, source, first_spawn)
