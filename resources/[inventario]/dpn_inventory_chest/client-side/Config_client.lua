@@ -326,13 +326,13 @@ chestFac = {
         slots = 100, 
         webhook = "",
     },
-    -- ['Yakuza'] = {
-    --     loc = {-1492.04, 841.24, 177.0},----YAKUZA
-    --     weight = 5000,  
-    --     perm = "yakuza.permissao",
-    --     slots = 100, 
-    --     webhook = "",
-    -- },
+    ['Yakuza'] = {
+        loc = {-1492.04, 841.24, 177.0},----YAKUZA
+        weight = 5000,  
+        perm = "yakuza.permissao",
+        slots = 100, 
+        webhook = "",
+    },
 
 
 }

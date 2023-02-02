@@ -61,7 +61,7 @@ function emP.checkPayment()
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("ferro")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("polvora")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("capsula")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("pecadearma")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("armacaodearma")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			vRP.giveInventoryItem(user_id,"ferro",math.random(1,8))
 			vRP.giveInventoryItem(user_id,"polvora",math.random(1,8))
-			vRP.giveInventoryItem(user_id,"capsulas",math.random(1,8))
+			vRP.giveInventoryItem(user_id,"capsula",math.random(1,8))
 			vRP.giveInventoryItem(user_id,"armacaodearma",math.random(1,8))
 			vRP.giveInventoryItem(user_id,"pecadearma",math.random(1,8))
 			SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: FERRO , POLVORA E LOG DE INVASAO "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")

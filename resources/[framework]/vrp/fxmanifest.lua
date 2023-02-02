@@ -41,13 +41,6 @@ client_scripts {
 
 
 files {
-	"loading/index.html",	
-  	"loading/1.css",
-  	"loading/logo.png",
-  	"loading/app.js",
- 	"loading/particles.js",
-  	"loading/background.png",
- 	"loading/assets/css/style.css",
 	"lib/Tunnel.lua",
 	"lib/Proxy.lua",
 	"lib/Luaseq.lua",

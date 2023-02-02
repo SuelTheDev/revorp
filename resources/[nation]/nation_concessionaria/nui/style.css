@@ -40,7 +40,7 @@ body {
     left: 0; right: 0; top: 0; bottom: 0;
     margin: auto;
     border: solid .5vw transparent;
-    background-image: linear-gradient(rgb(226, 226, 226),white), linear-gradient(90deg, #0DE6FF 0%, #9900FF 100%);
+    background-image: linear-gradient(rgb(226, 226, 226),white), linear-gradient(90deg, #090101 0%, #160507 100%);
     background-origin: padding-box, border-box;
     background-clip: content-box, border-box;
     border-radius: .5rem;
@@ -51,7 +51,7 @@ body {
 }
 
 .menu-container-darkmode {
-    background-image: linear-gradient(#10131B,#10131B), linear-gradient(90deg, #0DE6FF 0%, #9900FF 100%);
+    background-image: linear-gradient(#10131B,#10131B), linear-gradient(90deg, #090101 0%, #160507 100%);
 }
 
 .menu-background {
@@ -64,7 +64,7 @@ body {
 .menu-background-top {
     position: relative;
     height: 50%;
-    background: transparent linear-gradient(280deg, #9900FF 0%, #0DE6FF 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(280deg, #c71141 0%, #ff0d0d 100%) 0% 0% no-repeat padding-box;
 }
 
 .menu-background-bottom {

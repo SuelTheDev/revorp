@@ -3,7 +3,7 @@ cfg = {}
 cfg.distanceToVolume = 50.0 -- A distância que ficará com o volume em 1,0, então se o volume for 0,5 a distância será 15,0, se o volume for 0,2 a distância será 6. 
 cfg.dlayToEveryone = true -- A música no carro será tocada para todos? Ou apenas para as pessoas que estão nesse veículo? Se false, o Distance Volume não fará nada
 cfg.dommandVehicle = "som" 
-cfg.permissao = "ouro.permissao"
+cfg.permissao = "vip.permissao"
 cfg.zones = {
 	-- {
 	-- 	name = "Mechanic2 Zone", -- The name of the radio, it doesn't matter
