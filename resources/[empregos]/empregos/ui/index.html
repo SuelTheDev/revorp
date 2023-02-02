@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>EMP</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <transition enter-active-class="animate__animated animate__slideInUp"
+            leave-active-class="animate__animated animate__slideOutDown">
+            <div class="container" v-if="menu_show">
+                <div class="cima">
+                    <div class="title">EMPREGO {{ EmpregoTitulo }}</div>
+                    <div class="dinheiro-box">
+                        <div class="text1">Seu Dinheiro</div>
+                        <div class="dinheiro">{{ moneyFormatted }}</div>
+                    </div>
+                </div>
+
+                <div class="box-lado">
+
+                    <div class="item">
+                        <div class="item1">Nome do Emprego:</div>
+                        <div class="item1 inf">{{EmpregoTitulo}}</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item1">Veiculo Usado:</div>
+                        <div class="item1 inf">{{VeiculoUsado}}</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item1">Level de Emprego:</div>
+                        <div class="item1 inf" id="level">{{Level}}</div>
+                    </div>
+
+                    <div class="item">
+                        <div class="item1">Rotas Concluidas:</div>
+                        <div class="item1 inf" id="rotasconcluidas">{{RotasConcluidas}}</div>
+                    </div>
+
+                </div>
+
+                <div class="box-lado2">
+                    <img :src="Imagem"
+                        alt="">
+                </div>
+
+                <div class="text-level">Level de Emprego</div>
+                <div class="text-level2" id="exp">{{ Level }}/{{ ExpPorLevel }} Exp.</div>
+                <div class="levelbar">
+                    <div class="bar1" :style="{width: `${barWitch}%`}"></div>
+                </div>
+
+                <div class="iniciar" @click.stop="iniciarClick">INICIAR</div>
+
+            </div>
+        </transition>
+
+        <transition enter-active-class="animate__animated animate__slideInUp"
+            leave-active-class="animate__animated animate__slideOutDown">
+            <div class="status" v-if="status">
+
+                <div class="s-item" style="margin-top: 0;">
+                    <div class="s-title">Checkpoint</div>
+                    <div class="s-text" id="check">{{Checkpoint}}/{{QuantidadeBlips}}</div>
+                </div>
+
+                <div class="s-item">
+                    <div class="s-title">Level</div>
+                    <div class="s-text" id="level2">{{Level}}</div>
+                </div>
+
+                <div class="s-item">
+                    <div class="s-title">Dinheiro Ganho</div>
+                    <div class="s-text" id="dinheirorecebido">{{ dinheiroGanho }}</div>
+                </div>
+
+                <div class="s-item">
+                    <div class="s-title">XP</div>
+
+                    <div class="text-level3">{{Exp}}/{{ExpPorLevel}}</div>
+
+                    <div class="levelbar2">
+                        <div class="bar2" :style="{width: `${barWitch}%`}"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </transition>
+    </div>
+    <script src="ui.js"></script>
+</body>
+
+</html>
