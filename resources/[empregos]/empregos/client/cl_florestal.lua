@@ -24,6 +24,7 @@ local function MainThread()
                         DrawMarker(27, v.x, v.y, v.z - 1, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0.5, 135, 206, 250, 255, 0, 0, 0, 1)
                         drawText2D("PRESSIONE ~b~E~w~ PARA ACESSAR O ~b~EMPREGO~w~", 1, 0.5, 0.93, 0.55, 255, 255, 255,
                             180)
+                            print("OK", distance)
                         if distance <= 1.2 then
                             if IsControlJustPressed(0, 38) then
                                 coordenadaIniciada = v

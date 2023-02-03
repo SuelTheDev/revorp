@@ -1,18 +1,18 @@
 var playlist = [
 	{
+		"song"    : "Love Gostozinho",
+		"album"   : "Nathanzinho",
+		"artist"  : "Nathan",
+		"artwork" : "images/nathan.png",
+		"mp3"     : "audio/audio.mp3"
+    }, 
+	{
 		"song"    : "Thank You",
 		"album"   : "No Angel",
 		"artist"  : "Dido",
 		"artwork" : "images/dido.png",
-		"mp3"     : "audio/audio.mp3"
+		"mp3"     : "audio/audio2.mp3"
     }, 
-	// {
-	// 	"song"    : "Calma",
-	// 	"album"   : "Calma",
-	// 	"artist"  : "Pedro Capó, Farruko",
-	// 	"artwork" : "images/calma.png",
-	// 	"mp3"     : "http://audio/calma.mp3"
-    // }, 
 	// {
 	// 	"song"    : "Te Olvidaré",
 	// 	"album"   : "Te Olvidaré",

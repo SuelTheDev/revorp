@@ -86,7 +86,7 @@ local cfg = {
             ExP_Maximo = 5,
         },
         coordenadas = {
-            vec3(379.21, 792.18, 190.41),
+            vec3(380.17, 792.11, 187.72),
         },
 
         entregas = {
