@@ -86,7 +86,7 @@ local itemlist = {
 
 	["minerio-diamante"] = { index = "minerio-diamante", nome = "Minerio de Diamante", type = "usar" },
 	["minerio-ouro"] = { index = "minerio-ouro", nome = "Minerio de Ouro", type = "usar" },
-	
+
 	["minerio-prata"] = { index = "minerio-ferro", nome = "Minerio de Ferro", type = "usar" },
 
 
@@ -98,7 +98,7 @@ local itemlist = {
 	--[ Drinks ]-------------------------------------------------------------------------------------------------------
 
 	["agua"] = { index = "agua", nome = "Água", type = "usar" },
-	
+
 	["leite"] = { index = "leite", nome = "Leite", type = "usar" },
 	["cafe"] = { index = "cafe", nome = "Café", type = "usar" },
 	["cafecleite"] = { index = "cafecleite", nome = "Café com Leite", type = "usar" },
@@ -398,7 +398,7 @@ local itemlist = {
 	["wbody|WEAPON_SPECIALCARBINE"] = { index = "g36c", nome = "G36C", type = "equipar" },
 	["wbody|WEAPON_SPECIALCARBINE_MK2"] = { index = "g36k", nome = "G36K", type = "equipar" },
 	["wbody|WEAPON_BULLPUPRIFLE"] = { index = "noricon86s", nome = "Norinco 86S", type = "equipar" },
-	["wbody|WEAPON_BULLPUPRIFLE_MK2"] = { index = "hsvhsd2", nome = "HS VHS-D2", type = "equipar" },	
+	["wbody|WEAPON_BULLPUPRIFLE_MK2"] = { index = "hsvhsd2", nome = "HS VHS-D2", type = "equipar" },
 	["wbody|WEAPON_COMPACTRIFLE"] = { index = "minidraco", nome = "Draco", type = "equipar" },
 
 	--[ Assault Rifles ][ Ammo ]---------------------------------------------------------------------------------------
@@ -515,9 +515,7 @@ function vRP.itemTypeList(item)
 end
 
 function vRP.itemBodyList(item)
-	if itemlist[item] ~= nil then
-		return itemlist[item]
-	end
+	return itemlist[item]
 end
 
 vRP.items = {}
@@ -839,14 +837,14 @@ local vehglobal = {
 	["motosamu"] = { ['name'] = "Moto SAMU", ['price'] = 6000, ['tipo'] = "work" },
 	["samumav"] = { ['name'] = "Heli SAMU", ['price'] = 6000, ['tipo'] = "work" },
 
-	
-		["corolla"] = { ['name'] = "Corolla", ['price'] = 455500, ['tipo'] = "carros", ['mala'] = 300, ['slots'] = 15,
+
+	["corolla"] = { ['name'] = "Corolla", ['price'] = 455500, ['tipo'] = "carros", ['mala'] = 300, ['slots'] = 15,
 		['hash'] = -1702326766, ['banned'] = false },
-		["xre300"] = { ['name'] = "XRE 300", ['price'] = 800000, ['tipo'] = "motos", ['mala'] = 50, ['slots'] = 5,
+	["xre300"] = { ['name'] = "XRE 300", ['price'] = 800000, ['tipo'] = "motos", ['mala'] = 50, ['slots'] = 5,
 		['hash'] = -883244519, ['banned'] = false },
-		["xtgang"] = { ['name'] = "XT GANG", ['price'] = 1600000, ['tipo'] = "motos", ['mala'] = 50, ['slots'] = 5,
+	["xtgang"] = { ['name'] = "XT GANG", ['price'] = 1600000, ['tipo'] = "motos", ['mala'] = 50, ['slots'] = 5,
 		['hash'] = 1343190773, ['banned'] = false },
-		["amggt63"] = { ['amggt63'] = "AMG GT", ['price'] = 3000000, ['tipo'] = "carros", ['mala'] = 30, ['slots'] = 15,
+	["amggt63"] = { ['amggt63'] = "AMG GT", ['price'] = 3000000, ['tipo'] = "carros", ['mala'] = 30, ['slots'] = 15,
 		['hash'] = -970634648, ['banned'] = false },
 	["amarok"] = { ['name'] = "Amarok", ['price'] = 455500, ['tipo'] = "carros", ['mala'] = 300, ['slots'] = 10,
 		['hash'] = 493030188, ['banned'] = false },
@@ -903,7 +901,8 @@ local vehglobal = {
 	["palio"] = { ['name'] = "Palio", ['price'] = 100000, ['tipo'] = "carros", ['mala'] = 50, ['slots'] = 10,
 		['hash'] = 46103174, ['banned'] = false },
 
-	["paganihuayra"] = { ['name'] = "Pagani Huayra", ['price'] = 53000000, ['tipo'] = "carros", ['mala'] = 50, ['slots'] = 10,
+	["paganihuayra"] = { ['name'] = "Pagani Huayra", ['price'] = 53000000, ['tipo'] = "carros", ['mala'] = 50,
+		['slots'] = 10,
 		['hash'] = 46103174, ['banned'] = false },
 
 	["punto"] = { ['name'] = "Punto", ['price'] = 500000, ['tipo'] = "carros", ['mala'] = 50, ['slots'] = 10,
@@ -1948,11 +1947,11 @@ local vehglobal = {
 
 	--MOTOS
 
-	["cbrr"] = { ['name'] = "CBRR", ['price'] = 900000, ['tipo'] = "motos", ["mala"] = 10 },
-	["r6"] = { ['name'] = "r6", ['price'] = 2600000, ['tipo'] = "motos", ["mala"] = 10 },
-	["cg160"] = { ['name'] = "CG 160", ['price'] = 15000, ['tipo'] = "motos", ["mala"] = 10 },
-	["hayabusa	"] = { ['name'] = "Hayabusa", ['price'] = 700000, ['tipo'] = "motos", ["mala"] = 10 },
-	["tmax"] = { ['name'] = "Tmax", ['price'] = 20000, ['tipo'] = "motos", ["mala"] = 10 },
+	["cbrr"]        = { ['name'] = "CBRR", ['price'] = 900000, ['tipo'] = "motos", ["mala"] = 10 },
+	["r6"]          = { ['name'] = "r6", ['price'] = 2600000, ['tipo'] = "motos", ["mala"] = 10 },
+	["cg160"]       = { ['name'] = "CG 160", ['price'] = 15000, ['tipo'] = "motos", ["mala"] = 10 },
+	["hayabusa	"]   = { ['name'] = "Hayabusa", ['price'] = 700000, ['tipo'] = "motos", ["mala"] = 10 },
+	["tmax"]        = { ['name'] = "Tmax", ['price'] = 20000, ['tipo'] = "motos", ["mala"] = 10 },
 	["akuma"]       = { ['name'] = "Akuma", ['price'] = 500000, ['tipo'] = "motos", ["mala"] = 10 },
 	["avarus"]      = { ['name'] = "Avarus", ['price'] = 440000, ['tipo'] = "motos", ["mala"] = 10 },
 	["bagger"]      = { ['name'] = "Bagger", ['price'] = 300000, ['tipo'] = "motos", ["mala"] = 10 },
@@ -2006,7 +2005,7 @@ local vehglobal = {
 	["policiabearcat"] = { ['name'] = "Bravo", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 	["picador"] = { ['name'] = "Carro do Gaz", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 
-		-------POLICIA
+	-------POLICIA
 
 	["policiacharger2018"] = { ['name'] = "Dodge Charger 2018", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 	["policiasilverado"] = { ['name'] = "Chevrolet Silverado", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
@@ -2109,7 +2108,8 @@ local vehglobal = {
 	["lamtmc"] = { ['name'] = "Lamborghini Terzo", ['price'] = 1000000, ['tipo'] = "exclusive", ["mala"] = 50 },
 	["vantage"] = { ['name'] = "Aston Martin Vantage", ['price'] = 1000000, ['tipo'] = "exclusive", ["mala"] = 50 },
 	["palameila"] = { ['name'] = "Porsche Panamera", ['price'] = 1000000, ['tipo'] = "exclusive", ["mala"] = 50 },
-	["panamera17turbo"] = { ['name'] = "Porsche Panamera 17 Turbo", ['price'] = 5900000, ['tipo'] = "exclusive", ["mala"] = 50 },
+	["panamera17turbo"] = { ['name'] = "Porsche Panamera 17 Turbo", ['price'] = 5900000, ['tipo'] = "exclusive",
+		["mala"] = 50 },
 
 	["rsvr16"] = { ['name'] = "Ranger Rover", ['price'] = 1000000, ['tipo'] = "exclusive", ["mala"] = 50 },
 	["veneno"] = { ['name'] = "Lamborghini Veneno", ['price'] = 1000000, ['tipo'] = "exclusive", ["mala"] = 50 },
