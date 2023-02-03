@@ -98,3 +98,8 @@ RegisterNUICallback("Close", function(_, cb)
     StopScreenEffect("MenuMGSelectionIn")    
     cb({ status = true })
 end)
+
+
+RegisterNUICallback("iniciartrampo", function(data, cb)
+    TriggerEvent("empregos:client:iniciar", data.emprego_id, cb)
+end)
