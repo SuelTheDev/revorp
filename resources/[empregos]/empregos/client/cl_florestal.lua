@@ -93,6 +93,7 @@ local function CollectThread()
                             end
 
                             CriandoBlip(cfg.entregas, destino)
+                            
                             local dinheiro_total = vSERVER.pagar()
                             dinheiro_ganho = dinheiro_ganho + dinheiro_total
                             local rc, level, exp = vSERVER.CheckLevel()
