@@ -80,6 +80,7 @@ end
 function CriandoBlip(entregas, _destino)
     if DoesBlipExist(blip) then
         RemoveBlip(blip)
+        blip = nil
     end
     blip = AddBlipForCoord(entregas[_destino].x, entregas[_destino].y, entregas[_destino].z)
     SetBlipSprite(blip, 8)

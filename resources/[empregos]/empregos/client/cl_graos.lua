@@ -89,8 +89,7 @@ local function CollectThread()
 
 							dinheiro_ganho = dinheiro_ganho + dinheiro_total
 
-							local rc, level, exp = vSERVER.CheckLevel()
-							RemoveBlip(blip)
+							local rc, level, exp = vSERVER.CheckLevel()							
 							CriandoBlip(cfg.entregas, destino)
 							SendNUIMessage({ action = "atualizar", rc = rc, level = level, exp = exp, checkpoint = destino,
 								dinheiro_ganho = dinheiro_ganho, exp_por_level = cfg.exp_por_level, quantidade_de_blips = #cfg.entregas })
