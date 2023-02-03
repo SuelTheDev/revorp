@@ -68,7 +68,7 @@ local function CollectThread()
 				DrawMarker(21, entregaCoord.x, entregaCoord.y, entregaCoord.z + 0.20, 0, 0, 0, 0, 180.0, 130.0, 2.0, 2.0, 1.0, 255, 0
 					, 0, 50, 1, 0, 0, 1)
 				if distance < 1.5 then
-					if IsControlJustPressed(0, 22) then
+					if IsControlJustPressed(0, 38) then
 						if cfg.carro_emprego then
 							local vehicle = GetVehiclePedIsIn(ped)
 							if vehicle == 0 or (vehicle ~= 0 and GetEntityModel(vehicle) ~= cfg.carro_emprego) or
