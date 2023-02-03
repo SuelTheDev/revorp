@@ -85,7 +85,7 @@ function FazerPagamento(user_id, emprego, source)
         if not (os.time() - users[user_id][1] > 5 * 60) then
             users[user_id][2] = users[user_id][2] + 1
             if users[user_id][2] >= 3 then
-                DropPlayer(source, "[BANIDO] USO DE EVENTO DE PAGAMENTO DE SALÁRIO")
+                DropPlayer(source, "[BANIDO] USO DE EVENTO DE PAGAMENTO DE SALÁRIO DE EMPREGO")
             end  
             return 0      
         end   
@@ -115,8 +115,3 @@ function FazerPagamento(user_id, emprego, source)
         return dinheiro
     end
 end
-
-
-
-
---vRP.getInventoryWeight(user_id)+vRP.getItemWeight("linha")

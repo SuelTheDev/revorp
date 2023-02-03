@@ -95,14 +95,6 @@ end
 RegisterNUICallback("Close", function(_, cb)
     SetNuiFocus(false, false)
     SendNUIMessage({ action = "hideMenu" })
-    StopScreenEffect("MenuMGSelectionIn")
-    invOpen = false
+    StopScreenEffect("MenuMGSelectionIn")    
     cb({ status = true })
 end)
-
-
-RegisterNUICallback("iniciartrampo", function(data, cb)
-    TriggerEvent("empregos:client:iniciar", data.emprego_id, cb)
-end)
-
-
