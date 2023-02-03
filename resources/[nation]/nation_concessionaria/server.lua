@@ -6,19 +6,8 @@ fclient = Tunnel.getInterface("nation_concessionaria")
 func = {}
 Tunnel.bindInterface("nation_concessionaria", func)
 
-
-local webhook_concessionaria = ''
-
-function SendWebhookMessage(webhook,message)
-    if webhook ~= nil and webhook ~= "" then
-        PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
-    end
-end
-
 local conceVehicles = {}
 local userVehicles = {}
-
-local timestamp = {}
 
 function func.getConfig()
     return config
@@ -30,7 +19,7 @@ AddEventHandler('nationConce:getConfig', function()
     TriggerClientEvent("nationConce:setConfig", source, config)
 end)
 
-vRP._prepare("nation_conce/getConceVehicles", "SELECT * FROM nation_concessionaria")
+vRP._prepare("getVehicles", "SELECT * FROM nation_concessionaria")
 
 function getDbVehicles()
     conceVehicles = {}
@@ -56,20 +45,31 @@ function checkRentedVehicles()
 end
 
 Citizen.CreateThread(function()
-    vRP.prepare("nation_conce/hasVehicle","SELECT * FROM vrp_user_vehicles WHERE user_id = @user_id AND vehicle = @vehicle")
-    vRP.prepare("nation_conce/getAllMyVehicles","SELECT * FROM vrp_user_vehicles WHERE user_id = @user_id")
-    vRP.prepare("nation_conce/getMyVehicles","SELECT * FROM vrp_user_vehicles WHERE user_id = @user_id AND alugado = 0")
-    vRP.prepare("nation_conce/isVehicleInConce","SELECT * FROM nation_concessionaria WHERE vehicle = @vehicle")
-    vRP.prepare("nation_conce/addVehicle","INSERT IGNORE INTO nation_concessionaria(vehicle,estoque) VALUES(@vehicle,@estoque)")
-    vRP.prepare("nation_conce/removeVehicle","DELETE FROM nation_concessionaria WHERE vehicle = @vehicle")
-    vRP.prepare("nation_conce/addEstoque","UPDATE nation_concessionaria SET estoque = @estoque WHERE vehicle = @vehicle")
-    vRP.prepare("nation_conce/removeEstoque","UPDATE nation_concessionaria SET estoque = @estoque WHERE vehicle = @vehicle")
-    vRP.prepare("nation_conce/addCustomEstoque","UPDATE nation_concessionaria SET estoque = @estoque WHERE vehicle = @vehicle")
-    vRP.prepare("nation_conce/removeCustomEstoque","UPDATE nation_concessionaria SET estoque = estoque - 1 WHERE vehicle = @vehicle")
-    vRP.prepare("nation_conce/addUserVehicle","INSERT IGNORE INTO vrp_user_vehicles (user_id,vehicle,ipva) VALUES(@user_id,@vehicle,@ipva)")
-    vRP.prepare("nation_conce/removeUserVehicle", 'DELETE FROM vrp_user_vehicles WHERE user_id = @user_id AND vehicle = @vehicle')
-    vRP.prepare("nation_conce/addUserRentedVehicle","INSERT IGNORE INTO vrp_user_vehicles (user_id,vehicle,ipva,alugado,data_alugado) VALUES(@user_id,@vehicle,@ipva,1,@data_alugado)")
-    vRP.prepare("nation_conce/deleteRentedVehicles", 'DELETE FROM vrp_user_vehicles WHERE alugado = 1 AND data_alugado < @data_alugado')
+    if not config.customMYSQL then
+        vRP._prepare("nation_conce/createDB",[[
+            CREATE TABLE IF NOT EXISTS `nation_concessionaria` (
+            `vehicle` TEXT,
+            `estoque` INT(11) NOT NULL DEFAULT 0,
+            PRIMARY KEY (`vehicle`(765))
+            )
+            COLLATE='utf8mb4_general_ci'
+            ENGINE=InnoDB
+            ;
+            ALTER TABLE vrp_user_vehicles ADD IF NOT EXISTS alugado TINYINT(4) NOT NULL DEFAULT 0;
+            ALTER TABLE vrp_user_vehicles ADD IF NOT EXISTS data_alugado TEXT;
+        ]])
+        vRP._prepare("nation_conce/isVehicleInConce","SELECT * FROM nation_concessionaria WHERE vehicle = @vehicle")
+
+        vRP.prepare("nation_conce/addVehicle","INSERT IGNORE INTO nation_concessionaria(vehicle,estoque) VALUES(@vehicle,@estoque)")
+        vRP.prepare("nation_conce/removeVehicle","DELETE FROM nation_concessionaria WHERE vehicle = @vehicle")
+
+        vRP._prepare("nation_conce/addEstoque","UPDATE nation_concessionaria SET estoque = @estoque WHERE vehicle = @vehicle")
+        vRP._prepare("nation_conce/removeEstoque","UPDATE nation_concessionaria SET estoque = @estoque WHERE vehicle = @vehicle")
+
+        vRP._prepare("nation_conce/addCustomEstoque","UPDATE nation_concessionaria SET estoque = @estoque WHERE vehicle = @vehicle")
+        vRP._prepare("nation_conce/removeCustomEstoque","UPDATE nation_concessionaria SET estoque = estoque - 1 WHERE vehicle = @vehicle")
+    end
+    vRP.execute("nation_conce/createDB")
     getDbVehicles()
     checkRentedVehicles()
 end)
@@ -153,124 +153,44 @@ function getVehiclePrice(vehicle)
     return 0
 end
 
-
-function getUserExists(user_id)
-    for k,v in pairs(timestamp) do 
-        if user_id == v.user_id then
-            return true
-        end
-    end
-    table.insert(timestamp, {['user_id'] = user_id, ['time'] = os.time() - 1000})
-    return true
-end
-
-function getTimeAcess(user_id)
-    getUserExists(user_id)
-    for k,v in pairs(timestamp) do
-        if user_id == v.user_id then
-            if os.time() > v.time then
-                return true,v.time
-            else
-                return false,v.time
-            end
-        end
-    end
-    return false
-end
-
-function updateTimeUser(user_id)
-    if getUserExists(user_id) == false then
-        local time = os.time() + 15
-        table.insert(timestamp, {['user_id'] = user_id, ['time'] = time})
-    else
-        for k,v in pairs(timestamp) do
-            if v.user_id == user_id then
-                local time = os.time() + 15
-                v.time = time
-            end
-        end
-    end
-end
-
-function SecondsToClock(seconds)
-    print(seconds, os.time())
-	local seconds = seconds - os.time()
-	if seconds <= 0 then
-	  return "00:00:00";
-	else
-	  hours = string.format("%02.f", math.floor(seconds/3600));
-	  mins = string.format("%02.f", math.floor(seconds/60 - (hours*60)));
-	  secs = string.format("%02.f", math.floor(seconds - hours*3600 - mins *60));
-	  return mins.." minutos e "..secs.." segundos"
-	end
-end
-
 function func.buyVehicle(vehicle,color)
     local source = source
     local user_id = vRP.getUserId(source)
-    local checktime, expire = getTimeAcess(user_id)
-    if checktime == true then
-        local estoque = getVehicleEstoque(vehicle)
-        if estoque <= 0 then
-            return false, "veículo fora de estoque"
-        elseif hasVehicle(user_id,vehicle) then
-            return false, "veículo já possuído"
-        end
-        local desconto = func.getDiscount(user_id) / 100
-        local price = getVehiclePrice(vehicle)
-        price = parseInt(price - (price * desconto))
-        local mods = fclient.getVehicleMods(source,vehicle)
-        local state, message = config.tryBuyVehicle(source,user_id,vehicle,color,price,mods)
-        if state then
-            removeEstoque(vehicle)
-            updateTimeUser(user_id)
-            SendWebhookMessage(webhook_concessionaria,"```prolog\n[COMPRA]\n[ID]: "..user_id.."\n[VEICULO]: "..vehicle.."\n[PRECO]: "..price.."\n" ..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
-            local vehInfo = config.getVehicleInfo(vehicle)
-            if vehInfo then
-                addUserVehicle(user_id,vehInfo)
-            end
-        end
-        return state, message
-    else
-        if expire then
-            local tempo = math.floor(expire)
-            return false, "Aguarde "..SecondsToClock(tempo).." para fazer a compra novamente"
-        else
-            return false, "Erro inexperado, tente novamente!"
+    local estoque = getVehicleEstoque(vehicle)
+    if estoque <= 0 then
+        return false, "veículo fora de estoque"
+    elseif hasVehicle(user_id,vehicle) then
+        return false, "veículo já possuído"
+    end
+    local desconto = func.getDiscount(user_id) / 100
+    local price = getVehiclePrice(vehicle)
+    price = parseInt(price - (price * desconto))
+    local mods = fclient.getVehicleMods(source,vehicle)
+    local state, message = config.tryBuyVehicle(source,user_id,vehicle,color,price,mods)
+    if state then
+        removeEstoque(vehicle)
+        local vehInfo = config.getVehicleInfo(vehicle)
+        if vehInfo then
+            addUserVehicle(user_id,vehInfo)
         end
     end
-    return false, "Erro inexperado, tente novamente!"
+    return state, message
 end
 
-
 function func.sellVehicle(vehicle)
-    local source = source
-    vRP.antiflood(source,'sellVehicle',3)
-    local user_id = vRP.getUserId(source)
-    local checktime, expire = getTimeAcess(user_id)
-    if checktime == true then
-        local state, message = false, "erro inesperado"
-        local vehInfo = config.getVehicleInfo(vehicle)
-        if hasVehicle(user_id,vehicle) and vehInfo then
-            local price = vehInfo.price * (config.porcentagem_venda / 100)
-            state, message = config.trySellVehicle(source,user_id,vehicle,price)
-            if state then
-                updateTimeUser(user_id)
-                SendWebhookMessage(webhook_concessionaria,"```prolog\n[VENDA]\n[ID]: "..user_id.."\n[VEICULO]: "..vehicle.."\n[PRECO]: "..price.."\n" ..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
-                removeUserVehicle(user_id,vehicle)
-                addEstoque(vehicle)
-            end
-        end
-        return state, message
-    else
-        if expire then
-            local tempo = math.floor(expire)
-            return false, "Aguarde "..SecondsToClock(tempo).." para fazer a compra novamente"
-        else
-            return false, "Erro inexperado, tente novamente!"
-        end
-    end
-    return false, "Erro inexperado, tente novamente!"
+    -- local source = source
+    -- local user_id = vRP.getUserId(source)
+    -- local state, message = false, "erro inesperado"
+    -- local vehInfo = config.getVehicleInfo(vehicle)
+    -- if hasVehicle(user_id,vehicle) and vehInfo then
+    --     local price = vehInfo.price * (config.porcentagem_venda / 100)
+    --     state, message = config.trySellVehicle(source,user_id,vehicle,price)
+    --     if state then
+    --         removeUserVehicle(user_id,vehicle)
+    --         addEstoque(vehicle)
+    --     end
+    -- end
+    -- return state, message
 end
 
 function hasVehicle(user_id,vehicle)

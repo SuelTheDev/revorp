@@ -23,4 +23,3 @@ files {
 	"nui/fonts/*.ttf",
 	"nui/fonts/*.otf"
 }
-
