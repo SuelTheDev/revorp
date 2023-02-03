@@ -77,8 +77,7 @@ createApp({
         menu_show.value = false;
         status.value = false;
         EmpregoId.value = ""
-      } else if (action == "atualizar") {
-        console.log("DATA", data)
+      } else if (action == "atualizar") {        
         Level.value = level;
         DinheiroGanho.value = dinheiro_ganho;
         Checkpoint.value = checkpoint;
