@@ -22,12 +22,10 @@ CreateThread(function ()
 
     vRP.prepare("emp/info", "SELECT * FROM empregos WHERE user_id = @user_id AND emp_name = @emp_name")
     vRP.prepare("emp/insert", [[
-        INSERT INTO empregos (user_id, rc, `level`, `exp`, emp_name)
-        SELECT @user_id, @rc, @level, @exp, @emp_name
-        WHERE NOT EXISTS (
-            SELECT 1 FROM empregos
-            WHERE user_id = @user_id AND emp_name = @emp_name
-        )
+        START TRANSACTION;
+        INSERT IGNORE INTO empregos (user_id, rc, `level`, `exp`, emp_name)
+        VALUES (@user_id, @rc, @level, @exp, @emp_name);        
+        COMMIT;
     ]]) 
     vRP.prepare("emp/updateExp1", "UPDATE empregos SET exp = exp + @exp WHERE user_id = @user_id AND emp_name = @emp_name")
     vRP.prepare("emp/updateExp2", "UPDATE empregos SET level = level + @level, exp = @exp WHERE user_id = @user_id AND emp_name = @emp_name")
