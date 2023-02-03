@@ -62,6 +62,7 @@ createApp({
       } = data;
 
       if (action == "showMenu") {
+        Checkpoint.value = 0
         EmpregoId.value = emprego_id,
         Level.value = level;
         RotasConcluidas.value = rc;
