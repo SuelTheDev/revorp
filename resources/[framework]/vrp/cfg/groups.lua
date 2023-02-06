@@ -1485,6 +1485,7 @@ cfg.groups = {
 			gtype = "job"
 		},
 		"lideryakuza.permissao",
+		"vicelideryakuza.permissao",
 		"yakuza.permissao",
 		"gyakuza.permissao",
 		"ilegal.permissao",

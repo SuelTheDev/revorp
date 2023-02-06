@@ -1,4 +1,4 @@
-fx_version 'adamant'
+fx_version 'cerulean'
 game 'gta5'
 
 shared_scripts {
@@ -12,3 +12,5 @@ client_scripts {
 server_scripts {
 	"server.lua"
 }
+
+lua54 'yes'

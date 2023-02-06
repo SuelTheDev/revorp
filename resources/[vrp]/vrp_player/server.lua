@@ -666,8 +666,8 @@ local salarios = {
 	{ ['permissao'] = "salario1.servico", ['nome'] = "", ['payment'] = 3000 }, ---- iniciante
 	{ ['permissao'] = "salario2.servico", ['nome'] = "", ['payment'] = 5000 }, ---- bronze
 	{ ['permissao'] = "salario3.servico", ['nome'] = "", ['payment'] = 7000 }, ----- prata
-	{ ['permissao'] = "salario4.servico", ['nome'] = "", ['payment'] = 9000 }, ----- ouro
-	{ ['permissao'] = "salario5.servico", ['nome'] = "", ['payment'] = 11000 }, ----- platina
+	{ ['permissao'] = "salario4.servico", ['nome'] = "", ['payment'] = 10000 }, ----- ouro
+	{ ['permissao'] = "salario5.servico", ['nome'] = "", ['payment'] = 15000 }, ----- platina
 	{ ['permissao'] = "salario6.servico", ['nome'] = "", ['payment'] = 13000 }, ----- diamante
 	{ ['permissao'] = "salario7.servico", ['nome'] = "", ['payment'] = 15000 }, ----- topazio
 	{ ['permissao'] = "salario8.servico", ['nome'] = "", ['payment'] = 17000 }, ----- esmeralda
@@ -2869,6 +2869,7 @@ end
 AddEventHandler("entityCreated", function(handle)
 	CreateThread(function()
 		local entity = handle
+		if GetEntityModel(entity) == `prop_amb_phone` then return end
 		Wait(3000)
 		if DoesEntityExist(entity) then
 			if Entity(entity).state.checked then return end

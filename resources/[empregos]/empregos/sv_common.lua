@@ -22,10 +22,8 @@ CreateThread(function ()
 
     vRP.prepare("emp/info", "SELECT * FROM empregos WHERE user_id = @user_id AND emp_name = @emp_name")
     vRP.prepare("emp/insert", [[
-        START TRANSACTION;
         INSERT IGNORE INTO empregos (user_id, rc, `level`, `exp`, emp_name)
-        VALUES (@user_id, @rc, @level, @exp, @emp_name);        
-        COMMIT;
+        VALUES (@user_id, @rc, @level, @exp, @emp_name);
     ]]) 
     vRP.prepare("emp/updateExp1", "UPDATE empregos SET exp = exp + @exp WHERE user_id = @user_id AND emp_name = @emp_name")
     vRP.prepare("emp/updateExp2", "UPDATE empregos SET level = level + @level, exp = @exp WHERE user_id = @user_id AND emp_name = @emp_name")
@@ -73,7 +71,7 @@ function GetEXP(exp_ganho, user_id, emprego, source)
     if info.exp >= cfg.exp_por_level then
         Emprego.updateLevel(user_id, 1, 0, emprego)
         TriggerClientEvent("Notify", source, "importante",
-            "Parabens você sibiu de level agora você e level <b>$" .. info.level .. "</b>.")
+            "Parabéns você sibiu de level agora você e level <b>$" .. info.level .. "</b>.")
     else
         Emprego.updateExp(user_id, exp_ganho, emprego)
     end

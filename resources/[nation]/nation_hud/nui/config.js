@@ -1,4 +1,4 @@
-const logoImg = "https://cdn.discordapp.com/attachments/1062810344587800667/1063668474905362482/2171139150173.560c974e07270.png";
+const logoImg = "https://cdn.discordapp.com/attachments/1070497364802031627/1071738402946429028/logorev.png";
 
 $(".logo img").attr("src", logoImg);
 
