@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Arsenal</title>
+        <link rel="stylesheet" type="text/css" href="css.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,500,700,900&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="actionmenu" style="display: none;">
+            <div class="conteudo">
+                <div class="menu">
+                    <div class="titleMenu">
+                        <p><b>Arsenal</b></p>
+                    </div>
+                    <div class="categorias">
+                        <section class="sessaoCategorias">
+                            <div class="secCat">
+                                <div class="catSessao item-category category_item first" category="armamentos">
+                                    <div class="departamento">
+                                        <p><b>Armamentos</b></p>
+                                    </div>
+                                </div>
+                                <div class="catSessao item-category category_item" category="utilitarios">
+                                    <div class="departamento">
+                                        <p><b>Utilitários</b></p>
+                                    </div>
+                                </div>
+                                <div class="catSessao item-category category_item" category="presets">
+                                    <div class="departamento">
+                                        <p><b>Presets</b></p>
+                                    </div>
+                                </div>
+                                <div class="catSessao">
+                                    <div class="departamento">
+                                        <button data-action="limpar" class="menuoption"><ul><b>Limpar</b></ul></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>     
+                    </div>
+                </div>
+                <div class="itens2">
+                    <section class="sessaoItens2">
+                        <div class="conteudoSessao2">
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_STUNGUN.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Tazer</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-tazer" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_COMBATPISTOL.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Glock</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-glock" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_SMG.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>MP5</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-mp5" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_COMBATPDW.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Sig Sauer MPX</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-mpx" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_CARBINERIFLE.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>M4A1</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-m4a1" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_PUMPSHOTGUN_MK2.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Remington</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-remington" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_PARAFALL.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Parafall</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-parafall" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="armamentos">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/awm.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>AWM</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="armamentos-equipar-awm" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="utilitarios">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/colete.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Colete</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="utilitarios-equipar-colete" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="utilitarios">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/smoke.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Granada de Fumaça</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="utilitarios-equipar-smoke" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="utilitarios">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_NIGHTSTICK.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Cassetete</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="utilitarios-equipar-cassetete" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="utilitarios">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_FIREEXTINGUISHER.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Extintor</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="utilitarios-equipar-extintor" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao2 item-item" category="utilitarios">
+                                <div class="item-info2">
+                                    <div class="fotoItem2">
+                                        <img src="imagens/WEAPON_FLASHLIGHT.png">
+                                    </div>
+                                    <div class="tituloItem">
+                                        <p><b>Lanterna</b></p>
+                                    </div>
+                                </div>
+                                <div class="equipar">
+                                    <button data-action="utilitarios-equipar-lanterna" class="menuoption">EQUIPAR</button>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="presets">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imagens/lojinha.png">
+                                    </div>
+                                    <div class="menuItem">
+                                        <div class="nomeItem">
+                                            <p><b>Lojinha</b></p>
+                                        </div>
+                                        <div class="produzir">
+                                            <button data-action="presets-equipar-lojinha" class="menuoption"><b>EQUIPAR</b></button>
+                                        </div>
+                                    </div>
+                                    <div class="ingreItemI">
+                                        <img src="imagens/WEAPON_COMBATPISTOL.png">
+                                    </div>
+                                    <div class="ingreItemII">
+                                        <img src="imagens/colete.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="presets">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imagens/acao.png">
+                                    </div>
+                                    <div class="menuItem">
+                                        <div class="nomeItem">
+                                            <p><b>Ação</b></p>
+                                        </div>
+                                        <div class="produzir">
+                                            <button data-action="presets-equipar-acao" class="menuoption"><b>EQUIPAR</b></button>
+                                        </div>
+                                    </div>
+                                    <div class="ingreItemI">
+                                        <img src="imagens/WEAPON_CARBINERIFLE.png">
+                                    </div>
+                                    <div class="ingreItemII">
+                                        <img src="imagens/WEAPON_SMG.png">
+                                    </div>
+                                    <div class="ingreItemIII">
+                                        <img src="imagens/WEAPON_COMBATPISTOL.png">
+                                    </div>
+                                    <div class="ingreItemIV">
+                                        <img src="imagens/WEAPON_STUNGUN.png">
+                                    </div>
+                                    <div class="ingreItemV">
+                                        <img src="imagens/colete.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="presets">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imagens/rocam.png">
+                                    </div>
+                                    <div class="menuItem">
+                                        <div class="nomeItem">
+                                            <p><b>Rocam</b></p>
+                                        </div>
+                                        <div class="produzir">
+                                            <button data-action="presets-equipar-rocam" class="menuoption"><b>EQUIPAR</b></button>
+                                        </div>
+                                    </div>
+                                    <div class="ingreItemI">
+                                        <img src="imagens/WEAPON_COMBATPISTOL.png">
+                                    </div>
+                                    <div class="ingreItemII">
+                                        <img src="imagens/WEAPON_STUNGUN.png">
+                                    </div>
+                                    <div class="ingreItemIII">
+                                        <img src="imagens/colete.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="presets">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imagens/recruta.png">
+                                    </div>
+                                    <div class="menuItem">
+                                        <div class="nomeItem">
+                                            <p><b>Recruta</b></p>
+                                        </div>
+                                        <div class="produzir">
+                                            <button data-action="presets-equipar-recruta" class="menuoption"><b>EQUIPAR</b></button>
+                                        </div>
+                                    </div>
+                                    <div class="ingreItemI">
+                                        <img src="imagens/WEAPON_COMBATPISTOL.png">
+                                    </div>
+                                    <div class="ingreItemII">
+                                        <img src="imagens/WEAPON_STUNGUN.png">
+                                    </div>
+                                    <div class="ingreItemIII">
+                                        <img src="imagens/WEAPON_NIGHTSTICK.png">
+                                    </div>
+                                    <div class="ingreItemIV">
+                                        <img src="imagens/colete.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="presets">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imagens/soldado.png">
+                                    </div>
+                                    <div class="menuItem">
+                                        <div class="nomeItem">
+                                            <p><b>Soldado</b></p>
+                                        </div>
+                                        <div class="produzir">
+                                            <button data-action="presets-equipar-soldado" class="menuoption"><b>EQUIPAR</b></button>
+                                        </div>
+                                    </div>
+                                    <div class="ingreItemI">
+                                        <img src="imagens/WEAPON_SMG.png">
+                                    </div>
+                                    <div class="ingreItemII">
+                                        <img src="imagens/WEAPON_COMBATPISTOL.png">
+                                    </div>
+                                    <div class="ingreItemIII">
+                                        <img src="imagens/WEAPON_STUNGUN.png">
+                                    </div>
+                                    <div class="ingreItemIV">
+                                        <img src="imagens/WEAPON_NIGHTSTICK.png">
+                                    </div>
+                                    <div class="ingreItemV">
+                                        <img src="imagens/colete.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="itemSessao item-item" category="presets">
+                                <div class="item-info">
+                                    <div class="fotoItem">
+                                        <img src="imagens/oficial.png">
+                                    </div>
+                                    <div class="menuItem">
+                                        <div class="nomeItem">
+                                            <p><b>Oficial</b></p>
+                                        </div>
+                                        <div class="produzir">
+                                            <button data-action="presets-equipar-oficial" class="menuoption"><b>EQUIPAR</b></button>
+                                        </div>
+                                    </div>
+                                    <div class="ingreItemI">
+                                        <img src="imagens/WEAPON_CARBINERIFLE.png">
+                                    </div>
+                                    <div class="ingreItemII">
+                                        <img src="imagens/WEAPON_COMBATPISTOL.png">
+                                    </div>
+                                    <div class="ingreItemIII">
+                                        <img src="imagens/WEAPON_STUNGUN.png">
+                                    </div>
+                                    <div class="ingreItemIV">
+                                        <img src="imagens/WEAPON_NIGHTSTICK.png">
+                                    </div>
+                                    <div class="ingreItemV">
+                                        <img src="imagens/colete.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <script src="js.js" type="text/javascript"></script>
+    </body>
+</html>
