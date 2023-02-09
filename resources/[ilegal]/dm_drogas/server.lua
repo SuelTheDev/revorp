@@ -7,16 +7,7 @@ vRPclient = Tunnel.getInterface("vRP")
 emP = {}
 local idgens = Tools.newIDGenerator()
 Tunnel.bindInterface("dm_drogas",emP)
------------------------------------------------------------------------------------------------------------------------------------------
--- WEBHOOK
------------------------------------------------------------------------------------------------------------------------------------------
-local webhookdrugs = "webhook"
 
-function SendWebhookMessage(webhook,message)
-	if webhook ~= nil and webhook ~= "" then
-		PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
-	end
-end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- QUANTIDADE
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -43,11 +34,7 @@ end
 function emP.checkPermissao()
 	local source = source
 	local user_id = vRP.getUserId(source)
-	if not vRP.hasPermission(user_id,"policia.permissao") then 
-		return true
-	else 
-		return false
-	end
+	return not vRP.hasPermission(user_id,"policia.permissao")	
 end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- PAGAMENTO
@@ -98,8 +85,7 @@ local blips = {}
 function emP.MarcarOcorrencia()
 	local source = source
 	local user_id = vRP.getUserId(source)
-	local x,y,z = vRPclient.getPosition(source)
-	local identity = vRP.getUserIdentity(user_id)
+	local x,y,z = vRPclient.getPosition(source)	
 	if user_id then
 		local soldado = vRP.getUsersByPermission("policia.permissao")
 		for l,w in pairs(soldado) do
@@ -113,7 +99,6 @@ function emP.MarcarOcorrencia()
 					SetTimeout(20000,function() vRPclient.removeBlip(player,blips[id]) idgens:free(id) end)
 				end)
 			end
-		end
-		SendWebhookMessage(webhookdrugs,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[FOI DENUNCIADO] "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+		end		
 	end
 end

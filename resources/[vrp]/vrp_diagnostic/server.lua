@@ -35,8 +35,7 @@ local bones = {
 	[64729] = "Escápula Esquerda",
 	[45509] = "Braço Esquerdo",
 	[61163] = "Antebraço Esquerdo",
-	[18905] = "Mão Esquerda",
-	[18905] = "Mão Esquerda",
+	[18905] = "Mão Esquerda",	
 	[26610] = "Dedo Esquerdo",
 	[4089] = "Dedo Esquerdo",
 	[4090] = "Dedo Esquerdo",
@@ -91,7 +90,7 @@ local bones = {
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand('diagnosticar',function(source,args,rawCommand)
 	local user_id = vRP.getUserId(source)
-	if vRP.hasPermission(user_id,"paramedico.permissao") or vRP.hasPermission(user_id,"admin.permissao") then
+	if vRP.hasPermission(user_id,"ems.permissao")  then
 		local nplayer = vRPclient.getNearestPlayer(source,2)
 		if nplayer then
 			local diagnostic = src.getDiagnostic(nplayer)

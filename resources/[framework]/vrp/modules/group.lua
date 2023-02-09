@@ -11,6 +11,18 @@ function vRP.getGroupTitle(group)
 	return group
 end
 
+function vRP.getGroup(group)
+	if group then
+		return groups[group:lower()]
+	end
+	return nil
+end
+
+function vRP.getGroupSalary(group)
+	local group = vRP.getGroup(group)
+	return group and group.__config and group.__config.salary or 0
+end
+
 function vRP.getGroupByTitle(groupTitle)
 	for k, v in pairs(groups) do
 		if v._config and v._config.title and v._config.title == groupTitle then
@@ -48,6 +60,19 @@ function vRP.getUserGroupByType(user_id,gtype)
 	end
 	return ""
 end
+
+function vRP.getUserGroupDefByGtype(user_id, gtype)
+	local user_groups = vRP.getUserGroups(user_id) or {}
+	for k in pairs(user_groups) do
+		local kgroup = groups[k]
+		if kgroup then
+			return k, kgroup
+		end
+	end
+	return nil
+end
+
+
 function vRP.addUserGroup(user_id,group)
 	if not vRP.hasGroup(user_id,group) then
 		local user_groups = vRP.getUserGroups(user_id)
@@ -305,6 +330,11 @@ local function build_client_selectors(source)
 			end
 		end
 	end
+end
+
+
+function vRP.isGroupRegistered(group)
+	return groups[group] ~= nil
 end
 
 AddEventHandler("vRP:playerSpawn",function(user_id,source,first_spawn)

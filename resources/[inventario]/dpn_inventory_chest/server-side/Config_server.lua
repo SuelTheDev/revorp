@@ -69,9 +69,7 @@ ConfigServer = {
     }, -- Webhook de enviar, dropar e equipar, bau de casa, bau de carro, anti-dump respectivamente
 
     listaDeItens = {
-        --====================================================================================================================================================--
-        --========================================================== IMPORTANTE ===================================================================================--
-        --====================================================================================================================================================--
+    
         ["suspensaoar"] = { index = "suspensaoar", nome = "Kit Suspensão", filtro = "box", type = "usar" },
         ["moduloneon"] = { index = "moduloneon", nome = "Módulo Neon", filtro = "box", type = "usar" },
         ["moduloxenon"] = { index = "moduloxenon", nome = "Módulo Xenon", filtro = "box", type = "usar" },
