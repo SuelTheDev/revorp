@@ -33,306 +33,7 @@ RegisterCommand("radio", function(source, args, rawCommand)
 		TriggerClientEvent("vrp_radio:toggleNui", source, true)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- ITEMLIST
------------------------------------------------------------------------------------------------------------------------------------------
-local itemlist = {
-	["laranja"] = { index = "laranja", nome = "Laranja" },
-	["celular"] = { index = "celular", nome = "Celular" },
-	["wbody|WEAPON_ASSAULTRIFLE_MK2"] = { index = "wbody|WEAPON_ASSAULTRIFLE_MK2", nome = "Ak 47" },
-	--[ Drinks ]-------------------------------------------------------------------------------------------------------
 
-	["agua"] = { index = "agua", nome = "Água" },
-	["leite"] = { index = "leite", nome = "Leite" },
-	["cafe"] = { index = "cafe", nome = "Café" },
-	["cafecleite"] = { index = "cafecleite", nome = "Café com Leite" },
-	["cafeexpresso"] = { index = "cafeexpresso", nome = "Café Expresso" },
-	["capuccino"] = { index = "capuccino", nome = "Capuccino" },
-	["frappuccino"] = { index = "frappuccino", },
-	["cha"] = { index = "cha", nome = "Chá" },
-	["icecha"] = { index = "icecha", nome = "Chá Gelado" },
-	["sprunk"] = { index = "sprunk", nome = "Sprunk" },
-	["cola"] = { index = "cola", nome = "Cola" },
-	--[ FastFoods ]----------------------------------------------------------------------------------------------------
-
-	["sanduiche"] = { index = "sanduiche", nome = "Sanduíche" },
-	["rosquinha"] = { index = "rosquinha", nome = "Rosquinha" },
-	["hotdog"] = { index = "hotdog", nome = "HotDog" },
-	["xburguer"] = { index = "xburguer", nome = "xBurguer" },
-	["chips"] = { index = "chips", nome = "Batata Chips" },
-	["batataf"] = { index = "batataf", nome = "Batata Frita" },
-	["pizza"] = { index = "pizza", nome = "Pedaço de Pizza" },
-	["bcereal"] = { index = "bcereal", nome = "Barra de Cereal" },
-	["bchocolate"] = { index = "bchocolate", nome = "Barra de Chocolate" },
-	["taco"] = { index = "taco", nome = "Taco" },
-	["nitro"] = { index = "nitro", nome = "Óxido Nitroso" },
-	["tartaruga"] = { index = "tartaruga", nome = "Filhote de Tartaruga" },
-	["carnedetartaruga"] = { index = "carnedetartaruga", nome = "Carne de Tartaruga" },
-	["ferramenta"] = { index = "ferramenta", nome = "Ferramenta" },
-	["encomenda"] = { index = "encomenda", nome = "Encomenda" },
-	["carta"] = { index = "carta", nome = "Carta" },
-	["gas"] = { index = "gas", nome = "gas" },
-	["oxigênio"] = { index = "oxigênio", nome = "oxigênio" },
-	["carcilindrota"] = { index = "cilindro", nome = "cilindro" },
-	["sacodelixo"] = { index = "sacodelixo", nome = "Saco de Lixo" },
-	["garrafavazia"] = { index = "garrafavazia", nome = "Garrafa Vazia" },
-	["garrafadeleite"] = { index = "garrafadeleite", nome = "Garrafa de Leite" },
-	["tora"] = { index = "tora", nome = "Tora de Madeira" },
-	["pedacodemadeira"] = { index = "pedacodemadeira", nome = "Pedaço de Madeira" },
-	["alianca"] = { index = "alianca", nome = "Aliança" },
-	["bandagem"] = { index = "bandagem", nome = "Bandagem" },
-	["dorflex"] = { index = "dorflex", nome = "Dorflex" },
-	["cicatricure"] = { index = "cicatricure", nome = "Cicatricure" },
-	["dipiroca"] = { index = "dipiroca", nome = "Dipiroca" },
-	["nocucedin"] = { index = "nocucedin", nome = "Nocucedin" },
-	["paracetanal"] = { index = "paracetanal", nome = "Paracetanal" },
-	["decupramim"] = { index = "decupramim", nome = "Decupramim" },
-	["buscopau"] = { index = "buscopau", nome = "Buscopau" },
-	["navagina"] = { index = "navagina", nome = "Navagina" },
-	["analdor"] = { index = "analdor", nome = "Analdor" },
-	["sefodex"] = { index = "sefodex", nome = "Sefodex" },
-	["nokusin"] = { index = "nokusin", nome = "Nokusin" },
-	["glicoanal"] = { index = "glicoanal", nome = "Glicoanal" },
-	["batata"] = { index = "batata", nome = "Batata" },
-	["cerveja"] = { index = "cerveja", nome = "Cerveja" },
-	["tequila"] = { index = "tequila", nome = "Tequila" },
-	["vodka"] = { index = "vodka", nome = "Vodka" },
-	["whisky"] = { index = "whisky", nome = "Whisky" },
-	["conhaque"] = { index = "conhaque", nome = "Conhaque" },
-	["absinto"] = { index = "absinto", nome = "Absinto" },
-	["dinheirosujo"] = { index = "dinheiro-sujo", nome = "Dinheiro Sujo" },
-	["dinheiro"] = { index = "dinheiro", nome = "Dinheiro" },
-	["repairkit"] = { index = "repairkit", nome = "Kit de Reparos" },
-	["algemas"] = { index = "algemas", nome = "Algemas" },
-	["capuz"] = { index = "capuz", nome = "Capuz" },
-	["lockpick"] = { index = "lockpick", nome = "Lockpick" },
-	["pneus"] = { index = "pneus", nome = "Pneus", type = "usar" },
-	["ticket"] = { index = "ticket", nome = "ticket", type = "usar" },
-	["masterpick"] = { index = "masterpick", nome = "Masterpick" },
-	["militec"] = { index = "militec", nome = "Militec-1" },
-	["carnedecormorao"] = { index = "carnedecormorao", nome = "Carne de Cormorão" },
-	["carnedecorvo"] = { index = "carnedecorvo", nome = "Carne de Corvo" },
-	["carnedeaguia"] = { index = "carnedeaguia", nome = "Carne de Águia" },
-	["carnedecervo"] = { index = "carnedecervo", nome = "Carne de Cervo" },
-	["carnedecoelho"] = { index = "carnedecoelho", nome = "Carne de Coelho" },
-	["carnedecoyote"] = { index = "carnedecoyote", nome = "Carne de Coyote" },
-	["carnedelobo"] = { index = "carnedelobo", nome = "Carne de Lobo" },
-	["carnedepuma"] = { index = "carnedepuma", nome = "Carne de Puma" },
-	["carnedejavali"] = { index = "carnedejavali", nome = "Carne de Javali" },
-	["amora"] = { index = "amora", nome = "Amora" },
-	["cereja"] = { index = "cereja", nome = "Cereja" },
-	["graos"] = { index = "graos", nome = "Graos" },
-	["graosimpuros"] = { index = "graosimpuros", nome = "Graos Impuros" },
-	["keycard"] = { index = "keycard", nome = "Keycard" },
-	["isca"] = { index = "isca", nome = "Isca" },
-	["dourado"] = { index = "dourado", nome = "Peixe" },
-	["corvina"] = { index = "corvina", nome = "Peixe Cozido" },
-	["energetico"] = { index = "energetico", nome = "Energético" },
-	["mochila"] = { index = "mochila", nome = "Mochila" },
-	-- Maconha ------------------------------------------------------------------------------------------------------
-	["maconha"] = { index = "maconha", nome = "Maconha" },
-	["ramosdemaconha"] = { index = "ramosdemaconha", nome = "Ramo de Maconha" },
-	["maconhanaoprocessada"] = { index = "maconhanaoprocessada", nome = "Maconha não Processada" },
-	["maconhamisturada"] = { index = "maconhamisturada", nome = "Maconha Misturada" },
-	["baseado"] = { index = "baseado", nome = "Baseado" },
-	["seda"] = { index = "seda", nome = "Seda" },
-	["receita1"] = { index = "receita1", nome = "Receita Médica" },
-	["receita2"] = { index = "receita2", nome = "Receita Médica" },
-	-- Ecstasy ----------------------------------------------------------------------------------------------------
-	["ocitocina"] = { index = "ocitocina", nome = "Ocitocina Sintética" },
-	["ociacido"] = { index = "ociacido", nome = "Ácido Anf. Desidratado" },
-	["primaecstasy"] = { index = "primaecstasy", nome = "Matéria Prima - Ecstasy" },
-	["ecstasy"] = { index = "ecstasy", nome = "Ecstasy" },
-	["glicerina"] = { index = "glicerina", nome = "Glicerina" },
-	-----------------------------------------------------------------------------------------------------------------
-	-- Lavagem de Dinheiro ------------------------------------------------------------------------------------------
-	["impostoderenda"] = { index = "impostoderenda", nome = "Imposto de Renda" },
-	["impostoderendafalso"] = { index = "impostoderendafalso", nome = "Imposto de Renda Falso" },
-	["alvejante"] = { index = "alvejante", nome = "Alvejante" },
-	["papel"] = { index = "papel", nome = "Papel" },
-	["notafiscalfalsa"] = { index = "notafiscalfalsa", nome = "Nota Fiscal Falsa" },
-	-----------------------------------------------------------------------------------------------------------------
-	-- DK ------------------------------------------------------------------------------------------
-
-	["fioseletricos"] = { index = "fioseletricos", nome = "Fios Elétricos" },
-	["adubo"] = { index = "adubo", nome = "Adubo" },
-	["suspensaoar"] = { index = "suspensaoar", nome = "Kit Suspensão a ar" },
-	["fertilizante"] = { index = "fertilizante", nome = "Fertilizante de Maconha" },
-	["capsula"] = { index = "capsula", nome = "Cápsula" },
-	["polvora"] = { index = "polvora", nome = "Pólvora" },
-	["lingerie"] = { index = "lingerie", nome = "Lingerie" },
-	["tecido"] = { index = "tecido", nome = "Tecido" },
-	["pano"] = { index = "pano", nome = "Pano" },
-	["linha"] = { index = "linha", nome = "Linha" },
-	["orgaos"] = { index = "orgaos", nome = "Órgãos" },
-	["orgaobatido"] = { index = "orgaobatido", nome = "Órgão Batido" },
-	["pecaeletronica"] = { index = "pecaeletronica", nome = "Peça Eletrônica" },
-	["computadormontado"] = { index = "computadormontado", nome = "Computador Montado Roubado" },
-	["identidadedigital"] = { index = "identidadedigital", nome = "Identidade Digital Roubada" },
-	["identidadefisica"] = { index = "identidadefisica", nome = "Identidade Roubada Física" },
-	["etiqueta"] = { index = "etiqueta", nome = "Etiqueta" },
-	["pendrive"] = { index = "pendrive", nome = "Pendrive" },
-	["notebook"] = { index = "notebook", nome = "Notebook" },
-	["placa"] = { index = "placa", nome = "Placa" },
-	["relogioroubado"] = { index = "relogioroubado", nome = "Relógio Roubado" },
-	["pulseiraroubada"] = { index = "pulseiraroubada", nome = "Pulseira Roubada" },
-	["anelroubado"] = { index = "anelroubado", nome = "Anel Roubado" },
-	["colarroubado"] = { index = "colarroubado", nome = "Colar Roubado" },
-	["brincoroubado"] = { index = "brincoroubado", nome = "Brinco Roubado" },
-	["carteiraroubada"] = { index = "carteiraroubada", nome = "Carteira Roubada" },
-	["tabletroubado"] = { index = "tabletroubado", nome = "Tablet Roubado" },
-	["sapatosroubado"] = { index = "sapatosroubado", nome = "Sapatos Roubado" },
-	["vibradorroubado"] = { index = "vibradorroubado", nome = "Vibrador Roubado" },
-	["perfumeroubado"] = { index = "perfumeroubado", nome = "Perfume Roubado" },
-	----------------------------- COCAÍNA ---------------------------------------
-	["folhadecoca"] = { index = "folhadecoca", nome = "Folha de Coca" },
-	["pastadecoca"] = { index = "pastadecoca", nome = "Pasta de Coca" },
-	["cocamisturada"] = { index = "cocamisturada", nome = "Cocaína Misturada" },
-	["cocaina"] = { index = "cocaina", nome = "Cocaína" },
-	["ziplock"] = { index = "ziplock", nome = "Saco ZipLock" },
-	["lanche"] = { index = "lanche", nome = "lanche" },
-	["fungo"] = { index = "fungo", nome = "Fungo" },
-	["dietilamina"] = { index = "dietilamina", nome = "Dietilamina" },
-	["lsd"] = { index = "lsd", nome = "LSD" },
-	["acidoc"] = { index = "acidocorrosivo", nome = "Acido Corrosivo" },
-	["acidobateria"] = { index = "acidobateria", nome = "Ácido de Bateria" },
-	["anfetamina"] = { index = "anfetamina", nome = "Anfetamina" },
-	["metanfetamina"] = { index = "metanfetamina", nome = "Metanfetamina" },
-	["cristal"] = { index = "cristal", nome = "Cristal de Metanfetamina" },
-	["pipe"] = { index = "pipe", nome = "Pipe" },
-	["projetodearma"] = { index = "projetodearma", nome = "Projeto de Arma" },
-	["armacaodearma"] = { index = "armacaodearma", nome = "Armação de Arma" },
-	["pecadearma"] = { index = "pecadearma", nome = "Peça de Arma" },
-	["logsinvasao"] = { index = "logsinvasao", nome = "L. Inv. Banco" },
-	["keysinvasao"] = { index = "keysinvasao", nome = "K. Inv. Banco" },
-	["pendriveinformacoes"] = { index = "pendriveinformacoes", nome = "P. com Info." },
-	["acessodeepweb"] = { index = "acessodeepweb", nome = "P. DeepWeb" },
-	["diamante"] = { index = "diamante", nome = "Min. Diamante" },
-	["ouro"] = { index = "ouro", nome = "Min. Ouro" },
-	["bronze"] = { index = "bronze", nome = "Min. Bronze" },
-	["ferro"] = { index = "ferro", nome = "Min. Ferro" },
-	["rubi"] = { index = "rubi", nome = "Min. Rubi" },
-	["esmeralda"] = { index = "esmeralda", nome = "Min. Esmeralda" },
-	["safira"] = { index = "safira", nome = "Min. Safira" },
-	["topazio"] = { index = "topazio", nome = "Min. Topazio" },
-	["ametista"] = { index = "ametista", nome = "Min. Ametista" },
-	["diamante2"] = { index = "diamante2", nome = "Diamante" },
-	["ouro2"] = { index = "ouro2", nome = "Ouro" },
-	["bronze2"] = { index = "bronze2", nome = "Bronze" },
-	["ferro2"] = { index = "ferro2", nome = "Ferro" },
-	["rubi2"] = { index = "rubi2", nome = "Rubi" },
-	["esmeralda2"] = { index = "esmeralda2", nome = "Esmeralda" },
-	["safira2"] = { index = "safira2", nome = "Safira" },
-	["topazio2"] = { index = "topazio2", nome = "Topazio" },
-	["ametista2"] = { index = "ametista2", nome = "Ametista" },
-	["ingresso"] = { index = "ingresso", nome = "Ingresso Eventos" },
-	["radio"] = { index = "radio", nome = "Radio" },
-	["serra"] = { index = "serra", nome = "Serra" },
-	["furadeira"] = { index = "furadeira", nome = "Furadeira" },
-	["c4"] = { index = "c4", nome = "C-4" },
-	["roupas"] = { index = "roupas", nome = "Roupas" },
-	["colete"] = { index = "colete", nome = "Colete" },
-	["xerelto"] = { index = "xerelto", nome = "Xerelto" },
-	["coumadin"] = { index = "coumadin", nome = "Coumadin" },
-	["detonador"] = { index = "detonador", nome = "Detonador" },
-	["ferramentas"] = { index = "ferramentas", nome = "Ferramentas Pesadas" },
-	["projetoassaultrifle"] = { index = "projetoassaultrifle", nome = "Projeto Ak-47" },
-	["projetoassaultsmg"] = { index = "projetoassaultsmg", nome = "Projeto MAG-PDR" },
-	["projetobullpuprifle"] = { index = "projetobullpuprifle", nome = "Projeto QBZ" },
-	["projetocarbinerifle"] = { index = "projetocarbinerifle", nome = "Projeto M4A1" },
-	["projetocombatpdw"] = { index = "projetocombatpdw", nome = "Projeto MPX" },
-	["projetocombatpistol"] = { index = "projetocombatpistol", nome = "Projeto Glock 19" },
-	["projetogusenberg"] = { index = "projetogusenberg", nome = "Projeto Thompson" },
-	["projetopistol"] = { index = "projetopistol", nome = "Projeto M1911" },
-	["projetopumpshotgun"] = { index = "projetopumpshotgun", nome = "Projeto Shotgun" },
-	["projetosawnoffshotgun"] = { index = "projetosawnoffshotgun", nome = "Projeto Shot Cano Serrado" },
-	["projetosmg"] = { index = "projetosmg", nome = "Projeto MP5" },
-	["wbody|WEAPON_DAGGER"] = { index = "adaga", nome = "Adaga" },
-	["wbody|WEAPON_BAT"] = { index = "beisebol", nome = "Taco de Beisebol" },
-	["wbody|WEAPON_BOTTLE"] = { index = "garrafa", nome = "Garrafa" },
-	["wbody|WEAPON_CROWBAR"] = { index = "cabra", nome = "Pé de Cabra" },
-	["wbody|WEAPON_FLASHLIGHT"] = { index = "lanterna", nome = "Lanterna" },
-	["wbody|WEAPON_GOLFCLUB"] = { index = "golf", nome = "Taco de Golf" },
-	["wbody|WEAPON_HAMMER"] = { index = "martelo", nome = "Martelo" },
-	["wbody|WEAPON_HATCHET"] = { index = "machado", nome = "Machado" },
-	["wbody|WEAPON_KNUCKLE"] = { index = "ingles", nome = "Soco-Inglês" },
-	["wbody|WEAPON_KNIFE"] = { index = "faca", nome = "Faca" },
-	["wbody|WEAPON_MACHETE"] = { index = "machete", nome = "Machete" },
-	["wbody|WEAPON_SWITCHBLADE"] = { index = "canivete", nome = "Canivete" },
-	["wbody|WEAPON_NIGHTSTICK"] = { index = "cassetete", nome = "Cassetete" },
-	["wbody|WEAPON_WRENCH"] = { index = "grifo", nome = "Chave de Grifo" },
-	["wbody|WEAPON_BATTLEAXE"] = { index = "batalha", nome = "Machado de Batalha" },
-	["wbody|WEAPON_POOLCUE"] = { index = "sinuca", nome = "Taco de Sinuca" },
-	["wbody|WEAPON_STONE_HATCHET"] = { index = "pedra", nome = "Machado de Pedra" },
-	["wbody|WEAPON_PISTOL"] = { index = "m1911", nome = "M1911" }, -- WEAPON_PISTOL
-	["wbody|WEAPON_PISTOL_MK2"] = { index = "fiveseven", nome = "FN Five Seven" },
-	["wbody|WEAPON_SPECIALCARBINE_MK2"] = { index = "Carabina-Especial-Mk2", nome = "Carabina-Especial-Mk2",
-		type = "equipar" },
-	["wbody|WEAPON_SPECIALCARBINE"] = { index = "Carabina-Especial", nome = "Carabina-Especial", type = "equipar" },
-	["wbody|WEAPON_RAYPISTOL"] = { index = "raypistol", nome = "Arminha", type = "equipar" },
-	["wbody|WEAPON_COMBATPISTOL"] = { index = "glock", nome = "Glock 19" }, -- WEAPON_COMBATPISTOL
-	["wbody|WEAPON_STUNGUN"] = { index = "taser", nome = "Taser" },
-	["wbody|WEAPON_SNSPISTOL"] = { index = "hkp7m10", nome = "HK P7M10" },
-	["wbody|WEAPON_VINTAGEPISTOL"] = { index = "m1922", nome = "M1922" },
-	["wbody|WEAPON_REVOLVER"] = { index = "magnum44", nome = "Magnum 44" },
-	["wbody|WEAPON_REVOLVER_MK2"] = { index = "magnum357", nome = "Magnum 357" },
-	["wbody|WEAPON_MUSKET"] = { index = "winchester22", nome = "Winchester 22" },
-	["wbody|WEAPON_FLARE"] = { index = "sinalizador", nome = "Sinalizador" },
-	["wbody|GADGET_PARACHUTE"] = { index = "paraquedas", nome = "Paraquedas" },
-	["wbody|WEAPON_FIREEXTINGUISHER"] = { index = "extintor", nome = "Extintor" },
-	["wbody|WEAPON_MICROSMG"] = { index = "uzi", nome = "Uzi" },
-	["wbody|WEAPON_SMG"] = { index = "smg", nome = "SMG" }, -- WEAPON_SMG
-	["wbody|WEAPON_ASSAULTSMG"] = { index = "mag-pdr", nome = "MAG-PDR" }, -- WEAPON_ASSAULTSMG
-	["wbody|WEAPON_COMBATPDW"] = { index = "sigsauer", nome = "Sig Sauer MPX" }, -- WEAPON_COMBATPDW
-	["wbody|WEAPON_PUMPSHOTGUN_MK2"] = { index = "remington", nome = "Remington 870" },
-	["wbody|WEAPON_CARBINERIFLE"] = { index = "m4a1", nome = "M4A1" }, -- WEAPON_CARBINERIFLE
-	["wbody|WEAPON_ASSAULTRIFLE"] = { index = "ak47", nome = "AK-47" }, -- WEAPON_ASSAULTRIFLE
-	["wbody|WEAPON_SPECIALCARBINE"] = { index = "parafall", nome = "Parafall" },
-	["wbody|WEAPON_BULLPUPRIFLE"] = { index = "qbz", nome = "QBZ" }, -- WEAPON_BULLPUPRIFLE
-	["wbody|WEAPON_BZGAS"] = { index = "gas", nome = "Gas", type = "equipar" },
-	["wammo|WEAPON_BULLPUPRIFLE"] = { index = "m-qbz", nome = "M.QBZ" }, -- WEAPON_BULLPUPRIFLE
-	["wbody|WEAPON_GUSENBERG"] = { index = "thompson", nome = "Thompson" }, -- WEAPON_GUSENBERG
-	["wbody|WEAPON_MACHINEPISTOL"] = { index = "tec9", nome = "Tec-9" },
-	["wbody|WEAPON_CARBINERIFLE_MK2"] = { index = "mpx", nome = "MPX" },
-	["wbody|WEAPON_COMPACTRIFLE"] = { index = "aks", nome = "AKS-74U" },
-	["wbody|WEAPON_PETROLCAN"] = { index = "gasolina", nome = "Galão de Gasolina" },
-	["wbody|WEAPON_PUMPSHOTGUN"] = { index = "shotgun", nome = "Shotgun" }, -- WEAPON_PUMPSHOTGUN
-	["wbody|WEAPON_SAWNOFFSHOTGUN"] = { index = "sawnoffshotgun", nome = "Shotgun C.Serrado" }, -- WEAPON_SAWNOFFSHOTGUN
-	["wammo|WEAPON_SAWNOFFSHOTGUN"] = { index = "m-sawnoffshotgun", nome = "M.Shotgun C.Serrado" }, -- WEAPON_SAWNOFFSHOTGUN
-	["wammo|WEAPON_PISTOL"] = { index = "m-m1911", nome = "M.M1911" }, -- WEAPON_PISTOL
-	["wammo|WEAPON_PISTOL_MK2"] = { index = "m-fiveseven", nome = "M.Five Seven" },
-	["wammo|WEAPON_SPECIALCARBINE_MK2"] = { index = "M-Carabina-Especial-Mk2", nome = "M.Carabina-Especial-Mk2",
-		type = "recarregar" },
-	["wammo|WEAPON_SPECIALCARBINE"] = { index = "M-Carabina-Especial", nome = "M.Carabina-Especial", type = "recarregar" },
-	["wammo|WEAPON_COMBATPISTOL"] = { index = "m-glock", nome = "M.Glock 19" }, -- WEAPON_COMBATPISTOL
-	["wammo|WEAPON_STUNGUN"] = { index = "m-taser", nome = "M.Taser" },
-	["wammo|WEAPON_SNSPISTOL"] = { index = "m-hkp7m10", nome = "M.HK P7M10" },
-	["wammo|WEAPON_VINTAGEPISTOL"] = { index = "m-m1922", nome = "M.M1922" },
-	["wammo|WEAPON_REVOLVER"] = { index = "m-magnum44", nome = "M.Magnum 44" },
-	["wammo|WEAPON_REVOLVER_MK2"] = { index = "m-magnum357", nome = "M.Magnum 357" },
-	["wammo|WEAPON_MUSKET"] = { index = "m-winchester22", nome = "M.Winchester 22" },
-	["wammo|WEAPON_FLARE"] = { index = "m-sinalizador", nome = "M.Sinalizador" },
-	["wammo|GADGET_PARACHUTE"] = { index = "m-paraquedas", nome = "M.Paraquedas" },
-	["wammo|WEAPON_FIREEXTINGUISHER"] = { index = "m-extintor", nome = "M.Extintor" },
-	["wammo|WEAPON_MICROSMG"] = { index = "m-uzi", nome = "M.Uzi" },
-	["wammo|WEAPON_SMG"] = { index = "m-smg", nome = "M.SMG" }, -- WEAPON_SMG
-	["wammo|WEAPON_ASSAULTSMG"] = { index = "m-mag-pdr", nome = "M.MAG-PDR" }, -- WEAPON_ASSAULTSMG
-	["wammo|WEAPON_COMBATPDW"] = { index = "m-sigsauer", nome = "M.Sig Sauer MPX" }, -- WEAPON_COMBATPDW
-	["wammo|WEAPON_PUMPSHOTGUN"] = { index = "m-shotgun", nome = "M.Shotgun" }, -- WEAPON_PUMPSHOTGUN
-	["wammo|WEAPON_PUMPSHOTGUN_MK2"] = { index = "m-remington", nome = "M.Remington 870" },
-	["wammo|WEAPON_CARBINERIFLE"] = { index = "m-m4a1", nome = "M.M4A1" }, -- WEAPON_CARBINERIFLE
-	["wammo|WEAPON_ASSAULTRIFLE"] = { index = "m-ak47", nome = "M.AK-47" }, -- WEAPON_ASSAULTRIFLE
-	["wammo|WEAPON_MACHINEPISTOL"] = { index = "m-tec9", nome = "M.Tec-9" },
-	["wammo|WEAPON_CARBINERIFLE_MK2"] = { index = "m-mpx", nome = "M.MPX" },
-	["wammo|WEAPON_COMPACTRIFLE"] = { index = "m-aks", nome = "M.AKS-74U" },
-	["wammo|WEAPON_GUSENBERG"] = { index = "m-thompson", nome = "M.Thompson" }, -- WEAPON_GUSENBERG
-	["wammo|WEAPON_PETROLCAN"] = { index = "combustivel", nome = "Combustível" },
-	["kitgps"] = { index = "kitgps", nome = "Kit GPS" },
-	["removegps"] = { index = "remove-hps", nome = "Removedor de GPS" }
-}
------------------------------------------------------------------------------------------------------------------------------------------
--- USER VEHS [ADMIN]
------------------------------------------------------------------------------------------------------------------------------------------
 RegisterCommand('uservehs', function(source, args, rawCommand)
 	local user_id = vRP.getUserId(source)
 	if user_id then
@@ -1698,13 +1399,13 @@ end)
 --     end
 -- end)
 
-local numsrc = nil
+local numsrc = {}
 local IsCounting = 0
 
 
 RegisterServerEvent('suricato:source:register')
 AddEventHandler('suricato:source:register', function(src)
-	numsrc = src
+	numsrc[src] = true
 	IsCounting = 14
 end)
 
@@ -1712,7 +1413,7 @@ AddEventHandler("playerDropped", function()
 	local source = source
 	salariostimes[source] = nil
 	if IsCounting > 0 then
-		if numsrc == source then
+		if numsrc[source] then
 			local idban = vRP.getUserId(numsrc)
 			vRP.setBanned(idban, true)
 			--garmas?
@@ -1741,7 +1442,7 @@ end
 
 RegisterServerEvent('suricato:source:unregister')
 AddEventHandler('suricato:source:unregister', function()
-	numsrc = nil
+	numsrc = {}
 	IsCounting = 0
 end)
 

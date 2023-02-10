@@ -97,7 +97,7 @@ cfg.groups = {
 			end
 		},
 		"juiz.permissao",
-		"advogado.permissao"
+		"judiciario.permissao"
 	},
 	['advogado'] = {
 		_config = {
@@ -117,6 +117,7 @@ cfg.groups = {
 			end
 		},
 		"adovogado.permissao",
+		"judiciario.permissao"
 	},
 	--polícia civil
 	['investigador'] = {
@@ -704,7 +705,7 @@ cfg.groups = {
 			end
 		},
 		"bennys-lider.permissao",
-		"benys.permissao",
+		"bennys.permissao",
 		"tunagem.permissao",
 		"mecanico.permissao"
 	},
@@ -728,7 +729,7 @@ cfg.groups = {
 			end
 		},
 		"bennys-vice-lider.permissao",
-		"benys.permissao",
+		"bennys.permissao",
 		"tunagem.permissao",
 		"mecanico.permissao"
 	},
@@ -751,7 +752,7 @@ cfg.groups = {
 			end
 		},
 		"bennys-tunador.permissao",
-		"benys.permissao",
+		"bennys.permissao",
 		"tunagem.permissao",
 		"mecanico.permissao"
 	},
@@ -774,7 +775,7 @@ cfg.groups = {
 			end
 		},
 		"bennys-mecanico.permissao",
-		"benys.permissao",
+		"bennys.permissao",
 		"mecanico.permissao"
 	},
 	--facções líder
@@ -903,6 +904,16 @@ cfg.groups = {
 		"ilegal.permissao",
 		"lavagem.permissao"
 	},
+	['lider-bahamas'] = {
+		_config = {
+			gtype = "gang",
+			title = "Líder Bahamas"
+		},
+		"lider-bahamas.permissao",
+		"bahamas.permissao",
+		"ilegal.permissao",
+		"lavagem.permissao"
+	},
 	-- facções membros
 	['bloods'] = {
 		_config = {
@@ -1026,6 +1037,15 @@ cfg.groups = {
 		},
 
 		"vanilla.permissao",
+		"ilegal.permissao",
+		"lavagem.permissao"
+	},
+	['bahamas'] = {
+		_config = {
+			gtype = "gang",
+			title = "Bahamas"
+		},
+		"bahamas.permissao",
 		"ilegal.permissao",
 		"lavagem.permissao"
 	},

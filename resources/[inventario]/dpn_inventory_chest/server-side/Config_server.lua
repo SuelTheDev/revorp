@@ -60,12 +60,12 @@ ConfigServer = {
     --	["urus"] = { ['name'] = "Lamborghini Urus", ['price'] = 1000000, ['tipo'] = "exclusive" },
     -- O tipo é exclusive então ele pegará 50 slots para esse carro.
     webhook = {
-        send = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        dropar = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        equip = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        casa = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        carro = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        antidupe = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
+        send = "",
+        dropar = "",
+        equip = "",
+        casa = "",
+        carro = "",
+        antidupe = "",
     }, -- Webhook de enviar, dropar e equipar, bau de casa, bau de carro, anti-dump respectivamente
 
     listaDeItens = {
