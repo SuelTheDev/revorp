@@ -53,6 +53,6 @@ Config.FuelUsage = {
 	[0.0] = 0.0,
 }
 
-Config.linkimages = "http://34.95.138.47/imagens/vrp_imagens"
+Config.linkimages = "http://34.95.138.47/imagens/vrp_images"
 Config.imageformat = ".png"
 Config.precolitro = 1 

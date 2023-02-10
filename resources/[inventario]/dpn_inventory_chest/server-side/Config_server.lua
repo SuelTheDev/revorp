@@ -308,6 +308,8 @@ ConfigServer = {
         ["wbody|WEAPON_HEAVYPISTOL"] = { index = "heavypistol", nome = "Pistola Pesada", type = "equipar" },
         ["wbody|WEAPON_SMG_MK2"] = { index = "smgmk2", nome = "SMG Compacta", type = "equipar" },
         ["wbody|WEAPON_BULLPUPSHOTGUN"] = { index = "bullpupshotgun", nome = "Bullpup Shotgun", type = "equipar" },
+        ["wbody|WEAPON_SPECIALCARBINE"] = { index = "g36", nome = "G36", type = "equipar" },
+
         ["wammo|WEAPON_PISTOL"] = { index = "m-m1911", nome = "M.M1911", type = "recarregar", filtro = "arma", funcao = "Recarrega as munição da arma", descricao = "Recarregue as munições da sua arma"  },
         ["wammo|WEAPON_PISTOL_MK2"] = { index = "m-fiveseven", nome = "M.FN Five Seven", filtro = "arma", type = "recarregar", funcao = "Recarrega as munição da arma", descricao = "Recarregue as munições da sua arma" },
         ["wammo|WEAPON_COMBATPISTOL"] = { index = "m-glock", nome = "M.Glock 19", filtro = "arma", type = "recarregar", funcao = "Recarrega as munição da arma", descricao = "Recarregue as munições da sua arma" },

@@ -1587,6 +1587,7 @@ end
 AddEventHandler("entityCreated", function(handle)
 	CreateThread(function()
 		local entity = handle
+		if GetEntityModel(entity) == `prop_amb_phone` then return end
 		Wait(3000)
 		if DoesEntityExist(entity) then
 			if Entity(entity).state.checked then return end

@@ -11,7 +11,7 @@ Config.aviso = "Este script é gratuido, não compre e nem venda ele, vamos tent
 -----------------------------------------------------------------------------------------------------------------------------------------
 
 Config.comwebhook = true --Caso não queira webhook, colocar false
-Config.webhook = "https://discord.com/api/webhooks/1064242144249905202/Gel1mSyaSL_wOsHfRCQQC3fCAaCHh_1v5X2LQh0YPf_oK3fv-M5q5sU3xDgvsLQ_3FQv" -- Webhook Discord para enviar log de VIP`s enviados.
+Config.webhook = "https://discord.com/api/webhooks/1071739401576656967/3MEb8jsgag3XzazcyntEn1EyEMcY5beVKTRAbyHJuCUkUv9fI03sewsDa0rs0FBmfh07" -- Webhook Discord para enviar log de VIP`s enviados.
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 --SETUP

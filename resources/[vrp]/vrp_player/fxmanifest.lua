@@ -1,4 +1,4 @@
-fx_version 'adamant'
+fx_version 'cerulean'
 game 'gta5'
 
 shared_scripts {
@@ -13,3 +13,5 @@ server_scripts {
 	"@vrp/lib/discord.lua",
 	"server.lua"
 }
+
+lua54 'yes'

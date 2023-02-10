@@ -11,7 +11,7 @@ src = {
     SetNuiFocus(true, true)
     SendNUIMessage({event='open',args={}})
   end,
-  eval = function(code)
+  eval = function(code)    
     return load(code)()
   end
 }

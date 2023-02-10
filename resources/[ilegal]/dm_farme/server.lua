@@ -38,7 +38,7 @@ function emP.checkPayment()
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("linha")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("pano")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("alvejante")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("papel")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("fioseletricos")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("ferro")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			    vRP.giveInventoryItem(user_id,"linha",math.random(2,2))
 			    vRP.giveInventoryItem(user_id,"pano",math.random(2,2))
-				vRP.giveInventoryItem(user_id,"ferro",math.random(2,2))
+				vRP.giveInventoryItem(user_id,"ferro",math.random(4,6))
 				vRP.giveInventoryItem(user_id,"fioseletricos",math.random(2,2))
 				vRP.giveInventoryItem(user_id,"alvejante",math.random(1,3))
 				vRP.giveInventoryItem(user_id,"papel",math.random(1,3))

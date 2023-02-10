@@ -2392,6 +2392,7 @@ vehiclePositions = {
 	    
 	  },
     },
+
 -----------------------------GARAGEM VIP BAHAMAS (FILIPE) -------------------------------------------------------------
 
 
@@ -2447,6 +2448,31 @@ vehiclePositions = {
   [1] = { vec3(-1531.19, 891.08, 181.91), h = 193.05 },
 },
 },
+
+[176] = { type = 'public', coords = vec3(-1096.83, 4947.19, 218.36), perm = nil, -- LABORATORIO DE COCA
+	vehiclePositions = {
+	  [1] = { vec3(-1094.0, 4941.78, 218.33), h = 159.02},
+	  
+	},
+  },
+[177] = { type = 'service', coords = vec3(-1553.62, 880.56, 181.35), perm = 'yakuza.permissao',
+  vehiclePositions = {
+	[1] = { vec3(-1548.82, 884.82, 181.3), h = 197.29 },
+  },
+  vehicles = {
+	{ vehicle = 'xtgang', modelo = 'XT Yakuza' },
+	{ vehicle = 'lancerevolutionx', modelo = 'Lancer Evolution Yakuza' },
+	{ vehicle = 'rallytruck', modelo = 'Caminhão Rallye Yakuza' },
+  },
+  },
+[178] = { type = 'service', coords = vec3(-1548.86, 853.37, 183.81), perm = 'lideryakuza.permissao',
+  vehiclePositions = {
+	[1] = { vec3(-1551.66, 845.83, 183.67), h = 116.00 },
+  },
+  vehicles = {
+	{ vehicle = 'buzzard2', modelo = 'Buzard Yakuza' },
+  },
+  },
 
 }
   
