@@ -920,7 +920,6 @@ cfg.groups = {
 			gtype = "gang",
 			title = "Bloods"
 		},
-
 		"bloods.permissao",
 		"ilegal.permissao",
 		"drogas.permissao",
