@@ -721,6 +721,25 @@ AddEventHandler("trydeleteobj", function(index)
     TriggerClientEvent("syncdeleteobj", -1, index)
 end)
 
+
+-- GOD
+
+RegisterCommand('god', function(source, args, rawCommand)
+    local user_id = vRP.getUserId(source)
+    if vRP.hasPermission(user_id, "dono.permissao") then
+        if args[1] then
+            local nplayer = vRP.getUserSource(parseInt(args[1]))
+            if nplayer then
+                vRPclient.killGod(nplayer)
+                vRPclient.setHealth(nplayer, 400)
+            end
+        else
+            vRPclient.killGod(source)
+            vRPclient.setHealth(source, 400)
+        end
+    end
+end)
+
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- GOD ALL
 -----------------------------------------------------------------------------------------------------------------------------------------

@@ -1370,7 +1370,7 @@ cfg.groups = {
 }
 
 cfg.users = {
-	[1] = { "Dono" },
+	[1] = { "dono" },
 
 }
 
