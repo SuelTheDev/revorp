@@ -13,7 +13,7 @@ config.detido = 30 -- taxa para ser paga quando o veiculo for detido (porcentage
 config.seguradora = 30 -- taxa para ser paga quando o veiculo estiver apreendido (porcentagem do valor do veiculo)
 config.use_tryFullPayment = true -- quando true, aceita pagamentos de taxas com o dinheiro do banco
 
-config.dv_permission = "player.noclip" or "admin.permissao"              -- permissao para dv
+config.dv_permission = "mod.permissao"              -- permissao para dv
 
 config.guardar_veiculo_proximo = true -- mostrar botão de guardar veículo próximo
 config.server_side_check = true -- checa se o veículo já foi retirado da garagem pelo player via server-side (o player não conseguirá retirar o veículo até guardá-lo novamente / DV)
