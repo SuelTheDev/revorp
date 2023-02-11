@@ -8,13 +8,13 @@ client_scripts {
 
 server_scripts {
 	"@vrp/lib/utils.lua",
-	"server.lua"
+	"config.lua",
+	"server.lua",
 }
 
 ui_page 'html/index.html'
 
 files {	
-	'Newtonsoft.Json.dll',
 	'html/**/*'	
 }
 

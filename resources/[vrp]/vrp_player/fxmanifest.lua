@@ -10,6 +10,7 @@ client_scripts {
 }
 
 server_scripts {
+	"@vrp/lib/discord.lua",
 	"server.lua"
 }
 

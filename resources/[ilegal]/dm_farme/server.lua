@@ -6,16 +6,6 @@ emP = {}
 local idgens = Tools.newIDGenerator()
 Tunnel.bindInterface("dm_farme",emP)
 vRPclient = Tunnel.getInterface("vRP")
------------------------------------------------------------------------------------------------------------------------------------------
--- WEBHOOK
------------------------------------------------------------------------------------------------------------------------------------------
-local webhookfarme = "webhook"
-
-function SendWebhookMessage(webhook,message)
-	if webhook ~= nil and webhook ~= "" then
-		PerformHttpRequest(webhook, function(err, text, headers) end, 'POST', json.encode({content = message}), { ['Content-Type'] = 'application/json' })
-	end
-end
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- QUANTIDADE
@@ -100,8 +90,7 @@ function emP.checkPayment()
 		elseif vRP.hasPermission(user_id,"cartel.permissao") then
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("armacaodearma")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("pecadearma")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			vRP.giveInventoryItem(user_id,"armacaodearma",math.random(4,6))
-			vRP.giveInventoryItem(user_id,"pecadearma",math.random(4,6))
-			SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: ARMACAO DE ARMA E PEÇA DE ARMA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+			vRP.giveInventoryItem(user_id,"pecadearma",math.random(4,6))			
 		    quantidade[source] = nil
 			return true
 			end
@@ -128,7 +117,7 @@ function emP.MarcarOcorrencia()
 					blips[id] = vRPclient.addBlip(player,x,y,z,10,84,"Ocorrência",0.5,false)
 					vRPclient._playSound(player,"CONFIRM_BEEP","HUD_MINI_GAME_SOUNDSET")
 					TriggerClientEvent('chatMessage',player,"911",{64,64,255},"Recebemos uma denuncia de itens ilegais sendo comerciado, verifique o ocorrido.")
-					SetTimeout(20000,function() vRPclient.removeBlip(player,blips[id]) idgens:free(id) end)
+					SetTimeout(30000,function() vRPclient.removeBlip(player,blips[id]) idgens:free(id) end)
 				end)
 			end
 		end

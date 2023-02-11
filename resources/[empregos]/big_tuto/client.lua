@@ -54,9 +54,9 @@ local pedlist = {
 
 	{70.57, -1757.8, 29.3,58.693,0x3FB5C3D3,"a_m_m_bevhills_02","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- padaria
 
-	{ 536.06, -1840.2, 25.34,251.09,0x75D30A91,"s_m_y_dwservice_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- GAS serviço
-	{ -534.58, -1673.4, 19.37,137.22,0x75D30A91,"s_m_y_dwservice_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- lixeiro
-	{ -543.49, -1682.79, 19.61,306.31,0x75D30A91,"s_m_y_dwservice_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- lixeiro
+	{ 536.06, -1840.2, 25.34,251.09,0x75D30A91,"s_m_m_trucker_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- GAS serviço
+	{ -534.58, -1673.4, 19.37,137.22,0x75D30A91,"s_m_m_trucker_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- lixeiro
+	{ -543.49, -1682.79, 19.61,306.31,0x75D30A91,"s_m_m_trucker_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- lixeiro
 
 	{ 86.6, -1609.41, 30.9,235.25,0x75D30A91,"s_m_y_dwservice_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- mxlog
 	{ 90.69, -1604.51, 30.9,235.25,0x75D30A91,"s_m_y_dwservice_01","anim@heists@heist_corona@single_team","single_team_loop_boss" }, -- mxlog

@@ -24,208 +24,283 @@ config.blacklist      = {
 }
 
 config.groups         = {
-
-    -------------------------------------PM----------------------------------
-    ["PM"] = { --organization name
-    chest       = "pmsp", --chest name of logs
-    bank        = true, --active bank (true|false)
-    members     = 50, --maxmembers of organization
-    blacklist   = {
-        active = false, --active blacklist (true|false)
-        time   = 0, --in days
-    },
-    permissions = {
-        [1] = { inservice = "ComandanteGeral", offservice = false, withdraw = true, manager = true },
-        [2] = { inservice = "TenenteCoronel", offservice = false, withdraw = true, manager = true },
-        [3] = { inservice = "Major", offservice = false, withdraw = false, manager = false },
-        [4] = { inservice = "Capitao", offservice = false, withdraw = false, manager = false },
-        [5] = { inservice = "1Tenente", offservice = false, withdraw = false, manager = false },
-        [6] = { inservice = "2Tenente", offservice = false, withdraw = false, manager = false },
-        [7] = { inservice = "Sargento", offservice = false, withdraw = false, manager = false },
-        [8] = { inservice = "2Sargento", offservice = false, withdraw = false, manager = false },
-        [9] = { inservice = "3Sargento", offservice = false, withdraw = false, manager = false },
-        [10] = { inservice = "Soldado", offservice = false, withdraw = false, manager = false },
-        [11] = { inservice = "Recruta", offservice = false, withdraw = false, manager = false },
-    }
-},  
-
----------------------------------CIVIL------------------------------------------------
-["CIVIL"] = { --organization name
-chest       = "civil", --chest name of logs
-bank        = true, --active bank (true|false)
-members     = 50, --maxmembers of organization
-blacklist   = {
-    active = false, --active blacklist (true|false)
-    time   = 0, --in days
-},
-permissions = {
-    [1] = { inservice = "DelegadoPC", offservice = false, withdraw = true, manager = true },
-    [2] = { inservice = "Escrivao", offservice = false, withdraw = true, manager = false },
-    [3] = { inservice = "Investigador", offservice = false, withdraw = false, manager = false },
-}
-},
-
------------------------------ROTA-------------------------------------------------------
-["ROTA"] = { --organization name
-chest       = "rota", --chest name of logs
-bank        = true, --active bank (true|false)
-members     = 50, --maxmembers of organization
-blacklist   = {
-    active = false, --active blacklist (true|false)
-    time   = 0, --in days
-},
-permissions = {
-    [1] = { inservice = "CoronelRT", offservice = false, withdraw = true, manager = true },
-    [2] = { inservice = "TenCoronelRT", offservice = false, withdraw = true, manager = true },
-    [3] = { inservice = "CapitaoRT", offservice = false, withdraw = false, manager = false },
-    [4] = { inservice = "TenenteRT", offservice = false, withdraw = false, manager = false },
-    [5] = { inservice = "SargentoRT", offservice = false, withdraw = false, manager = false },
-}
-},
-------------------------HOSPITAL-------------------------------------------------------
-["HP"] = { --organization name
-chest       = "hp", --chest name of logs
-bank        = true, --active bank (true|false)
-members     = 50, --maxmembers of organization
-blacklist   = {
-    active = false, --active blacklist (true|false)
-    time   = 0, --in days
-},
-permissions = {
-    [1] = { inservice = "DiretorHP", offservice = false, withdraw = true, manager = true },
-    [2] = { inservice = "ViceDiretorHP", offservice = false, withdraw = true, manager = true },
-    [3] = { inservice = "MedicoChefeHP", offservice = false, withdraw = false, manager = false },
-    [4] = { inservice = "MedicoHP", offservice = false, withdraw = false, manager = false },
-    [5] = { inservice = "EnfermeiroHP", offservice = false, withdraw = false, manager = false },
-}
-},
------------------------LS CUSTONS --------------------------------------------------------
-["LSCUSTONS"] = { --organization name
-chest       = "lscustons", --chest name of logs
-bank        = true, --active bank (true|false)
-members     = 50, --maxmembers of organization
-blacklist   = {
-    active = false, --active blacklist (true|false)
-    time   = 0, --in days
-},
-permissions = {
-    [1] = { inservice = "LiderLS", offservice = false, withdraw = true, manager = true },
-    [2] = { inservice = "ViceLiderLS", offservice = false, withdraw = true, manager = true },
-    [3] = { inservice = "GerenteLS", offservice = false, withdraw = false, manager = false },
-    [4] = { inservice = "TunagemLS", offservice = false, withdraw = false, manager = false },
-    [5] = { inservice = "ReparoLS", offservice = false, withdraw = false, manager = false },
-}
-},
----------------------------BENNYS-------------------------------------------------------------
-["Bennys"] = {
-    chest = "bennys",
-    bank = false,
-    members = 20,
-    blacklist = {
-        active = true,
-        time = 3
-    },
-    permissions = {
-        [1] = { inservice = "LiderBennys", offservice = false, withdraw = true, manager = true },
-        [2] = { inservice = "ViceLiderBennys", offservice = false, withdraw = true, manager = true },
-        [3] = { inservice = "GerenteBennys", offservice = false, withdraw = false, manager = false },
-        [4] = { inservice = "Bennys", offservice = false, withdraw = false, manager = false },
-
-
-    }
-},
-------------------------------------------GANGS-------------------------------------------------------------------------
-["FS"] = { --organization name
-        chest       = "fs", --chest name of logs
-        bank        = true, --active bank (true|false)
-        members     = 20, --maxmembers of organization
-        blacklist   = {
-            active = false, --active blacklist (true|false)
-            time   = 3, --in days
+    ['bloods'] = {
+        chest = "bloods",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
         },
         permissions = {
-            [1] = { inservice = "LiderFS", offservice = false, withdraw = true, manager = true },
-            [2] = { inservice = "ViceLiderFS", offservice = false, withdraw = true, manager = true },
-            [3] = { inservice = "ConselheiroFS", offservice = false, withdraw = false, manager = false },
-            [4] = { inservice = "GoldenBoys", offservice = false, withdraw = false, manager = false },
+            [1] = { inservice = "lider-bloods", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "bloods", offservice = false, withdraw = true, manager = false }
         }
     },
-["CARTEL"] = { --organization name
-    chest       = "cartel", --chest name of logs
-    bank        = true, --active bank (true|false)
-    members     = 20, --maxmembers of organization
-    blacklist   = {
-        active = false, --active blacklist (true|false)
-        time   = 3, --in days
+    ['ballas'] = {
+        chest = "ballas",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-ballas", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "ballas", offservice = false, withdraw = true, manager = false }
+        }
     },
-    permissions = {
-        [1] = { inservice = "LiderCartel", offservice = false, withdraw = true, manager = true },
-        [2] = { inservice = "ViceLiderCartel", offservice = false, withdraw = true, manager = true },
-        [3] = { inservice = "GerenteCartel", offservice = false, withdraw = false, manager = false },
-        [4] = { inservice = "Cartel", offservice = false, withdraw = false, manager = false },
-    }
-},
-["DK"] = { --organization name
-    chest       = "dk", --chest name of logs
-    bank        = true, --active bank (true|false)
-    members     = 20, --maxmembers of organization
-    blacklist   = {
-        active = false, --active blacklist (true|false)
-        time   = 3, --in days
+    ['families'] = {
+        chest = "families",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-families", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "families", offservice = false, withdraw = true, manager = false }
+        }
     },
-    permissions = {
-        [1] = { inservice = "LiderDK", offservice = false, withdraw = true, manager = true },
-        [2] = { inservice = "ViceLiderDK", offservice = false, withdraw = true, manager = true },
-        [3] = { inservice = "GerenteDK", offservice = false, withdraw = false, manager = false },
-        [4] = { inservice = "DK", offservice = false, withdraw = false, manager = false },
-    }
-},
-["VANILLA"] = { --organization name
-    chest       = "vanilla", --chest name of logs
-    bank        = true, --active bank (true|false)
-    members     = 20, --maxmembers of organization
-    blacklist   = {
-        active = false, --active blacklist (true|false)
-        time   = 3, --in days
+    ['yakuza'] = {
+        chest = "yakuza",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-yakuza", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "yakuza", offservice = false, withdraw = true, manager = false }
+        }
     },
-    permissions = {
-        [1] = { inservice = "LiderVanilla", offservice = false, withdraw = true, manager = true },
-        [2] = { inservice = "ViceLiderVanilla", offservice = false, withdraw = true, manager = true },
-        [3] = { inservice = "GerenteVanilla", offservice = false, withdraw = false, manager = false },
-        [4] = { inservice = "Vanilla", offservice = false, withdraw = false, manager = false },
-    }
-},
-["BAHAMAS"] = { --organization name
-    chest       = "bahamas", --chest name of logs
-    bank        = true, --active bank (true|false)
-    members     = 20, --maxmembers of organization
-    blacklist   = {
-        active = false, --active blacklist (true|false)
-        time   = 3, --in days
+    ['driftking'] = {
+        chest = "driftking",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-driftking", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "driftking", offservice = false, withdraw = true, manager = false }
+        }
     },
-    permissions = {
-        [1] = { inservice = "LiderBahamas", offservice = false, withdraw = true, manager = true },
-        [2] = { inservice = "ViceLiderBahamas", offservice = false, withdraw = true, manager = true },
-        [3] = { inservice = "GerenteBahamas", offservice = false, withdraw = false, manager = false },
-        [4] = { inservice = "Bahamas", offservice = false, withdraw = false, manager = false },
-    }
-},
-["YAKUZA"] = { --organization name
-    chest       = "yakuza", --chest name of logs
-    bank        = true, --active bank (true|false)
-    members     = 20, --maxmembers of organization
-    blacklist   = {
-        active = false, --active blacklist (true|false)
-        time   = 3, --in days
+    ['motoclub'] = {
+        chest = "motoclub",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-motoclub", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "motoclub", offservice = false, withdraw = true, manager = false }
+        }
     },
-    permissions = {
-        [1] = { inservice = "LiderYakuza", offservice = false, withdraw = true, manager = true },
-        [2] = { inservice = "ViceLiderYakuza", offservice = false, withdraw = true, manager = true },
-        [3] = { inservice = "GerenteYakuza", offservice = false, withdraw = false, manager = false },
-        [4] = { inservice = "Yakuza", offservice = false, withdraw = false, manager = false },
-    }
-}
-
+    ['bratva'] = {
+        chest = "bratva",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-bratva", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "bratva", offservice = false, withdraw = true, manager = false }
+        }
+    },
+    ['cartel'] = {
+        chest = "cartel",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-cartel", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "cartel", offservice = false, withdraw = true, manager = false }
+        }
+    },
+    ['mafia'] = {
+        chest = "mafia",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-mafia", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "mafia", offservice = false, withdraw = true, manager = false }
+        }
+    },
+    ['vagos'] = {
+        chest = "vagos",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-vagos", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "vagos", offservice = false, withdraw = true, manager = false }
+        }
+    },
+    ['triads'] = {
+        chest = "triads",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-triads", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "triads", offservice = false, withdraw = true, manager = false }
+        }
+    },
+    ['vanilla'] = {
+        chest = "vanilla",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-vanilla", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "vanilla", offservice = false, withdraw = true, manager = false }
+        }
+    },
+    ['bahamas'] = {
+        chest = "bahamas",
+        bank = true,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "lider-bahamas", offservice = false, withdraw = true, manager = true },
+            [2] = { inservice = "bahamas", offservice = false, withdraw = true, manager = false }
+        }
+    },
+    ['judiciario'] = {
+        chest = false,
+        bank = false,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "juiz", offservice = "off-juiz", withdraw = false, manager = true },
+            [2] = { inservice = "advogado", offservice = "off-advogado", withdraw = false, manager = false },
+        }
+    },
+    ['hospital'] = {
+        chest = false,
+        bank = true,
+        members = 50,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "diretor", offservice = "off-diretor", withdraw = false, manager = true },
+            [2] = { inservice = "vice-diretor", offservice = "off-vice-diretor", withdraw = false, manager = true },
+            [3] = { inservice = "socorrista", offservice = "off-socorrista", withdraw = false, manager = true },
+            [4] = { inservice = "medico", offservice = "off-medico", withdraw = false, manager = false },
+            [5] = { inservice = "enfermeiro", offservice = "off-enfermeiro", withdraw = false, manager = false },
+        }
+    },
+    ['policia-rota'] = {
+        chest = "policia-rota",
+        bank = false,
+        members = 50,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "coronel", offservice = "off-coronel", withdraw = false, manager = true },
+            [2] = { inservice = "tenente-coronel", offservice = "off-tenente-coronel", withdraw = false, manager = false },
+            [3] = { inservice = "rota-capitao", offservice = "off-rota-capitao", withdraw = false, manager = false },
+            [4] = { inservice = "rota-tenente", offservice = "off-rota-tenente", withdraw = false, manager = false },
+            [5] = { inservice = "rota-sargento", offservice = "off-rota-sargento", withdraw = false, manager = false },
+        }
+    },
+    ['policia-militar'] = {
+        chest = "policia-militar",
+        bank = false,
+        members = 50,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "comandante-geral", offservice = "off-comandante-geral", withdraw = false, manager = true },
+            [2] = { inservice = "pm-tenente-coronel", offservice = "off-pm-tenente-coronel", withdraw = false, manager = false },
+            [3] = { inservice = "major", offservice = "off-major", withdraw = false, manager = false },
+            [4] = { inservice = "pm-capitao", offservice = "off-pm-capitao", withdraw = false, manager = false },
+            [5] = { inservice = "pm-tenente", offservice = "off-pm-tenente", withdraw = false, manager = false },
+            [6] = { inservice = "pm-sargento", offservice = "off-pm-sargento", withdraw = false, manager = false },
+            [7] = { inservice = "soldado", offservice = "off-soldado", withdraw = false, manager = false },
+            [8] = { inservice = "recruta", offservice = "off-recruta", withdraw = false, manager = false },
+        }
+    },
+    ['policia-civil'] = {
+        chest = "policia-civil",
+        bank = false,
+        members = 50,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "delegado", offservice = "off-delegado", withdraw = false, manager = true },
+            [2] = { inservice = "escrivao", offservice = "off-escrivao", withdraw = false, manager = false },
+            [3] = { inservice = "investigador", offservice = "off-investigador", withdraw = false, manager = false },
+        }
+    },
+    ['bennys'] = {
+        chest = false,
+        bank = false,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "bennys-lider", offservice = "off-bennys-lider", withdraw = false, manager = true },
+            [2] = { inservice = "bennys-vice-lider", offservice = "off-bennys-vice-lider", withdraw = false, manager = true },
+            [3] = { inservice = "bennys-tunador", offservice = "off-bennys-tunador", withdraw = false, manager = false },
+            [4] = { inservice = "bennys-mecanico", offservice = "off-bennys-mecanico", withdraw = false, manager = false },
+        }
+    },
+    ['lossantos'] = {
+        chest = false,
+        bank = false,
+        members = 20,
+        blacklist = {
+            active = true,
+            time = 3
+        },
+        permissions = {
+            [1] = { inservice = "ls-lider", offservice = "off-ls-lider", withdraw = false, manager = true },
+            [2] = { inservice = "ls-vice-lider", offservice = "off-ls-vice-lider", withdraw = false, manager = true },
+            [3] = { inservice = "ls-tunador", offservice = "off-ls-tunador", withdraw = false, manager = false },
+            [4] = { inservice = "ls-mecanico", offservice = "off-", withdraw = false, manager = false },
+        }
+    },
 }
 
 config.starttablet    = function()
