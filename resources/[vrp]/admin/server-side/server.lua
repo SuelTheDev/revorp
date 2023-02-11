@@ -30,7 +30,7 @@ local function MakeCommandLog(command, identity, id, message)
             value = message
         }
     end
-
+    print(json.encode(l))
     return l
 end
 -- TPTO
@@ -39,16 +39,17 @@ RegisterCommand('item', function(source, args, rawCommand)
     local user_id = vRP.getUserId(source)
     if vRP.hasPermission(user_id, "dono.permissao") then
         local item = args[1]
-        local quantidade = args[2] or 0
-        if item and quantidade > 0 then
+        local quantidade = parseInt( args[2] ) or 0
+        if item and quantidade > 0 then            
             if vRP.itemBodyList(item) then
                 vRP.giveInventoryItem(user_id, item, quantidade)
                 local identity = vRP.getUserIdentity(user_id)
                 Discord:SendWebhook(Discord.webhooks['admin:command'],
                     MakeCommandLog('item', identity, user_id,
                         ("Pegou %d de [%s] %s"):format(quantidade, item, vRP.itemNameList(item))), true)
+            else
+                return TriggerClientEvent("Notify", source, "negado", "Item " .. item .. " não existe no servidor.")
             end
-            return TriggerClientEvent("Notify", source, "negado", "Item " .. item .. " não existe no servidor.")
         end
     end
 end)
@@ -251,16 +252,17 @@ end)
 RegisterCommand('group', function(source, args, rawCommand)
     local user_id = vRP.getUserId(source)
 
-    if vRP.hasPermission(user_id, "staff-commando.permissao") then
+    if vRP.hasPermission(user_id, "admin.permissao") then
         if args[1] and args[2] then
-            if not vRP.isGroupRegistered(args[2]) then
+            if not vRP.isGroupRegistered(args[2]:lower()) then
                 return TriggerClientEvent("Notify", source, "negado", "Grupo não registrado no servidor.")
             end
-            vRP.addUserGroup(parseInt(args[1]), args[2])
+            vRP.addUserGroup(parseInt(args[1]), args[2]:lower())
+            TriggerClientEvent("Notify", source, "sucesso", "ID: " .. args[1] .. " adicionado para o grupo " .. args[2])
             local identity = vRP.getUserIdentity(user_id)
             Discord:SendWebhook(Discord.webhooks['admin:command'],
                 MakeCommandLog('group', identity, user_id,
-                    ("Adicionou o Jogador %s no Grupo %s"):fomrat(args[1], args[2])), true)
+                    ("Adicionou o Jogador %s no Grupo %s"):format(args[1], args[2])), true)
         end
     end
 end)
@@ -269,13 +271,14 @@ end)
 
 RegisterCommand('ungroup', function(source, args, rawCommand)
     local user_id = vRP.getUserId(source)
-    if vRP.hasPermission(user_id, "staff-commando.permissao") then
+    if vRP.hasPermission(user_id, "admin.permissao") then
         if args[1] and args[2] then
             vRP.removeUserGroup(parseInt(args[1]), args[2])
+            TriggerClientEvent("Notify", source, "sucesso", "ID: " .. args[1] .. " removido do grupo " .. args[2])
             local identity = vRP.getUserIdentity(user_id)
             Discord:SendWebhook(Discord.webhooks['admin:command'],
                 MakeCommandLog('ungroup', identity, user_id,
-                    ("Retirou o Jogador %s do Grupo %s"):fomrat(args[1], args[2])), true)
+                    ("Retirou o Jogador %s do Grupo %s"):format(args[1], args[2])), true)
         end
     end
 end)
@@ -292,9 +295,10 @@ RegisterCommand('wl', function(source, args, rawCommand)
         if args[1] then
             vRP.setWhitelisted(parseInt(args[1]), true)
             local identity = vRP.getUserIdentity(user_id)
+            TriggerClientEvent("Notify", source, "sucesso", "WL liberada para o ID: " .. args[1])
             Discord:SendWebhook(Discord.webhooks['admin:command'],
                 MakeCommandLog('wl', identity, user_id,
-                    ("Liberou o Jogador %s"):fomrat(args[1])), true)
+                    ("Liberou o Jogador %s"):format(args[1])), true)
         end
     end
 end)
@@ -307,9 +311,10 @@ RegisterCommand('unwl', function(source, args, rawCommand)
         if args[1] then
             vRP.setWhitelisted(parseInt(args[1]), false)
             local identity = vRP.getUserIdentity(user_id)
+            TriggerClientEvent("Notify", source, "sucesso", "ID: " .. args[1] .. " teve sua WL removida.")
             Discord:SendWebhook(Discord.webhooks['admin:command'],
                 MakeCommandLog('unwl', identity, user_id,
-                    ("Retirou o Jogador %s"):fomrat(args[1])), true)
+                    ("Retirou o Jogador %s"):format(args[1])), true)
         end
     end
 end)
@@ -327,9 +332,10 @@ RegisterCommand('ban', function(source, args, rawCommand)
         if args[1] then
             vRP.setBanned(parseInt(args[1]), true)
             local identity = vRP.getUserIdentity(user_id)
+            TriggerClientEvent("Notify", source, "sucesso", "ID: " .. args[1] .. " foi banido.")
             Discord:SendWebhook(Discord.webhooks['admin:command'],
                 MakeCommandLog('ban', identity, user_id,
-                    ("Baniu o Jogador %s"):fomrat(args[1])), true)
+                    ("Baniu o Jogador %s"):format(args[1])), true)
         end
     end
 end)
@@ -343,9 +349,10 @@ RegisterCommand('unban', function(source, args, rawCommand)
         if args[1] then
             vRP.setBanned(parseInt(args[1]), false)
             local identity = vRP.getUserIdentity(user_id)
+            TriggerClientEvent("Notify", source, "sucesso", "ID: " .. args[1] .. " foi desbanido.")
             Discord:SendWebhook(Discord.webhooks['admin:command'],
                 MakeCommandLog('unban', identity, user_id,
-                    ("Desbaniu o Jogador %s"):fomrat(args[1])), true)
+                    ("Desbaniu o Jogador %s"):format(args[1])), true)
         end
     end
 end)
