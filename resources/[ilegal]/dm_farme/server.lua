@@ -60,7 +60,7 @@ function emP.checkPayment()
 			end
 			
 
-		elseif vRP.hasPermission(user_id,"fs.permissao") or vRP.hasPermission(user_id,"fs.permissao") then
+		elseif vRP.hasPermission(user_id,"mafia.permissao") then
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("polvora")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("capsula")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			vRP.giveInventoryItem(user_id,"polvora",math.random(5,6))
 			vRP.giveInventoryItem(user_id,"capsula",math.random(5,6))

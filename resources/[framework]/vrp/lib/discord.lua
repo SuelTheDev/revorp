@@ -1,5 +1,5 @@
 Discord = {}
-Discord.active_logs = false
+Discord.active_logs = true
 Discord.webhooks = {
     ['admin:command'] = "https://discord.com/api/webhooks/1073210123574575134/v3WBMmbMCK3DI6hXy_3HAiNC-4Xfb15NEOoq7HyXfznPhrHB-9PCwnXeim7fCkiwtxaI",
     ['admin:anuncio'] = "https://discord.com/api/webhooks/1073210276469542922/IbVzhC_k8p_tQANZC5eedrlZ_d_qyAb4ivfT7ewTjn4Rln_VMYnQeAOstm3u3AR3JmjD",
