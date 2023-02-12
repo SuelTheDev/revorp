@@ -42,7 +42,7 @@ function emP.checkPayment()
 				vRP.giveInventoryItem(user_id,"fioseletricos",math.random(2,2))
 				vRP.giveInventoryItem(user_id,"alvejante",math.random(1,3))
 				vRP.giveInventoryItem(user_id,"papel",math.random(1,3))
-				SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: LINHA E PANO "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+				-- SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: LINHA E PANO "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
 				quantidade[source] = nil
 				return true
 			end
@@ -54,7 +54,7 @@ function emP.checkPayment()
 			vRP.giveInventoryItem(user_id,"capsula",math.random(1,8))
 			vRP.giveInventoryItem(user_id,"armacaodearma",math.random(1,8))
 			vRP.giveInventoryItem(user_id,"pecadearma",math.random(1,8))
-			SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: FERRO , POLVORA E LOG DE INVASAO "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+			-- SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: FERRO , POLVORA E LOG DE INVASAO "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
 		    quantidade[source] = nil
 			return true
 			end
@@ -64,7 +64,7 @@ function emP.checkPayment()
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("polvora")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("capsula")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			vRP.giveInventoryItem(user_id,"polvora",math.random(5,6))
 			vRP.giveInventoryItem(user_id,"capsula",math.random(5,6))
-			SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: POLVORA E CAPSULA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+			-- SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: POLVORA E CAPSULA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
 		    quantidade[source] = nil
 			return true
 		    end
@@ -72,7 +72,7 @@ function emP.checkPayment()
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("alvejante")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("papel")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			vRP.giveInventoryItem(user_id,"alvejante",math.random(1,3))
 			vRP.giveInventoryItem(user_id,"papel",math.random(1,3))
-			SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: POLVORA E CAPSULA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+			-- SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: POLVORA E CAPSULA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
 		    quantidade[source] = nil
 			return true
 		    end
@@ -81,7 +81,7 @@ function emP.checkPayment()
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("fioseletricos")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("ferro")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			vRP.giveInventoryItem(user_id,"fioseletricos",math.random(2,3))
 			vRP.giveInventoryItem(user_id,"ferro",math.random(2,3))
-			SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: ARMACAO DE ARMA E PEÇA DE ARMA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
+			-- SendWebhookMessage(webhookfarme,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[ROTA FARME RECEBEU]: ARMACAO DE ARMA E PEÇA DE ARMA "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
 		    quantidade[source] = nil
 			return true
 			end
