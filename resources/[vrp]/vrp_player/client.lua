@@ -1141,7 +1141,7 @@ function AddTextEntry(key, value)
 end
 
 Citizen.CreateThread(function()
-  AddTextEntry('FE_THDR_GTAO', '~h~SNT STORE  |  RP DE VERDADE É AQUI, BEM VINDO!! |')
+  AddTextEntry('FE_THDR_GTAO', 'SEJA BEM VINDO AO~h~ASGARD ROLEPLAY  |  RP LEVADO SERIO!')
 end)
 ------------------------------------------------ MATAR EM 1 HS
 Citizen.CreateThread(function()

@@ -244,7 +244,7 @@ local itemlist = {
 	["molas"] = { index = "molas", nome = "Molas", type = "usar" },
 	["placa-metal"] = { index = "placa-metal", nome = "Placa de Metal", type = "usar" },
 	["gatilho"] = { index = "gatilho", nome = "Gatilho", type = "usar" },
-	["capsulas"] = { index = "capsulas", nome = "Capsulas", type = "usar" },
+	["capsula"] = { index = "capsula", nome = "Capsula", type = "usar" },
 	["polvora"] = { index = "polvora", nome = "Polvora", type = "usar" },
 
 	--[MUNIÇÂO]---
