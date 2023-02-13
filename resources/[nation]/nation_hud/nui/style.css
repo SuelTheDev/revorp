@@ -13,16 +13,16 @@ body {
 
 .logo {
     position: absolute;
-    right: 3vh; top: 3vh;
-    width: 35vh;
-    height: 35vh;
+    right: 1vh; top: 1vh;
+    width: 20vh;
+    height: 20vh;
     transform: rotateY(0deg);
     left: 0; right: 0; top: 1vh; margin: auto;
     opacity: .7;
 }
 
 .logo img {
-    width: 100%;
+    width: 80%;
 }
 
 .logo-animation {

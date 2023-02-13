@@ -1525,44 +1525,7 @@ cfg.groups = {
 
 	--------------------------------------- Bennys
 
-	["LiderBennys"] = {
-		_config = {
-			title = "Lider Bennys",
-			gtype = "job"
-		},
-		"liderBennys.permissao",
-		"Bennys.permissao",
-		"gBennys.permissao",
-		"player.blips"
-	},
-	["ViceLiderBennys"] = {
-		_config = {
-			title = "Vice Lider Bennys",
-			gtype = "job"
-		},
-		"viceliderBennys.permissao",
-		"Bennys.permissao",
-		"gBennys.permissao",
-		"player.blips"
-	},
-	["GerenteBennys"] = {
-		_config = {
-			title = "Gerente Bennys",
-			gtype = "job"
-		},
-		"gerenteBennys.permissao",
-		"Bennys.permissao",
-		"gBennys.permissao",
-		"player.blips"
-	},
-	["Bennys"] = {
-		_config = {
-			title = "Membro Bennys",
-			gtype = "job"
-		},
-		"Bennys.permissao",
-		"player.blips"
-	},
+	
 
 
 

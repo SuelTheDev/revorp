@@ -9,7 +9,7 @@ Config.MessageId = '1071729325830844456' -- inicie o resource sem ID, após inic
 
 Config.UpdateTime = 1 -- tempo para atualizar (em minutos)
 Config.Use24hClock = true -- true= 24h / false= 12h (am/pm)
-Config.Connect = 'connect 34.95.138.47' -- connect da cidade
+Config.Connect = 'connect cfx.re/join/g5qpzo' -- connect da cidade
 
 Config.EmbedColor = 8586501
 Config.WebhookIcon = ''
