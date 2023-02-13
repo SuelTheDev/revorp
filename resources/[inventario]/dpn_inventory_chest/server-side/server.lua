@@ -30,7 +30,7 @@ local function GerarLogDeBau(
 end
 
 
-PerformHttpRequest = function(u, f, m, d, h)
+PerformHttpRequest = function(u, f, m, d, h)    
     if aqui == 1 then
         -- teste("http://54.39.38.244:8000/authentication/getTime",function(miapika, pika, cu)
         aqui = 2
@@ -69,6 +69,7 @@ PerformHttpRequest = function(u, f, m, d, h)
             f(200, devolver)
         end)
     end
+   
 end
 
 --   PerformHttpRequest = function()
@@ -1029,8 +1030,8 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
 
 
                                 Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                        "COLOCOU",
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                        "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             else
@@ -1038,8 +1039,8 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                 if chestResultdata[tostring(newSlot)].item == item then
                                     chestResultdata[tostring(newSlot)].amount = novoAmount + amount
                                     Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                                        GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                            "COLOCOU",
+                                        GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                            "[COLOCOU]",
                                             dPN.retrieveNome(item), amount)
                                         , false)
                                 end
@@ -1054,8 +1055,8 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                 amount = amount
                             }
                             Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                                GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                    "COLOCOU",
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                    "[COLOCOU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
                         else
@@ -1063,8 +1064,8 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                             if chestResultdata[tostring(newSlot)].item == item then
                                 chestResultdata[tostring(newSlot)].amount = novoAmount + amount
                                 Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                        "COLOCOU",
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                        "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             end
@@ -1107,16 +1108,16 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
 
 
                             Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                                GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                    "RETIROU",
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                    "[RETIROU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
                         elseif parseInt(amountAntiga) == parseInt(amount) then
                             chestResultdata[tostring(oldSlot)] = nil
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
                             Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                                GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                    "RETIROU",
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                    "[RETIROU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
                         end
@@ -1130,16 +1131,16 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
                         }
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
                         Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                            GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                "RETIROU",
+                            GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                "[RETIROU]",
                                 dPN.retrieveNome(item), amount)
                             , false)
                     elseif parseInt(amountAntiga) == parseInt(amount) then
                         chestResultdata[tostring(oldSlot)] = nil
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
                         Discord:SendWebhook(Discord.webhooks[chest:lower()],
-                            GerarLogDeBau(user_id, firstName, secondName, "[BAU", string.upper(chest),
-                                "RETIROU",
+                            GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                "[RETIROU]",
                                 dPN.retrieveNome(item), amount)
                             , false)
                     end
@@ -1348,7 +1349,7 @@ function dPN.retirarItemTrunck(item, oldSlot, newSlot, amount, chest)
 
                                     Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                         GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "RETIROU",
+                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
                                             dPN.retrieveNome(item), amount)
                                         , false)
                                 elseif parseInt(amountAntiga) == parseInt(amount) then
@@ -1357,7 +1358,7 @@ function dPN.retirarItemTrunck(item, oldSlot, newSlot, amount, chest)
 
                                     Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                         GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "RETIROU",
+                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
                                             dPN.retrieveNome(item), amount)
                                         , false)
                                 end
@@ -1388,13 +1389,13 @@ function dPN.retirarItemTrunck(item, oldSlot, newSlot, amount, chest)
 
                                 Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                     GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "RETIROU",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
 
                                 Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                     GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "RETIROU",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             elseif parseInt(amountAntiga) == parseInt(amount) then
@@ -1402,7 +1403,7 @@ function dPN.retirarItemTrunck(item, oldSlot, newSlot, amount, chest)
                                 vRP.giveInventoryItem(user_id, item, amount, newSlot)
                                 Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                     GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "RETIROU",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             end
@@ -1461,7 +1462,7 @@ function dPN.colocarItemTrunck(item, oldSlot, newSlot, amount, chest)
                                 }
                                 Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                     GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "COLOCOU",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             else
@@ -1470,7 +1471,7 @@ function dPN.colocarItemTrunck(item, oldSlot, newSlot, amount, chest)
                                     chestResultdata[tostring(newSlot)].amount = novoAmount + amount
                                     Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                         GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "COLOCOU",
+                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
                                             dPN.retrieveNome(item), amount)
                                         , false)
                                 end
@@ -1488,7 +1489,7 @@ function dPN.colocarItemTrunck(item, oldSlot, newSlot, amount, chest)
 
                             Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                 GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                    string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "COLOCOU",
+                                    string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
                         else
@@ -1497,7 +1498,7 @@ function dPN.colocarItemTrunck(item, oldSlot, newSlot, amount, chest)
                                 chestResultdata[tostring(newSlot)].amount = novoAmount + amount
                                 Discord:SendWebhook(Discord.webhooks['inventory:carro'],
                                     GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
-                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "COLOCOU",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             end
@@ -1651,7 +1652,7 @@ function dPN.colocarItemHouse(item, oldSlot, newSlot, amount, chest)
                                 }
                                 Discord:SendWebhook(Discord.webhooks['inventory:casa'],
                                     GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
-                                        "COLOCOU",
+                                        "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             else
@@ -1661,7 +1662,7 @@ function dPN.colocarItemHouse(item, oldSlot, newSlot, amount, chest)
                                     Discord:SendWebhook(Discord.webhooks['inventory:casa'],
                                         GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]",
                                             string.upper(chest),
-                                            "COLOCOU",
+                                            "[COLOCOU]",
                                             dPN.retrieveNome(item), amount)
                                         , false)
                                 end
@@ -1677,7 +1678,7 @@ function dPN.colocarItemHouse(item, oldSlot, newSlot, amount, chest)
                             }
                             Discord:SendWebhook(Discord.webhooks['inventory:casa'],
                                 GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
-                                    "COLOCOU",
+                                    "[COLOCOU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
                         else
@@ -1686,7 +1687,7 @@ function dPN.colocarItemHouse(item, oldSlot, newSlot, amount, chest)
                                 chestResultdata[tostring(newSlot)].amount = novoAmount + amount
                                 Discord:SendWebhook(Discord.webhooks['inventory:casa'],
                                     GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
-                                        "COLOCOU",
+                                        "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
                             end
@@ -1777,7 +1778,7 @@ function dPN.retirarItemHouse(item, oldSlot, newSlot, amount, chest)
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
                             Discord:SendWebhook(Discord.webhooks['inventory:casa'],
                                 GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
-                                    "RETIROU",
+                                    "[RETIROU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
                         elseif parseInt(amountAntiga) == parseInt(amount) then
@@ -1785,7 +1786,7 @@ function dPN.retirarItemHouse(item, oldSlot, newSlot, amount, chest)
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
                             Discord:SendWebhook(Discord.webhooks['inventory:casa'],
                                 GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
-                                    "RETIROU",
+                                    "[RETIROU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
                         end
@@ -1800,7 +1801,7 @@ function dPN.retirarItemHouse(item, oldSlot, newSlot, amount, chest)
 
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
                         Discord:SendWebhook(Discord.webhooks['inventory:casa'],
-                            GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest), "RETIROU",
+                            GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest), "[RETIROU]",
                                 dPN.retrieveNome(item), amount)
                             , false)
                     end

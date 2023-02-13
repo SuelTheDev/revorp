@@ -1,5 +1,5 @@
 Discord = {}
-Discord.active_logs = false
+Discord.active_logs = true
 Discord.webhooks = {
     ['admin:command'] = "https://discord.com/api/webhooks/1073210123574575134/v3WBMmbMCK3DI6hXy_3HAiNC-4Xfb15NEOoq7HyXfznPhrHB-9PCwnXeim7fCkiwtxaI",
     ['admin:anuncio'] = "https://discord.com/api/webhooks/1073210276469542922/IbVzhC_k8p_tQANZC5eedrlZ_d_qyAb4ivfT7ewTjn4Rln_VMYnQeAOstm3u3AR3JmjD",
@@ -61,8 +61,10 @@ Discord.getTimestamp = function()
     return os.date("!%Y-%m-%dT%XZ")
 end
 
-function Discord:SendWebhook(webhooklink, data, isembed)
+local send = PerformHttpRequest
 
+function Discord:SendWebhook(webhooklink, data, isembed)
+    print(json.encode(data), webhooklink)
     if not Discord.active_logs then return end
     if webhooklink and data then
         local message
@@ -71,9 +73,9 @@ function Discord:SendWebhook(webhooklink, data, isembed)
         else
             message = { content = data }
         end
-        PerformHttpRequest(webhooklink,
+        send(webhooklink,
             function(e, t, h)
-              
+              print(e, h, t)
             end, 'POST', json.encode(message),
             { ['Content-Type'] = 'application/json' })
     end
