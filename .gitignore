@@ -16,3 +16,6 @@ fivem-server/
 /server.cfg
 *.ini
 server.cfg.bkp
+build/
+resources/[addon]/uf-daily/NAO_TOCAR.json
+resources/[addon]/uf-daily/NAO_TOCAR.json

@@ -50,8 +50,6 @@ Config = {
 		-- (EN) Permissions for no property tax
 		noTax = {
 			"gold.permissao",
-			"ultimate.permissao",
-			"ruby.permissao",
 			"platina.permissao",
 		},
 	},

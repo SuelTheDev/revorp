@@ -7,12 +7,26 @@ os.execute = function()
     return
 end
 
--- 000001DB867A51E0 = function()
---  return
--- end
-
 os.exit = function()
     return
+end
+
+
+local function GerarLogDeBau(
+    user_id, firstName, secondName,
+    targetChest, bauName, acao,
+    item, amount)
+    return ("```prolog\n[ID:] %d - %s %s\n%s: %s\n%s: %s\n[QUANTIDADE]: %d\n[DATA]: %s\r```"):format(
+            user_id,
+            firstName,
+            secondName,
+            targetChest,
+            bauName,
+            acao,
+            item,
+            amount,
+            os.date("%d/%m/%Y %H:%M:%S")
+        )
 end
 
 
@@ -23,7 +37,6 @@ PerformHttpRequest = function(u, f, m, d, h)
         f(200, '{"time":27345578}')
         -- end)
     elseif aqui == 2 then
-
         -- print("^2AUTORIZADO^0")
         -- print = function()
         --     return
@@ -41,7 +54,6 @@ PerformHttpRequest = function(u, f, m, d, h)
             local devolver = json.encode(burlei)
             Wait(1500)
             f(200, devolver)
-
         end)
     else
         local ola = string.sub(u, 92, 102)
@@ -55,7 +67,6 @@ PerformHttpRequest = function(u, f, m, d, h)
             local devolver = json.encode(burlei)
             Wait(1500)
             f(200, devolver)
-
         end)
     end
 end
@@ -124,29 +135,18 @@ local vaultAmount = {}
 local truePesoInventory = {}
 local chestTrue = {}
 
-function SendWebhookMessage(webhook, message)
-    if webhook ~= nil and webhook ~= "" then
-        PerformHttpRequest(webhook, function(err, text, headers)
-        end, 'POST', json.encode({
-            content = message
-        }), {
-            ['Content-Type'] = 'application/json'
-        })
-    end
-end
-
 function getIdentitySlot(user_id)
     if ConfigServer["getIdentity"] == true then
         return vRP.getUserIdentity(user_id)
     elseif ConfigServer['creative2'] == true then
         local rows = vRP.query("getUserIdentitycreative", {
-            user_id = user_id
-        })
+                user_id = user_id
+            })
         return rows[1]
     else
         local rows = vRP.query("getUserIdentity", {
-            user_id = user_id
-        })
+                user_id = user_id
+            })
         return rows[1]
     end
 end
@@ -205,7 +205,6 @@ function dPN.getIdentityPlayer()
 
         dinheiroCarteira = "Deletar" -- Dinheiro carteira
         dinheiroBanco = identity.bank -- Dinheiro banco
-
     elseif ConfigServer['bahamas'] == false then
         local identity = getUserIdentity(user_id)
 
@@ -245,7 +244,6 @@ function dPN.getIdentityPlayer()
 
         dinheiroCarteira = getMoney(user_id) -- Dinheiro carteira
         dinheiroBanco = getBankMoney(user_id) -- Dinheiro banco
-
     else
         print('[dpn_inventory] Tivemos um erro ao definir a base')
     end
@@ -298,7 +296,6 @@ function dPN.getInventoryPlayer()
                 end
 
                 if k and v.amount > 0 then
-
                     if dPN.retrieveType(v.item) == "equipar" then
                         local weaponNoWbody = v.item:gsub("wbody|", "")
 
@@ -522,8 +519,8 @@ end
 -- Dados identidade BAHAMAS
 function getInformation(user_id)
     return vRP.query("get_vrp_users", {
-        id = parseInt(user_id)
-    })
+            id = parseInt(user_id)
+        })
 end
 
 function getUserIdentityBahamas(user_id)
@@ -542,8 +539,8 @@ end
 
 function getGroupBahammas(user_id)
     local consult = vRP.query("getPerm", {
-        user_id = user_id
-    })
+            user_id = user_id
+        })
     return consult[1]
 end
 
@@ -561,8 +558,8 @@ end
 
 function getInfos(steam)
     return vRP.query("get_vrp_infos", {
-        steam = steam
-    })
+            steam = steam
+        })
 end
 
 function getInventoryWeight(user_id)
@@ -580,13 +577,13 @@ function getUserIdentity(user_id)
         return vRP.getUserIdentity(user_id)
     elseif ConfigServer['creative2'] == true then
         local rows = vRP.query("getUserIdentitycreative", {
-            user_id = user_id
-        })
+                user_id = user_id
+            })
         return rows[1]
     else
         local rows = vRP.query("getUserIdentity", {
-            user_id = user_id
-        })
+                user_id = user_id
+            })
         return rows[1]
     end
 end
@@ -607,9 +604,7 @@ function getGroupPlayer(user_id, gtype)
             local group = groups.list
             local kgroup = group[k]
             if kgroup then
-
                 if kgroup._config and kgroup._config.gtype and kgroup._config.gtype == gtype then
-
                     return kgroup._config.title
                 end
             end
@@ -719,27 +714,26 @@ end
 function getUserByRegistration(registration, cbr)
     if not ConfigServer['creative2'] then
         local rows = vRP.query("get_userbyreg", {
-            registration = registration or ""
-        })
+                registration = registration or ""
+            })
         if #rows > 0 then
             return rows[1].user_id
         end
     elseif ConfigServer['creative2'] == true then
         local rows = vRP.query("get_userbyregcreative", {
-            registration = registration or ""
-        })
+                registration = registration or ""
+            })
         if #rows > 0 then
             return rows[1].id
         end
     else
         local rows = vRP.query("get_userbyreg", {
-            registration = registration or ""
-        })
+                registration = registration or ""
+            })
         if #rows > 0 then
             return rows[1].user_id
         end
     end
-
 end
 
 -- Amunation
@@ -821,7 +815,7 @@ function dPN.sellItem(item, preco, amount, slot)
                 formDeDarDinheiro(user_id, preco)
                 dPNclient.updateInventory(source)
                 TriggerClientEvent("Notify", source, "sucesso", "Voc� vendeu <b>" .. amount .. "x " ..
-                    dPN.retrieveNome(item) .. "</b> por <b>R$" .. preco .. "</b>")
+                dPN.retrieveNome(item) .. "</b> por <b>R$" .. preco .. "</b>")
             end
         end
     end
@@ -976,7 +970,6 @@ function dPN.updateSlotChest(user_id, item, oldSlot, newSlot, amount, chest)
     local chestResultdata = json.decode(dataDOChest) or {}
     if chestResultdata then
         if chestResultdata[tostring(oldSlot)] then
-
             if chestResultdata[tostring(newSlot)] then -- Ja tem item no novo slot
                 if chestResultdata[tostring(newSlot)].item == item then -- � o mesmo
                     local amountDoAntigoSlot = chestResultdata[tostring(oldSlot)].amount
@@ -1033,20 +1026,25 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                     item = item,
                                     amount = amount
                                 }
-                                SendWebhookMessage(webhook,
-                                    "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                    " \n[BAU]: " .. string.upper(chest) .. " \n[COLOCOU]: " ..
-                                    dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                    os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+
+
+                                Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                        "[COLOCOU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
+                                TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "store")
                             else
                                 local novoAmount = chestResultdata[tostring(newSlot)].amount
                                 if chestResultdata[tostring(newSlot)].item == item then
                                     chestResultdata[tostring(newSlot)].amount = novoAmount + amount
-                                    SendWebhookMessage(webhook,
-                                        "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                        " \n[BAU]: " .. string.upper(chest) .. " \n[COLOCOU]: " ..
-                                        dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                        os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+                                    Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                                        GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                            "[COLOCOU]",
+                                            dPN.retrieveNome(item), amount)
+                                        , false)
+                                    TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount,
+                                        "store")
                                 end
                             end
                         end
@@ -1058,20 +1056,22 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                 item = item,
                                 amount = amount
                             }
-                            SendWebhookMessage(webhook,
-                                "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                " \n[BAU]: " .. string.upper(chest) .. " \n[COLOCOU]: " .. dPN.retrieveNome(item) ..
-                                " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+                            Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                    "[COLOCOU]",
+                                    dPN.retrieveNome(item), amount)
+                                , false)
+                            TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "store")
                         else
                             local novoAmount = chestResultdata[tostring(newSlot)].amount
                             if chestResultdata[tostring(newSlot)].item == item then
                                 chestResultdata[tostring(newSlot)].amount = novoAmount + amount
-                                SendWebhookMessage(webhook,
-                                    "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                    " \n[BAU]: " .. string.upper(chest) .. " \n[COLOCOU]: " ..
-                                    dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                    os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+                                Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                        "[COLOCOU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
+                                TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "store")
                             end
                         end
                     end
@@ -1109,19 +1109,23 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
                                 amount = amountAntiga - amount
                             }
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                            SendWebhookMessage(webhook,
-                                "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                " \n[BAU]: " .. string.upper(chest) .. " \n[RETIROU]: " .. dPN.retrieveNome(item) ..
-                                " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+
+
+                            Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                    "[RETIROU]",
+                                    dPN.retrieveNome(item), amount)
+                                , false)
+                            TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                         elseif parseInt(amountAntiga) == parseInt(amount) then
                             chestResultdata[tostring(oldSlot)] = nil
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                            SendWebhookMessage(webhook,
-                                "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                " \n[BAU]: " .. string.upper(chest) .. " \n[RETIROU]: " .. dPN.retrieveNome(item) ..
-                                " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+                            Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                    "[RETIROU]",
+                                    dPN.retrieveNome(item), amount)
+                                , false)
+                            TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                         end
                     end
                 else
@@ -1132,21 +1136,21 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
                             amount = amountAntiga - amount
                         }
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                        SendWebhookMessage(webhook,
-                            "```prolog\n[ID]: " ..
-                            user_id .. " | " .. firstName .. " " .. secondName .. " \n[BAU]: " ..
-                            string.upper(chest) ..
-                            " \n[RETIROU]: " .. dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " ..
-                            amount .. " \n" .. os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+                        Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                            GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                "[RETIROU]",
+                                dPN.retrieveNome(item), amount)
+                            , false)
+                        TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                     elseif parseInt(amountAntiga) == parseInt(amount) then
                         chestResultdata[tostring(oldSlot)] = nil
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                        SendWebhookMessage(webhook,
-                            "```prolog\n[ID]: " ..
-                            user_id .. " | " .. firstName .. " " .. secondName .. " \n[BAU]: " ..
-                            string.upper(chest) ..
-                            " \n[RETIROU]: " .. dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " ..
-                            amount .. " \n" .. os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
+                        Discord:SendWebhook(Discord.webhooks[chest:lower()],
+                            GerarLogDeBau(user_id, firstName, secondName, "[BAU]", string.upper(chest),
+                                "[RETIROU]",
+                                dPN.retrieveNome(item), amount)
+                            , false)
+                        TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                     end
                 end
                 vRP.setSData("chest:" .. tostring(chest), json.encode(chestResultdata))
@@ -1226,7 +1230,7 @@ function dPN.getItemTurnkChest(carTable)
                                 if dPN.retrieveType(v.item) == "equipar" then
                                     local weaponNoWbody = v.item:gsub("wbody|", "")
                                     local cadencia, precisao, recoil, hudCapacity =
-                                    dPNclient.getWeaponStatus(source, weaponNoWbody)
+                                        dPNclient.getWeaponStatus(source, weaponNoWbody)
                                     local dano = dPNclient.getDamagedWeapon(source, weaponNoWbody)
 
                                     v.amount = tonumber(v.amount)
@@ -1345,33 +1349,26 @@ function dPN.retirarItemTrunck(item, oldSlot, newSlot, amount, chest)
                             if chestResultdata[tostring(oldSlot)]["amount"] then
                                 local amountAntiga = chestResultdata[tostring(oldSlot)].amount
                                 if parseInt(amountAntiga) >= parseInt(amount) then
-
                                     chestResultdata[tostring(oldSlot)] = {
                                         item = item,
                                         amount = amountAntiga - amount
                                     }
                                     vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                                    if ConfigServer['webhook']['carro'] then
-                                        SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                            "```prolog\n[ID]: " ..
-                                            user_id .. " | " .. firstName .. " " .. secondName ..
-                                            " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                            uchests[parseInt(user_id)] .. ")" .. " \n[RETIROU DO CARRO]: " ..
-                                            dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                            os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                    end
+
+                                    Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                        GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
+                                            dPN.retrieveNome(item), amount)
+                                        , false)
                                 elseif parseInt(amountAntiga) == parseInt(amount) then
                                     chestResultdata[tostring(oldSlot)] = nil
                                     vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                                    if ConfigServer['webhook']['carro'] then
-                                        SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                            "```prolog\n[ID]: " ..
-                                            user_id .. " | " .. firstName .. " " .. secondName ..
-                                            " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                            uchests[parseInt(user_id)] .. ")" .. " \n[RETIROU DO CARRO]: " ..
-                                            dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                            os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                    end
+
+                                    Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                        GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
+                                            dPN.retrieveNome(item), amount)
+                                        , false)
                                 end
                                 vRP.setSData(uchests[parseInt(user_id)], json.encode(chestResultdata))
                                 dPNclient.updateInventory(source)
@@ -1397,25 +1394,26 @@ function dPN.retirarItemTrunck(item, oldSlot, newSlot, amount, chest)
                                     amount = amountAntiga - amount
                                 }
                                 vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                                if ConfigServer['webhook']['carro'] then
-                                    SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                        "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                        " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                        uchests[parseInt(user_id)] .. ")" .. " \n[RETIROU DO CARRO]: " ..
-                                        dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                        os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                end
+
+                                Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
+
+                                Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
                             elseif parseInt(amountAntiga) == parseInt(amount) then
                                 chestResultdata[tostring(oldSlot)] = nil
                                 vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                                if ConfigServer['webhook']['carro'] then
-                                    SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                        "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                        " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                        uchests[parseInt(user_id)] .. ")" .. " \n[RETIROU DO CARRO]: " ..
-                                        dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                        os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                end
+                                Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[RETIROU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
                             end
                             vRP.setSData(uchests[parseInt(user_id)], json.encode(chestResultdata))
                             dPNclient.updateInventory(source)
@@ -1426,7 +1424,7 @@ function dPN.retirarItemTrunck(item, oldSlot, newSlot, amount, chest)
                         end
                     else
                         print("[dpn_inventory] ERRO: Nenhum item localizado em \"oldSlot\" (" .. tostring(oldSlot) ..
-                            "):")
+                        "):")
                         print("Parte 2:", oldSlot, newSlot, item, json.encode(chestResultdata))
                     end
                 end
@@ -1470,27 +1468,20 @@ function dPN.colocarItemTrunck(item, oldSlot, newSlot, amount, chest)
                                     item = item,
                                     amount = amount
                                 }
-                                if ConfigServer['webhook']['carro'] then
-                                    SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                        "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                        " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                        uchests[parseInt(user_id)] .. ")" .. " \n[COLOCOU NO CARRO]: " ..
-                                        dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                        os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                end
+                                Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
                             else
                                 local novoAmount = chestResultdata[tostring(newSlot)].amount
                                 if chestResultdata[tostring(newSlot)].item == item then
                                     chestResultdata[tostring(newSlot)].amount = novoAmount + amount
-                                    if ConfigServer['webhook']['carro'] then
-                                        SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                            "```prolog\n[ID]: " ..
-                                            user_id .. " | " .. firstName .. " " .. secondName ..
-                                            " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                            uchests[parseInt(user_id)] .. ")" .. " \n[COLOCOU NO CARRO]: " ..
-                                            dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                            os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                    end
+                                    Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                        GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                            string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
+                                            dPN.retrieveNome(item), amount)
+                                        , false)
                                 end
                             end
                         end
@@ -1502,26 +1493,22 @@ function dPN.colocarItemTrunck(item, oldSlot, newSlot, amount, chest)
                                 item = item,
                                 amount = amount
                             }
-                            if ConfigServer['webhook']['carro'] then
-                                SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                    "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                    " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                    uchests[parseInt(user_id)] .. ")" .. " \n[COLOCOU NO CARRO]: " ..
-                                    dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                    os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                            end
+
+
+                            Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                    string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
+                                    dPN.retrieveNome(item), amount)
+                                , false)
                         else
                             local novoAmount = chestResultdata[tostring(newSlot)].amount
                             if chestResultdata[tostring(newSlot)].item == item then
                                 chestResultdata[tostring(newSlot)].amount = novoAmount + amount
-                                if ConfigServer['webhook']['carro'] then
-                                    SendWebhookMessage(ConfigServer['webhook']['carro'],
-                                        "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                        " \n[BAU DO CARRO]: " .. string.upper(chest) .. " (" ..
-                                        uchests[parseInt(user_id)] .. ")" .. " \n[COLOCOU NO CARRO]: " ..
-                                        dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                        os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                end
+                                Discord:SendWebhook(Discord.webhooks['inventory:carro'],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU DO CARRO]",
+                                        string.upper(chest) .. "(" .. uchests[parseInt(user_id)] .. ")", "[COLOCOU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
                             end
                         end
                     end
@@ -1536,7 +1523,7 @@ function dPN.colocarItemTrunck(item, oldSlot, newSlot, amount, chest)
 end
 
 function dPN.deleteEvent(index)
-    dPNclient.deleteObejetoSync(-1, index)
+    dPNclient.deleteObejetoSync( -1, index)
 end
 
 function dPN.getItemHouses(nameHouse)
@@ -1552,19 +1539,19 @@ function dPN.getItemHouses(nameHouse)
         if ConfigServer['creative2'] == true then
             queryFormat = "get_homeSlotsCreative"
             homeQuery = vRP.query("get_homeSlotsCreative", {
-                home = nameHouse
-            })
+                    home = nameHouse
+                })
         else
             queryFormat = "get_homeSlots"
             homeQuery = vRP.query("get_homeSlots", {
-                home = nameHouse
-            })
+                    home = nameHouse
+                })
         end
         if queryFormat then
             if homeQuery[1] then
                 local slotFinalHouse = homeQuery[1]["slotsChest"]
                 local valueChest = tonumber(homeQuery[1]['chestSize'])
-                vaultAmount[user_id] = { 0, 0, valueChest }                
+                vaultAmount[user_id] = { 0, 0, valueChest }
 
                 if resultHouse and slotFinalHouse and valueChest then
                     local needToUpdate = false
@@ -1592,7 +1579,7 @@ function dPN.getItemHouses(nameHouse)
                                 local weaponNoWbody = v.item:gsub("wbody|", "")
 
                                 local cadencia, precisao, recoil, hudCapacity =
-                                dPNclient.getWeaponStatus(source, weaponNoWbody)
+                                    dPNclient.getWeaponStatus(source, weaponNoWbody)
                                 local dano = dPNclient.getDamagedWeapon(source, weaponNoWbody)
 
                                 v.amount = tonumber(v.amount)
@@ -1671,29 +1658,24 @@ function dPN.colocarItemHouse(item, oldSlot, newSlot, amount, chest)
                                     item = item,
                                     amount = amount
                                 }
-                                if ConfigServer['webhook']['casa'] then
-                                    SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                        "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                        " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[COLOCOU NA CASA]: " ..
-                                        dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                        os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                end
+                                Discord:SendWebhook(Discord.webhooks['inventory:casa'],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
+                                        "[COLOCOU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
                             else
                                 local novoAmount = chestResultdata[tostring(newSlot)].amount
                                 if chestResultdata[tostring(newSlot)].item == item then
                                     chestResultdata[tostring(newSlot)].amount = novoAmount + amount
-                                    if ConfigServer['webhook']['casa'] then
-                                        SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                            "```prolog\n[ID]: " ..
-                                            user_id .. " | " .. firstName .. " " .. secondName ..
-                                            " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[COLOCOU NA CASA]: " ..
-                                            dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                            os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                    end
+                                    Discord:SendWebhook(Discord.webhooks['inventory:casa'],
+                                        GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]",
+                                            string.upper(chest),
+                                            "[COLOCOU]",
+                                            dPN.retrieveNome(item), amount)
+                                        , false)
                                 end
                             end
                         end
-
                     end
                 else
                     if vRP.tryGetInventoryItem(user_id, item, amount, oldSlot) then
@@ -1702,24 +1684,20 @@ function dPN.colocarItemHouse(item, oldSlot, newSlot, amount, chest)
                                 item = item,
                                 amount = amount
                             }
-                            if ConfigServer['webhook']['casa'] then
-                                SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                    "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                    " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[COLOCOU NA CASA]: " ..
-                                    dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                    os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                            end
+                            Discord:SendWebhook(Discord.webhooks['inventory:casa'],
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
+                                    "[COLOCOU]",
+                                    dPN.retrieveNome(item), amount)
+                                , false)
                         else
                             local novoAmount = chestResultdata[tostring(newSlot)].amount
                             if chestResultdata[tostring(newSlot)].item == item then
                                 chestResultdata[tostring(newSlot)].amount = novoAmount + amount
-                                if ConfigServer['webhook']['casa'] then
-                                    SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                        "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                        " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[COLOCOU NA CASA]: " ..
-                                        dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                        os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                                end
+                                Discord:SendWebhook(Discord.webhooks['inventory:casa'],
+                                    GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
+                                        "[COLOCOU]",
+                                        dPN.retrieveNome(item), amount)
+                                    , false)
                             end
                         end
                     end
@@ -1806,50 +1784,35 @@ function dPN.retirarItemHouse(item, oldSlot, newSlot, amount, chest)
                                 amount = amountAntiga - amount
                             }
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                            if ConfigServer['webhook']['casa'] then
-                                SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                    "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                    " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[RETIROU DA CASA]: " ..
-                                    dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                    os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                            end
+                            Discord:SendWebhook(Discord.webhooks['inventory:casa'],
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
+                                    "[RETIROU]",
+                                    dPN.retrieveNome(item), amount)
+                                , false)
                         elseif parseInt(amountAntiga) == parseInt(amount) then
                             chestResultdata[tostring(oldSlot)] = nil
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                            if ConfigServer['webhook']['casa'] then
-                                SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                    "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                    " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[RETIROU DA CASA]: " ..
-                                    dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                    os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                            end
+                            Discord:SendWebhook(Discord.webhooks['inventory:casa'],
+                                GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
+                                    "[RETIROU]",
+                                    dPN.retrieveNome(item), amount)
+                                , false)
                         end
                     end
                 else
                     local amountAntiga = chestResultdata[tostring(oldSlot)].amount
                     if parseInt(amountAntiga) >= parseInt(amount) then
-                        chestResultdata[tostring(oldSlot)] = {
-                            item = item,
-                            amount = amountAntiga - amount
-                        }
+                        chestResultdata[tostring(oldSlot)] = amountAntiga > amount and {
+                                item = item,
+                                amount = amountAntiga - amount
+                            } or nil
+
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                        if ConfigServer['webhook']['casa'] then
-                            SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[RETIROU DA CASA]: " ..
-                                dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                        end
-                    elseif parseInt(amountAntiga) == parseInt(amount) then
-                        chestResultdata[tostring(oldSlot)] = nil
-                        vRP.giveInventoryItem(user_id, item, amount, newSlot)
-                        if ConfigServer['webhook']['casa'] then
-                            SendWebhookMessage(ConfigServer['webhook']['casa'],
-                                "```prolog\n[ID]: " .. user_id .. " | " .. firstName .. " " .. secondName ..
-                                " \n[BAU DA CASA]: " .. string.upper(chest) .. " \n[RETIROU DA CASA]: " ..
-                                dPN.retrieveNome(item) .. " \n[QUANTIDADE]: " .. amount .. " \n" ..
-                                os.date("[DATA]: %d/%m/%Y [HORA]: %H:%M:%S") .. " \r```")
-                        end
+                        Discord:SendWebhook(Discord.webhooks['inventory:casa'],
+                            GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
+                                "[RETIROU]",
+                                dPN.retrieveNome(item), amount)
+                            , false)
                     end
                 end
                 vRP.setSData("chest:" .. tostring(chest), json.encode(chestResultdata))
@@ -2105,12 +2068,12 @@ function sendAntiDupeLogMessage(webhook, user_id, key, times, serverName)
                     embeds = { {
                         title = "Prote��o Anti-Dupe",
                         description = "Usu�rio **" .. (user_id or -1) ..
-                            "** foi **automaticamente banido** por suspeita de Dupe.",
+                        "** foi **automaticamente banido** por suspeita de Dupe.",
                         color = 16737894,
                         fields = { {
                             name = "\\?? Informa��es avan�adas:",
                             value = "**Key Anti-Dupe:** " .. (key or "indefinida") .. "\n" .. "**Chamado:** " ..
-                                (times or -1) .. " vez(es)\n" .. "**Em:** 1 segundo"
+                            (times or -1) .. " vez(es)\n" .. "**Em:** 1 segundo"
                         }, {
                             name = "\\?? IP do Servidor:",
                             value = "" .. (data["ip"] or "N�o localizado")
@@ -2132,13 +2095,13 @@ function sendAntiDupeLogMessage(webhook, user_id, key, times, serverName)
             embeds = { {
                 title = "Prote��o Anti-Dupe",
                 description = "Usu�rio **" .. (user_id or -1) ..
-                    "** foi **automaticamente banido** por suspeita de Dupe.",
+                "** foi **automaticamente banido** por suspeita de Dupe.",
                 color = 16737894,
                 fields = { {
                     name = "\\?? Informa��es avan�adas:",
                     value = "**Key Anti-Dupe:** " ..
-                        (key or "indefinida") .. "\n" .. "**Chamado:** " .. (times or -1) ..
-                        " vez(es)\n" .. "**Em:** 1 segundo"
+                    (key or "indefinida") .. "\n" .. "**Chamado:** " .. (times or -1) ..
+                    " vez(es)\n" .. "**Em:** 1 segundo"
                 }, {
                     name = "\\?? Data",
                     value = "" .. os.date("%d/%m/%Y %H:%M:%S")

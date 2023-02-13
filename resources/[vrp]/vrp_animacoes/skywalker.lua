@@ -15,7 +15,7 @@ end)
 
 RegisterCommand('e2', function(source,args,rawCommand)
 	local user_id = vRP.getUserId(source)
-	if vRP.hasPermission(user_id, "administrador.permissao") or vRP.hasPermission(user_id, "manager.permissao") then
+	if vRP.hasPermission(user_id, "admin.permissao") then
 		local nplayer = vRPclient.getNearestPlayer(source,2)
 		if nplayer then
 			TriggerClientEvent("emotes",nplayer,args[1])
@@ -28,7 +28,7 @@ end)
 RegisterCommand('e3', function(source,args,rawCommand)
     local source = source
     local user_id = vRP.getUserId(source)
-    if vRP.hasPermission(user_id,"mindmaster.permissao") then
+    if vRP.hasPermission(user_id,"admin.permissao") then
         if args[2] then
             local nplayer = vRP.getUserSource(parseInt(args[2]))
             if nplayer then

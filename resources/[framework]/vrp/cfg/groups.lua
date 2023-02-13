@@ -1,1634 +1,1375 @@
 local cfg = {}
 
+local blipService = {
+	policia = { name = "Policial", color = 47 },
+	mecanico = { name = "Mecânico", color = 54 },
+	hospital = { name = "Médico", color = 1 },
+}
+
 cfg.groups = {
-	["Dono"] = {		
+	['dono'] = {
+		_config = {
+			off = "off-dono",
+			gtype = "staff",
+			onjoin = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você entrou em serviço de Staff como Dono.")
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço de Staff.")
+			end
+		},
+		"staff-commando.permissao",
+		"staff-commando2.permissao",
+		"staff.permissao",
 		"dono.permissao",
 		"admin.permissao",
 		"mod.permissao",
 		"suporte.permissao",
 		"wl.permissao",
-		"polpar.permissao",
-		"ticket.permissao",
-		"wall.permissao",
 		"instagram.verificado",
-		"prop.permissao",
-		"imune.permissao",
-		"player.noclip"
-
+		"staff-anuncio.permissao",
+		"roupas.permissao"
 	},
-	["OffDono"] = {
-		"offdono.permissao",
-		"sem.permissao"
-
-
-	},
-	["Admin"] = {
+	['admin'] = {
+		_config = {
+			off = "off-admin",
+			gtype = "staff",
+			salary = 5000,
+			onjoin = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você entrou em serviço de Staff como Administrador.")
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço de Staff.")
+			end
+		},
+		"staff-commando.permissao",
+		"staff-commando2.permissao",
+		"staff.permissao",
 		"admin.permissao",
 		"mod.permissao",
 		"suporte.permissao",
-		"instagram.verificado",
 		"wl.permissao",
-		"polpar.permissao",
-		"wall.permissao",
-		"prop.permissao",
-		"imune.permissao",
-		"ticket.permissao",
-		"player.noclip"
-
+		"staff-anuncio.permissao",
+		"roupas.permissao"
 	},
-	["OffAdmin"] = {
-		"offadmin.permissao",
-		"sem.permissao"
-
-
-	},
-	["Mod"] = {
+	['mod'] = {
+		_config = {
+			off = "off-mod",
+			gtype = "staff",
+			salary = 3000,
+			onjoin = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você entrou em serviço de Staff como Moderador.")
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço de Staff.")
+			end
+		},
+		"staff-commando2.permissao",
+		"staff.permissao",
 		"mod.permissao",
 		"suporte.permissao",
 		"wl.permissao",
-		"instagram.verificado",
-		"polpar.permissao",
-		"wall.permissao",
-		"ticket.permissao",
-		"imune.permissao",
-		"player.noclip"
-
 	},
-	["OffMod"] = {
-		"offmod.permissao",
-		"sem.permissao"
-	},
-	["Suporte"] = {
+	['suporte'] = {
+		_config = {
+			gtype = "staff",
+			salary = 2500
+		},
+		"staff.permissao",
 		"suporte.permissao",
 		"wl.permissao",
-		"instagram.verificado",
-		"ticket.permissao",
-		"imune.permissao",
-		"player.noclip"
-
 	},
-	["OffSuporte"] = {
-		"offsuporte.permissao",
-		"sem.permissao"
-	},
-	["Whitelist"] = {
-		"wl.permissao"
-	},
-	-----------------------------------------------------
-	["Juiza"] = {
+	['juiz'] = {
 		_config = {
-			title = "Juiza",
-			gtype = "alt"
+			gtype = "job",
+			title = "juiz(a)",
+			salary = 5000,
+			off = "off-juiz",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Juíz" or "Juíza"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"juiza.permissao",
-		"portadp.permissao",
-		"sem.permissao"
+		"juiz.permissao",
+		"judiciario.permissao"
 	},
-	["News"] = {
+	['advogado'] = {
 		_config = {
-			title = "News",
-			gtype = "job"
+			gtype = "job",
+			title = "Advogado (a)",
+			salary = 3500,
+			off = "off-advogado",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Advogado" or "Advogada"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"news.permissao",
-		"sem.permissao"
+		"adovogado.permissao",
+		"judiciario.permissao"
 	},
-	["paintball"] = {
+	--polícia civil
+	['investigador'] = {
 		_config = {
-			title = "paintball",
-			gtype = "paintball"
-		},
-		"paintball.permissao",		
-		"garmas.permissao",
-		"sem.permissao"
-	},
-	["Vendedor"] = {
-		_config = {
-			title = "Vendedor",
-			gtype = "altl"
-		},
-		"vendedor.permissao",
-		"sem.permissao"
-	},
-	["Advogado"] = {
-		_config = {
-			title = "Advogado",
-			gtype = "alt"
-		},
-		"advogado.permissao",
-		"sem.permissao"
-	},
-	----------- Departamentod e Policia -----------------
-	-----------------------------------------------------
-
-	-- Recruta
-	["Recruta"] = {
-		_config = {
-			title = "Recruta",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"garmas.permissao",
-		"recruta.servico",
-		"recruta.arsenal",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["PaisanaRecruta"] = {
-		_config = {
-			title = "Recruta Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"recruta.folga",
-		"sem.permissao"
-	},
-	["Soldado"] = {
-		_config = {
-			title = "Soldado",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"garmas.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"cabo.permissao",
-		"recruta.arsenal",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["PaisanaSoldado"] = {
-		_config = {
-			title = "Soldado Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanacabo.permissao",
-		"sem.permissao"
-	},
-	["3Sargento"] = {
-		_config = {
-			title = "3º Sargento",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"garmas.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"major.permissao",
-		"recruta.arsenal",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["Paisana3Sargento"] = {
-		_config = {
-			title = "3º Sargento Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanamajor.permissao",
-		"sem.permissao"
-	},
-	["2Sargento"] = {
-		_config = {
-			title = "2º Sargento",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"garmas.permissao",
-		"polpar.permissao",
-		"soldesarg.arsenal",
-		"portadp.permissao",
-		"soldado.servico",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["Paisana2Sargento"] = {
-		_config = {
-			title = "2º Sargento Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"soldado.folga",
-		"sem.permissao"
-	},
-	-- Sargento
-	["Sargento"] = {
-		_config = {
-			title = "1º Sargento",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"garmas.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"soldesarg.arsenal",
-		"sargento.servico",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["PaisanaSargento"] = {
-		_config = {
-			title = "1º Sargento Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"sargento.folga",
-		"sem.permissao"
-	},
-	-- Tenete
-	["2Tenente"] = {
-		_config = {
-			title = "2º Tenente",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"polpar.permissao",
-		"garmas.permissao",
-		"portadp.permissao",
-		"tenenteecoronel.arsenal",
-		"tenente.servico",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["Paisana2Tenente"] = {
-		_config = {
-			title = "2º Tenente Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"tenente.folga",
-		"sem.permissao"
-	},
-	-- Capitão
-	["1Tenente"] = {
-		_config = {
-			title = "1º Tenente",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"garmas.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"capitaoecoronel.arsenal",
-		"capitao.servico",
-		"sniper.permissao",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["Paisana1Tenente"] = {
-		_config = {
-			title = "1º Tenente Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"capitao.folga",
-		"sem.permissao"
-	},
-	["Capitao"] = {
-		_config = {
-			title = "Capitão",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"polpar.permissao",
-		"pmerj.permissao",
-		"garmas.permissao",
-		"portadp.permissao",
-		"tenenteecoronel.arsenal",
-		"coronel.servico",
-		"player.noclip",
-		"sniper.permissao",
-		"sem.permissao"
-	},
-	["PaisanaCapitao"] = {
-		_config = {
-			title = "Capitao Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"coronel.folga",
-		"sem.permissao"
-	},
-	["Major"] = {
-		_config = {
-			title = "Major",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"polpar.permissao",
-		"pmerj.permissao",
-		"garmas.permissao",
-		"portadp.permissao",
-		"aspirante.permissao",
-		"player.noclip",
-		"sniper.permissao",
-		"sem.permissao"
-	},
-	["PaisanaMajor"] = {
-		_config = {
-			title = "Major Folga",
-			gtype = "job"
-		},
-		"paisanaaspirante.permissao",
-		"sem.permissao"
-	},
-	["TenenteCoronel"] = {
-		_config = {
-			title = "Tenente Coronel",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"comandantegeral.permissao",
-		"garmas.permissao",
-		"player.noclip",
-		"sniper.permissao"
-	},
-	["PaisanaTenenteCoronel"] = {
-		_config = {
-			title = "Tenente Coronel Folga",
-			gtype = "job"
-		},
-		"paisanacomandantegeral.permissao",
-		"sem.permissao"
-	},
-
-	["ComandanteGeral"] = {
-		_config = {
-			title = "Coronel Comand. Geral",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"comandantegeral.permissao",
-		"garmas.permissao",
-		"player.noclip",
-		"sniper.permissao"
-	},
-	["PaisanaComandanteGeral"] = {
-		_config = {
-			title = "Coronel Comand. Geral Folga",
-			gtype = "job"
-		},
-		"paisanacomandantegeral.permissao",
-		"sem.permissao"
-	},
-
-	-----------------------------------------------------------------
-	------------------- Policia civil
-	-----------------------------------------------------------------
-	["Investigador"] = {
-		_config = {
+			gtype = "job",
 			title = "Investigador",
-			gtype = "job"
+			salary = 3500,
+			off = "off-investigador",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Investigador" or "Investigadora"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"policia.permissao",
 		"investigador.permissao",
-		"player.noclip",
-		"garmas.permissao",
-		"polpar.permissao",
-		"sem.permissao"
+		"policia.permissao",
+		"policia-civil.permissao"
 	},
-	["PaisanaInvestigador"] = {
+	['escrivao'] = {
 		_config = {
-			title = "Investigador Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanainvestigador.permissao",
-		"sem.permissao"
-	},
-	["Escrivao"] = {
-		_config = {
+			gtype = "job",
 			title = "Escrivão",
-			gtype = "job"
+			salary = 5500,
+			off = "off-escrivao",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Escrivão" or "Escrivã"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"policia.permissao",
-		"garmas.permissao",
 		"escrivao.permissao",
-		"polpar.permissao",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["PaisanaEscrivao"] = {
-		_config = {
-			title = "Escrivão Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanaescrivao.permissao",
-		"sem.permissao"
-	},
-	["DelegadoPC"] = {
-		_config = {
-			title = "Delegado Policia Civil",
-			gtype = "job"
-		},
 		"policia.permissao",
-		"garmas.permissao",
-		"delegadopc.permissao",
-		"polpar.permissao",
-		"player.noclip",
-		"sem.permissao"
+		"policia-civil.permissao"
 	},
-	["PaisanaDelegadoPC"] = {
+	['delegado'] = {
 		_config = {
-			title = "Delegado PC Folga",
-			gtype = "job"
+			gtype = "job",
+			title = "Delegado",
+			salary = 9000,
+			off = "off-delegado",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Delegado" or "Delegada"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanapolicia.permissao",
-		"paisanadelegadopc.permissao",
-		"sem.permissao"
+		"delegado.permissao",
+		"policia.permissao",
+		"policia-civil.permissao"
 	},
-	-----------------------------------------------------
-	---------------- BAEP -------------------------------
-	-----------------------------------------------------
+	--polícia rota
+	['rota-sargento'] = {
+		_config = {
+			gtype = "job",
+			title = "Sargento",
+			salary = 9500,
+			off = "off-rota-sargento",
+			onjoin = function(source)
+				local cargo = "Sargento"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"rota-sargento.permissao",
+		"policia.permissao",
+		"policia-rota.permissao"
+	},
+	['rota-tenente'] = {
+		_config = {
+			gtype = "job",
+			title = "Tenente",
+			salary = 11500,
+			off = "off-rota-tenente",
+			onjoin = function(source)
+				local cargo = "Tenente"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"rota-tenente.permissao",
+		"policia.permissao",
+		"policia-rota.permissao"
+	},
+	['rota-capitao'] = {
+		_config = {
+			gtype = "job",
+			title = "Capitão",
+			salary = 12500,
+			off = "off-rota-capitao",
+			onjoin = function(source)
+				local cargo = "Capitão"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"rota-capitao.permissao",
+		"policia.permissao",
+		"policia-rota.permissao"
+	},
+	['tenente-coronel'] = {
+		_config = {
+			gtype = "job",
+			title = "Tenente Coronel",
+			salary = 14500,
+			off = "off-tenente-coronel",
+			onjoin = function(source)
+				local cargo = "Tenente Coronel"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"tenente-coronel.permissao",
+		"policia.permissao",
+		"policia-rota.permissao"
+	},
+	['coronel'] = {
+		_config = {
+			gtype = "job",
+			title = "Coronel",
+			salary = 16500,
+			off = "off-coronel",
+			onjoin = function(source)
+				local cargo = "Coronel"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"coronel.permissao",
+		"policia.permissao",
+		"policia-rota.permissao"
+	},
+	--polícia militar
+	['recruta'] = {
+		_config = {
+			gtype = "job",
+			title = "Recruta",
+			salary = 4500,
+			off = "off-recruta",
+			onjoin = function(source)
+				local cargo = "Recruta"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"recruta.permissao",
+		"policia.permissao",
+		"policia-militar.permissao"
+	},
+	['soldado'] = {
+		_config = {
+			gtype = "job",
+			title = "Soldado",
+			salary = 7500,
+			off = "off-soldado",
+			onjoin = function(source)
+				local cargo = "Soldado"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"soldado.permissao",
+		"policia.permissao",
+		"policia-militar.permissao"
+	},
+	['pm-sargento'] = {
+		_config = {
+			gtype = "job",
+			title = "Sargento",
+			salary = 9500,
+			off = "off-pm-sargento",
+			onjoin = function(source)
+				local cargo = "Sargento"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"pm-sargento.permissao",
+		"policia.permissao",
+		"policia-militar.permissao"
+	},
+	['pm-tenente'] = {
+		_config = {
+			gtype = "job",
+			title = "Tenente",
+			salary = 11500,
+			off = "off-pm-tenente",
+			onjoin = function(source)
+				local cargo = "Tenente"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
+		},
+		"pm-tenente.permissao",
+		"policia.permissao",
+		"policia-militar.permissao"
+	},
+	['pm-capitao'] = {
+		_config = {
+			gtype = "job",
+			title = "Capitão",
+			salary = 12500,
+			off = "off-pm-capitao",
+			onjoin = function(source)
+				local cargo = "Capitão"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 
-	["SargentoBAEP"] = {
-		_config = {
-			title = "Sargento BAEP",
-			gtype = "job"
 		},
+		"pm-capitao.permissao",
 		"policia.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"beap.permissao",
-		"sem.permissao"
+		"policia-militar.permissao"
 	},
-	["PaisanaSargentoBAEP"] = {
+	['major'] = {
 		_config = {
-			title = "Sargento Folga",
-			gtype = "job"
+			gtype = "job",
+			title = "Major",
+			salary = 14500,
+			off = "off-major",
+			onjoin = function(source)
+				local cargo = "Major"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanapolicia.permissao",
-		"sargento.folga",
-		"sem.permissao"
-	},
-	-- Tenete
-	["TenenteBAEP"] = {
-		_config = {
-			title = "Tenente BAEP",
-			gtype = "job"
-		},
+		"major.permissao",
 		"policia.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"beap.permissao",
-		"sem.permissao"
+		"policia-militar.permissao"
 	},
-	["PaisanaTenenteBAEP"] = {
+	['pm-tenente-coronel'] = {
 		_config = {
-			title = "Tenente Folga",
-			gtype = "job"
+			gtype = "job",
+			title = "Tenente",
+			salary = 16500,
+			off = "off-pm-tenente-coronel",
+			onjoin = function(source)
+				local cargo = "Tenente"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanapolicia.permissao",
-		"tenente.folga",
-		"sem.permissao"
-	},
-	-- Capitão
-	["CapitaoBAEP"] = {
-		_config = {
-			title = "Capitao BAEP",
-			gtype = "job"
-		},
+		"pm-tenente.permissao",
 		"policia.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"beap.permissao",
-		"sem.permissao"
+		"policia-militar.permissao"
 	},
-	["PaisanaCapitaoBAEP"] = {
+	['comandante-geral'] = {
 		_config = {
-			title = "Capitao Folga",
-			gtype = "job"
+			gtype = "job",
+			title = "Comandante Geral",
+			salary = 19000,
+			off = "off-comandante-geral",
+			onjoin = function(source)
+				local cargo = "Comandante Geral"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanapolicia.permissao",
-		"capitao.folga",
-		"sem.permissao"
-	},
-	-- Ten. Coronel
-	["TenCoronelBAEP"] = {
-		_config = {
-			title = "Ten. Coronel BAEP",
-			gtype = "job"
-		},
+		"comandante-geral.permissao",
 		"policia.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"beap.permissao",
-		"sem.permissao"
+		"policia-militar.permissao"
 	},
-	["PaisanaTenCoronelBAEP"] = {
+	-- HOSPITAL
+	['enfermeiro'] = {
 		_config = {
-			title = "T. Cel. Folga",
-			gtype = "job"
+			gtype = "job",
+			title = "Enfermeiro",
+			salary = 4500,
+			off = "off-enfermeiro",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Enfermeiro" or "Enfermeira"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanapolicia.permissao",
-		"tencoronel.folga",
-		"sem.permissao"
+		"enfermeiro.permissao",
+		"ems.permissao",
+		"tratamento.permissao"
 	},
-	-- Coronel
-	["CoronelBAEP"] = {
+	['medico'] = {
 		_config = {
-			title = "Coronel BAEP",
-			gtype = "job"
+			gtype = "job",
+			title = "Médico (a)",
+			salary = 8500,
+			off = "off-medico",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Médico" or "Médica"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"policia.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"beap.permissao",
-		"sem.permissao"
-	},
-	["PaisanaCoronelBAEP"] = {
-		_config = {
-			title = "Coronel Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"coronel.folga",
-		"sem.permissao"
-	},
-	-----------------------------------------------------
-	---------------- ROTA -------------------------------
-	-----------------------------------------------------
-
-	["SargentoRT"] = {
-		_config = {
-			title = "Sargento RT",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"sem.permissao"
-	},
-	["PaisanaSargentoRT"] = {
-		_config = {
-			title = "Sargento Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"sargento.folga",
-		"sem.permissao"
-	},
-	-- Tenete
-	["TenenteRT"] = {
-		_config = {
-			title = "Tenente RT",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"sem.permissao"
-	},
-	["PaisanaTenenteRT"] = {
-		_config = {
-			title = "Tenente Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"tenente.folga",
-		"sem.permissao"
-	},
-	-- Capitão
-	["CapitaoRT"] = {
-		_config = {
-			title = "Capitao RT",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"capitaoecoronel.arsenal",
-		"capitaortm.servico",
-		"sem.permissao"
-	},
-	["PaisanaCapitaoRT"] = {
-		_config = {
-			title = "Capitao Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"capitao.folga",
-		"sem.permissao"
-	},
-	-- Ten. Coronel
-	["TenCoronelRT"] = {
-		_config = {
-			title = "Ten. Coronel RT",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"pmerj.permissao",
-		"polpar.permissao",
-		"portadp.permissao",
-		"tencoronelecoronel.arsenal",
-		"tencoronelrtm.servico",
-		"sem.permissao"
-	},
-	["PaisanaTenCoronelRT"] = {
-		_config = {
-			title = "T. Cel. Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"tencoronel.folga",
-		"sem.permissao"
-	},
-	-- Coronel
-	["CoronelRT"] = {
-		_config = {
-			title = "Coronel RT",
-			gtype = "job"
-		},
-		"liderpolicia.permissao",
-		"policia.permissao",
-		"polpar.permissao",
-		"pmerj.permissao",
-		"portadp.permissao",
-		"tenenteecoronel.arsenal",
-		"coronelrtm.servico",
-		"sem.permissao"
-	},
-	["PaisanaCoronelRT"] = {
-		_config = {
-			title = "Coronel Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"coronel.folga",
-		"sem.permissao"
-	},
-	------------------------------------------ PRF Policia Rodoviaria Federal
-	----------------------------------------------------------------------------
-	["PRFTerceiraClasse"] = {
-		_config = {
-			title = "PRF Terceira Classe",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"garmas.permissao",
-		"prfterceiraclasse.permissao",
-		"player.noclip",
-		"polpar.permissao",
-		"sem.permissao"
-	},
-	["PaisanaPRFTerceiraClasse"] = {
-		_config = {
-			title = "PRF Terceira Classe Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanaprfterceiraclasse.permissao",
-		"sem.permissao"
-	},
-	["PRFSegundaClasse"] = {
-		_config = {
-			title = "PRF Segunda Classe",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"garmas.permissao",
-		"prfsegundaclasse.permissao",
-		"polpar.permissao",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["PaisanaPRFSegundaClasse"] = {
-		_config = {
-			title = "PRF Segunda Classe Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanaprfsegundaclasse.permissao",
-		"sem.permissao"
-	},
-	["PRFPrimeiraClasse"] = {
-		_config = {
-			title = "PRF Primeira Classe",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"garmas.permissao",
-		"prfprimeiraclasse.permissao",
-		"polpar.permissao",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["PaisanaPRFPrimeiraClasse"] = {
-		_config = {
-			title = "PRF Primeira Classe Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanaprfprimeiraclasse.permissao",
-		"sem.permissao"
-	},
-	["PRFEspecial"] = {
-		_config = {
-			title = "PRF Especial",
-			gtype = "job"
-		},
-		"policia.permissao",
-		"garmas.permissao",
-		"prfespecial.permissao",
-		"polpar.permissao",
-		"player.noclip",
-		"sem.permissao"
-	},
-	["PaisanaPRFEspecial"] = {
-		_config = {
-			title = "PRF Especial Folga",
-			gtype = "job"
-		},
-		"paisanapolicia.permissao",
-		"paisanaprfespecial.permissao",
-		"sem.permissao"
-	},
-
-
-
-	-----------------------------------------------------
-	-- Hospital ------------------------------------
-	-----------------------------------------------------
-
-	["EnfermeiroHP"] = {
-		_config = {
-			title = "Enfermeiro HP",
-			gtype = "job"
-		},
-		"enfermeirohp.permissao",
 		"medico.permissao",
-		"paramedico.permissao",
-		"player.noclip",
-		"player.blips"
+		"ems.permissao",
+		"tratamento.permissao"
 	},
-	["PaisanaEnfermeiroHP"] = {
+	['socorrista'] = {
 		_config = {
-			title = "Folga Enfermeiro HP",
-			gtype = "job"
+			gtype = "job",
+			title = "Socorrista",
+			salary = 6500,
+			off = "off-socorrista",
+			onjoin = function(source)
+				local cargo = Socorrista
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanaenfermeirohp.permissao",
-		"sem.permissao",
-		"player.blips"
+		"socorrista.permissao",
+		"ems.permissao",
+		"tratamento.permissao"
 	},
-	["MedicoHP"] = {
+	['vice-diretor'] = {
 		_config = {
-			title = "Medico HP",
-			gtype = "job"
+			gtype = "job",
+			title = "Vice-Diretor (a) do HP",
+			salary = 9500,
+			off = "off-vice-diretor",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Vice Diretor" or "Vice Diretora"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"medicohp.permissao",
-		"medico.permissao",
-		"player.noclip",
-		"paramedico.permissao",
-		"player.blips"
+		"vice-diretor.permissao",
+		"ems.permissao",
+		"tratamento.permissao"
 	},
-	["PaisanaMedicoHP"] = {
+	['diretor'] = {
 		_config = {
-			title = "Folga Medico HP",
-			gtype = "job"
+			gtype = "job",
+			title = "Diretor (a) do HP",
+			salary = 11500,
+			off = "off-diretor",
+			onjoin = function(source)
+				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
+				local cargo = ismale and "Diretor" or "Vice Diretora"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanamedicohp.permissao",
-		"sem.permissao",
-		"player.blips"
+		"diretor.permissao",
+		"ems.permissao",
+		"tratamento.permissao"
 	},
-	["MedicoChefeHP"] = {
+	--mecânica LS
+	['ls-lider'] = {
 		_config = {
-			title = "Medico Chefe HP",
-			gtype = "job"
+			gtype = "job",
+			title = "CEO da LS",
+			salary = 8000,
+			off = "off-ls-lider",
+			onjoin = function(source)
+				local cargo = "CEO da LS"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"medicochefehp.permissao",
-		"medico.permissao",
-		"paramedico.permissao",
-		"player.noclip",
-		"player.blips"
-	},
-	["PaisanaMedicoChefeHP"] = {
-		_config = {
-			title = "Folga Medico Chefe HP",
-			gtype = "job"
-		},
-		"paisanamedicochefehp.permissao",
-		"sem.permissao",
-		"player.blips"
-	},
-	["DiretorHP"] = {
-		_config = {
-			title = "Diretor HP",
-			gtype = "job"
-		},
-		"diretorhp.permissao",
-		"medico.permissao",
-		"paramedico.permissao",
-		"player.noclip",
-		"player.blips"
-	},
-	["PaisanaDiretorHP"] = {
-		_config = {
-			title = "Folga Diretor HP",
-			gtype = "job"
-		},
-		"paisanadiretorhp.permissao",
-		"sem.permissao",
-		"player.blips"
-	},
-	["ViceDiretorHP"] = {
-		_config = {
-			title = "Vice Diretor HP",
-			gtype = "job"
-		},
-		"vicediretorhp.permissao",
-		"medico.permissao",
-		"player.noclip",
-		"paramedico.permissao",
-		"player.blips"
-	},
-	["PaisanaViceDiretorHP"] = {
-		_config = {
-			title = "Folga Vice Diretor HP",
-			gtype = "job"
-		},
-		"paisanavicediretorhp.permissao",
-		"sem.permissao",
-		"player.blips"
-	},
-
-	------------------------------------------------------------------------------------------
-	----------------- Mecânica Sense Customs --------------------------------------------------------
-
-	["LiderLS"] = {
-		_config = {
-			title = "Lider LS",
-			gtype = "job"
-		},
-		"liderls.permissao",
-		"reparo.permissao",
+		"ls-lider.permissao",
+		"ls.permissao",
 		"tunagem.permissao",
-		"mecanico.permissao",
-		"player.noclip",
-		"player.blips"
+		"mecanico.permissao"
 	},
-	["PaisanaLiderLS"] = {
+	['ls-vice-lider'] = {
 		_config = {
-			title = "Folga Lider LS",
-			gtype = "job"
+			gtype = "job",
+			title = "Diretor da LS",
+			salary = 7000,
+			off = "off-ls-vice-lider",
+			onjoin = function(source)
+				local cargo = "Diretor da LS"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanaliderls.permissao",
-		"sem.permissao",
-		"player.blips"
-	},
-	["ViceLiderLS"] = {
-		_config = {
-			title = "ViceLider LS",
-			gtype = "job"
-		},
-		"viceliderls.permissao",
-		"mecanico.permissao",
-		"reparo.permissao",
+		"ls-vice-lider.permissao",
+		"ls.permissao",
 		"tunagem.permissao",
-		"player.noclip",
-		"player.blips"
+		"mecanico.permissao"
 	},
-	["PaisanaViceLiderLS"] = {
+	['ls-tunador'] = {
 		_config = {
-			title = "Folga ViceLider LS",
-			gtype = "job"
+			gtype = "job",
+			title = "Mecânico Sênio",
+			salary = 5500,
+			off = "off-ls-tunador",
+			onjoin = function(source)
+				local cargo = "Mecânico Sênio"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanaviceliderls.permissao",
-		"sem.permissao",
-		"player.blips"
-	},
-	["GerenteLS"] = {
-		_config = {
-			title = "Gerente LS",
-			gtype = "job"
-		},
-		"gerentels.permissao",
-		"mecanico.permissao",
-		"reparo.permissao",
+		"ls-tunador.permissao",
+		"ls.permissao",
 		"tunagem.permissao",
-		"player.noclip",
-		"player.blips"
+		"mecanico.permissao"
 	},
-	["PaisanaGerenteLS"] = {
+	['ls-mecanico'] = {
 		_config = {
-			title = "Folga Gerente LS",
-			gtype = "job"
+			gtype = "job",
+			title = "Mecânico Aprendiz",
+			salary = 2500,
+			off = "off-ls-mecanico",
+			onjoin = function(source)
+				local cargo = "Mecânico Aprendiz"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"paisanagerentels.permissao",
-		"sem.permissao",
-		"player.blips"
+		"ls-mecanico.permissao",
+		"ls.permissao",
+		"mecanico.permissao"
 	},
-	["TunagemLS"] = {
+	-- Bennys
+	['bennys-lider'] = {
 		_config = {
-			title = "Tunagem LS",
-			gtype = "job"
+			gtype = "job",
+			title = "CEO da Bennys",
+			salary = 8000,
+			off = "off-bennys-lider",
+			onjoin = function(source)
+				local cargo = "CEO da Bennys"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"tunagemls.permissao",
-		"reparo.permissao",
+		"bennys-lider.permissao",
+		"bennys.permissao",
 		"tunagem.permissao",
-		"mecanico.permissao",
-		"player.noclip",
-		"player.blips"
+		"mecanico.permissao"
 	},
-	["PaisanaTunagemLS"] = {
+	['bennys-vice-lider'] = {
 		_config = {
-			title = "Folga Tunagem LS",
-			gtype = "job"
-		},
-		"paisanatunagemls.permissao",
-		"sem.permissao",
-		"player.blips"
-	},
-	["ReparoLS"] = {
-		_config = {
-			title = "Reparo LS",
-			gtype = "job"
-		},
-		"reparols.permissao",
-		"reparo.permissao",
-		"mecanico.permissao",
-		"player.blips"
-	},
-	["PaisanaReparoLS"] = {
-		_config = {
-			title = "Folga Reparo LS",
-			gtype = "job"
-		},
-		"paisanareparols.permissao",
-		"sem.permissao",
-		"player.blips"
-	},
+			gtype = "job",
+			title = "Diretor da Bennys",
+			salary = 7000,
+			off = "off-bennys-vice-lider",
+			onjoin = function(source)
+				local cargo = "Diretor da Bennys"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
 
-	------------------------------------------------ Bennys <
-
-	["LiderBennys"] = {
-		_config = {
-			title = "Lider Bennys",
-			gtype = "job"
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"liderbennys.permissao",
+		"bennys-vice-lider.permissao",
 		"bennys.permissao",
-		"player.blips"
+		"tunagem.permissao",
+		"mecanico.permissao"
 	},
-	["ViceLiderBennys"] = {
+	['bennys-tunador'] = {
 		_config = {
-			title = "ViceLider Bennys",
-			gtype = "job"
+			gtype = "job",
+			title = "Mecânico Sênio",
+			salary = 5500,
+			off = "off-bennys-tunador",
+			onjoin = function(source)
+				local cargo = "Mecânico Sênio"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"viceliderbennys.permissao",
+		"bennys-tunador.permissao",
 		"bennys.permissao",
-		"player.blips"
+		"tunagem.permissao",
+		"mecanico.permissao"
 	},
-	["GerenteBennys"] = {
+	['bennys-mecanico'] = {
 		_config = {
-			title = "Gerente Bennys",
-			gtype = "job"
+			gtype = "job",
+			title = "Mecânico Aprendiz",
+			salary = 2500,
+			off = "off-bennys-mecanico",
+			onjoin = function(source)
+				local cargo = "Mecânico Aprendiz"
+				TriggerClientEvent("Notify", source, "aviso",
+					"Você entrou em serviço de como <b>" .. cargo .. ".</b>")
+				TriggerEvent('eblips:add',
+					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
+			end,
+			onleave = function(source)
+				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
+				TriggerEvent('eblips:remove', source)
+			end
 		},
-		"gerentebennys.permissao",
+		"bennys-mecanico.permissao",
 		"bennys.permissao",
-		"player.blips"
+		"mecanico.permissao"
 	},
-	["Bennys"] = {
+	--facções líder
+	['lider-bloods'] = {
 		_config = {
-			title = "Membro Bennys",
-			gtype = "job"
+			gtype = "gang",
+			title = "Bloods"
 		},
-		"bennys.permissao",
-		"player.blips"
+		"lider-bloods.permissao",
+		"bloods.permissao",
+		"ilegal.permissao",
+		"drogas.permissao",
+		"maconha.permissao"
 	},
-	---------------------------------- mafia
+	['lider-ballas'] = {
+		_config = {
+			gtype = "gang",
+			title = "Ballas"
+		},
+		"lider-ballas.permissao",
+		"ballas.permissao",
+		"ilegal.permissao",
+		"drogas.permissao",
+		"cocaina.permissao"
+	},
+	['lider-families'] = {
+		_config = {
+			gtype = "gang",
+			title = "Families"
+		},
+		"lider-families.permissao",
+		"families.permissao",
+		"ilegal.permissao",
+		"drogas.permissao",
+		"lsd.permissao"
+	},
+	['lider-yakuza'] = {
+		_config = {
+			gtype = "gang",
+			title = "Yakuza"
+		},
+		"lider-yakuza.permissao",
+		"yakuza.permissao",
+		"ilegal.permissao",
+		"drogas.permissao",
+		"metanfetamina.permissao"
+	},
+	['lider-driftking'] = {
+		_config = {
+			gtype = "gang",
+			title = "Driftking"
+		},
+		"lider-driftking.permissao",
+		"driftking.permissao",
+		"ilegal.permissao",
+		"desmanche.permissao"
 
-	["LiderMafia"] = {
-		_config = {
-			title = "Lider Mafia",
-			gtype = "job"
-		},
-		"lidermafia.permissao",
-		"mafia.permissao",
-		"gmafia.permissao",
-		"ilegal.permissao",
-		"player.blips"
 	},
-	["ViceLiderMafia"] = {
+	['lider-motoclub'] = {
 		_config = {
-			title = "Vice Lider Mafia",
-			gtype = "job"
+			gtype = "gang",
+			title = "MOtoclub"
 		},
-		"vicelidermafia.permissao",
-		"mafia.permissao",
-		"gmafia.permissao",
+		"lider-motoclub.permissao",
+		"motoclub.permissao",
 		"ilegal.permissao",
-		"player.blips"
+		"desmanche.permissao"
 	},
-	["GerenteMafia"] = {
+	['lider-bratva'] = {
 		_config = {
-			title = "Gerente Mafia",
-			gtype = "job"
+			gtype = "gang",
+			title = "Bratva"
 		},
-		"gerentemafia.permissao",
-		"mafia.permissao",
-		"gmafia.permissao",
+		"lider-bratva.permissao",
+		"bratva.permissao",
 		"ilegal.permissao",
-		"player.blips"
+		"armas.permissao"
 	},
-	["Mafia"] = {
+	['lider-cartel'] = {
 		_config = {
-			title = "Membro Mafia",
-			gtype = "job"
+			gtype = "gang",
+			title = "Cartel"
 		},
-		"mafia.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-
-	--------------------------------------- Bratva MUNIÇAO
-
-	["LiderFS"] = {
-		_config = {
-			title = "Lider Família Stanmeister's",
-			gtype = "job"
-		},
-		"liderfs.permissao",
-		"fs.permissao",
-		"gfs.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ViceLiderFS"] = {
-		_config = {
-			title = "Vice Lider Família Stanmeister's",
-			gtype = "job"
-		},
-		"viceliderfs.permissao",
-		"fs.permissao",
-		"gfs.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ConselheiroFS"] = {
-		_config = {
-			title = "Conselheiro Família Stanmeister's",
-			gtype = "job"
-		},
-		"conselheirofs.permissao",
-		"fs.permissao",
-		"gfs.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["GoldenBoys"] = {
-		_config = {
-			title = "Gondel Boy's",
-			gtype = "job"
-		},
-		"goldenboys.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	--------------------------------------- Cartel ARMAS
-
-	["LiderCartel"] = {
-		_config = {
-			title = "Lider Cartel",
-			gtype = "job"
-		},
-		"lidercartel.permissao",
-		"cartel.permissao",
-		"gcartel.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ViceLiderCartel"] = {
-		_config = {
-			title = "Vice Lider Cartel",
-			gtype = "job"
-		},
-		"vicelidercartel.permissao",
-		"cartel.permissao",
-		"gcartel.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["GerenteCartel"] = {
-		_config = {
-			title = "Gerente Cartel",
-			gtype = "job"
-		},
-		"gerentecartel.permissao",
-		"cartel.permissao",
-		"gcartel.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["Cartel"] = {
-		_config = {
-			title = "Membro Cartel",
-			gtype = "job"
-		},
+		"lider-cartel.permissao",
 		"cartel.permissao",
 		"ilegal.permissao",
-		"player.blips"
+		"armas.permissao"
 	},
-
-	--------------------------------------- DK DESMANCHE
-
-	["LiderDK"] = {
+	['lider-mafia'] = {
 		_config = {
-			title = "Lider DK",
-			gtype = "job"
+			gtype = "gang",
+			title = "Máfia"
 		},
-		"liderdk.permissao",
-		"dk.permissao",
-		"desmanche.permissao",
-		"gdk.permissao",
+		"lider-mafia.permissao",
+		"mafia.permissao",
 		"ilegal.permissao",
-		"player.blips"
+		"municao.permissao"
 	},
-	["ViceLiderDK"] = {
+	['lider-vagos'] = {
 		_config = {
-			title = "Vice Lider DK",
-			gtype = "job"
+			gtype = "gang",
+			title = "Vagos"
 		},
-		"viceliderdk.permissao",
-		"dk.permissao",
-		"desmanche.permissao",
-		"gdk.permissao",
+		"lider-vagos.permissao",
+		"vagos.permissao",
 		"ilegal.permissao",
-		"player.blips"
+		"municao.permissao"
 	},
-	["GerenteDK"] = {
+	['lider-triads'] = {
 		_config = {
-			title = "Gerente DK",
-			gtype = "job"
+			gtype = "gang",
+			title = "Triads"
 		},
-		"gerentedk.permissao",
-		"dk.permissao",
-		"desmanche.permissao",
-		"gdk.permissao",
+		"lider-triads.permissao",
+		"triads.permissao",
 		"ilegal.permissao",
-		"player.blips"
+		"lavagem.permissao"
 	},
-	["DK"] = {
+	['lider-vanilla'] = {
 		_config = {
-			title = "Membro DK",
-			gtype = "job"
+			gtype = "gang",
+			title = "Vanilla"
 		},
-		"dk.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	--------------------------------------- TDTURQUIA LAVAGEM
-	["LiderTDT"] = {
-		_config = {
-			title = "Lider TDT",
-			gtype = "job"
-		},
-		"liderTDT.permissao",
-		"TDT.permissao",
-		"lavar.dinheiro",
-		"gTDT.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ViceLiderTDT"] = {
-		_config = {
-			title = "Vice Lider TDT",
-			gtype = "job"
-		},
-		"viceliderTDT.permissao",
-		"TDT.permissao",
-		"lavar.dinheiro",
-		"gTDT.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["GerenteTDT"] = {
-		_config = {
-			title = "Gerente TDT",
-			gtype = "job"
-		},
-		"gerenteTDT.permissao",
-		"TDT.permissao",
-		"lavar.dinheiro",
-		"gTDT.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["TDT"] = {
-		_config = {
-			title = "Membro TDT",
-			gtype = "job"
-		},
-		"TDT.permissao",
-		"lavar.dinheiro",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	--------------------------------------- TDFRANCA COCA
-
-	["LiderTDF"] = {
-		_config = {
-			title = "Lider TDF",
-			gtype = "job"
-		},
-		"liderTDF.permissao",
-		"TDF.permissao",
-		"coca.permissao",
-		"gTDF.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ViceLiderTDF"] = {
-		_config = {
-			title = "Vice Lider TDF",
-			gtype = "job"
-		},
-		"viceliderTDF.permissao",
-		"TDF.permissao",
-		"coca.permissao",
-		"gTDF.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["GerenteTDF"] = {
-		_config = {
-			title = "Gerente TDF",
-			gtype = "job"
-		},
-		"gerenteTDF.permissao",
-		"TDF.permissao",
-		"coca.permissao",
-		"gTDF.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["TDF"] = {
-		_config = {
-			title = "Membro TDF",
-			gtype = "job"
-		},
-		"TDF.permissao",
-		"coca.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-
-	--------------------------------------- TDC META
-
-	["LiderTDC"] = {
-		_config = {
-			title = "Lider TDC",
-			gtype = "job"
-		},
-		"liderTDC.permissao",
-		"TDC.permissao",
-		"meta.permissao",
-		"gTDC.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ViceLiderTDC"] = {
-		_config = {
-			title = "Vice Lider TDC",
-			gtype = "job"
-		},
-		"viceliderTDC.permissao",
-		"TDC.permissao",
-		"meta.permissao",
-		"gTDC.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["GerenteTDC"] = {
-		_config = {
-			title = "Gerente TDc",
-			gtype = "job"
-		},
-		"gerenteTDC.permissao",
-		"TDC.permissao",
-		"meta.permissao",
-		"gTDC.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["TDC"] = {
-		_config = {
-			title = "Membro TDC",
-			gtype = "job"
-		},
-		"TDC.permissao",
-		"meta.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-
-	--------------------------------------- TDE MACONHA
-
-	["LiderTDE"] = {
-		_config = {
-			title = "Lider TDE",
-			gtype = "job"
-		},
-		"liderTDJ.permissao",
-		"TDE.permissao",
-		"maconha.permissao",
-		"gTDE.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ViceLiderTDE"] = {
-		_config = {
-			title = "Vice Lider TDE",
-			gtype = "job"
-		},
-		"viceliderTDE.permissao",
-		"TDE.permissao",
-		"maconha.permissao",
-		"gTDE.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["GerenteTDE"] = {
-		_config = {
-			title = "Gerente TDE",
-			gtype = "job"
-		},
-		"gerenteTDJ.permissao",
-		"TDE.permissao",
-		"maconha.permissao",
-		"gTDE.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["TDE"] = {
-		_config = {
-			title = "Membro TDE",
-			gtype = "job"
-		},
-		"TDE.permissao",
-		"maconha.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-
-
-	--------------------------------------- Vanilla
-
-	["LiderVanilla"] = {
-		_config = {
-			title = "Lider Vanilla",
-			gtype = "job"
-		},
-		"lidervanilla.permissao",
-		"vanilla.permissao",
-		"gvanilla.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["ViceLiderVanilla"] = {
-		_config = {
-			title = "Vice Lider Vanilla",
-			gtype = "job"
-		},
-		"vicelidervanilla.permissao",
-		"vanilla.permissao",
-		"gvanilla.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["GerenteVanilla"] = {
-		_config = {
-			title = "Gerente Vanilla",
-			gtype = "job"
-		},
-		"gerentevanilla.permissao",
-		"vanilla.permissao",
-		"gvanilla.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-	["Vanilla"] = {
-		_config = {
-			title = "Membro Vanilla",
-			gtype = "job"
-		},
+		"lider-vanilla.permissao",
 		"vanilla.permissao",
 		"ilegal.permissao",
-		"player.blips"
+		"lavagem.permissao"
 	},
-
-	--------------------------------------- Bahamas
-
-	["LiderBahamas"] = {
+	['lider-bahamas'] = {
 		_config = {
-			title = "Lider Bahamas",
-			gtype = "job"
+			gtype = "gang",
+			title = "Líder Bahamas"
 		},
-		"liderbahamas.permissao",
+		"lider-bahamas.permissao",
 		"bahamas.permissao",
-		"gbahamas.permissao",
 		"ilegal.permissao",
-		"lavagem.permissao",
-		"player.blips"
+		"lavagem.permissao"
 	},
-	["ViceLiderBahamas"] = {
+	-- facções membros
+	['bloods'] = {
 		_config = {
-			title = "Vice Lider Bahamas",
-			gtype = "job"
+			gtype = "gang",
+			title = "Bloods"
 		},
-		"viceliderbahamas.permissao",
-		"bahamas.permissao",
-		"gbahamas.permissao",
+		"bloods.permissao",
 		"ilegal.permissao",
-		"lavagem.permissao",
-		"player.blips"
+		"drogas.permissao",
+		"maconha.permissao"
 	},
-	["GerenteBahamas"] = {
+	['ballas'] = {
 		_config = {
-			title = "Gerente Bahamas",
-			gtype = "job"
+			gtype = "gang",
+			title = "Ballas"
 		},
-		"gerentebahamas.permissao",
-		"bahamas.permissao",
-		"gbahamas.permissao",
+
+		"ballas.permissao",
 		"ilegal.permissao",
-		"lavagem.permissao",
-		"player.blips"
+		"drogas.permissao",
+		"cocaina.permissao"
 	},
-	["Bahamas"] = {
+	['families'] = {
 		_config = {
-			title = "Membro Vanilla",
-			gtype = "job"
+			gtype = "gang",
+			title = "Families"
+		},
+
+		"families.permissao",
+		"ilegal.permissao",
+		"drogas.permissao",
+		"lsd.permissao"
+	},
+	['yakuza'] = {
+		_config = {
+			gtype = "gang",
+			title = "Yakuza"
+		},
+
+		"yakuza.permissao",
+		"ilegal.permissao",
+		"drogas.permissao",
+		"metanfetamina.permissao"
+	},
+	['driftking'] = {
+		_config = {
+			gtype = "gang",
+			title = "Driftking"
+		},
+
+		"driftking.permissao",
+		"ilegal.permissao",
+		"desmanche.permissao"
+
+	},
+	['motoclub'] = {
+		_config = {
+			gtype = "gang",
+			title = "MOtoclub"
+		},
+
+		"motoclub.permissao",
+		"ilegal.permissao",
+		"desmanche.permissao"
+	},
+	['bratva'] = {
+		_config = {
+			gtype = "gang",
+			title = "Bratva"
+		},
+
+		"bratva.permissao",
+		"ilegal.permissao",
+		"armas.permissao"
+	},
+	['cartel'] = {
+		_config = {
+			gtype = "gang",
+			title = "Cartel"
+		},
+
+		"cartel.permissao",
+		"ilegal.permissao",
+		"armas.permissao"
+	},
+	['mafia'] = {
+		_config = {
+			gtype = "gang",
+			title = "Máfia"
+		},
+
+		"mafia.permissao",
+		"ilegal.permissao",
+		"municao.permissao"
+	},
+	['vagos'] = {
+		_config = {
+			gtype = "gang",
+			title = "Vagos"
+		},
+
+		"vagos.permissao",
+		"ilegal.permissao",
+		"municao.permissao"
+	},
+	['triads'] = {
+		_config = {
+			gtype = "gang",
+			title = "Triads"
+		},
+
+		"triads.permissao",
+		"ilegal.permissao",
+		"lavagem.permissao"
+	},
+	['vanilla'] = {
+		_config = {
+			gtype = "gang",
+			title = "Vanilla"
+		},
+
+		"vanilla.permissao",
+		"ilegal.permissao",
+		"lavagem.permissao"
+	},
+	['bahamas'] = {
+		_config = {
+			gtype = "gang",
+			title = "Bahamas"
 		},
 		"bahamas.permissao",
 		"ilegal.permissao",
-		"lavagem.permissao",
-		"player.blips"
+		"lavagem.permissao"
 	},
-
-	-------------------------------------------YAKUZA -----------------------------------------------------------
-	["LiderYakuza"] = {
+	--vips
+	['vip-iniciante'] = {
 		_config = {
-			title = "Lider Yakuza",
-			gtype = "job"
+			gtype = "vip",
+			salary = 3000
 		},
-		"lideryakuza.permissao",
-		"vicelideryakuza.permissao",
-		"yakuza.permissao",
-		"gyakuza.permissao",
-		"ilegal.permissao",
-		"player.blips"
+		"vip-iniciante.permissao",
+		"vip.permissao"
 	},
-	["ViceLiderYakuza"] = {
+	['vip-bronze'] = {
 		_config = {
-			title = "Vice Lider Yakuza",
-			gtype = "job"
+			gtype = "vip",
+			salary = 5000
 		},
-		"vicelideryakuza.permissao",
-		"yakuza.permissao",
-		"gyakuza.permissao",
-		"ilegal.permissao",
-		"player.blips"
+		"vip-bronze.permissao",
+		"vip.permissao"
 	},
-	["GerenteYakuza"] = {
+	['vip-prata'] = {
 		_config = {
-			title = "Gerente Yakuza",
-			gtype = "job"
+			gtype = "vip",
+			salary = 8000
 		},
-		"gerenteyakuza.permissao",
-		"yakuza.permissao",
-		"gyakuza.permissao",
-		"ilegal.permissao",
-		"player.blips"
+		"vip-prata.permissao",
+		"vip.permissao"
 	},
-	["Yakuza"] = {
+	['vip-ouro'] = {
 		_config = {
-			title = "Membro Yakuza",
-			gtype = "job"
+			gtype = "vip",
+			salary = 9000
 		},
-		"yakuza.permissao",
-		"ilegal.permissao",
-		"player.blips"
-	},
-
-	--------------------------------------- Bennys
-
-	
-
-
-
-
-
-
-	----------------------------------------------
-
-	["Iniciante"] = {
-		_config = {
-			title = "VIP Iniciante",
-			gtype = "vip"
-		},
-		"vipiniciante.permissao",
-		"salario1.servico"
-	},
-	["Bronze"] = {
-		_config = {
-			title = "Bronze",
-			gtype = "vip"
-		},
+		"vip-ouro.permissao",
 		"vip.permissao",
-		"bronze.permissao",
-		"salario2.servico"
+		"roupas.permissao"
 	},
-	["Prata"] = {
+	['vip-platinum'] = {
 		_config = {
-			title = "Prata",
-			gtype = "vip"
+			gtype = "vip",
+			salary = 15000
 		},
+		"vip-platinum.permissao",
 		"vip.permissao",
-		"prata.permissao",
-		"salario3.servico"
+		"roupas.permissao"
 	},
-	["Ouro"] = {
+	['off-dono'] = {
 		_config = {
-			title = "Ouro",
-			gtype = "vip"
+			gtype = "staff",
+			on = 'dono',
 		},
-		"vip.permissao",
-		"ouro.permissao",
-		"salario4.servico"
+		"off-dono.permissao"
 	},
-	["Platina"] = {
+	['off-admin'] = {
 		_config = {
-			title = "Platina",
-			gtype = "vip"
+			gtype = "staff",
+			on = 'admin',
 		},
-		"vip.permissao",
-		"platina.permissao",
-		"salario5.servico"
+		"off-mod.permissao"
 	},
-	["Diamante"] = {
+	['off-mod'] = {
 		_config = {
-			title = "Diamante",
-			gtype = "vip"
+			gtype = "staff",
+			on = 'mod',
 		},
-		"vip.permissao",
-		"diamante.permissao",
-		"helivip.permissao",
-		"salario6.servico"
+		"off-mod.permissao"
 	},
-	["Topazio"] = {
+	['off-juiz'] = {
 		_config = {
-			title = "Topázio",
-			gtype = "vip"
+			title = "Juiz (a) de Folga",
+			gtype = "job",
+			on = "juiz"
 		},
-		"vip.permissao",
-		"topazio.permissao",
-		"helivip.permissao",
-		"salario7.servico"
+		"off-juiz.permissao",
 	},
-	["Esmeralda"] = {
+	['off-advogado'] = {
 		_config = {
-			title = "Esmeralda",
-			gtype = "vip"
+			title = "Advogado (a) de Folga",
+			gtype = "job",
+			on = "advogado"
 		},
-		"vip.permissao",
-		"esmeralda.permissao",
-		"helivip.permissao",
-		"salario8.servico"
+		"off-advogado.permissao",
 	},
-	["Rubi"] = {
+	--polícia civil
+	['off-investigador'] = {
 		_config = {
-			title = "Rubi",
-			gtype = "vip"
+			title = "Investigador (a) de Folga",
+			gtype = "job",
+			on = "investigador"
 		},
-		"vip.permissao",
-		"rubi.permissao",
-		"helivip.permissao",
-		"jatovip.permissao",
-		"salario9.servico"
+		"off-investigador.permissao",
 	},
-
-
+	['off-escrivao'] = {
+		_config = {
+			title = "Escrião (ã) de Folga",
+			gtype = "job",
+			on = "escrivao"
+		},
+		"off-escrivao.permissao",
+	},
+	['off-delegado'] = {
+		_config = {
+			title = "Delegado (a) de Folga",
+			gtype = "job",
+			on = "delegado"
+		},
+		"off-delegado.permissao",
+	},
+	--polícia rota
+	['off-rota-sargento'] = {
+		_config = {
+			title = "Sargento de Folga",
+			gtype = "job",
+			on = "rota-sargento"
+		},
+		"off-rota-sargento.permissao",
+	},
+	['off-rota-tenente'] = {
+		_config = {
+			title = "Tenente de Folga",
+			gtype = "job",
+			on = "rota-tenente"
+		},
+		"off-rota-tenente.permissao",
+	},
+	['off-rota-capitao'] = {
+		_config = {
+			title = "Capitão de Folga",
+			gtype = "job",
+			on = "rota-capitao"
+		},
+		"off-rota-capitao.permissao",
+	},
+	['off-tenente-coronel'] = {
+		_config = {
+			title = "Tenente Coronel de Folga",
+			gtype = "job",
+			on = "tenente-coronel"
+		},
+		"off-tenente-coronel.permissao",
+	},
+	['off-coronel'] = {
+		_config = {
+			title = "Coronel de Folga",
+			gtype = "job",
+			on = "coronel"
+		},
+		"off-coronel.permissao",
+	},
+	--polícia militar
+	['off-recruta'] = {
+		_config = {
+			title = "Recruta de Folga",
+			gtype = "job",
+			on = "recruta"
+		},
+		"off-recruta.permissao",
+	},
+	['off-soldado'] = {
+		_config = {
+			title = "Soldado de Folga",
+			gtype = "job",
+			on = "soldado"
+		},
+		"off-soldado.permissao",
+	},
+	['off-pm-sargento'] = {
+		_config = {
+			title = "Sargento de Folga",
+			gtype = "job",
+			on = "off-pm-sargento"
+		},
+		"off-off-pm-sargento.permissao",
+	},
+	['off-pm-tenente'] = {
+		_config = {
+			title = "Tenente de Folga",
+			gtype = "job",
+			on = "pm-tenente"
+		},
+		"off-pm-tenente.permissao",
+	},
+	['off-pm-capitao'] = {
+		_config = {
+			title = "Capitão de Folga",
+			gtype = "job",
+			on = "pm-capitao"
+		},
+		"off-pm-capitao.permissao",
+	},
+	['off-major'] = {
+		_config = {
+			title = "Major de Folga",
+			gtype = "job",
+			on = "major"
+		},
+		"off-major.permissao",
+	},
+	['off-pm-tenente-coronel'] = {
+		_config = {
+			title = "Tenente Coronel de Folga",
+			gtype = "job",
+			on = "pm-tenente-coronel"
+		},
+		"off-pm-tenente-coronel.permissao",
+	},
+	['off-comandante-geral'] = {
+		_config = {
+			title = "Comandante de Folga",
+			gtype = "job",
+			on = "comandante-geral"
+		},
+		"off-comandante-geral.permissao",
+	},
+	-- HOSPITAL
+	['off-enfermeiro'] = {
+		_config = {
+			title = "Enfermeiro (a) de Folga",
+			gtype = "job",
+			on = "enfermeiro"
+		},
+		"off-enfermeiro.permissao",
+	},
+	['off-medico'] = {
+		_config = {
+			title = "Médico (a) de Folga",
+			gtype = "job",
+			on = "medico"
+		},
+		"off-medico.permissao",
+	},
+	['off-socorrista'] = {
+		_config = {
+			title = "Socorrista de Folga",
+			gtype = "job",
+			on = "socorrista"
+		},
+		"off-socorrista.permissao",
+	},
+	['off-vice-diretor'] = {
+		_config = {
+			title = "Vice Diretor (a) de Folga",
+			gtype = "job",
+			on = "vice-diretor"
+		},
+		"off-vice-diretor.permissao",
+	},
+	['off-diretor'] = {
+		_config = {
+			title = "Diretor (a) de Folga",
+			gtype = "job",
+			on = "diretor"
+		},
+		"off-diretor.permissao",
+	},
+	--mecânica LS
+	['off-ls-lider'] = {
+		_config = {
+			title = "CEO Bennys de Folga",
+			gtype = "job",
+			on = "ls-lider"
+		},
+		"off-ls-lider.permissao",
+	},
+	['off-ls-vice-lider'] = {
+		_config = {
+			title = "Diretor (a) Bennys de Folga",
+			gtype = "job",
+			on = "ls-vice-lider"
+		},
+		"off-ls-vice-lider.permissao",
+	},
+	['off-ls-tunador'] = {
+		_config = {
+			title = "Mecânico de Folga",
+			gtype = "job",
+			on = "ls-tunador"
+		},
+		"off-ls-tunador.permissao",
+	},
+	['off-ls-mecanico'] = {
+		_config = {
+			title = "Mecânico de Folga",
+			gtype = "job",
+			on = "ls-mecanico"
+		},
+		"off-ls-mecanico.permissao",
+	},
+	-- Bennys
+	['off-bennys-lider'] = {
+		_config = {
+			title = "CEO Bennys de Folga",
+			gtype = "job",
+			on = "bennys-lider"
+		},
+		"off-bennys-lider.permissao",
+	},
+	['off-bennys-vice-lider'] = {
+		_config = {
+			title = "Diretor (a) Bennys de Folga",
+			gtype = "job",
+			on = "bennys-vice-lider"
+		},
+		"off-bennys-vice.permissao",
+	},
+	['off-bennys-tunador'] = {
+		_config = {
+			title = "Mecânico de Folga",
+			gtype = "job",
+			on = "bennys-tunador"
+		},
+		"off-bennys.permissao",
+	},
+	['off-bennys-mecanico'] = {
+		_config = {
+			title = "Mecânico de Folga",
+			gtype = "job",
+			on = "bennys-mecanico"
+		},
+		"off-bennys-mecanico.permissao",
+	},
 }
 
 cfg.users = {
-	[1] = { "Dono" },
-
-}
-
-cfg.selectors = {
+	[1] = { "dono" },
 
 }
 

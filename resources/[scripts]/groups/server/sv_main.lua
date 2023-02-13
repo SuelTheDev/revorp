@@ -782,9 +782,10 @@ end
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- groups:SetClothe
 -----------------------------------------------------------------------------------------------------------------------------------------
-RegisterServerEvent("groups:chestlogs",function(user_id, chest, item, amount, typelog)
-	local source = source
+AddEventHandler("groups:chestlogs",function(user_id, chest, item, amount, typelog)	
+	
 	if user_id and chest and item and amount and typelog then
+		print(user_id, chest, item, amount, typelog)
 		local organization = nil
 		local groups       = config.groups
 		local ipimages     = config.IPImages
@@ -798,7 +799,7 @@ RegisterServerEvent("groups:chestlogs",function(user_id, chest, item, amount, ty
 		end
 
 		if organization ~= nil then
-			if typelog == "up" then
+			if typelog == "store" then
 				local text  = config.textstore
 				local logs  = {}
 				local nlogs = getServerData("groups:"..organization..":chestlogs") or ""
@@ -812,8 +813,8 @@ RegisterServerEvent("groups:chestlogs",function(user_id, chest, item, amount, ty
 
 				local data = {
 					type  = "up",
-					title = text.." #"..user_id.." - "..getUserFullName(user_id).." | Item: "..getItemName(item),
-					text  = "X"..amount,
+					title = text.." #"..user_id.." - "..getUserFullName(user_id).." | Item: ".. (getItemName(item) or item),
+					text  = "X "..amount,
 					image = ipimages..""..item..".png"
 				}
 
@@ -824,7 +825,7 @@ RegisterServerEvent("groups:chestlogs",function(user_id, chest, item, amount, ty
 				setServerData("groups:"..organization..":chestlogs", logs)
 			end
 
-			if typelog == "down" then
+			if typelog == "take" then
 				local text  = config.texttake
 				local logs  = {}
 				local nlogs = getServerData("groups:"..organization..":chestlogs") or ""
@@ -838,7 +839,7 @@ RegisterServerEvent("groups:chestlogs",function(user_id, chest, item, amount, ty
 
 				local data = {
 					type  = "down",
-					title = text.." #"..user_id.." - "..getUserFullName(user_id).." | Item: "..getItemName(item),
+					title = text.." #"..user_id.." - "..getUserFullName(user_id).." | Item: ".. ( getItemName(item) or item),
 					text  = "X"..amount,
 					image = ipimages..""..item..".png"
 				}

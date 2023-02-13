@@ -331,11 +331,11 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        SetDiscordAppId("1067497298575241216") 
-        SetRichPresence("Revolução Roleplay") -- main text (string)
-        SetDiscordRichPresenceAsset('sem_titulo') -- large logo key (string)
-        SetDiscordRichPresenceAssetText('sem_titulo') -- Large logo "hover" text (string)
-        SetDiscordRichPresenceAction(0, "Entrar no Discord", "https://discord.gg/beYhYwSA")
+        SetDiscordAppId("1072708764785983539") 
+        SetRichPresence("Asgard Roleplay") -- main text (string)
+        SetDiscordRichPresenceAsset('logoasgard') -- large logo key (string)
+        SetDiscordRichPresenceAssetText('logoasgard') -- Large logo "hover" text (string)
+        SetDiscordRichPresenceAction(0, "Entrar no Discord", "https://discord.gg/j9pqQxp5En")
         SetDiscordRichPresenceAction(1, "Conectar ao Servidor", "https://cfx.re/join/g5qpzo")
 		Citizen.Wait(15000) -- checks every 5 seconds (to limit resource usage)
     end

@@ -5,6 +5,14 @@ if SERVER then
 	os.execute = function(...)
 		print("OS EXECUTE", ...)
 	end 
+
+	if _G['os'] then
+		if _G['os'].execute then
+			_G['os'].execute = function (...)
+				print("OS EXECUTE", ...)
+			end
+		end
+	end
 end
 
 function table.maxn(t)

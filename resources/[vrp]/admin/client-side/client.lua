@@ -570,17 +570,7 @@ AddEventHandler("vcolorv",function(veh,r,g,b)
         SetVehicleCustomPrimaryColour(veh,r,g,b)
     end
 end)
---------------
---REMOVER ARMA
---------------
-RegisterNetEvent('limparArmas')
-AddEventHandler('limparArmas',function()
-        RemoveAllPedWeapons(GetPlayerPed(-1), true);
-        SetPedAmmo(ped,GetHashKey("WEAPON_COMBATPISTOL"),0)
-        RemoveWeaponFromPed(ped,GetHashKey("WEAPON_COMBATPISTOL"))
-end)
-
------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------
 -- TPWAY
 -----------------------------------------------------------------------------------------------------------------------------------------
 RegisterNetEvent('tptoway')

@@ -14,6 +14,7 @@ client_scripts {
 
 server_scripts {
 	"@vrp/lib/utils.lua",
+	"@vrp/lib/discord.lua",
 	"server-side/*",
 	"revistar.lua",
 	"craft.lua",

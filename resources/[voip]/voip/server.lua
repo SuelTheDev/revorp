@@ -1,65 +1,46 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- VRP
 -----------------------------------------------------------------------------------------------------------------------------------------
-local Tunnel = module("vrp","lib/Tunnel")
-local Proxy = module("vrp","lib/Proxy")
+local Tunnel = module("vrp", "lib/Tunnel")
+local Proxy = module("vrp", "lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CONEXÃO
 -----------------------------------------------------------------------------------------------------------------------------------------
-cnVRP = {}
-Tunnel.bindInterface("voip",cnVRP)
+local cnVRP = {}
+Tunnel.bindInterface("voip", cnVRP)
 vCLIENT = Tunnel.getInterface("voip")
+local config = RadioConfig
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- ACTIVEFREQUENCY
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cnVRP.activeFrequency(freq)
 	local source = source
 	local user_id = vRP.getUserId(source)
-	if user_id then
-		if parseInt(freq) >= 1 and parseInt(freq) <= 999 then
-			if parseInt(freq) == 911 then
-				if vRP.hasPermission(user_id,"policia.permissao") then
-					vCLIENT.startFrequency(source,911)
-					TriggerClientEvent("hud:channel",source,911)
-					TriggerClientEvent("Notify",source,"sucesso","Rádio <b>"..parseInt(freq)..".0Mhz</b>.",5000)
-				end
-			elseif parseInt(freq) == 912 then
-				if vRP.hasPermission(user_id,"Police") then
-					vCLIENT.startFrequency(source,912)
-					TriggerClientEvent("hud:channel",source,912)
-					TriggerClientEvent("Notify",source,"sucesso","Rádio <b>"..parseInt(freq)..".0Mhz</b>.",5000)
-				end
-			elseif parseInt(freq) == 112 then
-				if vRP.hasPermission(user_id,"Paramedic") then
-					vCLIENT.startFrequency(source,112)
-					TriggerClientEvent("hud:channel",source,112)
-					TriggerClientEvent("Notify",source,"sucesso","Rádio <b>"..parseInt(freq)..".0Mhz</b>.",5000)
-				end
-			elseif parseInt(freq) == 443 then
-				if vRP.hasPermission(user_id,"Mechanic") then
-					vCLIENT.startFrequency(source,443)
-					TriggerClientEvent("hud:channel",source,443)
-					TriggerClientEvent("Notify",source,"sucesso","Rádio <b>"..parseInt(freq)..".0Mhz</b>.",5000)
-				end
+	local freq = parseInt(freq)
+	if freq > 0 and freq <= 999 then
+		if config[freq] then
+			if vRP.hasPermission(user_id, config[freq].permissao) then
+				vCLIENT._startFrequency(source, freq)
+				TriggerClientEvent("hud:channel", source, freq)
+				TriggerClientEvent("Notify", source, "sucesso", "Rádio <b>" .. parseInt(freq) .. ".0Mhz</b>.", 5000)
 			else
-				vCLIENT.startFrequency(source,parseInt(freq))
-				TriggerClientEvent("hud:channel",source,parseInt(freq))
-				TriggerClientEvent("Notify",source,"sucesso","Rádio <b>"..parseInt(freq)..".0Mhz</b>.",5000)
+				return TriggerClientEvent("Notify", source, "negado", "Você não tá autorizado entrar na frequência.",
+						5000)
 			end
+		else
+			vCLIENT._startFrequency(source, freq)
+			TriggerClientEvent("hud:channel", source, freq)
+			TriggerClientEvent("Notify", source, "sucesso", "Rádio <b>" .. freq .. ".0Mhz</b>.", 5000)
 		end
 	end
 end
+
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- CHECKRADIO
 -----------------------------------------------------------------------------------------------------------------------------------------
 function cnVRP.checkRadio()
 	local source = source
 	local user_id = vRP.getUserId(source)
-	if user_id then
-		if vRP.getInventoryItemAmount(user_id,"radio") >= 1 then
-			return true
-		end
-		return false
-	end
+	return user_id and vRP.getInventoryItemAmount(user_id, "radio") >= 1
 end

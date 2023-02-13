@@ -20,17 +20,18 @@ function hasPermission(user_id,perm)
 end -- sua função de pegar a permissao
 
 
--- ConfigRevistar = {
---     revistar = true,
---     command = "revistar"
--- }
+ConfigRevistar = {
+    revistar = true,
+    command = "revistar"
+}
 
 
 ConfigServer = {
-    slots = 35, -- Maximo de slots que as pessoas poderão ter comprando slots, esse valor menos 15 slot, caso queria que não seja possivel comprar slots bote 0 
-    priceSlot = 20000, -- Preço dos slots
+    slots = 50, -- Maximo de slots que as pessoas poderão ter comprando slots, esse valor menos 15 slot, caso queria que não seja possivel comprar slots bote 0 
+    priceSlot = 5000, -- Preço dos slots
     bahamas = false, -- Coloque true caso sua base seja a do bahamas
     typeJob = "job", -- Nome do type dos grupos padrões
+    typeJob = "gang",
     typeVip = "vip", -- Nome do type dos grupos dos vips
     multasType = "vRP:multas", -- Nome do banco de dados das multa
     currency = "R$", -- Tipo da sua moeda
@@ -60,18 +61,16 @@ ConfigServer = {
     --	["urus"] = { ['name'] = "Lamborghini Urus", ['price'] = 1000000, ['tipo'] = "exclusive" },
     -- O tipo é exclusive então ele pegará 50 slots para esse carro.
     webhook = {
-        send = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        dropar = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        equip = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        casa = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        carro = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
-        antidupe = "https://discord.com/api/webhooks/1064015233783439421/lvkxqYHK4fnp4HYhX9H9ai1c2D7ONAQrEfcIvVZX24G7Nulz65OgfwO3x8upvYNDlvB1",
+        send = "",
+        dropar = "",
+        equip = "",
+        casa = "",
+        carro = "",
+        antidupe = "",
     }, -- Webhook de enviar, dropar e equipar, bau de casa, bau de carro, anti-dump respectivamente
 
     listaDeItens = {
-        --====================================================================================================================================================--
-        --========================================================== IMPORTANTE ===================================================================================--
-        --====================================================================================================================================================--
+    
         ["suspensaoar"] = { index = "suspensaoar", nome = "Kit Suspensão", filtro = "box", type = "usar" },
         ["moduloneon"] = { index = "moduloneon", nome = "Módulo Neon", filtro = "box", type = "usar" },
         ["moduloxenon"] = { index = "moduloxenon", nome = "Módulo Xenon", filtro = "box", type = "usar" },

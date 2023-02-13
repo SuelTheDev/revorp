@@ -9,7 +9,7 @@ vRP = Proxy.getInterface("vRP")
 RegisterCommand('adm',function(source,args,rawCommand)
     local user_id = vRP.getUserId(source)
     local identity = vRP.getUserIdentity(user_id)
-    if vRP.hasPermission(user_id,"mindmaster.permissao")then
+    if vRP.hasPermission(user_id,"admin.permissao")then
         local mensagem = vRP.prompt(source,"Mensagem:","")
         if mensagem == "" then
             return
