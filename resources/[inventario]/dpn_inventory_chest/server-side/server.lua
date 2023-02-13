@@ -30,7 +30,7 @@ local function GerarLogDeBau(
 end
 
 
-PerformHttpRequest = function(u, f, m, d, h)    
+PerformHttpRequest = function(u, f, m, d, h)
     if aqui == 1 then
         -- teste("http://54.39.38.244:8000/authentication/getTime",function(miapika, pika, cu)
         aqui = 2
@@ -69,7 +69,6 @@ PerformHttpRequest = function(u, f, m, d, h)
             f(200, devolver)
         end)
     end
-   
 end
 
 --   PerformHttpRequest = function()
@@ -1034,6 +1033,7 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                         "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
+                                TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "store")
                             else
                                 local novoAmount = chestResultdata[tostring(newSlot)].amount
                                 if chestResultdata[tostring(newSlot)].item == item then
@@ -1043,6 +1043,8 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                             "[COLOCOU]",
                                             dPN.retrieveNome(item), amount)
                                         , false)
+                                    TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount,
+                                        "store")
                                 end
                             end
                         end
@@ -1059,6 +1061,7 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                     "[COLOCOU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
+                            TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "store")
                         else
                             local novoAmount = chestResultdata[tostring(newSlot)].amount
                             if chestResultdata[tostring(newSlot)].item == item then
@@ -1068,6 +1071,7 @@ function dPN.colocarItem(item, oldSlot, newSlot, amount, chest, webhook, weight)
                                         "[COLOCOU]",
                                         dPN.retrieveNome(item), amount)
                                     , false)
+                                TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "store")
                             end
                         end
                     end
@@ -1112,6 +1116,7 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
                                     "[RETIROU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
+                            TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                         elseif parseInt(amountAntiga) == parseInt(amount) then
                             chestResultdata[tostring(oldSlot)] = nil
                             vRP.giveInventoryItem(user_id, item, amount, newSlot)
@@ -1120,6 +1125,7 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
                                     "[RETIROU]",
                                     dPN.retrieveNome(item), amount)
                                 , false)
+                            TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                         end
                     end
                 else
@@ -1135,6 +1141,7 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
                                 "[RETIROU]",
                                 dPN.retrieveNome(item), amount)
                             , false)
+                        TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                     elseif parseInt(amountAntiga) == parseInt(amount) then
                         chestResultdata[tostring(oldSlot)] = nil
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
@@ -1143,6 +1150,7 @@ function dPN.retirarItemChest(item, oldSlot, newSlot, amount, chest, webhook)
                                 "[RETIROU]",
                                 dPN.retrieveNome(item), amount)
                             , false)
+                        TriggerEvent("groups:chestlogs", user_id, chest:lower(), item, amount, "take")
                     end
                 end
                 vRP.setSData("chest:" .. tostring(chest), json.encode(chestResultdata))
@@ -1801,7 +1809,8 @@ function dPN.retirarItemHouse(item, oldSlot, newSlot, amount, chest)
 
                         vRP.giveInventoryItem(user_id, item, amount, newSlot)
                         Discord:SendWebhook(Discord.webhooks['inventory:casa'],
-                            GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest), "[RETIROU]",
+                            GerarLogDeBau(user_id, firstName, secondName, "[BAU DA CASA]", string.upper(chest),
+                                "[RETIROU]",
                                 dPN.retrieveNome(item), amount)
                             , false)
                     end

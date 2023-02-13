@@ -64,7 +64,7 @@ end
 local send = PerformHttpRequest
 
 function Discord:SendWebhook(webhooklink, data, isembed)
-    print(json.encode(data), webhooklink)
+ 
     if not Discord.active_logs then return end
     if webhooklink and data then
         local message
