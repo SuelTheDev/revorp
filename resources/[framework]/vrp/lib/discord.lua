@@ -61,8 +61,10 @@ Discord.getTimestamp = function()
     return os.date("!%Y-%m-%dT%XZ")
 end
 
-function Discord:SendWebhook(webhooklink, data, isembed)
+local send = PerformHttpRequest
 
+function Discord:SendWebhook(webhooklink, data, isembed)
+ 
     if not Discord.active_logs then return end
     if webhooklink and data then
         local message
@@ -71,9 +73,9 @@ function Discord:SendWebhook(webhooklink, data, isembed)
         else
             message = { content = data }
         end
-        PerformHttpRequest(webhooklink,
+        send(webhooklink,
             function(e, t, h)
-              
+              print(e, h, t)
             end, 'POST', json.encode(message),
             { ['Content-Type'] = 'application/json' })
     end
