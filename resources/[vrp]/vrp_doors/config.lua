@@ -123,8 +123,8 @@ cfg.list = {
 	[108] = { text = true, hash = 389903619, ['x'] = 424.41, ['y'] = 10.5, ['z'] = 91.94, lock = true, perm = "cartel.permissao" },  ----------- tdj pora dupla 1
 	[109] = { text = true, hash = 389903619, ['x'] = 425.13, ['y'] = 11.34, ['z'] = 91.94, lock = true, perm = "cartel.permissao" },  ----------- tdj pora dupla 2
 	[110] = { text = true, hash = -147325430, ['x'] = 37.86, ['y'] = -1403.2, ['z'] = 29.45, lock = true, perm = "vanilla.permissao" }, 
-	[111] = { text = true, hash = -2010067408, ['x'] = -1531.41, ['y'] = 152.76, ['z'] = 55.66, lock = true, perm = "fs.permissao" }, ----------- FAMILIA FS
-	[112] = { text = true, hash = -577898263, ['x'] = -1539.5, ['y'] = 144.19, ['z'] = 55.66, lock = true, perm = "fs.permissao" }, ----------- FAMILIA FS
+	[111] = { text = true, hash = -2010067408, ['x'] = -1531.41, ['y'] = 152.76, ['z'] = 55.66, lock = true, perm = "mafia.permissao" }, ----------- FAMILIA FS
+	[112] = { text = true, hash = -577898263, ['x'] = -1539.5, ['y'] = 144.19, ['z'] = 55.66, lock = true, perm = "mafia.permissao" }, ----------- FAMILIA FS
 
 	------------------------------------------
 	--             POLICIA CIVIL             

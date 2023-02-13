@@ -733,7 +733,7 @@ config.craftLocations = {
     [13] = { type = "Bahamas", perm = 'bahamas.permissao', coords = vec3(-1364.04, -622.72, 30.33), visible = 2.0 },
     [14] = { type = "Vanilla", perm = 'vanilla.permissao', coords = vec3(97.27, -1306.01, 29.3), visible = 2.0 },
     [15] = { type = "DK", perm = 'dk.permissao', coords = vec3(147.86, 852.63, 213.16), visible = 2.0 },
-    [16] = { type = "FamiliaFS", perm = 'fs.permissao', coords = vec3(-1518.32, 125.54, 48.66), visible = 2.0 },
+    [16] = { type = "FamiliaFS", perm = 'mafia.permissao', coords = vec3(-1518.32, 125.54, 48.66), visible = 2.0 },
     [17] = { type = "Cartel", perm = 'gcartel.permissao', coords = vec3(412.18, 3.85, 84.93), visible = 2.0 },
 
 }

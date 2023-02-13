@@ -2343,7 +2343,7 @@ vehiclePositions = {
 },
 },
 --------------------FAMILIA FS VIP----------------------------------------------------------------------------------
-[165] = { type = 'service', coords = vec3(-1544.28, 105.73, 56.78), perm = 'fs.permissao',
+[165] = { type = 'service', coords = vec3(-1544.28, 105.73, 56.78), perm = 'mafia.permissao',
 vehiclePositions = {
   [1] = { vec3(-1548.03, 107.76, 56.78), h = 47.42 },
   [2] = { vec3(-1544.06, 110.56, 56.78), h = 47.42 },
@@ -2354,7 +2354,7 @@ vehicles = {
 },
 },
 
-[166] = { type = 'service', coords = vec3(-1520.77, 98.3, 56.68), perm = 'fs.permissao',
+[166] = { type = 'service', coords = vec3(-1520.77, 98.3, 56.68), perm = 'mafia.permissao',
 vehiclePositions = {
   [1] = { vec3(-1526.2, 90.91, 56.55), h = 47.42 },
 },
