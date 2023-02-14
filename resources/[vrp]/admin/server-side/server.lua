@@ -29,10 +29,54 @@ local function MakeCommandLog(command, identity, id, message)
             name = "Descrição",
             value = message
         }
-    end
-    print(json.encode(l))
+    end    
     return l
 end
+
+local function toogleStaff(source, user_id)
+	local groupid, group = vRP.getUserGroupDefByGtype(user_id, "staff")
+
+
+	if groupid and group then
+		local cargonome = ""
+		if group._config and (group._config.on or group._config.off) then
+			if group._config.on then -- tá off
+				-- cargonome = vRP.getGroupTitle(group._config.on)
+				vRP.addUserGroup(user_id, group._config.on)
+				-- TriggerClientEvent("Notify", source, "aviso", "Você entrou em serviço como " .. cargonome .. ".", 10000)
+			elseif group._config.off then -- tá on
+				cargonome = group._config.title
+				vRP.addUserGroup(user_id, group._config.off)
+				-- TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço de " .. cargonome .. ".", 10000)
+				TriggerEvent('eblips:remove', source)
+			end
+		end
+	end
+end
+
+RegisterCommand('toogle', function(source, args, rawCommand)
+	local user_id = vRP.getUserId(source)
+	if args[1] == "staff" then
+		return toogleStaff(source, user_id)
+	end
+
+	local groupid, group = vRP.getUserGroupDefByGtype(user_id, "job")
+	if groupid and group then
+		-- local cargonome = ""
+		if group._config and (group._config.on or group._config.off) then
+			if group._config.on then -- tá off
+				-- cargonome = vRP.getGroupTitle(group._config.on)
+				vRP.addUserGroup(user_id, group._config.on)
+				-- TriggerClientEvent("Notify", source, "aviso", "Você entrou em serviço como " .. cargonome .. ".", 10000)
+			elseif group._config.off then -- tá on				
+				vRP.addUserGroup(user_id, group._config.off)
+				-- TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço de " .. cargonome .. ".", 10000)
+				TriggerEvent('eblips:remove', source)
+			end
+		end
+	end
+end)
+
 -- TPTO
 
 RegisterCommand('item', function(source, args, rawCommand)

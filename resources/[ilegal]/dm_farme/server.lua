@@ -34,7 +34,7 @@ function emP.checkPayment()
 	local user_id = vRP.getUserId(source)
 	local identity = vRP.getUserIdentity(user_id)
 	if user_id then
-		if vRP.hasPermission(user_id,"bahamas.permissao") then
+		if vRP.hasPermission(user_id,"bahamas.permissao") or vRP.hasPermission(user_id,"vanilla.permissao") then
 		    if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("linha")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("pano")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("alvejante")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("papel")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("fioseletricos")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) and vRP.getInventoryWeight(user_id)+vRP.getItemWeight("ferro")*quantidade[source] <= vRP.getInventoryMaxWeight(user_id) then
 			    vRP.giveInventoryItem(user_id,"linha",math.random(2,2))
 			    vRP.giveInventoryItem(user_id,"pano",math.random(2,2))

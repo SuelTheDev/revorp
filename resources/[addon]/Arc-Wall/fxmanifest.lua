@@ -1,10 +1,9 @@
-fx_version 'bodacious'
-game 'gta5'
+fx_version "cerulean"
+game "gta5"
 
 client_scripts {
 	"@vrp/lib/utils.lua",
-	"client.lua",
-	"config.lua"
+	"client.lua"
 }
 
 server_scripts {

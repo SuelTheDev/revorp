@@ -233,9 +233,7 @@ local itemlist = {
 	["adubo"] = { index = "adubo", nome = "Adubo", type = "usar" },
 	--[ Weapons body ][ Weapons Production ]---------------------------------------------------------------------------
 	["pecadearma"] = { index = "pecadearma", nome = "Peças de Armas", type = "usar" },
-	["corpo-fuzil"] = { index = "corpo-fuzil", nome = "Corpo de Fuzil", type = "usar" },
-	["corpo-smg"] = { index = "corpo-smg", nome = "Corpo de SMG", type = "usar" },
-	["corpo-pistola"] = { index = "corpo-pistola", nome = "Corpo de Pistola", type = "usar" },
+	["armacaodearma"] = { index = "armacaodearma", nome = "Armação de Arma", type = "usar" },
 
 	--[ Miscellaneous ][ Weapons Production ]--------------------------------------------------------------------------
 	["projeto-armas"] = { index = "projeto-armas", nome = "Projeto de Armamento", type = "usar" },
@@ -244,7 +242,7 @@ local itemlist = {
 	["molas"] = { index = "molas", nome = "Molas", type = "usar" },
 	["placa-metal"] = { index = "placa-metal", nome = "Placa de Metal", type = "usar" },
 	["gatilho"] = { index = "gatilho", nome = "Gatilho", type = "usar" },
-	["capsulas"] = { index = "capsulas", nome = "Capsulas", type = "usar" },
+	["capsula"] = { index = "capsula", nome = "Capsula", type = "usar" },
 	["polvora"] = { index = "polvora", nome = "Polvora", type = "usar" },
 
 	--[MUNIÇÂO]---
@@ -279,6 +277,10 @@ local itemlist = {
 
 	['kitgps'] = { index = "kit-gps", nome = "KIT de GPS", type = "usar" },
 	['removegps'] = { index = 'remove-gps', nome = 'Removedor de GPS', type = 'usar' },
+
+	----------------teste
+	['tartaruga'] = { index = "tartaruga", nome = "Tartaruga", type = "usar" },
+	['bolsa'] = { index = "bolsa", nome = "Bolsa", type = "usar" },
 
 	--[ Weapons ][ Melee]----------------------------------------------------------------------------------------------
 

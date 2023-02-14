@@ -4,7 +4,7 @@ ConfigClient = {
     distance = 2, -- Distancia que poderá abrir as lojas
     keyBind = true, -- Se o inventário terá key bind ou seja os 5 primeiros itens ele poderá usar com as teclas 1,2,3,4,5 respectivamente
     keyBindWeapon = false, -- Se o inventário terá a opção e pegar a arma na mão e desativar o tab ao usar a keybind
-    ip = "http://34.95.138.47/imagens/itens", -- caso use ip por xammp bote o caminho assim http://ip/caminho e tire as iamgens do fx_manifest
+    ip = "http://asgardrp.ddns.net/imagens/itens", -- caso use ip por xammp bote o caminho assim http://ip/caminho e tire as iamgens do fx_manifest
     percentual = 0.85, -- Percentual para venda de itens nesse caso padrão está para 85% do valor do item
     tecla = 'oem_3', -- tecla que abrirá o inventario padrão é o aspas
     blackItemList = {
@@ -168,24 +168,24 @@ ConfigClient = {
     },
     chestFac = {
 
-        ['bloods'] = {
-            weight = 5000,
-            perm = "bloods.permissao",
-            slots = 100,
-            loc = {}
-        },
-        ['ballas'] = {
-            weight = 5000,
-            perm = "ballas.permissao",
-            slots = 100,
-            loc = {}
-        },
-        ['families'] = {
-            weight = 5000,
-            perm = "families.permissao",
-            slots = 100,
-            loc = {}
-        },
+        -- ['bloods'] = {
+        --     weight = 5000,
+        --     perm = "bloods.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
+        -- ['ballas'] = {
+        --     weight = 5000,
+        --     perm = "ballas.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
+        -- ['families'] = {
+        --     weight = 5000,
+        --     perm = "families.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
         ['yakuza'] = {
             weight = 5000,
             perm = "yakuza.permissao",
@@ -198,18 +198,18 @@ ConfigClient = {
             slots = 100,
             loc = {144.22, 855.11, 213.16}
         },
-        ['motoclub'] = {
-            weight = 5000,
-            perm = "motoclub.permissao",
-            slots = 100,
-            loc = {}
-        },
-        ['bratva'] = {
-            weight = 5000,
-            perm = "bratva.permissao",
-            slots = 100,
-            loc = {}
-        },
+        -- ['motoclub'] = {
+        --     weight = 5000,
+        --     perm = "motoclub.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
+        -- ['bratva'] = {
+        --     weight = 5000,
+        --     perm = "bratva.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
         ['cartel'] = {
             weight = 5000,
             perm = "cartel.permissao",
@@ -220,26 +220,32 @@ ConfigClient = {
             weight = 5000,
             perm = "mafia.permissao",
             slots = 100,
-            loc = {}
+            loc = {-1547.22, 139.08, 55.66}
         },
-        ['vagos'] = {
-            weight = 5000,
-            perm = "vagos.permissao",
-            slots = 100,
-            loc = {}
+        ['mafia-vip'] = {
+            weight = 10000,
+            perm = "lider-mafia.permissao",
+            slots = 200,
+            loc = {-1512.58, 122.57, 55.65}
         },
-        ['triads'] = {
-            weight = 5000,
-            perm = "triads.permissao",
-            slots = 100,
-            loc = {}
-        },
-        ['vanilla'] = {
-            weight = 5000,
-            perm = "vanilla.permissao",
-            slots = 100,
-            loc = {}
-        },
+        -- ['vagos'] = {
+        --     weight = 5000,
+        --     perm = "vagos.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
+        -- ['triads'] = {
+        --     weight = 5000,
+        --     perm = "triads.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
+        -- ['vanilla'] = {
+        --     weight = 5000,
+        --     perm = "vanilla.permissao",
+        --     slots = 100,
+        --     loc = {}
+        -- },
         ['bahamas'] = {
             weight = 5000,
             perm = "bahamas.permissao",

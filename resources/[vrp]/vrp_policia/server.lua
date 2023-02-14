@@ -356,33 +356,7 @@ end)]]
 -- 	PMBlip = { name = "PM", color = 25 },
 -- }
 
-local function toogleStaff(source, user_id)
 
-end
-
-RegisterCommand('toogle', function(source, args, rawCommand)
-	local user_id = vRP.getUserId(source)
-	if args[1] == "staff" then
-		return toogleStaff(source, user_id)
-	end
-
-	local groupid, group = vRP.getUserGroupDefByGtype(user_id, "job")
-	if groupid and group then
-		local cargonome = ""
-		if group.__config and (group.__config.on or group.__config.off) then
-			if group.__config.on then -- tá off
-				cargonome = vRP.getGroupTitle(group.__config.on)
-				vRP.addUserGroup(user_id, group.__config.on)
-				TriggerClientEvent("Notify", source, "aviso", "Você entrou em serviço como " .. cargonome .. ".", 10000)
-			elseif group.__config.off then -- tá on
-				cargonome = group.__config.title
-				vRP.addUserGroup(user_id, group.__config.off)
-				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço de " .. cargonome .. ".", 10000)
-				TriggerEvent('eblips:remove', source)
-			end
-		end
-	end
-end)
 
 -----------------------------------------------------------------------------------------------------------------------------------------
 --[[ REANIMAR

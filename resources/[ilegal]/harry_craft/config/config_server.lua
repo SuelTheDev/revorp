@@ -233,40 +233,175 @@ config.table = {
         }
     },        
 
-    -- ["Vanilla"] = { -- NUNCA REPITIR O MESMO NOME
-    --     armazem = false, -- Caso coloque true, configure a localização do armazem. ( false os items precisam está no inventario .)
-    --     weebhook = "https://discordapp.com/api/webhooks/979215215784779806/pzf1yrqwnICrW2t4TxzIjl33aoAfzaFuECRnjDqzWYIJKQVKruU57UIhaW7bUFqHWye6", -- WEEBHOOK DAS TRANSACOES FEITAS AQUI [ CRAFT / ARMAZEM ] [ PASSAR PARA SERVER SIDE AQUI TUDO ]
+    ["Vanilla"] = { -- NUNCA REPITIR O MESMO NOME
+    armazem = false, -- Caso coloque true, configure a localização do armazem. ( false os items precisam está no inventario .)
+    weebhook = "https://discordapp.com/api/webhooks/979215132074856538/3S2po4JegFb0Oi6qzbXLY_AUCZ6K60y_Kx8DG10hfTfjJzgD5yKXAcCAoePyiyj-KZzM", -- WEEBHOOK DAS TRANSACOES FEITAS AQUI [ CRAFT / ARMAZEM ] [ PASSAR PARA SERVER SIDE AQUI TUDO ]
 
-    --     craft = {
-    --         ["notafiscalfalsa"] = { -- IMAGEM DO ITEM
-    --             spawnID = "notafiscalfalsa", -- SPAWN DO ITEM
-    --             nameItem = "Nota Fiscal Falsa", -- NOME DO ITEM
-    --             maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
-    --             customAmount = 1, -- Caso queira colocar um valor x por unidade.
-    --             tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
-    --             anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+    craft = {
+        
+        ["notafiscalfalsa"] = { -- IMAGEM DO ITEM
+            spawnID = "notafiscalfalsa", -- SPAWN DO ITEM
+            nameItem = "Nota Fiscal Falsa", -- NOME DO ITEM
+            maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+            customAmount = 1, -- Caso queira colocar um valor x por unidade.
+            tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+            anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
 
-    --             requires = {
-    --                 { item = "papel" , amount = 50 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
-    --                 { item = "alvejante" , amount = 50 },
-    --             }
-    --         },  
-    --         ["algemas"] = { -- IMAGEM DO ITEM
-    --         spawnID = "algemas", -- SPAWN DO ITEM
-    --         nameItem = "Algemas", -- NOME DO ITEM
-    --         maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
-    --         customAmount = 1, -- Caso queira colocar um valor x por unidade.
-    --         tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
-    --         anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+            requires = {
+                { item = "papel" , amount = 50 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+                { item = "alvejante" , amount = 50 },
+            }
+        },  
 
-    --         requires = {
-    --             { item = "ferro" , amount = 100 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
-    --         }
-    --     },
+        ["algemas"] = { -- IMAGEM DO ITEM
+        spawnID = "algemas", -- SPAWN DO ITEM
+        nameItem = "Algemas", -- NOME DO ITEM
+        maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+        customAmount = 1, -- Caso queira colocar um valor x por unidade.
+        tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+        anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
 
-            
-    --     }
-    -- },        
+        requires = {
+            { item = "ferro" , amount = 100 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+        }
+    },
+
+        ["colete"] = { -- IMAGEM DO ITEM
+            spawnID = "colete", -- SPAWN DO ITEM
+            nameItem = "Colete Balistico", -- NOME DO ITEM
+            maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+            customAmount = 1, -- Caso queira colocar um valor x por unidade.
+            tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+            anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+            requires = {
+                { item = "ferro" , amount = 15 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+                { item = "linha" , amount = 20 },
+                { item = "pano" , amount = 15 },
+            }
+        },  
+
+        ["c4"] = { -- IMAGEM DO ITEM
+            spawnID = "c4", -- SPAWN DO ITEM
+            nameItem = "C4 Explosivo", -- NOME DO ITEM
+            maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+            customAmount = 1, -- Caso queira colocar um valor x por unidade.
+            tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+            anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+            requires = {
+                { item = "ferro" , amount = 30 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+                { item = "fioseletricos" , amount = 15 },
+            }
+        },                 
+
+        ["capuz"] = { -- IMAGEM DO ITEM
+            spawnID = "capuz", -- SPAWN DO ITEM
+            nameItem = "Capuz", -- NOME DO ITEM
+            maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+            customAmount = 1, -- Caso queira colocar um valor x por unidade.
+            tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+            anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+            requires = {
+                { item = "pano" , amount = 15 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+                { item = "linha" , amount = 12 },
+            }
+        },  
+        ["pendrive"] = { -- IMAGEM DO ITEM
+            spawnID = "pendrive", -- SPAWN DO ITEM
+            nameItem = "Pendrive", -- NOME DO ITEM
+            maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+            customAmount = 1, -- Caso queira colocar um valor x por unidade.
+            tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+            anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+            requires = {
+                { item = "ferro" , amount = 15 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+                { item = "fioseletricos" , amount = 12 },
+            }
+        },  
+
+        
+    }
+},  
+
+["Yakuza"] = { -- NUNCA REPITIR O MESMO NOME
+    armazem = false, -- Caso coloque true, configure a localização do armazem. ( false os items precisam está no inventario .)
+    weebhook = "https://discordapp.com/api/webhooks/979215660527792148/BdK0bBpDN2Lg5uBmFCIn0EGm_yivfRZLb4rzOrHqwX8Hyk-DUz1AdDnQcet96LUIJiyx", -- WEEBHOOK DAS TRANSACOES FEITAS AQUI [ CRAFT / ARMAZEM ] [ PASSAR PARA SERVER SIDE AQUI TUDO ]
+
+    craft = {
+
+        ["algemas"] = { -- IMAGEM DO ITEM
+        spawnID = "algemas", -- SPAWN DO ITEM
+        nameItem = "Algemas", -- NOME DO ITEM
+        maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+        customAmount = 1, -- Caso queira colocar um valor x por unidade.
+        tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+        anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+        requires = {
+            { item = "ferro" , amount = 100 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+        }
+    },
+
+         ["ak47"] = { -- IMAGEM DO ITEM
+            spawnID = "wbody|WEAPON_ASSAULTRIFLE", -- SPAWN DO ITEM
+            nameItem = "AK-47", -- NOME DO ITEM
+            maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+            customAmount = 1, -- Caso queira colocar    um valor x por unidade.
+            tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+            anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+            requires = {
+                { item = "armacaodearma" , amount = 55 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+                { item = "pecadearma" , amount = 60 },
+            }
+        },
+
+        ["fiveseven"] = { -- IMAGEM DO ITEM
+            spawnID = "wbody|WEAPON_PISTOL_MK2", -- SPAWN DO ITEM
+            nameItem = "FIVE", -- NOME DO ITEM
+            maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+            customAmount = 1, -- Caso queira colocar um valor x por unidade.
+            tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+            anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+            requires = {
+                { item = "armacaodearma" , amount = 20 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+                { item = "pecadearma" , amount = 40 },
+            }
+        },  
+
+    ["m-ak"] = { -- IMAGEM DO ITEM
+        spawnID = "wammo|WEAPON_ASSAULTRIFLE", -- SPAWN DO ITEM
+        nameItem = "MUNI AK-47", -- NOME DO ITEM
+        maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+        customAmount = 40, -- Caso queira colocar um valor x por unidade.
+        tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+        anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+        requires = {
+            { item = "polvora" , amount = 50 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+            { item = "capsula" , amount = 50 },
+        }
+    },  
+
+    ["m-fiveseven"] = { -- IMAGEM DO ITEM
+        spawnID = "wammo|WEAPON_PISTOL_MK2", -- SPAWN DO ITEM
+        nameItem = "MUNI FIVE", -- NOME DO ITEM
+        maxAmount = 5, -- Quantidade maxima de Craft [ VALOR DA INPUT < >]
+        customAmount = 40, -- Caso queira colocar um valor x por unidade.
+        tempo = 10, -- Tempo de craft por Unidade [ em segundos ]
+        anim = { "amb@prop_human_parking_meter@female@idle_a","idle_a_female" }, -- ANIMAÇÃO DURANTE O CRAFT. (SE O TEMPO ESTIVER 0 DESCONSIDERAR)
+
+        requires = {
+            { item = "polvora" , amount = 30 }, -- ITEM / QUANTIDADE ( POR UNIDADE )
+            { item = "capsula" , amount = 20 },
+        }
+    },               
+    }
+},             
 
     ["Bahamas"] = { -- NUNCA REPITIR O MESMO NOME
         armazem = false, -- Caso coloque true, configure a localização do armazem. ( false os items precisam está no inventario .)

@@ -37,16 +37,10 @@ function recarregarArma(source, user_id, item, amount, slot)
                     itemAmount = amount
                     dPNclient._giveWeapons(source, weapons, false)
 
-                    SendWebhookMessage(ConfigServer['webhook'].equip,
-                        "```prolog\n[ID]: " ..
-                        user_id ..
-                        " " ..
-                        identity.name ..
-                        " " ..
-                        identity.firstname ..
-                        " \n[RECARREGOU]: " ..
-                        item .. " \n[MUNICAO]: " .. amount ..
-                        " " .. os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S") .. " \r```")
+                    Discord:SendWebhook(Discord.webhooks['inventory:equip'],
+                        ("```prolog\n[ID]: %d - %s %s\n[RECARREGOU]: %s\n[MUNIÇÃO:]: %d\n[DATA]: %s \r```"):format(
+                            user_id, identity.name, identity.firstname, item, amount, os.date("%d/%m/%Y %H:%M:%S")),
+                        false)                  
                 end
             end
         end
@@ -59,19 +53,13 @@ function equipWeapon(source, user_id, item, amount, slot)
         local identity = getUserIdentity(user_id)
         weapons[string.gsub(item, "wbody|", "")] = { ammo = 0 }
         dPNclient._giveWeapons(source, weapons, false)
-        SendWebhookMessage(ConfigServer['webhook'].equip,
-            "```prolog\n[ID]: " ..
-            user_id ..
-            " " ..
-            identity.name ..
-            " " ..
-            identity.firstname .. " \n[EQUIPOU]: " .. item ..
-            " " .. os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S") .. " \r```")
+        Discord:SendWebhook(Discord.webhooks['inventory:equip'],
+            ("```prolog\n[ID]: %d - %s %s\n[EQUIPOU]: %s\n[DATA]: %s \r```"):format(user_id, identity.name,
+                identity.firstname, item, os.date("%d/%m/%Y %H:%M:%S")), false)
     end
 end
 
 function itensUse(source, user_id, item, amount, type, slot)
-
     if amount > 0 and not actived[user_id] then
         if item == "bandagem" then
             if vRPclient.getHealth(source) > 101 and vRPclient.getHealth(source) < 250 then
@@ -132,17 +120,17 @@ function itensUse(source, user_id, item, amount, type, slot)
             item == "analdor" or item == "sefodex" or item == "nokusin" or item == "glicoanal" then
             if (
                 vRP.tryGetInventoryItem(user_id, "dorflex", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "cicatricure", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "dipiroca", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "nocucedin", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "paracetanal", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "decupramim", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "buscopau", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "navagina", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "analdor", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "sefodex", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "nokusin", 1, slot) or
-                    vRP.tryGetInventoryItem(user_id, "glicoanal", 1, slot)) then
+                vRP.tryGetInventoryItem(user_id, "cicatricure", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "dipiroca", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "nocucedin", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "paracetanal", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "decupramim", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "buscopau", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "navagina", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "analdor", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "sefodex", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "nokusin", 1, slot) or
+                vRP.tryGetInventoryItem(user_id, "glicoanal", 1, slot)) then
                 dPNclient.updateInventory(source)
                 vRPclient._playAnim(source, true, { { "mp_player_intdrink", "loop_bottle" } }, true)
                 TriggerClientEvent('cancelando', source, true)
@@ -522,7 +510,6 @@ function itensUse(source, user_id, item, amount, type, slot)
                 end)
             end
         elseif item == "masterpick" then
-
             local vehicle, vnetid, placa, lock = vRPclient.vehList(source, 7)
             local policia = vRP.getUsersByPermission(ConfigServer['policiaPermissao'])
 
@@ -560,10 +547,20 @@ function itensUse(source, user_id, item, amount, type, slot)
                                 local id = idgens:gen()
                                 vRPclient._playSound(player, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET")
                                 TriggerClientEvent("NotifyPush", player,
-                                    { time = os.date("%H:%M:%S - %d/%m/%Y"), code = 31, title = "Roubo de Veículo",
-                                        x = x, y = y, z = z, rgba = { 0, 0, 0 } })
+                                    {
+                                        time = os.date("%H:%M:%S - %d/%m/%Y"),
+                                        code = 31,
+                                        title = "Roubo de Veículo",
+                                        x = x,
+                                        y = y,
+                                        z = z,
+                                        rgba = { 0, 0, 0 }
+                                    })
                                 pick[id] = vRPclient.addBlip(player, x, y, z, 10, 5, "Ocorrência", 0.5, false)
-                                SetTimeout(20000, function() vRPclient.removeBlip(player, pick[id]) idgens:free(id) end)
+                                SetTimeout(20000, function()
+                                    vRPclient.removeBlip(player, pick[id])
+                                    idgens:free(id)
+                                end)
                             end)
                         end
                     end
@@ -637,14 +634,23 @@ function itensUse(source, user_id, item, amount, type, slot)
                                 local id = idgens:gen()
                                 vRPclient._playSound(player, "CONFIRM_BEEP", "HUD_MINI_GAME_SOUNDSET")
                                 TriggerClientEvent("NotifyPush", player,
-                                    { time = os.date("%H:%M:%S - %d/%m/%Y"), code = 31, title = "Roubo de Veículo",
-                                        x = x, y = y, z = z, rgba = { 0, 0, 0 } })
+                                    {
+                                        time = os.date("%H:%M:%S - %d/%m/%Y"),
+                                        code = 31,
+                                        title = "Roubo de Veículo",
+                                        x = x,
+                                        y = y,
+                                        z = z,
+                                        rgba = { 0, 0, 0 }
+                                    })
                                 pick[id] = vRPclient.addBlip(player, x, y, z, 10, 5, "Ocorrência", 0.5, false)
-                                SetTimeout(20000, function() vRPclient.removeBlip(player, pick[id]) idgens:free(id) end)
+                                SetTimeout(20000, function()
+                                    vRPclient.removeBlip(player, pick[id])
+                                    idgens:free(id)
+                                end)
                             end)
                         end
                     end
-
                 end
                 actived[user_id] = nil
                 return true
@@ -788,11 +794,9 @@ function itensUse(source, user_id, item, amount, type, slot)
                 dPNclient.updateInventory(source)
             end
         elseif item == "kitgps" then
-
             if vRP.hasPermission(user_id, "mecanico.permissao") then
                 local vehicle = GetVehiclePedIsIn(GetPlayerPed(source), false)
                 if vehicle and GetPedInVehicleSeat(vehicle, -1) == GetPlayerPed(source) then
-
                     local vehicleinfo = exports.nation_garages:GetVehicleInfo(GetEntityModel(vehicle))
                     if not vehicleinfo then
                         TriggerClientEvent("Notify", source, "negado",
@@ -802,8 +806,9 @@ function itensUse(source, user_id, item, amount, type, slot)
 
                     local modelName = vehicleinfo.name
                     local vehicleOwnerId = vRP.getUserByRegistration(GetVehicleNumberPlateText(vehicle)) or 0
-                    local vehicledb = exports.oxmysql:single_async("SELECT * FROM vrp_user_vehicles WHERE user_id = ? AND vehicle = ?"
-                        , { vehicleOwnerId, modelName })
+                    local vehicledb = exports.oxmysql:single_async(
+                            "SELECT * FROM vrp_user_vehicles WHERE user_id = ? AND vehicle = ?"
+                            , { vehicleOwnerId, modelName })
                     if not vehicledb or vehicledb and vehicledb.user_id ~= vehicleOwnerId then
                         TriggerClientEvent("Notify", source, "negado",
                             "Veículo alugado ou de governo não podem ter GPS instalado.", 8000)
@@ -829,7 +834,8 @@ function itensUse(source, user_id, item, amount, type, slot)
                             TriggerClientEvent('cancelando', source, false)
                             TriggerClientEvent("Notify", source, "sucesso", "KIT de GPS instalado com sucesso.", 8000)
                             exports.nation_garages:EnableGps(vehicle)
-                            exports.oxmysql:update_async("UPDATE vrp_user_vehicles SET gps = 1 WHERE user_id = ? AND vehicle = ?"
+                            exports.oxmysql:update_async(
+                                "UPDATE vrp_user_vehicles SET gps = 1 WHERE user_id = ? AND vehicle = ?"
                                 , { vehicleOwnerId, modelName })
                         end)
                     end
@@ -879,17 +885,17 @@ function itensUse(source, user_id, item, amount, type, slot)
                 TriggerClientEvent("progress", source, 60000, "Desativando GPS")
                 FreezeEntityPosition(vehicle, true)
                 FreezeEntityPosition(GetPlayerPed(source), true)
-                SetTimeout(60000, function ()
+                SetTimeout(60000, function()
                     FreezeEntityPosition(vehicle, false)
                     FreezeEntityPosition(GetPlayerPed(source), false)
                     TriggerClientEvent('cancelando', source, false)
                     TriggerClientEvent("Notify", source, "sucesso", "KIT de GPS desinstalado com sucesso.", 8000)
                     exports.nation_garages:DisableGPS(vehicle)
-                    exports.oxmysql:update_async("UPDATE vrp_user_vehicles SET gps = 0 WHERE user_id = ? AND vehicle = ?", { vehicleOwnerId, modelName })
+                    exports.oxmysql:update_async(
+                        "UPDATE vrp_user_vehicles SET gps = 0 WHERE user_id = ? AND vehicle = ?",
+                        { vehicleOwnerId, modelName })
                 end)
             end
-
-
         end
     end
 end
