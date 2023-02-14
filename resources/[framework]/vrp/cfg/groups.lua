@@ -89,7 +89,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Juíz" or "Juíza"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 			end,
 			onleave = function(source)
 				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
@@ -109,7 +109,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Advogado" or "Advogada"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 			end,
 			onleave = function(source)
 				TriggerClientEvent("Notify", source, "aviso", "Você saiu do serviço.")
@@ -130,7 +130,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Investigador" or "Investigadora"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -153,7 +153,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Escrivão" or "Escrivã"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -176,7 +176,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Delegado" or "Delegada"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -199,7 +199,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Sargento"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -221,7 +221,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Tenente"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -243,7 +243,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Capitão"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -265,7 +265,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Tenente Coronel"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -287,7 +287,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Coronel"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -310,7 +310,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Recruta"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -332,7 +332,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Soldado"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -354,7 +354,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Sargento"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -376,7 +376,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Tenente"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -398,7 +398,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Capitão"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -421,7 +421,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Major"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -443,7 +443,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Tenente"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -465,7 +465,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Comandante Geral"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["policia"].name, src = source, color = blipService["policia"].color })
 			end,
@@ -489,7 +489,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Enfermeiro" or "Enfermeira"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
 			end,
@@ -512,7 +512,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Médico" or "Médica"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
 			end,
@@ -534,7 +534,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = Socorrista
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
 			end,
@@ -557,7 +557,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Vice Diretor" or "Vice Diretora"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
 			end,
@@ -580,7 +580,7 @@ cfg.groups = {
 				local ismale = GetEntityModel(GetPlayerPed(source)) == `mp_m_freemode_01`
 				local cargo = ismale and "Diretor" or "Vice Diretora"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["hospital"].name, src = source, color = blipService["hospital"].color })
 			end,
@@ -603,7 +603,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "CEO da LS"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
@@ -626,7 +626,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Diretor da LS"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
@@ -649,7 +649,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Mecânico Sênio"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
@@ -672,7 +672,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Mecânico Aprendiz"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
@@ -695,7 +695,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "CEO da Bennys"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
@@ -718,7 +718,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Diretor da Bennys"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
@@ -742,7 +742,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Mecânico Sênio"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
@@ -765,7 +765,7 @@ cfg.groups = {
 			onjoin = function(source)
 				local cargo = "Mecânico Aprendiz"
 				TriggerClientEvent("Notify", source, "aviso",
-					"Você entrou em serviço de Staff como <b>" .. cargo .. ".</b>")
+					"Você entrou em serviço como <b>" .. cargo .. ".</b>")
 				TriggerEvent('eblips:add',
 					{ name = blipService["mecanico"].name, src = source, color = blipService["mecanico"].color })
 			end,
